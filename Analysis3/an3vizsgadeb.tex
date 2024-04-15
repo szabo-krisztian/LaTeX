@@ -4,62 +4,47 @@
 \usepackage{setspace}
 \usepackage{hyperref}
 \usepackage{amsfonts, amssymb, amsmath} 
-\usepackage[T1]{fontenc}
-\usetikzlibrary{shadows.blur}
 \usepackage{titlesec}
 \usepackage{pgfplots}
 \usepackage{graphicx}
 \usepackage{wrapfig}
-
 \usepackage{caption}
 \usepackage{enumitem}
+\usetikzlibrary{shadows.blur}
 
 \title{\textcolor{purple}{\Huge\textbf{\textsc{Analízis III}}}}
 \author{Vizsga jegyzet}
 \date{Szabó Krisztián}
 
-\newcommand{\nagyszoveg}[1]{\vspace{1em}\Large\textcolor{purple}{\textbf{#1}}\normalsize\vspace{1em}}
-\newcommand{\kisszoveg}[1]{\vspace{0.5em}\large\textcolor{purple}{\textbf{#1}}\normalsize\vspace{0.5em}}
-\newcommand{\norm}[1]{||#1||}
-
-% Címek formázása
 \titleformat{\section}{\color{purple}\normalfont\Large\bfseries}{\thesection}{1em}{}
-
-
+\renewcommand{\contentsname}{Tartalom}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\E}{\exists}
+\newcommand{\K}{\mathbb{K}}
 \newcommand{\D}{\mathcal{D}_f}
-\newcommand{\ba}{\boldmath$a$\unboldmath}
-\newcommand{\lila}[1]{{\large\textbf{\textcolor{purple}{#1}}}}
-
-\renewcommand{\contentsname}{Tartalom}
-
-
 \setlength{\parindent}{0pt}
 
-% Definiáljuk a színeket
-
-\definecolor{modernyellow}{HTML}{F4E4BC} % Modern sárga
-\definecolor{moderngreen}{HTML}{BDDCBD}  % Modern zöld
+\definecolor{modernyellow}{HTML}{F4E4BC}
+\definecolor{moderngreen}{HTML}{BDDCBD}
 
 \tikzset
 {
 	definition/.style={
 		draw,
-		fill=modernyellow, % Sárga színű keret a definíciókhoz
+		fill=modernyellow,
 		line width=1pt,
-		rounded corners, % Lekerekített szélek
-		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex}, % Árnyék hozzáadása
-		text width=0.9\textwidth, % Szöveg szélessége
+		rounded corners,
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+		text width=0.9\textwidth,
 		inner sep=10pt
 	},
-	myboxgreen/.style={
+	theorem/.style={
 		draw,
-		fill=moderngreen, % Zöld színű keret a tételekhez
+		fill=moderngreen,
 		line width=1pt,
-		rounded corners, % Lekerekített szélek
-		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex}, % Árnyék hozzáadása
+		rounded corners,
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
 		text width=0.9\textwidth,
 		inner sep=10pt
 	},
@@ -67,7 +52,6 @@
 		fill=white,
 		rectangle,
 		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex, moderngreen},
-		%rounded corners=3pt,
 		text width=0.9\textwidth,
 		inner sep=6pt,
 	},
@@ -85,11 +69,192 @@
 	\tableofcontents
 	\newpage
 
+    \section{Konvergens sorozatok metrikus terekben. Halmazok zártságának jellemzése konvergens sorozatokkal. Banach- és Hilbert-tér.}
+    \textbf{Eredeti vizsgacím:}
+    
+    Konvergens sorozatok metrikus terekben. Konvergencia $\K^n$-ben, a koordináta-sorozatok szerepe. \textit{Bolzano-Weierstrass-kiválasztási} tétel. Konvergencia a $\big( C[a, \, b], \, ||.||_\infty \big)$ térben (függvénysorozatok, az egyenletes, ill. a pontonkénti konvergencia fogalma). Halmazok zártságának a jellemzése konvergens sorozatokkal. A teljesség fogalma, \textit{Banach}-tér, \textit{Hilber}-tér. A $\big( C[a, \, b], \, ||.||_\infty \big)$ tér teljessége.
+
+    \subsection{Konvergencia metrikus térben}
+    \begin{center}
+        \tikz \node[definition]
+        {
+            \textbf{Definíció.} Legyen $(X, \, \varrho)$ metrikus tér, és legyen az
+            \[
+                (x_n) : \N \to X
+            \]
+            egy, az $X$ elemeiből álló sorozat. Az $(x_n)$ sorozatot \textit{konvergensnek} nevezzük, ha van olyan $\alpha \in X$, amelyre bármely $\varepsilon > 0$ "hibakorlát" mellett egy alkalmas $N \in \N$ indexszel igaz a
+            \[
+                \varrho(x_n, \, \alpha) < \varepsilon \quad (n \in \N, \, n > N)
+            \]
+            becslés. Ha ilyen $\alpha$ nincs, akkor azt mondjuk, hogy az $(x_n)$ sorozat \textit{divergens}.
+        };
+    \end{center}
+
+    Például a diszkrét metrikus térben valamely $(x_n)$ sorozat akkor és csak akkor konvergens, ha \textit{kvázikonstasn}, azaz létezik olyan $M \in \N$ természetes szám, hogy
+    \[
+        x_n = x_M \quad (n \in \N, \, n \geq M).
+    \]
+    Ha ui. egy sorozat ilyen, akkor a konvergencia definíciójában az $\alpha$ helyébe az $x_M$-et, tetszőleges $\varepsilon > 0$ mellett pedig $N$ helyébe $M$-et írva triviálisan fennáll a
+    \[
+        \varrho(x_n, \, \alpha) = \varrho(x_n, \, x_M) = \varrho(x_M, \, x_M) = 0 < \varepsilon \quad (n \in \N, \, n \geq M)
+    \]
+    egyenlőtlenség.
+
+    \subsection{Határérték egyértelműsége}
+    \begin{center}
+        \tikz \node[theorem]
+        {
+            \textbf{Tétel.} Legyen valamilyen $(X, \, \varrho)$ metrikus tér esetén az
+            \[
+                x = (x_n) : \N \to X
+            \]
+            sorozat konvergens. Ekkor a konvergencia definíciójában szereplő $\alpha \in X$ elem egyértelműen létezik.
+        };
+    \end{center}
+    \newpage
+
+    \begin{center}
+        \tikz \node[proof]
+        {
+            \textbf{Bizonyítás.} Tegyük fel, hogy a tételben említett $ X \ni \alpha$-n kívül egy $\beta \in X$ elemre is igaz a konvergencia definíciója: bármilyen $\varepsilon > 0$ számhoz megadható olyan $M \in \N$, hogy
+            \[
+                \varrho(x_n, \, \beta) < \varepsilon \quad (n \in \N, \, n > M).
+            \]
+            Ekkor a $\varrho$ metrikára vonatkozó háromszög-egyenlőtlenség miatt tetszőlegesen választott
+            \[
+                n \in \N,\, n > \text{max} \, \{N, \, M\}
+            \]
+            indexre
+            \[
+                \varrho(\alpha, \, \beta) \leq \varrho(\alpha,\, x_n) + \varrho(x_n, \, \beta) < 2\cdot \varepsilon.
+            \]
+            Következésképpen
+            \[
+                0 \leq \varrho(\alpha, \, \beta) < 2 \cdot \varepsilon.
+            \]
+            Mivel itt az $\varepsilon > 0$ bármilyen (pozitív) szám lehet, ezért csak $\varrho(\alpha, \, \beta) = 0$ lehetséges. A metrika axiómái szerint innen viszont $\alpha = \beta$ adódik.
+            
+            $\hfill \blacksquare$
+        };
+    \end{center}
+
+    \subsection{Vektorsorozatok}
+    Legyen most
+    \[
+        1 \leq s \in \N, \, 0 < p \leq + \infty, \, X := \K^s, \, \varrho := \varrho_p,
+    \]
+    és tekintsünk egy
+    \[
+        x = (x_n) : \N \to \K^s
+    \]
+    sorozatot. Ha
+    \[
+        x_n = (x_{n1}, \, \dots, \, x_{ns}) \, \, (\in \K^s) \quad (n \in \N),
+    \]
+    akkor minden $i = 1, \, \dots, \, s$ mellett definiálhatjuk az
+    \[
+        x^{(i)} := (x_{ni})
+    \]
+    számsororatot, az $x$ sorozat $i$-edik \textit{koordináta-sorozatát}. Ekkor az $x$ \textit{vektorsorozat} konvergenciája az alábbiak szerint "kezelhető" a koordináta-sorozatainak a konvergenciája révén.
+
+    \subsection{Koordináta-sorozatok konvergenciája}
+    \begin{center}
+        \tikz \node[theorem]
+        {
+            \textbf{Tétel.} Az
+            \[
+                x = (x_n) : \N \to \K^s
+            \]
+            sorozat akkor és csak akkor konvergens az előbbi $(\K^s, \, \varrho_p)$ metrikus térben, ha minden $x^{(i)} \, \, (i = 1, \, \dots, \, s)$ koordináta-sorozata konvergens. Továbbá
+            \[
+                \K^s \ni (\alpha_1, \, \dots, \, \alpha_s) = \lim_{n \to + \infty} (x_n) \quad \Longleftrightarrow \quad \alpha_i = \lim_{n \to + \infty} \big(x^{(i)}\big) \quad (i = 1, \, \dots, \, s).
+            \]
+        };
+    \end{center}
+
+    \newpage
+    \begin{center}
+        \tikz \node[proof1]
+        {
+            \textbf{Bizonyítás.} Tegyük fel először, hogy a tételbeli $x$ sorozat konvergens, legyen
+            \[
+                \alpha = (\alpha_1, \, \dots, \, \alpha_s) \in \K^s
+            \]
+            a határértéke. A $\varrho_p$ metrikak definíciója szerint ez azt jelenti, hogy tetszőleges $\varepsilon > 0$ számot megadva van olyan $N \in \N$, amellyel az $n \in \N, \, n > N$ indexekre
+            \[
+                \varepsilon > \varrho_p(x_n, \, \alpha) =
+                \begin{cases}
+                    \displaystyle \sum_{i = 1}^s |x_{ni} - \alpha_i|^p & (p < 1) \\
+                    \displaystyle \left( \sum_{i = 1}^s |x_{ni} - \alpha_i|^p \right)^{1/p} & (1 \leq p < + \infty) \\
+                    \text{max} \, \{ |x_{ni} - \alpha_i : i = 1, \, \dots, \, s \} & (p = + \infty).
+                \end{cases}
+            \]
+            Világos, hogy bármely $i = 1, \, \dots, \, s$ esetén
+            \[
+                \varrho(x_n, \, \alpha) \geq
+                \begin{cases}
+                    |x_{ni} - \alpha_i|^p & (0 < p < 1) \\
+                    |x_{ni} - \alpha_i| & (1 \leq p \leq + \infty)
+                \end{cases}
+                \quad (n \in \N),
+            \]
+            ezért
+            \[
+                |x_{ni} - \alpha_i| < \varepsilon \quad (n \in N, \, n > N, \, p \geq 1)
+            \]
+            és
+            \[
+                |x_{ni} - \alpha_i| < \sqrt[p]{\varepsilon} \quad (n \in \N, \, n > N, \, 0 < p < 1).
+            \]
+            Mindez pontosan azt jelenti, hogy az $x^(i)$ koordináta-sorozat konvergens és
+            \[
+                \lim_{n \to + \infty} \big( x^{(i)} \big) = \alpha_i \quad (i = 1, \, \dots,\, s).
+            \]
+            Fordítva, ha minden $x^{(i)}$ koordinátat-sorozat konvergens, akkor legyen
+            \[
+                \alpha_i := \lim_{n \to + \infty} \big( x^{(i)} \big) \quad (i = 1, \, \dots, \, s)
+            \]
+            és
+            \[
+                \alpha := (\alpha_1, \, \dots, \, \alpha_s) \in \K^s.
+            \]
+            Ha $\varepsilon > 0$ tetszőleges, akkor minden $i = 1, \, \dots, \, s$ mellett létezik olyan $N_i \in \N$ küszöbindex, hogy
+            \[
+                |x_{ni} - \alpha_i| < \varepsilon \quad (n \in \N, \, n > N_i).
+            \]
+            Legyen $N := \text{max} \, \{N_1, \, \dots,\, N_s\}$, ekkor
+            \[
+                |x_{ni} - \alpha_i| < \varepsilon \quad (n \in \N, \, n > N, \, i = 1, \, \dots, \, s).
+            \]
+            Ezért
+            \[
+                \varrho_p(x_n, \, \alpha) = \sum_{i=1}^s |x_{ni}-\alpha_i|^p < s \cdot \varepsilon^p \quad (n \in \N, \, n > N, \, 0 < p < 1),
+            \]
+        };
+    \end{center}
+
+    \newpage
+    \begin{center}
+        \tikz \node[proof]
+        {
+            \[
+                \varrho_p(x_n, \, \alpha) = \left( \sum_{i=1}^s |x_{ni} - \alpha_i|^p \right)^{1 / p} < s^{1/p} \cdot \varepsilon \quad (n \in \N, \, n > N, \, 1 \leq p < + \infty),
+            \]
+            \[
+                \varrho_p(x_n, \, \alpha) = \text{max} \, \{ |x_{ni} - \alpha_i|  : i = 1, \, \dots, \, s\} < \varepsilon \quad (n \in \N, \, n > N, \, 1 \leq p = \infty).
+            \]
+            Így minden $0 < p \leq + \infty$ esetén az $(x_n)$ sorozat konvergens a $(\K^s, \, \varrho_p)$ metrikus térben, és $\displaystyle \lim_{n \to + \infty} (x_n) = \alpha$.
+
+            $\hfill \blacksquare$
+        };
+    \end{center}
+
+    \newpage
     \section{A koordináta-függvények szerepe a differenciálhatóságban. A \textit{Jacobi}-mátrix kiszámítása.}
     \subsection{Koordináta-függvények és a differenciálhatóság kapcsolata}
     
     \begin{center}
-        \tikz \node[myboxgreen]
+        \tikz \node[theorem]
         {
             \textbf{Tétel.} Legyen $1 \leq n, \, m \in \N$. Az
             \[
@@ -204,7 +369,7 @@
 
     \newpage
     \section{Többször differenciálható függvények. Young-tétel.}
-    \subsection{$f \in \R^n \to \R$ függvények másodrendű differenciálhatósága}
+    \subsection{Többváltozós-valós függvények másodrendű differenciálhatósága}
     \begin{center}
         \tikz \node[definition]
         {
@@ -237,7 +402,7 @@
     \]
     mátrixot az $f$ függvény $a$-beli \textit{másodrendű deriváltmátrixnának nevezzük}. A későbbiekben tárgyalandó Young-tétel miatt ez egy szimmetrikus mátrix. 
 
-    \subsection{$f \in \R^n \to \R$ függvények magasabb rendű differenciálhatósága}
+    \subsection{Többváltozós-valós függvények magasabb rendű differenciálhatósága}
     \begin{center}
         \tikz \node[definition]
         {
@@ -245,7 +410,7 @@
         };        
     \end{center}
 
-    \subsection{$f \in \R^n \to \R^m$ függvények magasabb rendű differenciálhatósága}
+    \subsection{Többváltozós-vektorfüggvények függvények magasabb rendű differenciálhatósága}
     \begin{center}
         \tikz \node[definition]
         {
@@ -262,7 +427,7 @@
 
     \subsection{Young-tétel}
     \begin{center}
-        \tikz \node[myboxgreen]
+        \tikz \node[theorem]
         {
             \textbf{Tétel.} Legyen $2 \leq n \in \mathbb{N}, \, f \in \R^n \to \R, \, a \in \text{int} \, \D, \, 2 \leq s \in \mathbb{N}$ és $f \in D^s\{a\}$. Ekkor tetszőleges $k_1, \, \dots, \, k_s \in \{1, \, \dots, \, n\}$ indexek esetén ezek bármely $j_1, \, \dots, \, j_s$ permutációjára
             \[
@@ -397,4 +562,6 @@
             $\hfill \blacksquare$
         };
     \end{center}
+
+
 \end{document}
