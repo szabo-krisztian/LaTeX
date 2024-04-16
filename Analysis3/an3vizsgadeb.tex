@@ -324,6 +324,139 @@
         \left| \int\limits_a^b fg \right| \leq \sqrt{\int\limits_a^b f^2} \cdot \sqrt{\int\limits_a^b g^2} \quad (f, \, g \in C[a, \, b]).
     \]
 
+    \subsection{Környezet fogalma}
+    \begin{center}
+        \tikz \node[definition]
+        {
+            \textbf{Definíció.} Legyen $(X, \, \varrho)$ metrikus tér. Ha $b \in X$ és $r > 0$, akkor a
+            \[
+                K_r(b) := \{ x \in X : \varrho(x, \, b) < r \}
+            \]
+            halmaz a $b$ elem $r$-\textit{sugarú környezete}. Használjuk a $K(b)$ jelölést is a $K_r(b)$ helyett, ha az adott szituációban a $K_r(b)$ környezet sugara nem játszik szerepet.
+        };
+    \end{center}
+
+    Nyilvánvaló, hogy $0 < v \leq r$ esetén
+    \[
+        K_v(b) \subset K_r(b).
+    \]
+    Tetszőleges $K_r(a)$ környezet és $b \in K_r(a)$ esetén
+    \[
+        0 < v < r - \varrho(b, \, a)
+    \]
+    feltételnek eleget tevő $v$ "sugárral"
+    \[
+        K_v(b) \subset K_r(a).
+    \]
+    Ha ui. $x \in K_v(b)$, azaz $\varrho(x, \, b) < v$, akkor a háromszög-egyenlőtlenség szerint
+    \[
+        \varrho(x, \, a) \leq \varrho(x, \, b) + \varrho(b, \, a) < v + \varrho(b, \, a) < r.
+    \]
+    
+    \subsection{Belső pont fogalma}
+    \begin{center}
+        \tikz \node[definition]
+        {
+            \textbf{Definíció.} Nevezzük valamilyen $\emptyset \neq A \subset X$ halmaz esetén az $a \in A$ pontot az $A$ halmaz \textit{belső pontjának}, ha egy alkalmas $K(a)$ környezettel
+            \[
+                K(a) \subset A
+            \]
+            teljesül. Az ilyen tulajdonságú pontok által alkotott halmaz az $A$ ún. \textit{belseje}, amit az
+            \[
+                \text{int} \, A
+            \]
+            szimbólummal fogunk jelölni.
+        };
+    \end{center}
+
+    Nyilván $\text{int} \, X = X$, míg az
+    \[
+        X := \R, \, \varrho(x, \, y) := |x-y| \quad (x, \, y \in \R)
+    \]
+    esetben $\text{int} \, \{a\} = \emptyset \, \, (a \in \R)$. Állapodjunk meg abban, hogy
+    \[
+        \text{int} \, \emptyset := \emptyset.
+    \]
+    Tehát bármely $A \subset X$ halmazra
+    \[
+        \text{int} \, A \subset A.
+    \]
+    Azt mondjuk, hogy az $A \subset X$ halmaz \textit{nyílt}, ha
+    \[
+        \text{int} \, A = A.
+    \]
+    Így pl. az $\emptyset$ (az üreshalmaz) nyílt halmaz, ill. bármely környezet is az. Más megfogalmazásban tehát egy $\emptyset \neq A \subset X$ halmaz akkor és csak akkor nyílt, ha az $A$ minden pontja belső pontja az $A$-nak:
+    \[
+        a \in A \Longrightarrow a \in \text{int} \, A.
+    \]
+    Ismételjük el újra, hogy mit is jelent ez: az
+    \[
+        \emptyset \neq A \subset X
+    \]
+    halmaz akkor és csak akkor nyílt, ha tetszőleges $a \in A$ elemének létezik olyan $K(a)$ környezete, hogy
+    \[
+        K(a) \subset A.
+    \]
+    \subsection{Metrikus tér topológiája}
+    \begin{center}
+        \tikz \node[definition]
+        {
+            \textbf{Definíció.} Legyen $(X, \, \varrho)$ metrikus tér és
+            \[
+                \mathcal{T}_\varrho(X) := \mathcal{T}_\varrho := \{ A \in \mathcal{P}(X) : A \text{ nyílt} \}.
+            \]
+            Az $X$ nyílt részhalmazai által meghatározott $\mathcal{T}_\varrho$ halmazrendszert az $(X, \, \varrho)$ metrikus tér \textit{topológiájának} nevezzük.
+        };
+    \end{center}
+
+    \subsection{Nyílt halmazok uniója és metszete}
+    \begin{center}
+        \tikz \node[theorem]
+        {
+            \textbf{Tétel.} Tegyük fel, hogy valamilyen $\Gamma \neq \emptyset$ (index)halmaz esetén az $A_\gamma \in X$ $(\gamma \in \Gamma)$ halmazok valamennyien nyíltak az $(X, \, \varrho)$ metrikus térben. Ekkor
+            \begin{enumerate}
+                \item az $\displaystyle \bigcup_{\gamma \in \Gamma} A_\gamma$ egyesítésük is nyílt;
+                \item ha a $\Gamma$ véges, akkor a $\displaystyle \bigcap_{\gamma \in \Gamma} A_\gamma$ metszetük is nyílt.
+            \end{enumerate}
+        };
+    \end{center}
+
+    \newpage
+    \begin{center}
+        \tikz \node[proof]
+        {
+            \textbf{Bizonyítás.} Legyen $\displaystyle a \in \bigcup_{\gamma \in \Gamma} A_\gamma$. Ekkor egy $\nu \in \Gamma$ indexszel $a \in A_\nu$. Mivel az $A_\nu$ halmaz nyílt, ezért egy alkalmas $K(a)$ környezettel $K(a) \subset A_\nu$. Nyilvánvaló, hogy
+            \[
+                A_\nu \subset \bigcup_{\gamma \in \Gamma} A_\gamma,
+            \]
+            így egyúttal
+            \[
+                K(a) \subset \bigcup_{\gamma \in \Gamma} A_\gamma
+            \]
+            is teljesül. Más szóval $\displaystyle a \in \text{int} \, \left( \bigcup_{\gamma \in \Gamma} A_\gamma \right)$, azaz $\displaystyle \bigcup_{\gamma \in \Gamma} A_\gamma$ nyílt halmaz. \newline
+
+            Most tegyük fel, hogy a $\Gamma$ halmaz véges, és legyen $\displaystyle a \in \bigcap_{\gamma \in \Gamma} A_\gamma$. Ekkor minden $\gamma \in \Gamma$ mellett $a \in A_\gamma$, következésképpen az $A_\gamma$-k nyíltsága miatt egy $r_\gamma > 0$ sugárral
+            \[
+                K_{r_\gamma}(a) \subset A_\gamma.
+            \]
+            Ha
+            \[
+                r := \text{min} \, \{ r_\gamma : \gamma \in \Gamma \}
+            \]
+            (ami egy pozitív szám), akkor $r \leq r_\gamma \, \, (\gamma \in \Gamma)$ miatt
+            \[
+                K_r(a) \subset K_{r_\gamma} \subset A_\gamma \quad (\gamma \in \Gamma),
+            \]
+            így
+            \[
+                K_r(a) \subset \bigcap_{\gamma \in \Gamma} A_\gamma.
+            \]
+            Tehát $\displaystyle a \in \text{int} \, \left( \bigcap_{\gamma \in \Gamma} A_\gamma \right)$, ezért a $\displaystyle \bigcap_{\gamma \in \Gamma} A_\gamma$ metszethalmaz nyílt.
+
+            $\hfill \blacksquare$
+        };
+    \end{center}
+
     \newpage
     \section{Konvergens sorozatok metrikus terekben. Halmazok zártságának jellemzése konvergens sorozatokkal. Banach- és Hilbert-tér.}
     \textbf{Eredeti vizsgacím:}
