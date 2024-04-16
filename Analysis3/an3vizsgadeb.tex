@@ -249,6 +249,267 @@
         };
     \end{center}
 
+    \subsection{Függvényterek konvergenciája}
+    Valamely $- \infty < a < b < + \infty$ mellett tekintsük az $X := C[a, \, b]$ halmazt és a $\varrho_\infty$ metrikát. Ha az
+    \[
+        f_n \in C[a, \, b] \quad (n \in \N)
+    \]
+    (függvény)sorozat konvergens és
+    \[
+        f := \lim_{n \to + \infty} (f_n) \in C[a, \, b],
+    \]
+    akkor tetszőleges $\varepsilon > 0$ számhoz van olyan $N \in \N$, hogy minden $n \in \N, \, n > N$ esetén
+    \[
+        \varrho_\infty(f_n, \, f) < \varepsilon,
+    \]
+    azaz
+    \[
+        \text{max} \, \big\{ |f_n(x) - f(x) | : a \leq x \leq b \big\} < \varepsilon.
+    \]
+    Azt mondjuk, hogy az $(f_n)$ függvénysorozat \textit{egyenletesen konvergens}. Az $f$ az $(f_n)$ határfüggvénye.\newline
+
+    Nyilvánvaló, hogy ekkor az előbbi $n$ indexekre bármelyik $x \in [a, \, b]$ helyen
+    \[
+        |f_n(x) - f(x)| < \varepsilon
+    \]
+    igaz. Más szóval ez azt jelenti, hogy az $\big( f_n(x) \big)$ (szám)sorozat konvergens és a határértéke $f(x)$. Röviden: az $(f_n)$ függvénysorozat \textit{pontonként konvergens}.
+
+    \subsection{Halmazok zártságának jellemzése konvergens sorozatokkal}
+    \begin{center}
+        \tikz \node[theorem]
+        {
+            \textbf{Tétel.} Legyen $(X, \, \varrho)$ metrikus tér. Az $\emptyset \neq A \subset X$ halmaz akkor és csak akkor zárt, ha minden konvergens
+            \[
+                (x_n) : \N \to A
+            \] 
+            sorozatra $\displaystyle \lim_{n \to + \infty} (x_n) \in A$. 
+        };
+    \end{center}
+
+    \newpage
+    \begin{center}
+        \tikz \node[proof]
+        {
+            \textbf{Bizonyítás.} Tegyük fel először azt, hogy az $A$ halmaz zárt, de valamilyen
+            \[
+                (x_n) : \N \to A
+            \]
+            konvergens sorozatra
+            \[
+                \alpha := \lim_{n \to + \infty} (x_n) \not \in A.
+            \]
+            Ekkor tehát $\alpha \in X \, \backslash \, A$, ahol az $X \, \backslash \, A$ halmaz nyílt. Így van olyan $K(\alpha)$ környezet, hogy
+            \[
+                K(\alpha) \subset X \, \backslash \, A.
+            \]
+            Ugyanakkor egy $N \in \N$ indexszel
+            \[
+                A \ni x_k \in K(\alpha) \subset X \, \backslash \, A \quad (N < k \in \N),
+            \]
+            ami nyilván nem lehet.\newline
+
+            Most tegyük fel azt, hogy tetszőleges konvergens
+            \[
+                (x_n) : \N \to A
+            \]
+            sorozat határértékére $\lim(x_n) \in A$, és lássuk be, hogy az $A$ halmaz zárt. Legyen ehhez $\alpha \in A'$, ekkor egy alkalmas
+            \[
+                (z_n) : \N \to A
+            \]
+            sorozatra $\lim(z_n) = \alpha$. A kiinduló feltételünk szerint ezért $\alpha \in A$, azaz $A' \subset A$ és (egy korábbi tételre hivatkozva) az $A$ zárt.
+            $\hfill \blacksquare$
+        };
+    \end{center}
+
+    \subsection{Cauchy-sorozat fogalma}
+    \begin{center}
+        \tikz \node[definition]
+        {
+            \textbf{Definíció.} Legyen $(X, \, \varrho)$ metrikus tér és
+            \[
+                (x_n) : \N \to X
+            \]
+            sorozat. Ezt a sorozat \textit{Cauchy-sorozat}, ha tetszőleges $\varepsilon > 0$ esetén létezik olyan $N \in \N$, hogy
+            \[
+                \varrho(x_n, \, x_m) < \varepsilon \quad (m, \, n \in \N, \, m,\, n > N).
+            \] 
+        };
+    \end{center}
+
+    \subsection{Banach- és Hilbert-tér fogalma}
+    Legyen adott az $(X, ||.||)$ normált tér. Azt mondjuk, hogy ez a tér \textit{teljes} (vagy \textit{Banach-tér}), ha a $||.||$ norma által indukált
+    \[
+        \varrho(x, \, y) := ||x-y|| \quad (x, \, y \in X)
+    \]
+    metrikával az $(X, \, \varrho)$ metrikus tér teljes. Világos, hogy a
+    \[
+        (\K^s, \, ||.||_p) \quad (1 \leq s \in \N, \, 1 \leq p \leq + \infty)
+    \]
+    terek valamennyien Banach-terek. Hasonlóan: a $(C[a, \,b], \, ||.||_\infty)$ tér is Banach-tér.\newline
+
+    Azt mondjuk, hogy az $(X, \, \langle . \rangle)$ euklideszi tér \textit{teljes} (vagy \textit{Hilbert-tér}), ha a $\langle . \rangle$ skaláris szorzás által meghatározott
+    \[
+        ||x|| := \sqrt{\langle x, \, x \rangle} \quad (x \in X)
+    \]
+    normával $(X, \, ||.||)$ Banach-tér. Így pl. a
+    \[
+        (\K^s, \, \langle . \rangle) \quad (1 \leq s \in \N)
+    \]
+    tér Hilbert-tér, ahol
+    \[
+        \langle x, \, y \rangle = \sum_{i =1}^s x_i\overline{y_i} \quad \big( x = (x_1, \, \dots, \, x_s), \, y = (y_1, \, \dots, \, y_s) \in \K^s \big).
+    \]
+
+
+    \subsection{Bolzano-Weierstrass-kiválasztási tétel}
+    \begin{center}
+        \tikz \node[theorem]
+        {
+            \textbf{Tétel.} A $(\K^s, \, \varrho_p) \, \, (1 \leq s \in \N, \, 0 < p \leq + \infty)$ metrikus térben minden korlátos sorozatnak van konvergens részsorozata.
+        };
+    \end{center}
+
+    \begin{center}
+        \tikz \node[proof1]
+        {
+            \textbf{Bizonyítás.} Emlékeztetünk egy korábbi tételre, miszerint az
+            \[
+                x = (x_n) : \N \to \K^s
+            \]
+            sorozat akkor és csak akkor konvergens, ha minden $x^{(i)} \, \, i = 1, \, \dots, \, s$ koordináta-sorozata konvergens. \newline
+
+            A feltételezésünk szerint most az $(x_n)$ sorozat korlátos. Van tehát olyan $r > 0$ szám, amellyel
+            \[
+                \varrho(x_n, \, 0) < r \quad (n \in \N).
+            \] 
+            A $\varrho_p$ metrika definícióját figyelembe véve innen az is rögtön adódik, hogy $1 \leq p \leq + \infty$ esetén
+            \[
+                |x_{ni}| < r \quad (n \in \N, \, i = 1, \, \dots, \, s),
+            \]
+            ill. $0 < p < 1$ mellett
+            \[
+                |x_{ni}| < r^{1/p} \quad (n \in \N, \, i = 1, \, \dots, \, s),
+            \]
+            azaz, hogy minden $x^{(i)} \, \, (i = 1, \, \dots, \, s)$ koordináta-sorozat (mint számsorozat) is korlátos. A számsorozatokra ismert Bolzano-Weierstrass-kiválasztási tétel alapján ezért létezik olyan $\nu^{(1)}$ indexsorozat, hogy az
+            \[
+                x^{(1)} \circ \nu^{(1)}
+            \]
+        };
+    \end{center}
+
+    \newpage
+    \begin{center}
+        \tikz \node[proof]
+        {
+            részsorozat konvergens. Világos, hogy az $x^{(2)} \circ \nu^{(1)}$ részsorozat is korlátos, ezért van olyan $\nu^{(2)}$ indexsorozat is amelyre az
+            \[
+                \big( x^{(2)} \circ \nu^{(1)} \big) \circ \nu^{(2)} = x^{(2)} \circ \big( \nu^{(1)} \circ \nu^{(2)} \big)
+            \]
+            részsorozat is konvergens. A konstrukciót folytatva végül olyan
+            \[
+                \nu^{(i)} \quad (i = 1, \, \dots, \, s)
+            \]
+            indexsorozatokat kapunk, hogy az
+            \[
+                x^{(i)} \circ \big( \nu^{(1)} \circ \dots \circ \nu^{(i)} \big) \quad (i = 1, \, \dots, \, s)
+            \]
+            részsorozatok konvergensek. Legyen
+            \[
+                \nu := \nu^{(1)} \circ \dots \circ \nu^{(s)},
+            \]
+            ekkor a $\nu$ sorozat indexsorozat, és minden
+            \[
+                x^{(i)} \circ \nu \quad (i = 1, \, \dots, \, s)
+            \]
+            sorozat részsorozata a konvergens $x^{(i)} \circ \big( \nu^{(1)} \circ \dots \circ \nu{(i)} \big)$ sorozatnak. Így az
+            \[
+                x^{(i)} \circ \nu \quad (i = 1, \, \dots, \, s)
+            \]
+            számsorozatok mindegyike konvergens. Ez azt jelenti, hogy az $x \circ \nu$ részsorozat is konvergens.
+            
+            $\hfill \blacksquare$
+        };
+    \end{center}
+
+    \subsection{Függvénytér teljessége}
+    \begin{center}
+        \tikz \node[theorem]
+        {
+            \textbf{Tétel.} A $(C[a, \, b], \, \varrho_\infty)$ metrikus tér teljes.
+        };
+    \end{center}
+
+    \begin{center}
+        \tikz \node[proof1]
+        {
+            \textbf{Bizonyítás.} Tegyük fel, hogy az
+            \[
+                (f_n) : \N \to C[a, \, b]
+            \]
+            (függvény)sorozat (a $\varrho_\infty$ metrika értelmében) Cauchy-sorozat. Ez most azt jelenti, hogy bármilyen $\varepsilon > 0$ számot is adunk meg, ehhez találunk olyan $N \in \N$ indexet, hogy
+            \[
+                \varrho_\infty(f_n, \, f_m) =
+            \]
+            \[
+                \text{max} \, \big\{ |f_n(x) - f_m(x)| : a \leq x \leq b  \big\} < \varepsilon \quad (n, \, m \in \N, \, n, \, m > N).
+            \]
+            Világos, hogy tetszőleges $x \in [a, \, b]$ esetén egyúttal
+        };
+    \end{center}
+
+    \newpage
+    \begin{center}
+        \tikz \node[proof]
+        {
+            \[
+                \tag{$\star$} |f_n(x) - f_m(x)| \varepsilon \quad (n, \, m \in \N, \, n, \, m > N)
+            \]
+            is teljesül, más szóval az $\big( f_n(x) \big)$ számsorozat Cauchy-soroozat. Létezik tehát az
+            \[
+                f(x) := \lim_{n \to + \infty} f_n(x) \quad (x \in [a, \, b])
+            \]
+            ("pontonkénti") határérték. Továbbá $(\star)$ miatt
+            \[
+                |f_n(x) - f(x)| =
+            \]
+            \[
+                \tag{$\star \star$} \lim_{m \to + \infty} |f_n(x) - f_m(x)| \leq \varepsilon \quad (x \in [a, \, b], \, n \in \N, \, n > N).
+            \]
+            Mutassuk meg, hogy az így definiált
+            \[
+                f : [a, \, b] \to \R
+            \]
+            függvény folytonos, azaz $f \in C[a, \, b]$. Legyen ehhez valamilyen $\xi \in [a, \, b]$ mellett $\varepsilon > 0$ tetszőleges, ekkor az előbbiek szerint bármilyen (rögzített) $n \in \N, \, n > N$ esetén
+            \[
+                |f(x) - f(\xi)| \leq |f(x) - f_n(x)| + |f_n(x) - f_n(\xi)| + |f_n(\xi) - f(\xi)| \leq 
+            \]
+            \[
+                2 \cdot \xi + |f_n(x) - f_n(\xi)| \quad (x \in [a, \, b]).
+            \]
+            Mivel $f_n \in C[a, \, b]$, így $f_n \in C\{\xi\}$ is igaz. Következésképpen létezik olyan $\delta > 0$ szám, amellyel
+            \[
+                |f_n(x) - f_n(\xi)| < \varepsilon \quad (x \in [a, \, b], \, |x-\xi| < \delta).
+            \]
+            Mindezeket figyelembe véve azt mondhatjuk, hogy
+            \[
+                |f_n(x) - f_n(\xi)| < 2 \cdot \varepsilon + \varepsilon \quad (x \in [a, \, b], \, |x - \xi| < \delta).
+            \]
+            Ez nem jelent mást, mint azt, hogy $f \in C\{\xi\}$. Az itt szereplő $\xi$ tetszőleges eleme volt az $[a, \, b]$ intervallumnak, ezért $f \in C[a, \, b]$.
+            Végül, a $(\star \star)$ becslés szerint (az ottani szereplőkkel)
+            \[
+                \varrho_\infty(f_n, \, f) = \text{max} \, \big\{ |f_n(x) - f(x)| : a \leq x \leq b \big\} \leq \varepsilon \quad (n \in \N, \, n > N),
+            \]
+            azaz
+            \[
+                \varrho_\infty(f_n, \, f) \to 0 \quad (n \to + \infty).
+            \]
+            Ez azzal ekvivalens, hogy a $(C[a, \, b], \varrho_\infty)$ metrikus térben az $(f_n)$ sorozat konvergál az $f$ függvényhez. Ezzel beláttuk, hogy a szóban forgó térben minden Cauchy-sorozat konvergens, azaz a $(C[a,\, b], \varrho_\infty)$ teljes metrikus tér.
+            
+            $\hfill \blacksquare$
+        };
+
+    \end{center}
+
     \newpage
     \section{A koordináta-függvények szerepe a differenciálhatóságban. A \textit{Jacobi}-mátrix kiszámítása.}
     \subsection{Koordináta-függvények és a differenciálhatóság kapcsolata}
