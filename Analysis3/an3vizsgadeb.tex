@@ -69,6 +69,262 @@
 	\tableofcontents
 	\newpage
 
+    \section{Metrikus-, normált-, euklidesz-terek. Környezet, belső pont, nyílt halmaz.}    
+    \textbf{Eredeti vizsgacím:} Metrikus-, normált-, euklideszi-terek. Környezet, belső pont, nyílt halmaz. Torlódási pont, zárt halmaz. Nyílt (zárt) halmazok uniója, metszete. A $(\K^n, \, \varrho_p)$, $(\K^n, \, ||.||_p)$, $(\K^n, \, \langle . \rangle)$, $(C[a, \, b], \varrho_p)$, $(C[a, \, b], \, ||.||_p)$ $(0 < n \in \N, \, 1 \leq p \leq + \infty)$ terek.
+    
+    \subsection{Metrika, metrikus tér fogalma}
+    \begin{center}
+        \tikz \node[definition]
+        {
+            \textbf{Definíció. (Axióma)} Legyen az $X \neq \emptyset$ egy nem üres halmaz, és tegyük fel, hogy a
+            \[
+                \varrho : X^2 \to [0, \, + \infty)
+            \]
+            függvény a következő tulajdonságokkal rendelkezik:
+            \begin{enumerate}
+                \item minden $x \in X$ esetén $\varrho(x, \, x) = 0$;
+                \item ha $x, \, y \in X$ és $\varrho(x, \, y) = 0$, akkor $x = y$;
+                \item bármely $x, \, y \in X$ válaszással $\varrho(x, \, y) = \varrho(y, \, x)$;
+                \item tetszőleges $x, \, y, \, z \in X$ elemekkel $\varrho(x, \, y) \leq \varrho(x, \, z) + \varrho(y, \, z)$.
+            \end{enumerate}
+        };
+    \end{center}
+
+    Azt mondjuk, hogy ekkor a $\varrho$ egy \textit{távolságfüggvény} (vagy idegen szóval metrika). Ha $x, \, y \in X$, akkor $\varrho(x, \, y)$ az $x, \, y$ elemek \textit{távolsága}. Az $(X, \, \varrho)$ rendezett párt \textit{metrikus térnek} nevezzük. Az $X$-beli elemek távolsága tehát nemnegatív szám. Bármely elem önmagától vett távolsága nulla, továbbá két különböző elem távolsága mindig pozitív. A távolság szimmetrikus, azaz két elem távolsága független az illető eleme sorrendjétől. A 4. tulajdonságot \textit{háromszög-egyenlőtlenségként} fogjuk idézni.\newline
+
+    Mutassuk meg, hogy a háromszög-egyenlőtlenségből annak az alábbi változata is következik:
+    \[
+        |\varrho(x, \, z) - \varrho(y, \, z)| \leq \varrho(x, \, y) \quad (x, \, y, \, z \in X).
+    \]
+    Ui. a 4. axióma miatt
+    \[
+        \varrho(x, \, z) \leq \varrho(x, \, y) + \varrho(y, \, z),
+    \]
+    tehát
+    \[
+        \varrho(x, \, z) - \varrho(y, \, z) \leq \varrho(x, \, y).
+    \]
+    Ha itt az $x$-et és az $y$-t felcseréljük, akkor a
+    \[
+        -\big( \varrho(x, \, z) - \varrho(y, \, z) \big) = \varrho(y, \, z) - \varrho(x, \, z) \leq \varrho(y, \, x) = \varrho(x, \, y)
+    \]
+    egyenlőtlenséghez jutunk. Az utóbbi két becslés egybevetésével kapjuk a jelzett egyenlőtlenséget. \newline
+
+    \subsection{Diszkrét metrikus tér}
+    Bármely $X \neq \emptyset$ halmaz esetén megadható
+    \[
+        \varrho : X^2 \to [0, \, + \infty)
+    \]
+    távolságfüggvény, ui. pl. a
+    \[
+        \varrho(x, \, y) :=
+        \begin{cases}
+            0 & (x = y) \\
+            1 & (x \neq y)
+        \end{cases}
+        \big( (x, \, y) \in X^2 \big)
+    \]
+    leképezés nyilván eleget tesz a fenti, a metrikát meghatározó axiómáknak. Az így definiált $(X, \, \varrho)$ terek a \textit{diszkrét} jelzővel illetjük.
+
+    \subsection{$(\K^n, \varrho)$ metrikus tér}
+    Legyen $1 \leq n \in \N, \, 0 < p < + \infty$, és
+    \[
+        x = (x_1, \, \dots, \, x_n), \, y = (y_1, \, \dots, \, y_n) \in \K^n
+    \]
+    esetén definiáljuk az $(x, \, y)$-ban a
+    \[
+        \varrho_p : \K^n \times \K^n \to [0, \, + \infty)
+    \]
+    függvény helyettesítési értékét a következőképpen:
+    \[
+        \varrho_p(x, \, y) :=
+        \begin{cases}
+            \displaystyle \sum_{i = 1}^n |x_i - y_i|^p & (p \leq 1) \\
+            \displaystyle \left(\sum_{i = 1}^n |x_i - y_i|^p \right)^{1/p} & (p > 1).
+        \end{cases}
+    \]
+    Terjesszük ki a $\varrho_p$ értelmezését $p = \infty := + \infty$-re is az alábbiak szerint:
+    \[
+        \varrho_\infty(x, \, y) := \text{max} \, \big\{ |x_i - y_i| : i = 1, \, \dots, \, n \big\}.
+    \]
+    Belátható, hogy $(\K^n, \, \varrho_p)$ metrikus tér. 
+    
+    \subsection{$(C[a, \, b], \, \varrho_p)$ metrikus tér}
+    Valamilyen $[a, \, b]$ korlátos és zárt intervallum $(a, \, b \in \R, \, a < b)$ esetén jelöljük $C[a, \, b]$-vel az $[a, \, b]$-n értelmezett, valós értékű és folytonos függvények halmazát. Ha $0 < p \leq + \infty$, akkor tekintsük az előbbi példa "folytonos" változatát: ha $f, \, g \in C[a, \, b]$, akkor
+    \[
+        \varrho_p(f, \, g) :=
+        \begin{cases}
+            \displaystyle \int\limits_a^b |f-g|^p & (0 < p \leq 1) \\
+            \displaystyle \left( \int\limits_a^b |f-g|^p \right)^{1/p} & (1 < p < + \infty) \\
+            \text{max} \, \big\{ |f(x) -g(x)| : x \in[a, \, b]  \big\} & (p = \infty := + \infty).
+        \end{cases}
+    \]
+    Az előbbi példákhoz hasonlóan látható be, hogy $(C[a, \, b], \, \varrho_p)$ is metrikus tér.
+
+    \subsection{Metrikák ekvivalenciája}
+    \begin{center}
+        \tikz \node[definition]
+        {
+            \textbf{Definíció.} Azt mondjuk, hogy valamilyen $X \neq \emptyset$ halmaz és az $X^2$-en értelmezett
+            \[
+                \varrho, \, \sigma : X^2 \to [0, \, + \infty)
+            \]
+            metrikák esetén a $\varrho$ és a $\sigma$ \textit{ekvivalens}, ha alkalmas $c, \, C$ pozitív számokkal
+            \[
+                c \cdot \varrho(x, \, y) \leq \sigma(x, \, y) \leq C \cdot \varrho(x, \, y) \quad (x, \, y \in X).
+            \]
+        };
+    \end{center}
+
+    Könnyű belátni, hogy ha $\mathcal{M}$ jelöji az előbb említett metrikák halmazát, és a $\varrho, \, \sigma \in \mathcal{M}$ elemekre $\varrho \sim \sigma$ azt jelenti, hogy a $\varrho$ és $\sigma$ ekvivalens, akkor az így értelmezett ($\mathcal{M}^2$-beli) $\sim$ reláció ekvivalencia. \newline
+
+    Pl. a fenti $(\K^n, \, \varrho_p)$ metrikus terekre a $\varrho_p$ metrikák közül $p \geq 1$ esetén bármelyik kettő ekvivalens. A továbbiakban az
+    \[
+        X := \K^n \quad (1 \leq n \in \N)
+    \]
+    esetben a $\varrho_1, \, \varrho_2, \, \varrho_\infty$ metrikák valamelyikét fogjuk használni.
+
+    \subsection{Normált terek}
+    \begin{center}
+        \tikz \node[definition]
+        {
+            \textbf{Definíció. (Axióma)} Tegyük fel, hogy a szóban forgó $X \neq \emptyset$ halmaz \textit{vektortér} a $\K$ felett. Azt mondjuk, hogy a
+            \[
+                ||.|| : X \to [0, \, + \infty)
+            \]
+            leképezés \textit{norma}, ha
+            \begin{enumerate}
+                \item $||0|| = 0$;
+                \item ha $x \in X$ és $||x|| = 0$, akkor $x = 0$;
+                \item bármely $\lambda \in \K, \, x \in X$ esetén $||\lambda \cdot x|| = |\lambda| \cdot ||x||$;
+                \item tetszőleges $x, \, y \in X$ elemekre $||x+y|| \leq ||x|| + ||y||$.
+            \end{enumerate}
+        };
+    \end{center}
+
+    A 4. axiómát szintén \textit{háromszög-egyenlőtlenségként} említjük a későbbiekben.
+    Ha pl. $X$ jelöli a
+    \[
+        \K^n \, \, (0 < n \in \N), \, C[a, \, b] \, \, (- \infty < a < b < + \infty)
+    \]
+    halmazok bármelyikét, akkor a vektorok (függvények) szokásos összeadására és számmal való szorzására nézve az $X$ lineáris tér a $\K$, ill. az $\R$ felett. Az említett terekben a nulla-elemet 0-val felölve aazt kapjuk továbbá, hogy $1 \leq p \leq + \infty$ esetén
+    \[
+        ||x||_p := \varrho(x, \, 0) \quad (x \in X)
+    \]
+    norma, azaz ilyen $p$-kre
+    \[
+        (\K^n, \, ||.||_p), \, (C[a, \, b], \, ||.||_p)
+    \]
+    normált terek. Tehát
+    \[
+        ||x||_p =
+        \begin{cases}
+            \displaystyle \left( \sum_{i = 1}^n |x_i|^p \right)^{1/p} & (1 \leq p < + \infty) \\
+            \text{max} \, \big\{ |x_i| : i = 1, \, \dots, \, n \big\} & (p = + \infty)
+        \end{cases}
+        \quad \big( x = (x_1, \, \dots, \, x_n) \in \K^n \big),
+    \]
+    speciálisan az $n = 1$ esetben
+    \[
+        ||x||_p = |x| \quad (x \in \K, \, 1 \leq p \leq + \infty),
+    \]
+    valamint
+    \[
+        ||f||_p =
+        \begin{cases}
+            \displaystyle \left( \int\limits_a^b |f|^p \right)^{1/p} & (1 \leq p < + \infty) \\
+            \text{max} \, \big\{ |f(x)| : x \in [a, \, b] \big\} & (p = + \infty)
+        \end{cases}
+        \quad \big( f \in C[a, \, b] \big).
+    \]
+    Világos, hogy a most mondott példákban
+    \[
+        \varrho_p(x, \, y) = ||x-y||_p \quad (x, \, y \in X).
+    \]
+    Sőt, ha most $(X, \, ||.||)$ egy tetszőleges normált teret jelöl, akkor a
+    \[
+        \varrho(x, \, y) := ||x-y|| \quad \big( (x, \, y) \in X^2 \big)
+    \]
+    függvény metrika, azaz $(X, \, \varrho)$ metrikus tér:
+    \[
+        (X, \, \varrho) \equiv (X, \, ||.||).
+    \]
+    
+    \subsection{Normák ekvivalenciája}
+    \begin{center}
+        \tikz \node[definition]
+        {
+            \textbf{Definíció.} Azt mondjuk, hogy az $X$ ($\K$-feletti) vektortéren értelmezett
+            \[
+                ||.||, \, ||.||_\star : X \to [0, \, + \infty)
+            \]
+            normák \textit{ekvivalensek} (erre is a $||.|| \sim ||.||_\star$ jelölést fogjuk használni), ha alkalmas $c, \, C$ pozitív számokkal
+            \[
+                c \cdot ||x|| \leq ||x||_\star \leq C \cdot||x|| \quad (x \in X).
+            \]
+        };
+    \end{center}
+    
+    \subsection{Euklideszi terek}
+    A fent bevezetett $||.||_p$ norma a $p = 2$ esetben speciális esete egy tágabb normaosztálynak.
+    \begin{center}
+        \tikz \node[definition]
+        {
+            \textbf{Definíció. (Axióma)} Legyen $X$ egy vektortér a $\K$ felett, az
+            \[
+                \langle . \rangle : X \to \K
+            \]
+            függvényről pedig tegyük fel, hogy
+            \begin{enumerate}
+                \item minden $x, \, y \in X$ mellett $\langle x, \, y \rangle = \overline{\langle x, \, y \rangle}$ (ahol a $\overline{\xi}$ szimbólum a $\xi \in \K$ szám komplex konjugáltját jelöli);
+                \item bármely $x \in X \, \backslash \, \{0\}$ esetén $\langle x, \, x \rangle \in \R$ és $\langle x, \, x \rangle > 0$;
+                \item ha $x, \, y \in X$ és $\lambda \in \K$, akkor $\langle \lambda \cdot x, \, y \rangle = \lambda \cdot \langle x, \, y \rangle$;
+                \item tetszőleges $x, \, y, \, z \in X$ elemekre fennáll a következő egyenlőtlenség:
+                \[
+                    \langle x + y, \, z \rangle = \langle x, \, z \rangle + \langle y, \, z \rangle.
+                \]
+            \end{enumerate}
+        };
+    \end{center}
+    Ha $x, \, y \in X$, akkor az
+    \[
+        \langle x, \, y \rangle
+    \]
+    számot az $x, \, y$ elemek \textit{skaláris szorzatának}, az $(X, \, \langle . \rangle)$ párt pedig \textit{skaláris szorzat-térnek} (vagy \textit{euklideszi térnek}) nevezzük. \newline
+
+    Jelentse pl. $X$ a
+    \[
+        \K^n, \, (1 \leq n \in \N), \, C[a, \, b] \, (- \infty < a < b < + \infty)
+    \]
+    halmazok valamelyikét, és
+    \[
+        \langle x, \, y \rangle :=
+        \begin{cases}
+            \displaystyle \sum_{i = 1}^n x_i \overline{y_i} & \big( x = (x_1, \, \dots, x_n), \, y = (y_1, \, \dots, \, y_n) \in \K^n \big) \\
+            \displaystyle \int\limits_a^b xy & \big( x, \, y \in C[a, \, b] \big).
+        \end{cases}
+    \]
+    Ekkor $(X, \, \langle . \rangle)$ euklideszi tér, továbbá
+    \[
+        ||x||_2 = \sqrt{\langle x, \, x \rangle} \quad (x \in X)
+    \]
+    norma. Ez utóbbi egyenlőségnek sokkal általánosabb háttere van, ui. tetszőleges $(X, \, \langle . \rangle)$ euklideszi teret véve
+    \[
+        ||x|| := \sqrt{ \langle x, \, x \rangle } \quad (x \in X)
+    \]
+    norma. Itt a háromszög-egyenlőtlenség igazolásában fontos szerep jut a
+    \[
+        \big| \langle x, \, y \rangle \big| \leq ||x|| \cdot ||y|| \quad (x, \, y \in X)
+    \]
+    \textit{Cauchy-Bunyakovszkij-egyenlőtlenségnek}. Ezt "lefordítva" az előbbi említett euklideszi terekre az alábbi egyenlőtlenségeket kapjuk:
+    \[
+        \left| \sum_{i=1}^n x_i\overline{y_i}  \right| \leq \sqrt{\sum_{i=1}^n |x_i|^2} \cdot \sqrt{\sum_{i=1}^n |y_i|^2} \quad (x, \, y \in \K^n),
+    \]
+    \[
+        \left| \int\limits_a^b fg \right| \leq \sqrt{\int\limits_a^b f^2} \cdot \sqrt{\int\limits_a^b g^2} \quad (f, \, g \in C[a, \, b]).
+    \]
+
+    \newpage
     \section{Konvergens sorozatok metrikus terekben. Halmazok zártságának jellemzése konvergens sorozatokkal. Banach- és Hilbert-tér.}
     \textbf{Eredeti vizsgacím:}
     
