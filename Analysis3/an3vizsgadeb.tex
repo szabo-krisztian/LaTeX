@@ -1016,6 +1016,139 @@
     \end{center}
     
     
+    \newpage
+    \section{Az összetett függvény differenciálhatósága.}
+    \subsection{Az összetett függvény differenciálhatósága}
+    
+    \begin{center}
+        \tikz \node[theorem]
+        {
+            \textbf{Tétel.} Adott $1 \leq n, \, m, \, s \in \N$ mellett tekintsük a
+            \[
+                g \in \R^n \to \R^m, \, f \in \R^m \to \R^s
+            \]
+            függvényeket. Tegyük fel, hogy az $a \in \mathcal{D}_g$ pontban $g(a) \in \D$, valamint $g \in D\{a\}$ és $f \in D\{g(a)\}$. Ekkor $f \circ g \in D \{a\}$, és
+            \[
+                (f \circ g)'(a) = f'\big( g(a) \big) \cdot g'(a).
+            \]
+        };    
+    \end{center}
+    A bizonyítás előtt jegyezzük meg, hogy a tétel állításában szereplő $f'\big( g(a) \big) \cdot g'(a)$ mátrix az $f'\big(g(a)\big) \in \R^{s \times m}$ és a $g'(a) \in \R^{m \times n}$ mátrix szorzata, és mint ilyen, $\R^{s \times n}$-beli. Ezt is "várjuk", hiszen
+    \[
+        f \circ g \in \R^n \to \R^s
+    \]
+    miatt (ha $f \circ g \in D\{y\}$ valamilyen $y \in \mathcal{D}_{f \circ g}$ helyen)
+    \[
+        (f \circ g)'(y) \in \R^{s \times n}.
+    \]
+    
+    \begin{center}
+        \tikz \node[proof1]
+        {
+            \textbf{Bizonyítás.} Mivel $a \in \text{int} \, \mathcal{D}_g, \, g(a) \in \text{int} \, \D$, következésképpen megadhatók olyan $r, \, \delta > 0$ számok, amelyekkel
+            \[
+                K_r(a) \subset \mathcal{D}_g, \, K_\delta\big( g(a) \big) \subset \D.
+            \]
+            A $g$ függvény folytonos is az $a$-ban, ezért az előbbi $r > 0$ sugárról az is feltehető, hogy
+            \[
+                g \big[ K_r(a) \big] \subset K_\delta\big( g(a) \big).
+            \]
+            Tehát egyúttal $g \big[ K_r(a) \big] \subset \D$ is teljesül. Ez azt jelenti, hogy $K_r(a) \subset \mathcal{D}_{f \circ g}$, más szóval $a \in \text{int} \, \mathcal{D}_{f \circ g}$.\newline
+
+            Írjuk fel a $g$, ill. az $f$ megváltozását az $a$, ill. a $g(a)$ pont körül a differenciálhatósági feltételeknek megfelelően:
+            \[
+                g(a + x) - g(a) = g'(a) \cdot x + \eta(x) \cdot ||x|| \quad (x \in \R^n, \, a + x \in \mathcal{D}_g),
+            \]
+            \[
+                f\big( g(a) + y \big) - f\big( g(a)\big) = f'\big( g(a) \big) \cdot y + \tilde{\eta}(y) \cdot ||y|| \quad (y \in \R^m, \, g(a) + y \in \D),
+            \]
+            ahol
+            \[
+                \eta(x) \to \eta(0) = 0 \quad (||x|| \to 0)
+            \]
+            és
+            \[
+                \tilde{\eta}(y) \to \tilde{\eta}(0) = 0 \quad (||y|| \to 0).
+            \]
+        }; 
+    \end{center}
+    \newpage
+
+    \begin{center}
+        \tikz \node[proof1]
+        {
+            Speciálisan az
+            \[
+                y := g(a + x) - g(a) \quad \big(x \in K_r(0) \big)
+            \]
+            választással
+            \[
+                (f \circ g)(a + x) - (f \circ g)(a) = f\big( g(a + x) \big) - f\big(g(a)\big) =
+            \]
+            \[
+                f'\big(g(a)\big)\big( g(a+x)-g(a) \big) + \tilde{\eta}\big( g(a+x)-g(a) \big) \cdot ||g(a+x)-g(a)|| =
+            \]
+            \[
+                f'\big( g(a) \big)\big( g'(a) \cdot x + \eta(x) \cdot ||x|| \big) + \tilde{\eta}\big( g(a+x)-g(a) \big) \cdot ||g'(a) \cdot x + ||x|| \cdot \eta(x)||=
+            \]
+            \[
+                f'\big( g(a) \big) \cdot g'(a) \cdot x + f'\big( g(a) \big) \cdot \eta(x) \cdot ||x|| + \tilde{\eta}\big( g(a + x) - g(a) \big) \cdot ||g'(a) \cdot x + ||x|| \cdot \eta(x)||.
+            \]
+            Legyen
+            \[
+                \varphi(x) :=
+            \]
+            \[
+                f'\big( g(a) \big) \cdot \eta(x) + \frac{\tilde{\eta}\big( g(a + x) - g(a) \big) \cdot ||g'(a) \cdot x + ||x|| \cdot \eta(x) ||}{||x||} \quad \big( 0 \neq x \in K_r(0) \big),
+            \]
+            ekkor
+            \[
+                (f \circ g)(a + x) - (f \circ g)(a) = f'\big( g(a) \big) \cdot g'(a) \cdot x + \varphi(x) \cdot ||x|| \quad \big( 0 \neq x \in K_r(0) \big).
+            \]
+            Megmutatjuk, hogy $\varphi(x) \to 0 \, \, (||x|| \to 0).$ Ui. $\eta(x) \to 0 \, \, (||x|| \to 0)$ miatt
+            \[
+                \Big|\Big| f'\big( g(a) \big) \cdot \eta(x) \Big|\Big| \leq q \cdot ||\eta(x)|| \to 0 \quad (||x|| \to 0),
+            \]
+            ahol $q$ jelenti az $f'\big(g(a)\big)$ mátrix normáját. Továbbá a $g$ folytonos (is) az $a$-ban ezért
+            \[
+                g(a + x) - g(a) \to 0 \quad (||x|| \to 0),
+            \]
+            amiből $\tilde{\eta}(y) \to \tilde{\eta}(0) = 0 \, \, (||y|| \to 0)$ miatt
+            \[
+                \tilde{\eta}\big( g(a + x) - g(a) \big) \to 0 \quad (||x|| \to 0)
+            \]
+            következik. Végül
+            \[
+                \frac{\Big|\Big| \tilde{\eta}\big( g(a + x) - g(a) \big)\Big|\Big| \cdot \Big|\Big| g'(a) \cdot x + ||x|| \cdot \eta(x) \Big|\Big|}{||x||} \leq
+            \]
+            \[
+                \frac{\Big|\Big| \tilde{\eta}\big( g(a + x) - g(a) \big)\Big|\Big| \cdot \big( || g'(a) \cdot x || + ||x|| \cdot || \eta(x) || \big)}{||x||} \leq
+            \]
+            \[
+                \Big|\Big| \tilde{\eta}\big( g(a + x) - g(a) \big) \Big|\Big| \cdot \big( Q + ||\eta(x)|| \big) \to 0 \quad (||x|| \to 0),
+            \]
+            ahol $Q$ a $g'(a)$ mátrix normáját jelöli. Mindez azt jelenti, hogy
+            \[
+                \varphi(x) \to 0 \quad (||x|| \to 0)
+            \]
+        };
+    \end{center}
+    \newpage
+
+    \begin{center}
+        \tikz \node[proof]
+        {
+            valóban teljesül. Ezért azt
+            \[
+                (f \circ g)(a + x) - (f \circ g)(a)
+            \]
+            megváltozásra kapott előbbi egyenlőség szerint $f \circ g \in D\{a\}$, és
+            \[
+                (f \circ g)'(a) = f'\big( g(a) \big) \cdot g'(a).
+            \]
+            $\hfill \blacksquare$
+        };
+    \end{center}
 
     \newpage
     \section{Többször differenciálható függvények. Young-tétel.}
@@ -1212,6 +1345,136 @@
             $\hfill \blacksquare$
         };
     \end{center}
+    
+    \newpage
+    \section{Taylor-formula Lagrange (Peano)-maradéktaggal.}
+    \textbf{Eredeti vizsgacím:}\newline
+    Taylor-formula Lagrange (Peano)-maradéktaggal, Lagrange-középérték-tétel. A kétszer differenciálható függvények vizsgálata.\newline
+
+    Az alábbi jelöléseket fogjuk használni (feltételezve egyeben az azokban szereplő parciális deriváltak létezését). Legyen
+    \[
+        1 \leq n, \, k \in \N, \, f \in \R^n \to \R, \, a \in \text{int} \, \D, \, j = 1, \, \dots, \, n,
+    \]
+    és
+    \[
+        \partial_j^kf(a) := \partial_{j \dots j} f(a)
+    \]
+    (ahol a "$j \dots j$" rövidítés $k$ darab $j$-t jelöl). Speciálisan $\partial_j^1f(a) = \partial_jf(a)$. Állapodjunk meg abban, hogy
+    \[
+        \partial_j^0f(a) := f(a).
+    \]
+    Ha $i := (i_1, \, \dots, \, i_n) \in \N^n$, akkor legyen
+    \[
+        \partial^if(a) := \partial_1^{i_1} \dots \partial_n^{i_n}f(a).
+    \]
+    Az $i \in \N^n$ \textit{multiindex} esetén az $i$ \textit{hosszát} a következőképpen definiáljuk:
+    \[
+        |i| := ||i||_1 = \sum_{j=1}^n i_j.
+    \]
+    A korábban mondottak szerint pl. $f \in D^{|i|} \{a\}$ elégséges ahhoz, hogy létezzen az $|i|$-edrendá $\partial^if(a)$ parciális derivált, és ekkor a Young-tétel miatt az $|i|$ hosszúságú $1 \dots 1 \dots n \dots n$ jelsorozat bármely $\nu_1 \dots _nu_{|i|}$ permutációjára
+    \[
+        \partial^if(a) = \partial_{1 \dots 1 \dots n \dots n}f(a) = \partial_{\nu_1 \dots \nu_{|i|}}f(a).
+    \]
+    Legyen az $i = (i_1, \, \dots, \, i_n) \in \N^n$ multiindex és az $x = (x_1, \, \dots, \, x_n) \in \R^n$ vektor esetén
+    \[
+        i! := \prod_{j=1}^n i_j! = \prod_{j=1}^n \prod_{k=1}^{i_j}k
+    \]
+    és
+    \[
+        x^i := \prod_{j=1}^n {x_j}^{i_j}
+    \]
+    az $i$ \textit{faktoriálisa}, ill. az $x$ vektor $i$-kitevős \textit{hatványa}. Nyilvánvaló, hogy ha $n = 1$, akkor $i = i_1 \in \N$ és $|i| = i$, ill.
+    \[
+        i! = \prod_{j=1}^i j,
+    \]
+    az $x^i \, \, (x \in \R)$ pedig a "megszokott" hatvány.\newline
+
+    Ha $a \, b \in \R^n$, akkor az $a$ és $b$ végpontú zárt, ill. $a \neq b$ esetén nyílt \textit{szakaszt} az
+    \[
+        [a, \, b] := \big\{ a + t(b-a) \in \R^n : 0 \leq t \leq 0 \big\},
+    \]
+    ill.
+    \[
+        (a, \, b) := \big\{ a + t(b-a) \in \R^n : 0 < t < 1 \big\}
+    \]
+    módon definiáljuk.\newline
+
+    \subsection{Taylor-polinom fogalma}
+    \begin{center}
+        \tikz \node[definition]
+        {
+            \textbf{Definíció.} Tekintsük ezek után az
+            \[
+                f \in \R^n \to \R
+            \]
+            függvényt, és tegyük fel, hogy valamilyen
+            \[
+                a \in \text{int} \, \D, \, s \in \N
+            \]
+            mellett $f \in D^s\{a\}$ (ahol - mint korábban is - a $D^0\{a\} := C\{a\}$ megállapodással élünk). Ekkor a
+            \[
+                T_{a, \, s}f(x) := \sum_{k=0}^s \sum_{i \in \N^n, \, |i| = k} \frac{\partial^i f(a)}{i!} \cdot (x - a)^i \quad (x \in \R^n)
+            \]
+            előírással definiált
+            \[
+                T_{a, \, s} : \R^n \to \R
+            \]
+            függvényt azt $f$ függvény $a$-hoz tartozó $s$-edrendű \textit{Taylor-polinomjának} nevezzük.
+        };
+    \end{center}
+    Világos, hogy $T_{a, \, 0}f \equiv f(a)$, ill. $T_{a, \, s}f(a) \equiv f(a)$.
+    
+    \subsection{Taylor-formula}
+    \begin{center}
+        \tikz \node[theorem]
+        {
+            \textbf{Tétel.} Tegyük fel, hogy az $f \in \R^n \to \R$ függvényre valamilyen $s \in \N$ mellett $f \in D^{s + 1}$ teljesük. Ekkor bármely $[a, \, b] \subset \D$ esetén van olyan $c \in [a, \, b]$, hogy
+            \[
+                f(b) = T_{a, \, s}f(b) + \sum_{i \in \N^n, \, |i| = s + 1} \frac{\partial^i f(c)}{i!} \cdot (b - a)^i.
+            \]
+        };
+    \end{center}
+    \newpage
+    \begin{center}
+        \tikz \node[proof]
+        {
+            \textbf{Bizonyítás (vázlat).} Feltehető, hogy $a \neq b$, legyen ekkor $h := b - a$ és
+            \[
+                F(t) := f(a + th) \quad (t \in \R, \, a + th \in \D).
+            \]
+            Az $[a, \, b] \subset \D$ feltétel miatt $[0, \, 1] \subset \mathcal{D}_F$. Mivel a
+            \[
+                g(t) := a + th \quad (t \in \R, \, a + th \in \D)
+            \]
+            függvényre $g \in D^{s + 1}$ triviális módon igaz, így
+            \[
+                F = f \circ g \in D^{s +1}
+            \]
+            következik. Ezért az $F \in \R \to \R$ függvényre alkalmazható az "egyváltozós" Taylor-formula, miszerint egy alkalmas $\xi \in (0, \, 1)$ helyen
+            \[
+                f(b) = F(1) = \sum_{k=0}^s \frac{F^{(k)}(0)}{k!} + \frac{F^{(s+1)}(\xi)}{(s+1)!}.
+            \]
+            Elég tehát azt megmutatni, hogy
+            \[
+                \tag{$\star$} \frac{F^{(k)}(t)}{k!} = \sum_{i \in \N^n, \, |i| = k} \frac{\partial^i f(a + th)}{i!} \cdot h^i \quad (t \in \mathcal{D}_F, \, k = 0, \, \dots, \, s + 1),
+            \]
+            amiből következően a $c := a + \xi \cdot h$ pont megfelel az állításunknak.\newline
+
+            Ha itt $k = 0$, akkor
+            \[
+                \frac{F^{(0)}(t)}{0!} = F(t) = f(a + th) = \sum_{i \in \N^n, \, |i| = 0} \frac{\partial^i f(a + th)}{i!} \cdot h^i \quad (t \in \mathcal{D}_F)
+            \]
+            nyilván igaz. 
+
+            \begin{center}
+                \textbf{NINCS BEFEJEZVE}    
+            \end{center}
+            
+            
+        };
+    \end{center}
 
 
+
+    
 \end{document}
