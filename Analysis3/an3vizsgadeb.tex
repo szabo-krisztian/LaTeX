@@ -21,6 +21,8 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\E}{\exists}
+\newcommand{\mm}{\mathbf{m}}
+\newcommand{\MM}{\mathbf{M}}
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\D}{\mathcal{D}_f}
 \setlength{\parindent}{0pt}
@@ -1473,8 +1475,156 @@
             
         };
     \end{center}
-
-
-
     
+    \newpage
+    \section{Szukcesszív integrálás}
+    \textbf{Eredeti vizsgacím:}\newline
+    Az integrál kiszámítása Darboux-integrálok integráljaként. Szukcesszív integrálás. Normál tartományon értelmezett folytonos függvények integrálja.\newline
+    
+    A továbbiakban a "többváltozós" Riemann-integrál egyik leggyakrabban alkalmazott tulajdonságával foglalkoznunk, az ún. \textit{szukcesszív} integrálással. Legyen ehhez $2 \leq n \in \N$ és valamilyen $s = 1, \, \dots, \, n - 1$ mellett adottak az
+    \[
+        1 \leq i_1 < \dots < i_{s} \leq n
+    \]
+    indexek. Ha 
+    \[
+        \xi = (\xi_1, \, \dots, \, \xi_n) \in \R^n
+    \]
+    akkor a  $\xi \equiv (x, \, y)$ szimbólum jelentse a következőt:
+    \[
+        x := (\xi_{i_1}, \, \dots, \, \xi_{i_s}) \in \R^s, \, y := (\xi_{j_1}, \, \dots, \, \xi_{j_{n-s}}) \in \R^{n-s},
+    \]
+    ahol $j_1 < \dots < j_{n-s}$ és
+    \[
+        \{ j_1, \, \dots, \,j_{n-s} \} := \{ 1, \, \dots, \, n \} \, \backslash \, \{i_1, \, \dots, \, i_s \}.
+    \]
+    Ennek megfelelően az $\R^n$ teret az
+    \[
+        \R^n \equiv \R^s \times \R^{n-s}
+    \]
+    alakban tekintjük. Továbbá minden
+    \[
+        f \in \R^n \to \R
+    \]
+    függvényt
+    \[
+        f \in \R^s \times \R^{n-s} \to \R
+    \]
+    "kétváltozós" függvényként fogunk fel, ahol az $f$ függvény
+    \[
+        f(x, \, y) \big( (x, \, y) \in \D \big)
+    \]
+    helyettesítési értékeiben az $(x, \, y)$ "vektor" első komponense $\R^s$-beli, a második pedig $\R^{n-s}$-beli. Hasonlóan, ha
+    \[
+        I = [a_1, \, b_1] \times \dots \times [a_n, \, b_n] \subset \R^n
+    \]
+    intervallum, akkor legyen
+    \[
+        I \equiv I_1 \times I_2,
+    \]
+    ahol
+    \[
+        I_1 := [a_{i_1}, \, b_{i_1}] \times \dots \times [a_{i_s}, \, b_{i_s}]
+    \]
+    és
+    \[
+        I_2 := [a_{j_1}, \, b_{j_1}] \times \dots \times [a_{j_{n-s}}, \, b_{j_{n-s}}]
+    \]
+    $\R^s$-beli ill. $\R^{n-s}$-beli intervallumok.\newline
+
+    Mindezt figyelembe véve legyen
+    \[
+        f : I_1 \times I_2 \to \R
+    \]
+    adott "kétváltozós" függvény, és tetszőleges $x \in I_1, \, y \in I_2$ esetén tekintsük az
+    \[
+        f_x : I_2 \to \R,
+    \]
+    ill. az
+    \[
+        f^y : I_1 \to \R
+    \]
+    függvényt, ahol
+    \[
+        f_x(z) := f(x, \, z) \quad (z \in I_2),
+    \]
+    ill.
+    \[
+        f_y(t) := f(t, \, y) \quad (t \in I_1).
+    \]
+    Ha az $f$ korlátos, akkor nyilván az $f_x, \, f^y \, \, (x \in I_1, \, y \in I_2)$ függvények is korlátosak. Következésképpen vehetjük azokat az
+    \[
+        \mathbf{m}_f, \mathbf{M}_f : I_1 \to \R, \text{ valamint } \mathbf{m}^f, \, \mathbf{M}^f : I_2 \to \R
+    \]
+    függvényeket, amiket az alábbi módon értelmezünk:
+    \[
+        \mm_f(x) := I_\star(f_x) \quad (x \in I_1), \quad \, \MM_f(x) := I^\star(f_x) \quad (x \in I_1),
+    \]
+    \[
+        \mm^f(y) := I_\star(f_y) \quad (y \in I_2), \quad \, \MM^f(y) := I^\star(f_y) \quad (y \in I_2).
+    \]
+    A most bevezetett jelölésekkel a szukcesszív integrálás tétele a következőképpen szól:
+
+    \subsection{Fubini-tétel}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Tegyük fel, hogy $f \in R(I).$ Ekkor
+        \[
+            \mm_f, \, \MM_f \in R(I_1) \text{ és } \mm^f, \, \MM^f \in R(I_2),
+        \]
+        \textit{továbbá}
+        \[
+            \int_{I_1} \mm_f = \int_{I_1} \MM_f =\int_{I_2} \mm^f = \int_{I_2} \MM^f = \int_{I}f.
+        \]
+    };
+
+    \newpage
+    
+    asdf
+    
+    \section{Felület, felszín. Felületi integrál, fluxus.}
+    \subsection{Felszín}
+    Tegyük fel, hogy a $\Phi : [0, \, 1]^2 \to \R^3$ függvény folytonosan differenciálható, és a
+    
+    \[
+        \partial_1\Phi(\xi), \, \partial_2\Phi(\xi) \quad (\xi \in \mathcal{D}_\Phi)
+    \]
+    parciális deriváltvektorok nem párhuzamosak. Tekintsük a $[0, \, 1]^2$ "négyzet" valamilyen $\tau \subset [0, \, 1]^2$ felosztását, legyen az $ABCD$ téglalap ennek egy osztásintervalluma. Ekkor a $\Phi(A), \, \Phi(B), \, \Phi(C), \, \Phi(D)$ felületi pontok által "kijelölt"
+    \[
+        \{ \Phi(\xi) \in \R^3 : \xi \in ABCD \}
+    \]
+    felületdarabot a $\Phi(D) - \Phi(A), \, \Phi(B) - \Phi(A)$ vektorok által kifeszített paralelogrammával helyettesítjük. Ez utóbbinak a $t_{ABCD}$ területe az
+    \[
+        a \times b =
+    \left|
+        \begin{matrix}
+            \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3
+        \end{matrix}
+    \right|
+    \]
+    vektoriális szorzat és az $||a|| := ||a||_2 \, (a, \, b \in \R^3)$ norma alapján a következő:
+    \[
+        t_{ABCD} = \Big| \Big| \big( \Phi(D) - \Phi(A) \big) \times \big( \Phi(B) - \Phi(A) \big) \Big| \Big|.
+    \]
+    Itt a parciális deriváltak definíciójára gondolva közelítőleg
+    \[
+        t_{ABCD} \approx \Big| \Big| \big( \partial_2 \Phi(A) \cdot |AD| \big) \times \big( \partial_1 \Phi(A) \cdot |AB| \big) \Big| \Big| =
+    \]
+    \[
+        \big| \big| \partial_1 \Phi(A) \times \partial_2 \Phi(A) \big| \big| \cdot |ABCD|,
+    \]
+    ahol $|AD|, \, |AB|$ az $AD, \, AB$ szakaszok hosszát, $|ABCD| := |AD| \cdot |AB|$ pedig a jelzett osztásintervallum területét jelöli. A
+    \[
+        \sum_{ABCD} t_{ABCD} \approx \big| \big| \partial_1 \Phi(A) \times \partial_2 \Phi(A) \big| \big| \cdot |ABCD|
+    \]
+    közelítéssel az utóbbi összeg nem más, mint a
+    \[
+        \big| \big| \partial_1 \Phi \times \partial_2 \Phi \big| \big| : [0, \, 1]^2 \to \R
+    \]
+    folytonos függvénynek a $\tau$ felosztáshoz tartozó (Riemann-féle) integrálközelítő összege. Ezért "logikusnak" látszik a szóban forgó felület \textit{felszínét} a
+    \[
+        \Upsilon_\Phi := \int_{[0, \, 1]^2} || \partial_1 \Phi \times \partial_2 \Phi ||
+    \]
+    kettős integrálként definiálni.
 \end{document}
