@@ -1,0 +1,181 @@
+\documentclass[12pt]{article}
+\usepackage[left=0.9in, right=0.9in, top=1in, bottom=1in]{geometry}
+\usepackage{tikz}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{amsfonts, amssymb, amsmath} 
+\usepackage{titlesec}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{enumitem}
+\usetikzlibrary{shadows.blur}
+\usepackage{lmodern}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+
+\title{\textcolor{purple}{\Huge\textbf{Analízis III}}}
+\author{Vizsga jegyzet}
+\date{Szabó Krisztián}
+
+\renewcommand{\contentsname}{Tartalom}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\exists}
+\newcommand{\mm}{\mathbf{m}}
+\newcommand{\MM}{\mathbf{M}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\D}{\mathcal{D}_f}
+
+
+\begin{document}
+    \maketitle
+    \textit{A jegyzet egy az egyben Dr. Simon Péter analízis 3 segédanyagából lett összegyűjtve. Elsősorban magamnak írtam, hogy elősegítse a felkészültést a vizsgára.}
+    \tableofcontents
+    \newpage
+
+    \section{Metrikus-, normált-, euklideszi-terek}
+    \textbf{Teljes vizsgacím:} Metrikus-, normált-, euklideszi-terek. Környezet, belső pont, nyílt halmaz. Torlódási pont, zárt halmaz. Nyílt (zárt) halmazok uniója, metszete. A $(\K^n, \, \varrho_p)$, $(\K^n, \, ||.||_p)$, $(\K^n, \, \langle . \rangle)$, $(C[a, \, b], \, \varrho_p)$, $(C[a, \, b], \, ||.||_p)$, $(0 < n \in \N, \, 1 \leq p \leq + \infty)$ terek.
+
+    \subsection{Metrikus terek}
+    Konkrét példák sokasága vezet el a távolság-fogalom absztakciójához: legyen az $X \neq \emptyset$ egy nem üres halmaz, és tegyük fel, hogy a
+    \[
+        \varrho : X^2 \to [0, \, + \infty)
+    \]
+    függvény a következő tulajdonságokkal rendelkezik:
+    \begin{enumerate}
+        \item minden $x \in X$ esetén $\varrho(x, \, x) = 0$;
+        \item ha $x, \, y \in X$ és $\varrho(x, \, y) = 0$, akkor $x = y$;
+        \item bármely $x, \, y \in X$ választással $\varrho(x, \, y) = \varrho(y, \, x)$;
+        \item tetszőleges $x, \, y, \, z \in X$ elemekkel $\varrho(x, \, y) \leq \varrho(x, \, z) + \varrho(y, \, z)$.
+    \end{enumerate}
+    Azt mondjuk, hogy ekkor a $\varrho$ egy \textit{távolságfüggvény} (vagy idegen szóval \textit{metrika}). Ha $x, \, y \in X$, akkor $\varrho(x, \, y)$ az $x, \, y$ elemek \textit{távolsága}. Az $(X, \, \varrho)$ rendezett párt \textit{metrikus térnek} nevezzük.\\
+
+    Az $X$-beli elemek távolsága tehát nemnegatív szám. Bármely elem önmagától vett távolsága \textit{nulla} (ld. 1.), továbbá két kölönböző elem távolsága mindig \textit{pozitív} (ld. 2.). A távolság \textit{szimmetrikus}, azaz két elem távolsága független az illető elemek sorrendjétől (ld. 3.). A 4. tulajdonságot \textit{háromszög-egyenlőtlenségként} fogjuk idézni.\\
+
+    Mutassuk meg, hogy a háromszög-egyenlőtlenségből annak az alábbi változata is következik:
+    \[
+        |\varrho(x, \, z) - \varrho(y, \, z)| \leq \varrho(x, \, z) \quad (x, \, y, \, z \in X).
+    \]
+    Ugyanis a 4. axióma miatt
+    \[
+        \varrho(x, \, z) \leq \varrho(x, \, y) + \varrho(y, \, z),
+    \]
+    tehát
+    \[
+        \varrho(x, \, z) - \varrho(y, \, z) \leq \varrho(x, \, y).
+    \]
+    Ha itt $x$-et és az $y$-t felcseréljük, akkor a
+    \[
+        -\big( \varrho(x, \, z) - \varrho(y, \, z) \big) = \varrho(y, \, z) - \varrho(x, \, z) \leq \varrho(y, \, x) = \varrho(x, \, y)
+    \]
+    egyenlőtlenséghez jutunk. Az utóbbi két becslés egybevetésével kapjuk a jelzett egyenlőtlenséget.\\
+
+    Bármely $X \neq \emptyset$ halmaz esetén megadható
+    \[
+        \varrho : X^2 \to [0, \, +\infty)
+    \]
+    távolságfüggvény, ui., pl. a
+    \[
+        \varrho(x, \, y) :=
+        \begin{cases}
+        0 & (x = y) \\
+        1 & (x \neq y)    
+        \end{cases}
+        \quad \big((x, \, y) \in X^2\big)
+    \]
+    leképezés nyilván eleget tesz a fenti, a metrikát meghatározó 1.-4. axiómáknak. Az így definiált $(X, \, \varrho)$ teret \textit{diszkrét} jelzővel illetjük.\\
+
+    Megmutatható, hogy az 1.-3. axiómák nem függetlenek egymástól, nevezetesen: ha egy
+    \[
+        \varrho : X^2 \to \R
+    \]
+    függvény rendelkezik az 1., 2., 4., tulajdonságokkal, akkor a $\varrho$ metrika.\\
+
+    \subsubsection{Példák}
+    Soroljunk fel néhány példát amelyek nem csupán az analízisben játszanak fontos szerepet.
+    \begin{enumerate}
+        \item Legyen $1 \leq n \in \N, \, 0 < p < + \infty$, és
+        \[
+            x = (x_1, \, \dots, \, x_n), \, y = (y_1, \, \dots, \, y_n) \in \K^n
+        \]
+        esetén definiáljuk az $(x, \, y)$-ban a
+        \[
+            \varrho_p : \K^n \times \K^n \to [0, \, +\infty)
+        \]
+        függvény helyettesítési értékét a következőképpen:
+        \[
+            \varrho_p(x, \, y) :=
+            \begin{cases}
+                \displaystyle\sum_{i=1}^n |x_i - y_i|^p & (p \leq 1) \\
+                \displaystyle\left( \sum_{i=1}^n |x_i - y_i| \right)^{1/p} & (p > 1).
+            \end{cases}
+        \]
+        Terjesszük ki a $\varrho_p$ értelmezését $p = \infty := +\infty$-re is az alábbiak szerint:
+        \[
+            \varrho_\infty(x, \, y) := \text{max}\{ |x_i - y_i| : i = 1, \, \dots, \, n \}.
+        \]
+        Belátható, hogy $(\K^n, \, \varrho_p)$ metrikus tér. A későbbiekben a $\varrho_\infty$ metrika mellett a $\K^n$-beli vektorok távolságának a mérésére többnyire a
+        \[
+            \varrho_2(x, \, y) = \sqrt{\sum_{i=1}^n |x_i - y_i|^2} \quad (x, \, y \in \K^n),
+        \]
+        \[
+            \varrho_1(x, \, y) = \sum_{i=1}^n |x_i - y_i| \quad (x, \, y \in \K^n),
+        \]
+        metrikákat fogjuk használni. Speciálisan az $n=1$ esetben
+        \[
+            \varrho_p(x, \, y) = |x - y| \quad (x, \, y \in \K, \, p \geq 1).
+        \]
+        \item Tekintsük egy $0 < p < + \infty$ mellett az
+        \[
+            \ell_p := \Big\{ (x_n) : \N \to \K : \sum_{n = 0}^{+\infty} |x_n|^p < + \infty \Big\}
+        \]
+        halmazokat. Legyen továbbá $x = (x_n), \, y = (y_n) \in \ell_p$ esetén
+        \[
+            \varrho_p(x, \, y) := 
+            \begin{cases}
+                \displaystyle \sum_{n=0}^{+\infty} |x_n - y_n|^p & (0 < p \leq 1) \\
+                \displaystyle \left( \sum_{n=0}^{+\infty} |x_n - y_n|^p \right)^{1/p} & (p > 1). \\
+            \end{cases}
+        \]
+        Bebizonyítható, hogy az így definiált $\varrho_p$ függvény is metrika, azaz $(\ell_p, \, \varrho_p)$ metrikus tér. A $p = \infty := + \infty$-re való "kiterjeszést" a következőképpen kapjuk:
+        \[
+            \ell_\infty := \Big\{ (x_n) : \N \to \K : \sup\{|x_n| : n \in \N \} < +\infty \Big\}
+        \]
+        (más szóval az $\ell_\infty$ szimbólum a korlátos számsorozatok halmazát jelöli), valamint az $\ell_\infty$-beli $x = (x_n), \, y = (y_n)$ elemekre
+        \[
+            \varrho_\infty(x, \, y) := \text{sup}\big\{ |x_n - y_n| : n \in \N \big\}.
+        \]
+        A $\varrho_\infty$ függvény is metrika, tehát $(\ell_\infty, \, \varrho_\infty)$ is metrikus tér.
+
+        \item Valamilyen $[a, \, b]$ korlátos és zárt intervallum esetén $(a, \, b \in \R, \, a < b)$ esetén jelöljük $C[a, \, b]$-vel az $[a, \, b]$-n értelmezett, valós értékű és folytonos függvények halmazát. Ha $0 < p \leq + \infty$, akkor tekintsük az 1., 2. példák alábbi "folytonos" változatait: ha $f, \, g \in C[a, \, b]$, akkor
+        \[
+            \varrho_p(f, \, g) :=
+            \begin{cases}
+                \displaystyle \int\limits_a^b |f-g|^p & (0 < p \leq 1) \\
+                \displaystyle \left( \int\limits_a^b |f-g|^p \right)^{1/p} & (1 < p < + \infty) \\
+                \text{max}\{ |f(x) - g(x)| : x \in [a, \, b] \} & (p = \infty := + \infty).
+            \end{cases}
+        \]
+        Az előbbi példákhoz hasonlóan látható be, hogy $(C[a, \, b], \, \varrho_p)$ is metrikus tér.
+    \end{enumerate}
+
+    Azt mondjuk, hogy valamilyen $X \neq \emptyset$ halmaz és egy $X^2$-en értelmezett
+    \[
+        \varrho, \, \sigma : X^2 \to [0, \, +\infty)
+    \]
+    metrikák esetén a $\varrho$ és a $\sigma$ \textit{ekvivalens}, ha alkalmas $c, C$ pozitív számokkal
+    \[
+        c \cdot \varrho(x, \, y) \leq \sigma(x, \, y) \leq C \cdot \varrho(x, \, y) \quad (x, \, y \in X).
+    \]
+    Könnyű belátni, hogy ha $\mathcal{M}$ jelöli az előbb említett metrikák halmazát, és a $\varrho, \, \sigma \in \mathcal{M}$ elemekre $\varrho \sim \sigma$ azt jelenti, hogy a $\varrho$ és a $\sigma$ ekvivalens, akkor az így értelmezett ($\mathcal{M}^2$-beli) $\sim$ reláció ekvivalencia.\\
+
+    Pl. a fenti $(\K^n, \, \varrho_p)$ metrikus terekre a $\varrho_p$ metrikák közül $p \geq 1$ esetén bármelyik kettő ekvivalens. A továbbiakban az
+    \[
+        X := \K^n \quad (1 \leq n \in \N)
+    \]
+    esetben a $\varrho_2, \, \varrho_1, \, \varrho_\infty$ metrikák bármelyikét fogjuk használni.
+
+\end{document}
