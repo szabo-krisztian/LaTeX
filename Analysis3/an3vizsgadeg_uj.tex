@@ -178,4 +178,191 @@
     \]
     esetben a $\varrho_2, \, \varrho_1, \, \varrho_\infty$ metrikák bármelyikét fogjuk használni.
 
+    \subsection{Normált terek}
+    Tegyük fel, hogy a szóban forgó $X \neq \emptyset$ halmaz lineáris tér a $\K$ felett. Azt mondjuk, hogy a
+    \[
+        ||.|| X \to [0, \, + \infty)
+    \]
+    leképezés \textit{norma}, ha
+    \begin{enumerate}
+        \item $||0|| = 0$;
+        \item ha $x \in X$ és $||x|| = 0$, akkor $x = 0$;
+        \item bármely $\lambda \in \K, \, x \in X$ esetén $||\lambda x|| = |\lambda| \cdot ||x||$;
+        \item tetszőleges $x, \, y \in X$ elemekre $||x+y|| \leq ||x|| + ||y||$.
+    \end{enumerate}
+
+    Egy $x \in X$ elemre az $||x||$ nemnegatív számot az $x$ \textit{hosszának} (vagy \textit{normájának}), az $(X, \, ||.||)$ rendezett párt pedig \textit{normált térnek} nevezzük.\\
+
+    A 4. axiómát szintén \textit{háromszög-egyenlőtlenségként} említjük a későbbiekben. Ha pl. $X$ jelöli a
+    \[
+        \K^n \, (0 < n \in \N), \quad \ell_p \, (0 < p \in \R), \quad C[a, \, b] \, (-\infty < a < b < + \infty)
+    \]
+    halmazok valamelyikét, akkor a vektorok szokásos összeadására és számmal való szorzására nézve az $X$ lineáris tér a $\K$, ill. az $\R$ felett. Az említett terekben a nulla-elemet 0-val jelölve azt kapjuk továbbá, hogy $1 \leq p \leq + \infty$ esetén
+    \[
+        ||x||_p := \varrho_p(x, \, 0) \quad (x \in X)
+    \]
+    norma, azaz ilyen $p$-kre
+    \[
+        (\K^n, \, ||.||_p), \, (\ell_p, \, ||.||_p), \, (C[a, \, b], \, ||.||_p)
+    \]
+    normált terek. Tehát
+    \[
+        ||x||_p =
+        \begin{cases}
+            \displaystyle \left( \sum_{i=1}^n |x_i|^p \right)^{1/p} & (1 \leq p < + \infty) \\
+            \text{max}\{ |x_i| : i = 1, \, \dots, \, n\} & (p = + \infty)
+        \end{cases}
+        \quad \big( x = (x_1, \, \dots, \, x_n) \in \K^n \big)
+    \]
+    speciálisan az $n = 1$ esetben
+    \[
+        ||x||_p = |x| \quad (x \in \K, \, 1 \leq p \leq + \infty)
+    \]
+    valamint
+    \[
+        ||y||_p =
+        \begin{cases}
+            \displaystyle \left( \sum_{i=1}^{+\infty} |y_i|^p \right)^{1/p} & (1 \leq p < + \infty) \\
+            \text{sup}\{ |y_i| : i \in \N \} & (p = + \infty) 
+        \end{cases}
+        \quad \big( y = (y_n) \in\ell_p \big)
+    \]
+    és
+    \[
+        ||f||_p =
+        \begin{cases}
+            \displaystyle \left( \int\limits_a^b |f|^p \right)^{1/p} & (1 \leq p < + \infty) \\
+            \text{max} \{ |f(x)| : x \in [a,\, b] \} & (p = + \infty) 
+        \end{cases}
+        \quad \big( f \in C[a, \, b] \big).
+    \]
+    Világos, hogy a most mondott példákban
+    \[
+        \varrho_p(x,\, y) = ||x-y||_p \quad (x, \, y \in X).
+    \]
+    Sőt, ha most $(X, \, ||.||)$ egy tetszőleges normált teret jelöl, akkor a
+    \[
+        \varrho(x, \, y) := ||x-y|| \quad \big( (x, \, y) \in X^2 \big)
+    \]
+    függvény metrika, azaz $(X, \, ||.||)$ metrikus tér:
+    \[
+        (X, \, \varrho) \equiv (X, \, ||.||).
+    \]
+    Ekkor pl. a
+    \[
+        |\varrho(x, \, z) - \varrho(y, \, z)| \leq \varrho(x, \, y) \quad (x, \, y, \, z \in X) 
+    \]
+    háromszög-egyenlőtlenség az alábbi alakot ölti:
+    \[
+        \big| ||x-z|| - ||y-z|| \big| \leq ||x-y|| \quad (x, \, y, \, z \in X).
+    \]
+    Ha itt $z = 0$, akkor
+    \[
+        \big| ||x|| - ||y|| \big| \leq ||x-y|| \quad (x, \, y \in X).
+    \]
+    Azt mondjuk, hogy az $X$ ($\K$-feletti) vektortéren értelmezett
+    \[
+        ||.||, \, ||.||_* : X \to [0, \, + \infty)
+    \]
+    normák \textit{ekvivalensek} (erre is a $||.|| \sim ||.||_*$ jelölést fogjuk használni), ha alkalmas $c, \, C$ pozitív konstansokkal
+    \[
+        c \cdot ||x|| \leq ||x||_* \leq C \cdot ||x|| \quad (x \in X).
+    \]
+    
+    \subsection{Euklideszi terek}
+    A fent bevezetett $||.||_p$ norma a $p=2$ esetben speciális esete egy tágabb (lineáris algebrából jól ismert) normaosztálynak. Legyen ui. $X$ újra egy lineáris tér a $\K$ felett, az
+    \[
+        \langle . \rangle : X^2 \to \K
+    \]
+    függvényről pedig tegyük fel, hogy
+    \begin{enumerate}
+        \item minden $x, \, y \in X$ mellett $\langle x, \, y \rangle = \overline{\langle y, \, x \rangle}$ (ahol a $\overline{\xi}$ szimbólum a $\xi \in \K$ szám komplex konjugáltját jelöli);
+        \item bármely $x \in X \ \{0\}$ esetén $\langle x, \, x \rangle \in \R$ és $\langle x, \, x \rangle > 0;$
+        \item ha $x, \, y \in X$ és $\lambda \in \K$, akkor $\langle \lambda x, \, y \rangle = \lambda \langle x, \, y \rangle$;
+        \item tetszőleges $x, \, y, \, z \in X$ elemekre fennáll a következő egyenlőség:
+        \[
+            \langle x + y, \, z \rangle = \langle x, \, z \rangle + \langle y, \, z \rangle.
+        \]
+    \end{enumerate}
+    Ha $x, \, y \in X$ akkor az $\langle x, \, y \rangle$ számot az $x, \, y$ elemek \textit{skaláris szorzatának}, az $(X, \, \langle . \rangle)$ rendezett párt pedig \textit{skaláris szorzat-térnek} (vagy \textit{euklideszi-térnek}) nevezzük.\\
+
+    Speciálisan itt minden $x \in X$ esetén
+    \[
+        \langle 0, \, x \rangle = \langle x, \, 0 \rangle = 0,
+    \]
+    ill.
+    \[
+        \langle x, \, x \rangle = 0 \Longrightarrow x = 0.
+    \]
+    Tehát 
+    \[
+        \langle x, \, x \rangle = 0 \Longleftrightarrow x = 0.
+    \]
+    Ha $\K = \R$ (azaz $(X, \, \langle . \rangle)$ egy ún. \textit{valós euklideszi tér}), akkor 
+    \[
+        \langle x, \, y \rangle = \langle y, \, x \rangle \quad (x, \, y \in X).
+    \]
+    Jelentse pl. $X$ a
+    \[
+        \K^n \, (1 \leq n \in \N), \quad \ell_2, \quad C[a,\, b] \, (- \infty < a < b < + \infty)
+    \]
+    halmazok valamelyikét, és
+    \[
+        \langle x, \, y \rangle =
+        \begin{cases}
+            \displaystyle \sum_{i=1}^n x_i \overline{y_i} & \big( x=(x_1, \, \dots, \, x_n), \, y = (y_1, \, \dots, \, y_n) \in \K^n \big) \\
+            \displaystyle \sum_{i=1}^{+\infty} x_n \overline{y_n} & \big( x=(x_n), \, y=(y_n) \in \ell_2 \big) \\
+            \displaystyle \int\limits_a^b xy & (x, \, y \in C[a, \, b]).
+        \end{cases}
+    \]
+    Ekkor $(X, \, \langle . \rangle)$ euklideszi tér, továbbá
+    \[
+        ||x||_2 = \sqrt{\langle x, \, x \rangle} \quad (x \in X).
+    \]
+    Ez utóbbi egyenlőségnek sokkal általánosabb háttere van, ui. tetszőleges $(X, \, \langle . \rangle)$ euklideszi teret véve
+    \[
+        ||x|| := \sqrt{\langle x, \, x \rangle} \quad (x \in X)
+    \]
+    norma. Itt a háromszög-egyenlőtlenség igazolásában fontos szerep jut az
+    \[
+        |\langle x, \, y \rangle| \leq ||x|| \cdot ||y|| \quad (x, \, y \in X)
+    \]
+    \textit{Cauchy-Bunyakovszkij-egyenlőtlenségnek}. Ezt "lefordítva" az előbb említett euklideszi terekre az alábbi egyenlőtlenségeket kapjuk:
+    \[
+        \left| \sum_{i=1}^n x_i \overline{y_i} \right| \leq \sqrt{\sum_{i=1}^n |x_i|^2} \cdot \sqrt{\sum_{i=1}^n |y_i|^2} \quad (x, \, y \in \K^n),
+    \]
+    \[
+        \left| \sum_{i=1}^{+\infty} x_i \overline{y_i} \right| \leq \sqrt{\sum_{i=1}^{+\infty} |x_i|^2} \cdot \sqrt{\sum_{i=1}^{+\infty} |y_i|^2} \quad (x, \, y \in \ell_2),
+    \]
+    \[
+        \left| \int\limits_a^b fg \right| \leq \sqrt{\int\limits_a^b f^2} \cdot \sqrt{\int\limits_a^b g^2} \quad (f, \, g \in C[a, \, b]).
+    \]
+    Az $n = 1$ esetben a $\K^n = \K$-ban az előbb értelmezett skaláris szorzás a kötvetkező:
+    \[
+         \langle x, \, y \rangle = x \overline{y} \quad (x, \, y \in \K),
+    \]
+    ill. ekkor
+    \[
+        ||x|| = ||x||_2 = \sqrt{\langle x, \, x \rangle} = \sqrt{|x|^2} = |x| \quad (x \in \K).
+    \]
+    Nem nehéz belátni, hogy a fenti
+    \[
+        (\K^n, \, ||.||_p) \quad (1 \leq n \in \N, \, 1 \leq p \leq + \infty)
+    \]
+    normált terek közül $(\K^n, \, ||.||_2)$ az egyetlen, amelyre a $||.||_p$ normát skaláris szorzás "generálja". Másképp fogalmazva az a tény, hogy egy alkalmas $\langle . \rangle$ skaláris szorzással
+    \[
+        ||x||_p = \sqrt{\langle x, \, \rangle} \quad (x \in \K^n),
+    \]
+    azzal ekvivalens, hogy $p=2$. Ha ui. $p=2$, akkor a fentebb láttuk, hogy a $||.||_2$ norma skaláris szorásból származik. Fordítva pedig mindez az ún. \textit{paralelogramma-szabály} következménye: tetszőleges $(X, \, \langle . \rangle)$ tér esetén az
+    \[
+        ||x|| := \sqrt{\langle x, \, \rangle} \quad (x \in X)
+    \]
+    normára
+    \[
+        ||x+y||^2 + ||x-y||^2 = 2(||x||^2 + ||y||^2) \quad (x, \, y \in X).
+    \]
+
+
+
+
 \end{document}
