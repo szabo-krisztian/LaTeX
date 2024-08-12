@@ -361,8 +361,55 @@
     \[
         ||x+y||^2 + ||x-y||^2 = 2(||x||^2 + ||y||^2) \quad (x, \, y \in X).
     \]
+    \newpage
+    
+    %%%
+    %%%
+    %%%
+    %%%
+    %%%
+    %%% ÚJ SZAKASZ 
+    %%%
+    %%%
+    %%%
+    %%%
+    %%%
 
+    \section{Metrikus terek topológiája}
+    Legyen az $(X, \, \varrho)$ metrikus tér esetén $b \in X$ és $r > 0$, ekkor a
+    \[
+        K_r(b) := \{ x \in X : \varrho(x, \, b) < r \}
+    \]
+    halmazt a $b$ elem $r$\textit{-sugarú környezetének} nevezzük. Használni fogjuk a $K(b)$ jelölést is a $K_r(b)$ helyett, ha az adott szituációban a $K_r(b)$ \textit{környezet sugara} ($r$) nem játszik szerepet.\\
 
-
+    Tekintsük a
+    \[
+        (K^n, \, \varrho_p) \quad (1 \leq n \in \N, \, p = 1, \, 2, \, \infty)
+    \]
+    metrikus tereket. Ekkor $b = (b_1, \dots, \, b_n) \in \K^n$ és $r > 0$ esetén ezekben a terekben a $b$ vektor $r$-sugarú $K_r(b)$ környezetei (attól függően, hogy $\varrho = \varrho_1, \, \varrho_2, \, \varrho_\infty$) rendre a következők:
+    \[
+        K_r^{(1)}(b) := \left\{ x = (x_1, \, \dots, \, x_n) \in \K^n : \sum_{i=1}^n |x_j - b_j| < r \right\},
+    \]
+    \[
+        K_r^{(2)}(b) := \left\{ x = (x_1, \, \dots, \, x_n) \in \K^n : \sqrt{\sum_{i=1}^n |x_j - b_j|^2} < r \right\},
+    \]
+    \[
+        K_r^{(\infty)}(b) := \Bigg\{ x = (x_1, \, \dots, \, x_n) \in \K^n : \text{max}\{|x_j - b_j| : j = 1, \, \dots, \, n\} < r \Bigg\},
+    \]
+    Speciálisan a $\K^n := \R^2$ választással a $b = (b_1, \, b_2) \in \R^2$ vektor előbbi környezetei geometriailag (az $\R^2$ "síkot" egy derékszögű koordináta-rendszerrel reprezentálva) könnyen ellenőrihetően a következők:
+    \begin{itemize}
+        \item $K_r^{(1)}$ egy, a
+        \[
+            (b_1 - r, \, b_2), \, (b_1, \, b_2 + r), \, (b_1 + r, \, b_2), \, (b_1, \, b_2 - r)
+        \]
+        pontok (mint csúcspontok) által meghatározott \textit{rombusz} (csúcsára állított négyzet) belseje,
+        \item $K_r^{(2)}$ egy $b$ középpontú és $r$ sugarú \textit{körlemez} belseje,
+        \item $K_r^{(\infty)}$ pedig egy, a
+        \[
+            (b_1 - r, \, b_2 - r), \, (b_1 - r, \, b_2 + r), \, (b_1 + r, \, b_2 + r), \, (b_1 + r, \, b_2 - r)
+        \]
+        pontok (mint csúcspontok) által meghatározott \textit{négyzet} belseje.
+    \end{itemize}
+    
 
 \end{document}
