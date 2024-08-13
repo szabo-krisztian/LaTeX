@@ -29,6 +29,44 @@
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\D}{\mathcal{D}_f}
 
+\definecolor{modernyellow}{HTML}{F4E4BC}
+\definecolor{moderngreen}{HTML}{BDDCBD}
+
+\tikzset
+{
+	definition/.style={
+		draw,
+		fill=modernyellow,
+		line width=1pt,
+		rounded corners,
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+		text width=0.9\textwidth,
+		inner sep=10pt
+	},
+	theorem/.style={
+		draw,
+		fill=moderngreen,
+		line width=1pt,
+		rounded corners,
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+		text width=0.9\textwidth,
+		inner sep=10pt
+	},
+	proof/.style={
+		fill=white,
+		rectangle,
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex, moderngreen},
+		text width=0.9\textwidth,
+		inner sep=6pt,
+	},
+	proof1/.style={
+		fill=white,
+		rectangle,
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=0, moderngreen},
+		text width=0.9\textwidth,
+		inner sep=6pt,
+	}
+}
 
 \begin{document}
     \maketitle
@@ -375,7 +413,9 @@
     %%%
     %%%
 
-    \section{Metrikus terek topológiája}
+    \section{Konvergencia metrikus terekben}
+    \textbf{Eredeti vizsgacím:} Konvergens sorozatok metrikus terekben. Konvergencia $\K^n$-ben, a koordináta-sorozatok szerepe. \textit{Bolzano-Weierstrass}-kiválasztási tétel. Konvergencia a $(C[a, \, b], \, ||.||_\infty)$ térben (függvénysorozatok, az egyenletes, ill. a pontonkénti konvergencia fogalma). Halmazok zártságának jellemzése konvergens sorozatokkal. A  teljesség fogalma, \textit{Banach-tér}, \textit{Hilbert-tér}. A $(C[a, \, b], \, ||.||_\infty)$ tér teljessége.\\
+
     Legyen az $(X, \, \varrho)$ metrikus tér esetén $b \in X$ és $r > 0$, ekkor a
     \[
         K_r(b) := \{ x \in X : \varrho(x, \, b) < r \}
@@ -411,5 +451,249 @@
         pontok (mint csúcspontok) által meghatározott \textit{négyzet} belseje.
     \end{itemize}
     
+    Nyilvánvaló, hogy $0 < v \leq r$ esetén
+    \[
+        K_v(b) \subset K_r(b).
+    \]
+    Tetszőleges $K_r(a)$ környezet és $b \in K_r(a)$ esetén a
+    \[
+        0 < v < r - \varrho(b, \, a)
+    \]
+    feltételnek eleget tevő $v$ "sugárral"
+    \[
+        K_v(b) \subset K_r(a).
+    \]
+    Ha ui. $x \in K_v(b)$, azaz $\varrho(x, \, b) < v$, akkor a háromszög-egyenlőtlenség szerint
+    \[
+        \varrho(x, \, a) \leq \varrho(x, \, b) + \varrho(b, \, a) < v + \varrho(b, \, a) < r.
+    \]
+    Ez azt jelenti, hogy $x \in K_r(a)$, tehát a $K_v(b) \subset K_r(a)$ tartalmazás valóban fennáll.\\
+
+    Nevezzük valamilyen $\emptyset \neq A \subset X$ halmaz esetén az $a \in A$ pontot az $A$ halmaz \textit{belső pontjának}, ha egy alkalmas $K(a)$ környezettel
+    \[
+        K(a) \subset A
+    \]
+    teljesül. Az tulajdonságú pontok által alkotott halmaz az $A$ ún. \textit{belseje}, amit az
+    \[
+        \text{int} \, A
+    \]
+    szimbólummal fogunk jelölni. Nyilván int $X$ = $X$, míg az
+    \[
+        X := \R, \, \varrho(x, \, y) := |x-y| \quad (x, \, y \in \R)
+    \]
+    esetben $\text{int} \, \{a\} = \emptyset \, (a \in \R)$. Állapodjuk meg abban, hogy
+    \[
+        \text{int} \, \emptyset := \emptyset.
+    \]
+    Tehát bármely $A \subset X$ halmazra
+    \[
+        \text{int} \, A \subset A.
+    \]
+    Könnyű meggondolni ugyanakkor, hogy pl. tetszőleges $K(a)$ környezetre
+    \[
+        \text{int} \, K(a) = K(a).
+    \]
+    Azt mondjuk, hogy az $A \subset X$ halmaz \textit{nyílt}, ha
+    \[
+        \text{int} \, A = A.
+    \]
+    Így pl. az $\emptyset$ (az üreshalmaz) nyílt halmaz, ill. bármely környezet is az. Más megfogalmazásban tehát egy $\emptyset \neq A \subset X$ halmaz akkor és csak akkor nyílt, ha az $A$ minden pontja belső pontja az $A$-nak:
+    \[
+        a \in A \Longrightarrow a \in \text{int} \, A.
+    \]
+    Ismételjük el újra, hogy mit is jelent ez: az
+    \[
+        \emptyset \neq A \subset X
+    \]
+    halmaz akkor és csak akkor nyílt, ha tetszőleges $a \in A$ elemének létezik olyan $K(a)$ környezete, hogyá
+    \[
+        K(a) \subset A.
+    \]
+    Bármely $(X, \, \varrho)$ metrikus tér esetén az $X$ "alaphalmaz" nyílt halmaz. Ha pl. $(X, \, \varrho)$ a diszkrét metrikus tér, amikor is
+    \[
+        \varrho(x, \, y) =
+        \begin{cases}
+            0 & (x = y) \\
+            1 & (x \neq y)
+        \end{cases}
+        \quad (x, \, y \in X),
+    \]
+    akkor az $X$ összes részhalmaza nyílt halmaz. Valóban, ekkor (pl.)
+    \[
+        K_{1/2}(a) = \{a\} \quad (a \in X),
+    \]
+    következésképpen tetszőleges $\emptyset \neq A \subset X$ halmazra és $a \in A$ pontra
+    \[
+        K_{1/2}(a) = \{a\} \subset A.
+    \]
+    Tehát $a \in \text{int} \, A$. Egyúttal minden $x \in X$ pontra az $\{x\}$ halmaz is nyílt. Ha viszont a $\varrho$ metrika olyan, hogy bármelyik $a \in X$ elemhez és tetszőleges $r > 0$ számhoz van olyan $a \neq x \in X$, hogy
+    \[
+        \varrho(x, \, a) < r,
+    \]
+    akkor az $X$ egyelemű részhalmazai közül egyik sem nyílt. Ti. ebben az esetben (az előbbi jelölésekkel) $x \in K_r(a)$, ezért $x \neq a$ miatt $K_r(a)$ nem lehet részhalmaza az $\{a\}$ halmaznak. Ez azt jelenti, hogy $\int \{a \} = \emptyset \neq \{a\}$. Ilyen tulajdonságú metrikus terek pl. a
+    \[
+        (\K^n, \, \varrho_p) \quad (1 \leq n \in \N, \, 1 \leq p \leq + \infty)
+    \]
+    terek.\\
+
+    Legyen
+    \[
+        \mathcal{T}_p(X) := \mathcal{T}_p := \{ A \in \mathcal{P}(X) : A \text{ nyílt} \}.
+    \]
+    Az $X$ nyílt részhalmazai által meghatározott $\mathcal{T}_p$ halmazrendszert az $(X, \, \varrho_p)$ metrikus tér \textit{topológiájának} nevezzük.
+
+    \subsection{Nyílt halmazok uniója és metszete}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Tegyük fel, hogy valamilyen $\Gamma \neq \emptyset$ (index)halmaz esetén az $A_\gamma \subset X$ $\gamma \in \Gamma$ halmazok valamennyien nyíltak az $(X, \, \varrho)$ metrikus térben. Ekkor
+        \begin{itemize}
+            \item az $\displaystyle \bigcup_{\gamma \in \Gamma} A_\gamma$ egyesítésük is nyílt;
+            \item ha a $\Gamma$ halmaz véges, akkor a $\displaystyle \bigcap_{\gamma \in \Gamma} A_\gamma$ metszetük is nyílt.
+        \end{itemize}
+    };\\
+
+    \tikz \node[proof]
+    {
+        \textbf{Bizonyítás.} Legyen $\displaystyle a \in \bigcup_{\gamma \in \Gamma} A_\gamma$. Ekkor egy $\nu \in \Gamma$ indexszel $a \in A_\nu$. Mivel az $A_\nu$ halmaz nyílt, ezért alkalmaz $K(a)$ környezettel $K(a) \subset A_\nu$. Nyilvánvaló, hogy
+        \[
+            A_\nu \subset \bigcup_{\gamma \in \Gamma} A_\gamma,
+        \]
+        így egyúttal
+        \[
+            K(a) \subset \bigcup_{\gamma \in \Gamma} A_\gamma
+        \]
+        is teljesül. Más szóval $\displaystyle a \in \text{int} \, \left(\bigcup_{\gamma \in \Gamma} A_\gamma\right)$, azaz $\displaystyle \bigcup_{\gamma \in \Gamma} A_\gamma$ nyílt halmaz.\\
+
+        Most tegyük fel, hogy a $\Gamma$ halmaz véges, és legyen $\displaystyle a \in \bigcap_{\gamma \in \Gamma} A_\gamma$. Ekkor minden $\gamma \in \Gamma$ mellett $a \in A_\gamma$, következésképpen az $A_\gamma$-k nyíltsága miatt egy $r_\gamma > 0$ sugárral
+        \[
+            K_{r_\gamma}(a) \subset A_\gamma.
+        \]
+        Ha
+        \[
+            r := \text{min} \{ r_\gamma : \gamma \in \Gamma \}
+        \]
+        (ami egy pozitív szám), akkor $r \leq r_\gamma$ $(\gamma \in \Gamma)$ miatt
+        \[
+            K_r(a) \subset K_{r_\gamma}(a) \subset A_\gamma \quad (\gamma \in \Gamma),
+        \]
+        így
+        \[
+            K_r(a) \subset \bigcap_{\gamma \in \Gamma} A_\gamma.
+        \]
+        Tehát $\displaystyle a \in \text{int} \left( \bigcap_{\gamma \in \Gamma} A_\gamma \right)$ metszethalmaz nyílt.
+    };\\
+
+    Gondoljuk meg, hogy tetszőleges $(X, \, \varrho)$ metrikus térben minden $A \subset X$ halmazra
+    \[
+        \text{int} \, A = \bigcup_{T \in \mathcal{A}} T,
+    \]
+    ahol $\mathcal{A}$ jelöli az $X$ halmaz összes olyan $T \subset X$ nyílt részhalmaza által alkotott halmazrendszert, amelyre $T \subset A$.\\
+
+    Az előző tétel miatt az $\displaystyle \text{int} \, A = \bigcup_{T \in \mathcal{A}}$ halmaz nyílt, továbbá
+    \[
+        \text{int} \, A = \bigcup_{T \in \mathcal{A}} \subset A.
+    \]
+    Az is világos, hoyg ha $C \subset X$ olyan nyílt halmaz, amelyre $C \subset A$, akkor $C \subset \text{int} \, A$. Ezért is szokták az int $A$ halmazt az $A$ \textit{legbővebb nyílt részhalmazának nevezni}. Speciálisan, ha $A \subset X$ nyílt, akkor $A \in \mathcal{A}$ és $A = \text{int} \, A$. \\
+
+    Tegyük fel, hogy adottak $(X,\,\varrho), \, (X, \, \sigma)$ metrikus terek és $\varrho \sim \sigma$ (azaz a $\varrho$ metrika ekvivalens a $\sigma$-val). Ekkor
+    \[
+        \mathcal{T}_\varrho(X) = \mathcal{T}_\sigma(X),
+    \]
+    tehát a két tér topológiája egybeesik. Más szóval az $X$ nyílt részhalmazai a két metrika szerint ugyanazok. \\
+
+    Valóban, ha a $c, \, C > 0$ konstansokkal
+    \[
+        c \cdot \varrho(x, \, y) \leq \sigma(x,\,y) \leq C \cdot \varrho(x, \, y) \quad (x, \, y \in X),
+    \]
+    akkor tetszőleges $a \in X, \, r > 0$ esetén $\sigma$-szerinti
+    \[
+        K_r^{(\sigma)}(a) := \{ x \in X : \sigma(x, \, a) < r \}
+    \]
+    környezetre
+    \[
+        K_{r/C}^{(\varrho)}(a) \subset K_r^{(\sigma)}(a),
+    \]
+    ahol
+    \[
+        K_{r/C}^{(\varrho)}(a) := \{ x \in X : \varrho(x, \, a) < r / C \}.
+    \]
+    Ha ui. $x \in K_{r/C}^{(\varrho)}(a)$, azaz $\varrho(x, \, a) < r / C$, akkor
+    \[
+        \sigma(x, \, a) \leq C \cdot \varrho(x, \, a) < C \cdot \frac{r}{c} = r,
+    \]
+    más szóval $x \in K_r^{(\sigma)}(a)$. Ugyanígy kapjuk, hogy
+    \[
+        K_{cr}^{(\sigma)}(a) \subset K_r^{(\varrho)}(a).
+    \]
+    Ha tehát $\emptyset \neq A \subset X, \, a \in A$ és egy alkalmas $r >0$ sugárral
+    \[
+        K_r^{(\sigma)}(a) \subset A,
+    \]
+    akkor az előbbiek szerint
+    \[
+        K_{r / C}^{(\varrho)}(a) \subset A
+    \]
+    is igaz, ill.
+    \[
+        K_r^{(\varrho)}(a) \subset A
+    \]
+    esetén
+    \[
+        K_{cr}^{(\sigma)}(a) \subset A.
+    \]
+    Következésképpen az a tény, hoyg $a \in \text{int} \, A$, független attól, hogy az $(X, \, \varrho)$, vagy az $(X, \, \sigma)$ metrikus térben "vagyunk". így az $\text{int} \, A = A$ egyenlőség is pontosan akkor teljesül a $\varrho$ metrika értelmében, ha a $\sigma$ szerint is fennáll. Röviden:
+    \[
+        A \in \mathcal{T}_\varrho(X) \Longleftarrow A \in \mathcal{T}_\sigma(X).
+    \]
+    Az $(X, \, \varrho)$ metrikus térben az $A \subset X$ halmazt \textit{zártnak} fogjuk nevezni, ha az $X \setminus A$ (komplementer) halmaz nyílt. Világos, hogy pl. az $\emptyset, \, X$ halmazok zártak, vagy pl. a diszkrét metrikus térben minden halmaz zárt.\\
+
+    Tetszőleges $(X, \, \varrho)$ metrikus térben minden egyelemű halmaz zárt. Legyen ui. $a \in X$, ekkor bármely $b \in X \setminus \{a\}$ elemre $\varrho(a, \, b) > 0$. Ha
+    \[
+        0 < v \leq \varrho(a, \, b)
+    \]
+    és $x \in K_v(b)$, akkor
+    \[
+        \varrho(a, \, x) \geq \varrho(a, \, b) - \varrho(x, \, b) > \varrho(a, \, b) - v \geq \varrho(a, \, b) - \varrho(a, \, b) = 0,
+    \]
+    azaz $\varrho(a, \, b) > 0$. Ez azt jelenti, hogy $x \neq a$, más szóval $x \in X \setminus \{a\}$. Ezért
+    \[
+        K_v(b) \subset X \setminus \{a\},
+    \]
+    röviden: az $X \setminus \{a\}$ halmaz nyílt, tehát $\{a\}$ valóban zárt.\\
+
+    Világos, hogy az $A \subset X$ halmaz akkor és csak akkor nyílt, ha az $X \setminus A$ halmaz zárt.\\
+
+    Nyilvánvaló, hogy az ekvivalens metrikákkal kapcsolatban a topológiákra kapott egyenlőség igaz marad az egyes metrikákra nézve zárt halmazok által meghatározott halmazrendszerekre is. Ha tehát $(X, \, \varrho), \, (X, \, \sigma)$ olyan metrikus terek, hogy $\varrho \sim \sigma$, akkor
+    \[
+        \mathcal{C}_\varrho(X) = \mathcal{C}_\sigma(X),
+    \]
+    ahol általában egy $(X, \, \delta)$ metrikus tér esetén
+    \[
+        \mathcal{C}_\delta := \{ A \in \mathcal{P}(X) : A \text{ zárt }\}.
+    \]
+    Az ismert De Morgan-azonosságokra utalva az előző tételből rögtön következik a
+    
+    \subsection{Zárt halmazok uniója, metszete}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Tegyük fel, hogy valamilyen $\Gamma \neq \emptyset$ (index)halmaz esetén az $A_\gamma \subset X$ $(\gamma \in \Gamma)$ halmazok valamennyien zártak az $(X, \, \varrho)$ metrikus térben. Ekkor
+        \begin{itemize}
+            \item a $\displaystyle \bigcap_{\gamma \in \Gamma} A_\gamma$ metszetük is zárt;
+            \item ha a $\Gamma$ halmaz véges, akkor az $\displaystyle \bigcup_{\gamma \in \Gamma} A_\gamma$ egyesítésük is zárt.
+        \end{itemize}
+    };\\
+
+    Tekinstük az $(X, \, \varrho)$ metrikus térben az $A \subset X$ halmazt, és jelöljük $\mathcal{X}$-szel az összes olyan $B \subset X$ zárt halmaz által alkotott halmazrendszert, amelyre $A \subset B$. Világos, hogy $\mathcal{X} \neq \emptyset$, hiszen nyilván $X \in \mathcal{X}$. Az előző tétel szerint az
+    \[
+        \overline{A} := \bigcap_{B \in \mathcal{X}} B
+    \]
+    halmaz zárt, és mive minden $B \in \mathcal{X}$ esetén $A \subset B$, ezért
+    \[
+        A \subset \overline{A}.
+    \]
+    Az is világos, hogy ha a $C \subset X$ halmaz zárt és $A \subset C$, akkor $\overline{A} \subset C$, ui. $C \in \mathcal{X}$. (Ezért is szokták az $\overline{A}$ halmazt az $A$-t lefedő legszűkebb zárt halmazként említeni.)
+
+
+
 
 \end{document}
