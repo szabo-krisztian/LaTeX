@@ -124,5 +124,136 @@
         K := \left\{ (x, \, y, \, z) \in \R^3 : 0 \leq \frac{1}{2} \cdot \sqrt{y^2 + z^2} \leq x \leq 1 \right\}.
     \]
     
+    \newpage
+    \section{Feladat}
+    Számítsuk ki annak a korlátos és zárt térbeli $T$ testnek a \textit{térfogatát, tömegét} és a $z$-tengelyre vonatkozó \textit{tehetetlenségi nyomatékát}, amelyet az alábbi egyenlőtlenségek definiálnak:
+    \[
+        \sqrt{x^2 + y^2} \leq z \wedge x^2 + y^2 + z^2 \leq 1,
+    \]
+    illetve a kitöltő anyag pontonkénti sűrűsége egyenesen arányos az origótól mért távolsággal.
+
+    %\begin{center}
+    %    \begin{tikzpicture}
+    %        \begin{axis}[
+    %            clip=false,
+    %            colormap/viridis,
+    %            xlabel={$x$}, ylabel={$y$}, zlabel={$z$}
+    %        ]
+    %      
+    %        \addplot3[
+    %          surf,
+    %          opacity=0.6,
+    %          samples=20, domain=0:2*pi, y domain=0:1,
+    %          z buffer=sort,
+    %        ]
+    %        (
+    %          {y*cos(deg(x))}, % x-coordinate (parametrized)
+    %          {y*sin(deg(x))}, % y-coordinate (parametrized)
+    %          {y}              % z-coordinate (y = sqrt(x^2 + y^2))
+    %        );
+    %      
+    %        % Plot the sphere: x^2 + y^2 + z^2 <= 1
+    %        \addplot3[
+    %          surf,
+    %          opacity=0.6,
+    %          samples=30, domain=0:360, y domain=0:45,
+    %          z buffer=sort,
+    %        ]
+    %        (
+    %          {sin(y)*cos(x)}, % x-coordinate
+    %          {sin(y)*sin(x)}, % y-coordinate
+    %          {cos(y)}         % z-coordinate
+    %        );
+    %      
+    %        \end{axis}
+    %      \end{tikzpicture}
+    %\end{center}
+
+    Jelöljük az alábbi ponthalmazokat, az alábbi módon:
+    \[
+        K := \{ (x, \, y, \, z) \in \R^3 : \sqrt{x^2 + y^2} \leq z \},
+    \]
+    \[
+        G := \{ (x, \, y, \, z) \in \R^3 : x^2 + y^2 + z^2 \leq 1 \}.
+    \]
+
+    A $K$ halmaz egy kúptest, míg a $G$ halmaz egy egységsugarú gömböt jelöl. Mi a következő ponthalmaz térfogatát keressük:
+    \[
+        V := K \cap G.
+    \]
+
+    A $V$ halmaz meghatározott térfogatot két részre bontjuk, egy csonkakúpra és egy gömbszeletre. A csonkakúp térfogatát hengerkoordináta transzformációval az alábbi módon számolhatjuk:
+
+    \[
+    \Phi(r, \, \varphi, \, z) :=
+    \begin{pmatrix}
+        r \cdot \cos(\varphi) \\
+        r \cdot \sin(\varphi) \\
+        z
+    \end{pmatrix},
+    \]
+    ahol
+    \[
+        z \in [0, \, \sqrt{2} / 2], \, \varphi \in [0, \, 2 \pi], \, r \in [0, \, z].
+    \]
+    Tehát
+    \[
+        V(V_1) := \int\limits_0^{\sqrt{2}/2}\int\limits_0^{2\pi}\int\limits_0^z 1 \cdot r \, dr \, d\varphi \, dz.
+    \]
+
+    A gömbszelet térfogatát térbeli polárkoordináta transzformációval lehet számolni az alábbi módon:
+
+    \begin{center}
+        \begin{tikzpicture}[scale=3]
+            
+            \draw[thick] (0,0) circle [radius=1];
+            \draw (-0.70710678118, 0.70710678118) -- (0.70710678118, 0.70710678118);
+            \draw (-1, 0) -- (1, 0);
+            \draw (0, 0) -- (0, 1);
+            \draw (0,0) -- (0.70710678118, 0.70710678118);
+            \draw (0,0) -- (-0.70710678118, 0.70710678118);
+            
+            \draw[thick] (0.3,0) arc[start angle=0, end angle=45, radius=0.3cm];
+            \draw[draw=none] (0.20,0) arc[start angle=0, end angle=23.5, radius=0.20cm] node {\small$\varphi$};
+
+            \draw[thick] (0.15,0.25980762113) arc[start angle=60, end angle=90, radius=0.3cm];
+            \draw[draw=none] (0.15*0.7,0.25980762113*0.7) arc[start angle=60, end angle=75, radius=0.21cm] node {\small$\psi$};
+            
+            \draw[thick, red] (0.4082,0.7071) -- (0.5, 0.86602540378);
+            \draw[thick] (0, 0) -- (0.4082,0.7071);
+
+            \draw[thick] (0,0.866) -- (0.5, 0.866);
+            \draw (-0.5, 0.866) -- (0, 0.866);
+            \draw[thick] (0,0) -- (0, 0.866);
+
+            \draw[thick] (0.4082,0.7071) -- (0.4082, 0.866);
+            
+        \end{tikzpicture}    
+    \end{center}
+    
+    A fenti ábrán két háromszög vastagon kiemelve hasonlók. Mi az piros szakasz hosszát keressük, hogy az alábbi térbeli polárkoordináta transzformációt el tudjuk végezni. Jelöljük a piros szakasz hosszát $\ell$-lel.
+
+    \[
+        \Phi(r, \, \varphi, \, \psi) :=
+        \begin{pmatrix}
+            r \cdot \cos(\varphi) \cdot \sin(\psi) \\
+            r \cdot \sin(\varphi) \cdot \sin(\psi) \\
+            r \cdot \cos(\psi)
+        \end{pmatrix}
+    \]
+    ahol
+    \[
+        \varphi \in [0, \, 2 \pi], \, \psi \in [0, \, \pi / 4], \, r \in [1 - \ell, \, 1].
+    \]
+    Mivel tudjuk, hogy $\varphi = \pi / 4$ és a gömbünk (körünk) sugara $1$, ezért könnyedén kapjuk az alábbi egyenlőséget:
+    \[
+        \ell = 1 - \frac{\sqrt{2}}{2 \cdot \cos(\psi)}.
+    \]
+    Így, a maradék gömbszelet térfogata az alábbi transzformációval kiszámolható:
+    \[
+        V(V_2) := \int\limits_0^{2\pi} \int\limits_0^{\pi / 4} \int\limits_{\frac{\sqrt{2}}{2\cdot \cos(\psi)}}^1 1 \cdot (-r^2) \cdot \sin(\psi) \, dr \, d\psi \, d\varphi.
+    \]
+
+    Így kapjuk, hogy a $V = K \cap G$ ponthalmaz térfogata $V_1 + V_2$.
 
 \end{document}
