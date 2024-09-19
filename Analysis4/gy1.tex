@@ -72,6 +72,27 @@
     \maketitle
     \tableofcontents
     \newpage
+
+    Mi a transzformációk célja? Amikor akarjuk számítani egy ponthalmaz \textit{térfogatát} azt a Riemann-integrál segítéségvel megtehetjük. Azonban a Riemann-integrált kompakt intervallumon értelmezett függvények esetén definiáltuk. Tegyük fel, hogy meghatározunk egy ponthalmazt \textit{implicit} módon, egyenlőtlenségekkel:
+    \[
+        \mathcal{G}_R := \{ (x, \, y, \, z) \in \R^3 : x^2 + y^2 \leq R^2 \}.
+    \]
+    Ebben az esetben $\mathcal{G}_R$ jelöl egy origó középpontú, $R$ sugarú gömböt. Ahhoz, hogy kiszámítsuk ennek a $V(\mathcal{G}_R)$-vel jelölt térfogatát, ahhoz keresünk kell egy kompakt intervallumon értelmezett $\Phi$ függényt ami tudja a következőt:
+    \[
+        \mathcal{R}_\Phi = \mathcal{G_R}.
+    \]
+    A térbeli polárkoordináta transzformációval képesek vagyunk az alábbira:
+    \[
+        \Phi(r, \, \varphi, \, \psi) :=
+        \begin{pmatrix}
+            r \cdot \cos(\varphi) \cdot \sin(\psi) \\
+            r \cdot \sin(\varphi) \cdot \sin(\psi) \\
+            r \cdot \cos(\psi)
+        \end{pmatrix}
+        \quad (r \in [0, \, R], \, \varphi \in [0, \, 2 \pi], \, \psi \in [0, \, \pi]).
+    \]
+    Az alábbi transzformáció-függvénnyel fennál a következő egyenlőség: $\mathcal{R}_\Phi = \mathcal{G}_R$.
+
     \section{Feladat}
     Hengerkoordinátákra áttérve számítsuk ki az alábbi integrált:
     \[
@@ -255,5 +276,10 @@
     \]
 
     Így kapjuk, hogy a $V = K \cap G$ ponthalmaz térfogata $V_1 + V_2$.
+
+    \newpage
+    \section{Feladat}
+
+
 
 \end{document}
