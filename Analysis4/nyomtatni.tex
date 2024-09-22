@@ -1,0 +1,260 @@
+\documentclass[12pt]{article}
+\usepackage[left=0.9in, right=0.9in, top=0.7in, bottom=0.7in]{geometry}
+\usepackage{tikz}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{amsfonts, amssymb, amsmath} 
+\usepackage{titlesec}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{enumitem}
+\usetikzlibrary{shadows.blur}
+\usepackage{lmodern}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+
+\title{\textcolor{purple}{\Huge\textbf{Analízis IV}}}
+\date{Szabó Krisztián}
+
+\renewcommand{\contentsname}{Tartalom}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\exists}
+\newcommand{\mm}{\mathbf{m}}
+\newcommand{\MM}{\mathbf{M}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\D}{\mathcal{D}_f}
+
+\definecolor{modernyellow}{HTML}{F4E4BC}
+\definecolor{moderngreen}{HTML}{BDDCBD}
+
+\tikzset
+{
+	definition/.style={
+		draw,
+		fill=modernyellow,
+		line width=1pt,
+		rounded corners,
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+		text width=0.9\textwidth,
+		inner sep=10pt
+	},
+	theorem/.style={
+		draw,
+		fill=white,
+		line width=1pt,
+		rounded corners,
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+		text width=0.9\textwidth,
+		inner sep=10pt
+	},
+	proof/.style={
+		fill=white,
+		rectangle,
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex, moderngreen},
+		text width=0.9\textwidth,
+		inner sep=6pt,
+	},
+	proof1/.style={
+		fill=white,
+		rectangle,
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=0, moderngreen},
+		text width=0.9\textwidth,
+		inner sep=6pt,
+	}
+}
+
+\begin{document}
+    \section*{Taylor-formula}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Tegyük fel, hogy az $f \in \R^n \to \R$ függvényre valamilyen $s \in \N$ mellett $f \in D^{s+1}$ teljesül. Ekkor bármely $[a, b] \subset \D$ esetén van olyan $c \in [a, \, b]$, hogy
+        \[
+            f(b) = T_{a, \, s}f(b) + \sum_{i \in \N^n, \, |i| = s+1} \frac{\partial^i f(c)}{i!} \cdot (b - a)^i.
+        \]
+    };\newline
+
+    \textbf{Bizonyítás:} Lásd Simon P. - Analízis III. 123. oldal.\newline
+
+    Legyen
+    \[
+        1 \leq n, \, k \in \N, \, f \in \R^n \to \R, \, a \in \text{int} \, \D, \, j = 1, \, \dots, \, n,
+    \]
+    és
+    \[
+        \partial^k_j f(a) := \partial_{j\dots j}f(a).
+    \]
+    Ha $i := (i_1, \, \dots, \, i_n) \in \N^n$, akkor legyen
+    \[
+        \partial^i f(a):= \partial_1^{i_1} \dots \partial_n^{i_n} f(a) = \partial_{1 \dots 1 \dots n \dots n} f(a).
+    \]
+    Az $i \in \N^n$ \textit{multiindex} esetén $i$ \textit{hosszát} a következőképpen definiáljuk:
+    \[
+        |i| := ||i||_1 = \sum_{j=1}^n i_j.
+    \]
+    Legyen az $i = (i_1, \, \dots, \, i_n) \in \N^n$ multiindex és az $x = (x_1, \, \dots, \, x_n) \in \R^n$ vektor esetén
+    \[
+        i! := \prod_{j=1}^n i_j! = \prod_{j=1}^n \prod_{k=1}^{i_j} k
+    \]
+    és
+    \[
+        x^i := \prod_{j=1}^n x_j^{i_j}
+    \]
+    az $i$ \textit{faktoriálisa}, ill. az $x$ vektor $i$-kitevős \textit{hatványa.}\\
+
+    Tekintsük ezek után az
+    \[
+        f \in \R^n \to \R
+    \]
+    függvényt, és tegyük fel, hogy valamilyen $a \in \text{int} \, \D, \, s \in \N$ mellett $f \in D^s\{a\}$. Ekkor a
+    \[
+        T_{a, \, s} f(x) := \sum_{k=0}^s \sum_{i \in \N^n, \, |i| = k} \frac{\partial^i f(a)}{i!} \cdot (x - a)^i \quad (x \in \R^n)
+    \]
+    előírással definiált $T_{a, \, s} f : \R^n \to \R$ függvényt az $f$ függvény $a$-hoz tartozó $s$-edrendű \textit{Taylor-polinomjának} nevezzük.
+
+    \newpage
+    \section*{Lagrange-féle középértéktétel}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Legyen adott a differenciálható $f \in \R^n \to \R$ függvény, és valamilyen $a, \, b \in \R^n, \, a \neq b$ végpontokkal $[a, \, b] \subset \D$. Ekkor egy alkalmas $c \in (a, \, b)$ mellett
+        \[
+            f(b)-f(a) = \langle \text{grad} \, f(c), \, b-a \rangle.
+        \]
+    };\newline
+
+    \textbf{Bizonyítás:} Lásd Simon P. - Analízis III. 125. oldal.\newline
+
+    Valamilyen $1 \leq n, \, m \in \N$ mellett legyen $f = (f_1, \, \dots, \, f_m) \in \R^n \to \R^m$, $f \in D$. Tegyük fel, hogy az $a, \, b \in \R^n$, $a \neq b$ végpontokkal meghatározott szakaszra $[a, \, b] \subset \D$. Ekkor minden $i = 1, \, \dots, \, m$ mellett egy alkalmas $\xi^{(i)} \in (a, \, b)$ helyen a
+    \[
+        h := (h_1, \, \dots, \, h_n) := b-a
+    \]
+    jelöléssel
+    \[
+        f_i(b)-f_i(a) = \langle \text{grad} \, f_i(\xi^{(i)}), \, h \rangle = \sum_{j=1}^n \partial_j f_i(\xi^{(i)}) \cdot h_j,
+    \]
+    ezért
+    \[
+        |f_i(b)-f_i(a)| \leq \sum_{j=1}^n |\partial_j f_i(\xi^{(i)})| \cdot |h_j| \leq \sum_{j=1}^n |\partial_j f_i(\xi^{(i)})| \cdot ||h||_\infty \leq
+    \]
+    \[
+        \leq \text{sup} \left\{ \sum_{j=1}^n |\partial_j f_i(x)| : x \in (a, \, b)\right\} \cdot ||h||_\infty.
+    \]
+    Következésképpen
+    \[
+        ||f(b)-f(a)||_\infty = \text{max} \, \{ |f_i(b)-f_i(a)| : i = 1, \, \dots, \, m \} = 
+    \]
+    \[
+        \text{max} \{ |\langle \text{grad} \, f_i(\xi^{(i)}), \, h \rangle| : i = 1, \, \dots, \, m\} \leq
+    \]
+    \[
+        \leq \text{max} \, \left\{ \text{sup} \, \left\{ \sum_{j=1}^n |\partial_j f_i(x)| : x \in (a, \, b) \right\} : i = 1, \, \dots, \, m\right\} \cdot ||h||_\infty =
+    \]
+    \[
+        \leq \text{sup} \, \left\{ \text{max} \, \left\{ \sum_{j=1}^n |\partial_j f_i(x)| : i = 1, \, \dots, \, m \right\} : x \in (a, \, b) \right\} \cdot ||h||_\infty =
+    \]
+    \[
+        \text{sup} \, \{ ||f'(x)||_{(\infty)}  : x \in (a, \, b)\} \cdot ||h||_\infty.
+    \]
+    Ha tehát az $\R^n$-en és az $\R^m$-en is a $||.||_\infty$ vektornormát vezetjük be, akkor az $f'(x)$ $(x \in \D)$ Jacobi-mátrix által generált $||f'(x)||_\infty$ (sor)normáját tekintve a
+    \[
+        q := \text{sup} \, \{ ||f'(x)||_{(\infty)} :x \in (a, \, b) \}
+    \]
+    szimbólummal
+    \[
+        \boxed{||f(b)-f(a)||_\infty \leq q \cdot ||b-a||_\infty}.
+    \]
+    \[
+    A :=
+    \begin{bmatrix}
+        \text{grad} \, f_1(\xi^{(1)}) \\
+        \text{grad} \, f_2(\xi^{(2)}) \\
+        \vdots \\
+        \text{grad} \, f_m(\xi^{(m)})
+    \end{bmatrix}
+    \in \R^{m \times n} \text{ mátrixszal } f(b)- f(a) = A(b-a).
+    \]
+
+    \newpage
+    \section*{Elsőrendű szükséges feltétel}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Tegyük fel, hogy $1 \leq n, \, m \in \N, \, m < n, \, \emptyset \neq U \subset \R^n$ nyílt halmaz, és $f : U \to \R, \, g : U \to \R^m$. Ha $f \in D, \, g \in C^1$, az $f$-nek az a $c \in \{ g = 0 \}$ helyen feltételes lokákis szélsőértéke van a $g = 0$ feltételre vonatkozóan, továbbá a $g'(c)$ Jacobi-mátrix rangja megegyezik $m$-mel, akkor létezik olyan $\lambda \in \R^m$ vektor, hogy
+        \[
+            \text{grad} \, (f + \lambda g)(c) = 0.
+        \]
+    };\newline
+
+    \textbf{Bizonyítás:} Lásd Simon P. - Analízis IV. 19. oldal.
+
+    \section*{Másodrendű elégséges feltétel}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Az $1 \leq n, \, m \in \N, \, m < n$ paraméterek mellett legyen adott az $\emptyset \neq U \subset \R^n$ nyílt halmaz, és tekintsük az $f : U \to \R, \, g : U \to \R^m$ függvényeket. Feltesszük, hogy $f, \, g \in D^2, \, c \in \{g=0\}$, a $g'(c)$ mátrix rangja $m$, továbbá valamilyen $\lambda \in \R^m$ vektorral az $F := f + \lambda g$ Lagrange-függvényre
+        \begin{enumerate}
+            \item $\text{grad} \, F(c) = 0$;
+            \item a $Q_c^F$ kvadratikus alak a $g'(c)$ mátrixra nézve feltételesen pozitív (negatív) definit.
+        \end{enumerate}
+        Ekkor az $f$-nek a $c$-ben a $g=0$ feltételre vonatkozóan feltételes lokális minimuma (maximuma) van.
+    };\newline
+
+    \textbf{Bizonyítás:} Nincs - nehéz.
+
+    \section*{Másodrendű szükséges feltétel}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Legyen $1 \leq n, \, m \in \N, \, m < n$, és az $\emptyset \neq U \subset \R^n$ nyílt halmazon legyenek adottak az $f : U \to \R, \, g : U \to \R^m$ függvények. Feltesszük, hogy $f, \, g \in D^2, \, c \in \{g=0\}$, a $g'(c)$ mátrix rangja $m$, és az $f$-nek a $c$-ben a $g=0$ feltételre vonatkozóan feltételes lokális minimuma (maximuma) van. Ekkor létezik olyan $\lambda \in \R^m$ vektor, amellyel az $F := f + \lambda g$ Lagrange-függvényre az alábbiak teljesülnek:
+        \begin{enumerate}
+            \item $\text{grad} \, F(c) = 0$;
+            \item a $Q_c^F$ kvadratikus alak a $g'(c)$ mátrixra nézve feltételesen pozitív (negatív) szemidefinit.
+        \end{enumerate}
+    };\newline
+
+    \textbf{Bizonyítás:} Nincs - nehéz.
+
+    \newpage
+    \section*{Implicitfüggvény-tétel}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Adott $n, \, m \in \N, \, 2 \leq n$, valamint $1 \leq m < n$ mellett az
+        \[
+            f \in \R^{n-m} \times \R^{m} \to \R^m
+        \]
+        függvényről tételezzük fel az alábbiakat: $f \in C^1$, és az $(a, \, b) \in \text{int} \, \D$ helyen
+        \[
+            f(a, \, b) = 0, \, \text{det} \, \partial_2 f(a, \, b) \neq 0.
+        \]
+        Ekkor alkalmas $K(a), \, K(b)$ környezetekkel létezik az $f$ által az $(a, \, b)$ körül meghatározott
+        \[
+            \varphi : K(a) \to K(b)
+        \]
+        implicitfüggvény, ami folytonosan differenciálható, és
+        \[
+            \varphi'(x) = -\partial_2 f(x, \, \varphi(x))^{-1} \cdot \partial_1 f(x, \, \varphi(x)) \quad (x \in K(a)).
+        \]
+    };\newline
+
+    \textbf{Bizonyítás:} Nincs - nehéz.
+
+    \section*{Inverzfüggvény-tétel I.}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Tegyük fel, hogy az $f \in \R^n \to \R^n$ függvény folytonosan differenciálható az $a \in \text{int} \, \D$ pontban, és az $a$-beli Jacobi-mátrixa invertálható. Ekkor az $f$ függvény $a$-ban lokálisan invertálható, és az $a$-beli lokális inverze folytonos.
+    };\newline
+
+    \textbf{Bizonyítás:} Lásd Simon P. - Analízis IV. 16. oldal.
+
+    \section*{Inverzfüggvény-tétel II.}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Tegyük fel, hogy $1 \leq n \in \N$, az $f \in \R^n \to \R^n$ függvény folytonosan differenciálható, az $a \in \text{int} \, \D$ pontban az $f'(a)$  Jacobi-mátrixra $\text{det} \, f'(a) \neq 0$ teljesül. Ekkor alkalmas $K(a) \subset \D$ környezettel az $f_{|K(a)}$ leszűkítés invertálható, a $h := (f_{|K(a)})^{-1}$ lokális inverfüggvény folytonosan differenciálható, és
+        \[
+            h'(x) = \big( f'(h(x)) \big)^{-1} \quad (x \in \mathcal{D}_h).
+        \]
+    };\newline
+
+    \textbf{Bizonyítás:} Nincs - nehéz.
+
+\end{document}
