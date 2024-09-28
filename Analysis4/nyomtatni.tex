@@ -54,14 +54,14 @@
 	proof/.style={
 		fill=white,
 		rectangle,
-		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex, moderngreen},
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex, gray},
 		text width=0.9\textwidth,
 		inner sep=6pt,
 	},
 	proof1/.style={
 		fill=white,
 		rectangle,
-		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=0, moderngreen},
+		drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=0, gray},
 		text width=0.9\textwidth,
 		inner sep=6pt,
 	}
@@ -279,7 +279,109 @@
     \end{enumerate}
     kikötésnek is. Az így "kibővített" feladatot \textit{kezdetiérték-problémának} (vagy röviden \textit{Cauchy-feladatnak}) nevezzük, és a továbbiakban minderre a \textit{k.é.p.} rövidítést fogjuk használni. 
 
+    \newpage
     \section{Szeparábilis differenciálegyenlet}
+
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} \textit{Tetszőleges szeparábilis differenciálegyenletre vonatkozó kezdetiérték-probléma megoldható, és bármilyen} $\varphi, \, \psi$ \textit{megoldásaira}
+        \[
+            \varphi(t) = \psi(t) \quad (t \in \mathcal{D}_\varphi \cap \mathcal{D}_\psi).
+        \]
+    };\newline
+
+    \tikz \node[proof1]
+    {
+        \textbf{Bizonyítás.} Először feltesszük, hogy minden $g : I \to \R, \, h : J \to \R$ folytonos függvényre létezik megoldás, azaz egy olyan $\varphi \in I \to J$ függvény, hogy
+        \[
+            \frac{\varphi'(x)}{h(\varphi(t))} = g(t) \quad (t \in \mathcal{D}_\varphi).
+        \]
+        Mivel $g, \, 1/h$ függvények egy-egy nyílt intervallumon vannak értelmezve és folytonosak, így léteznek a
+        \[
+            \int g \ni G : I \to \R, \quad \int h \ni H : J \to \R
+        \]
+        primitív függvényeik: $G' = g$ és $H' = 1/h$. Az összetett függvény deriválásával kapcsolatos tétel szerint
+        \[
+            \frac{\varphi'(t)}{h(\varphi(t))} = (H \circ \varphi)'(t) = g(t) = G'(t) \quad (t \in \mathcal{D}_\varphi),
+        \]
+        azaz
+        \[
+            (H \circ \varphi - G)'(t) = 0 \quad (t \in \mathcal{D}_\varphi).
+        \]
+        Tehát (mivel a $\mathcal{D}_\varphi$ is egy nyílt intervallum) van olyan $c \in \R$, hogy
+        \[
+            H(\varphi(t)) - G(t) = c \quad (t \in \mathcal{D}_\varphi).
+        \]
+        Az $1/h$ függvény nyilván nem vesz fel $0$-t a $J$ intervallum egyetlen pontjában sem, így ugyanez igaz a $H'$ függvényre is. A deriváltfüggvény Darboux-tulajdonsága miatt tehát a $H'$ állandó előjelű. következőképpen a $H$ szigorúan monoton függvény, amiért invertálható. A $H^{-1}$ inverz függvény segítségével ezért azt kapjuk, hogy
+        \[
+            \varphi(t) = H^{-1}(G(t) + c) \quad (t \in \mathcal{D}_\varphi).
+        \]
+        Ha $\tau \in I, \, \xi \in J$, és a $\varphi$ megoldás eleget tesz a $\varphi(\tau) = \xi$ kezdeti feltételnek, akkor
+        \[
+            \xi = H^{-1}(G(\tau) + c),
+        \]
+        azaz $H(\xi) = G(\tau) + c$, ill.
+        \[
+            c = H(\xi) - G(\tau).
+        \]
+        Így
+        \[
+            \varphi(t) = H^{-1}\big( G(t) + H(\xi) - G(\tau) \big) \quad (t \in \mathcal{D}_\varphi).
+        \]
+    };\newpage
+
+    \tikz \node[proof]
+    {
+        Ha a $G, \, H$ helyett más primitív függvényeket választunk (legyenek ezek $\tilde{G}, \, \tilde{H}$), akkor alkalmas $\alpha, \, \beta \in \R$ konstansokkal
+        \[
+            \tilde{G} = G + \alpha, \, \tilde{H} = H + \beta,
+        \]
+        és
+        \[
+            H^{-1}\big( G(t) + H(\xi) - G(\tau) \big) = \tilde{H}^{-1}\big( \tilde{G}(t) + \tilde{H}(\xi) - \tilde{G}(\tau) \big) \quad (t \in \mathcal{D}_\varphi).
+        \]
+        Ez azt jelenti, hogy a fentiekben mindegy, hogy melyik $G, H$ primitív függvényekből indulunk ki. Más szóval, ha a $\psi$ függvény is megoldása a vizsgált kezdetiérték-problémának, akkor
+        \[
+            \psi(t) = H^{-1}\big( G(t) + H(\xi) - G(\tau) \big) \quad (t \in \mathcal{D}_\psi).
+        \]
+        Elegendő már csak azt belátnunk, hogy van létezik a megoldás. Tekintsük ehhez azokat a $G, \, H$ primitív függvényeket, amelyekre
+        \[
+            H(\xi) = G(\tau) = 0,
+        \]
+        és legyen 
+        \[
+            F(x, \, y) := H(y) - G(x) \quad (x \in I, \, y \in J).
+        \]
+        Ekkor az
+        \[
+            F : I \times J \to \R
+        \]
+        függvényre léteznek és folytonosak a
+        \[
+            \partial_1 F(x, \, y) = -G'(x) = -g(x) \quad (x \in I, \, y \in J),
+        \]
+        \[
+            \partial_2 F(x, \, y) = H'(y) = \frac{1}{h(y)} \quad (x \in I, \, y \in J)
+        \]
+        parciális deriváltfüggvények. Ez azt jelenti, hogy az $F$ függvény folytonosan differenciálható,
+        \[
+            F(\tau, \, \xi) = 0,
+        \]
+        továbbá
+        \[
+            \partial_2 F(\tau, \, \xi) = H'(\xi) = \frac{1}{h(\xi)} \neq 0.
+        \]
+        Ezért az $F$-re alkalmazható az implicitfüggvény-tétel, miszerint alkalmas $K(\tau) \subset I, \, K(\xi) \subset J$ környezetekkel létezik az $F$ által a $(\tau, \, \xi)$ körül meghatározott
+        \[
+            \varphi : K(\tau) \to K(\xi)
+        \]
+        folytonosan differenciálható implicitfüggvény, amire $\varphi(\tau) = \xi$ és
+        \[
+            \varphi'(t) = - \frac{\partial_1 F(t, \, \varphi(t))}{\partial_2 F(t, \, \varphi(t))} = g(t) \cdot h(\varphi(t)) \quad (t \in K(\tau)).
+        \]
+        Röviden: a $\varphi$ implicitfüggvény megoldása a szóban forgó kezdetiérték-problémának.
+    };
+
 
 
 \end{document}
