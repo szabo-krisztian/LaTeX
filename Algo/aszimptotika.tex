@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+\usepackage[left=0.9in, right=0.9in, top=0.7in, bottom=0.7in]{geometry}
+\usepackage{tikz}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{amsfonts, amssymb, amsmath}
+\usepackage{titlesec}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{enumitem}
+\usetikzlibrary{shadows.blur}
+\usepackage{lmodern}
+\usepackage{mathrsfs}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+
+\title{\textcolor{purple}{\Huge\textbf{Aszimptotika}}}
+\author{Dr. Ásványi Tibor jegyzetéből}
+
+\renewcommand{\contentsname}{Tartalom}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\exists}
+\newcommand{\mm}{\mathbf{m}}
+\newcommand{\MM}{\mathbf{M}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\D}{\mathcal{D}_f}
+
+\definecolor{modernyellow}{HTML}{F4E4BC}
+\definecolor{moderngreen}{HTML}{BDDCBD}
+
+\tikzset
+{
+        definition/.style={
+                draw,
+                fill=white,
+                line width=1pt,
+                rounded corners,
+                drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+                text width=0.9\textwidth,
+                inner sep=10pt
+        },
+        theorem/.style={
+                draw,
+                fill=white,
+                line width=1pt,
+                rounded corners,
+                drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+                text width=0.9\textwidth,
+                inner sep=10pt
+        },
+        proof/.style={
+                fill=white,
+                rectangle,
+                drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex, gray},
+                text width=0.9\textwidth,
+                inner sep=6pt,
+        },
+        proof1/.style={
+                fill=white,
+                rectangle,
+                drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=0, gray},
+                text width=0.9\textwidth,
+                inner sep=6pt,
+        }
+}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+
+    \section{Függvények aszimptotikus viselkedése}
+    \tikz \node[definition]
+    {
+        \textbf{1. Definíció.} \textit{Valamely $P(n)$ tulajdonság elég nagy $n$-ekre pontosan akkor teljesül, ha}
+        \[
+            \E N \in \N, \text{ \textit{hogy} } \forall n \in \N, \, n \geq N: P(n) \text{ \textit{igaz}}.
+        \]
+    };\\
+
+    \tikz \node[definition]
+    {
+        \textbf{2. Definíció.} \textit{Az} $f \in \R \to \R$ \textit{függvény AP (aszimptotikusan pozitív), ha elég nagy $n$-ekre $f(n) > 0$}.
+    };\\
+
+    Azaz egy $f \in \R \to \R$ függvény AP pontosan akkor, ha
+    \[
+        \E N \in \N, \, \forall n \in \N, \, n \geq N : f(n) > 0.
+    \]
+
+    Egy tetszőleges helyes program futási ideje és tárigénye is nyilvánvalóan, tetszőleges megfelelő mértékegységben (másodperc, perc Mbyte stb.) mérve pozitív számérték. Amikor (alsó és / vagy felső) becsléseket végzünk a futási időre vagy a tárigényre, legtöbbször az input adatszerkezetek méretének függvényében végezzük a becsléseket.
+
+    Legyen
+    \[
+        \mathrm{P} := \{ f \in \N \to \R : f \text{ aszimptotikusan pozitív függvény} \}.
+    \]
+
+    \tikz \node[definition]
+    {
+        \textbf{3. Definíció.} Legyen $g \in \mathrm{P}$. Ekkor legyen $O(g)$ egy függvényhalmaz ami olyan $f \in \mathrm{P}$ függvényekből áll, amiket elég nagy $n$ helyettesítési értékekre, megfelelő $d \in \R^+$ szorzóval felülről becsül a $g$ függvény, azaz
+        \[
+             O(g) := \{ f \in \mathrm{P} : \E d \in \R^+, \text{ hogy elég nagy $n$-ekre } d \cdot g(n) \geq f(n) \}.
+        \]
+    };\\
+
+    \tikz \node[definition]
+    {
+        \textbf{4. Definíció.} Legyen $g \in \mathrm{P}$. Ekkor legyen $\Omega(g)$ egy függvényhalmaz ami olyan $f \in \mathrm{P}$ függvényekből áll, amiket elég nagy $n$ helyettesítési értékekre, megfelelő $d \in \R^+$ szorzóval alulról becsül a $g$ függvény, azaz
+        \[
+             \Omega(g) := \{ f \in \mathrm{P} : \E d \in \R^+, \text{ hogy elég nagy $n$-ekre } d \cdot g(n) \leq f(n) \}.
+        \]
+    };\\
+
+    \tikz \node[definition]
+    {
+        \textbf{5. Definíció.} Legyen $g \in \mathrm{P}$. Ekkor legyen
+        \[
+            \Theta(g) := O(g) \cap \Omega(g).
+        \]
+    };
+    
+    
+\end{document}

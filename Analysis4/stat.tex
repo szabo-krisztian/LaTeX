@@ -12,6 +12,7 @@
 \usepackage{caption}
 \usepackage{enumitem}
 \usetikzlibrary{shadows.blur}
+\usepackage{graphicx}
 \usepackage{lmodern}
 \setlength{\parskip}{0pt}
 \setlength{\parindent}{0pt}
@@ -68,6 +69,7 @@
 
 \begin{document}
     \maketitle
+    \tableofcontents
 
     \newpage
     \section{Előadás}
@@ -434,7 +436,8 @@
     \[
         \sum_{i=1}^n \partial_\theta \ln P_\theta(\xi_i = x_i) = 0.
     \]
-    Példa (indikátor):
+    \subsection{Indikátor példa}
+    
     \[
         L(\mathbf{x}, \, p) = p^{\sum_{i=1}^n x_i} (1-p)^{n - \sum_{i=1}^n x_i},
     \]
@@ -450,7 +453,7 @@
             p = \frac{\sum_{i=1}^n x_i}{n}.
     \]
 
-    Példa (Posisson):
+    \subsection{Poisson példa}
     Tegyük fel, hogy $\eta_1, \, \dots, \, \eta_n \sim$ Poisson($\lambda$). Ekkor
     \[
         L(\underline{k}, \, \lambda) = P_\lambda(\eta_1 = k_1, \, \dots, \, \eta_n = k_n) =
@@ -472,7 +475,87 @@
         \[
             E_\theta(\hat{\theta}(\xi)) = \theta \quad (\theta \in \Theta).
         \]
+        Konzisztencia: $\hat{\theta}(\xi) \to \theta$ sztochasztikusan $(n \to \infty)$.\\
+        Elégséges feltétel: $E_\theta( \hat{\theta}_n(\xi)) \to \theta$ és $D_\theta^2(\hat{\theta}_n(\xi)) \to 0$
     };
 
+    \tikz \node[definition]
+    {
+        \textbf{Definíció.} Torzítatlan beclésekre: $T_1$ hatásosabb becslése $h(\Theta)$-nak a $T_2$-nél, ha
+        \[
+            D_\theta^2(T_1(\underline{X})) \leq D_\theta^2(T_2(\underline{X}))
+        \]
+        teljesül minden $\theta$ paraméterekre.\\
+        A $T$ torzítatlan becslés hatásos, ha minden más torzítatlan becslésnél hatásosabb.\\
+        Átlagos négyzetes eltérés:
+        \[
+            E_\theta(T(\underline{X}) - \theta)^2
+        \]
+    };
+
+    \newpage
+    \subsection{Hatásos becslés egyértelműsége}
+    \subsection{Mennyi információt hordoz a statisztika}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.7\textwidth]{hatasos_becsles_egyert.png}
+        \includegraphics[width=0.7\textwidth]{2.png}
+    \end{figure}
+
+    \newpage
+    \subsection{Elégséges statisztika}
+    \subsection{Elégséges statisztika diszkrét minta esetén}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.7\textwidth]{3.png}
+        \includegraphics[width=0.7\textwidth]{4.png}
+    \end{figure}
+
+    
+    \newpage
+    \subsection{Feltételes várható érték}
+    \subsection{Indikátor példa}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.7\textwidth]{5.png}
+        \includegraphics[width=0.7\textwidth]{6.png}
+    \end{figure}
+
+    \newpage
+    \subsection{Neyman-féle faktorizációs}
+    \subsection{Poisson példa}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.7\textwidth]{7.png}
+        \includegraphics[width=0.7\textwidth]{8.png}
+    \end{figure}
+
+    \newpage
+    \subsection{Elégséges statisztika általában}
+    \subsection{Abszolút folytonos eset}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.7\textwidth]{9.png}
+        \includegraphics[width=0.7\textwidth]{10.png}
+    \end{figure}
+
+    \newpage
+    \subsection{Példa normális eloszlásra}
+    \subsection{Pédla egyenletes eloszlásra}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.7\textwidth]{11.png}
+        \includegraphics[width=0.7\textwidth]{12.png}
+    \end{figure}
+
+    \newpage
+    \subsection{Maximum likelihood becslés}
+    \subsection{momentum módszer}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.7\textwidth]{13.png}
+        \includegraphics[width=0.7\textwidth]{14.png}
+    \end{figure}
 
 \end{document}
