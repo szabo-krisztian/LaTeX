@@ -1,5 +1,4 @@
 \documentclass[12pt]{article}
-\usepackage[left=0.9in, right=0.9in, top=0.7in, bottom=0.7in]{geometry}
 \usepackage{tikz}
 \usepackage{setspace}
 \usepackage{hyperref}
@@ -32,39 +31,44 @@
 \definecolor{modernyellow}{HTML}{F4E4BC}
 \definecolor{moderngreen}{HTML}{BDDCBD}
 
+% Adjusting the TikZ settings
 \tikzset
 {
         definition/.style={
                 draw,
-                fill=white,
+                fill=modernyellow,
                 line width=1pt,
                 rounded corners,
                 drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
-                text width=0.9\textwidth,
-                inner sep=10pt
+                text width=1\textwidth,  % Reduced text width for better spacing
+                inner sep=7pt,  % Reduced padding inside the node
+                align=justify  % Improved text alignment and spacing
         },
         theorem/.style={
-                draw,
-                fill=white,
-                line width=1pt,
-                rounded corners,
-                drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
-                text width=0.9\textwidth,
-                inner sep=10pt
+            draw,
+            fill=moderngreen,
+            line width=1pt,
+            rounded corners,
+            drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+            text width=1\textwidth,  % Reduced text width for better spacing
+            inner sep=7pt,  % Reduced padding inside the node
+            align=justify  % Improved text alignment and spacing
         },
         proof/.style={
                 fill=white,
                 rectangle,
-                drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex, gray},
-                text width=0.9\textwidth,
+                drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex, moderngreen},
+                text width=0.8\textwidth,
                 inner sep=6pt,
+                align=justify
         },
         proof1/.style={
                 fill=white,
                 rectangle,
-                drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=0, gray},
-                text width=0.9\textwidth,
+                drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=0, moderngreen},
+                text width=0.8\textwidth,
                 inner sep=6pt,
+                align=justify
         }
 }
 
@@ -74,6 +78,9 @@
     \newpage
 
     \section{Függvények aszimptotikus viselkedése}
+
+    E fejezet célja, hogy tisztázza a programok hatékonyságának nagyságrendjeivel kapcsolatok alapvető fogalmakat, és az ezekhez kepcsolódó függvényosztályok legfontosabb tulajdonságait.\\
+
     \tikz \node[definition]
     {
         \textbf{1. Definíció.} \textit{Valamely $P(n)$ tulajdonság elég nagy $n$-ekre pontosan akkor teljesül, ha}
@@ -92,11 +99,11 @@
         \E N \in \N, \, \forall n \in \N, \, n \geq N : f(n) > 0.
     \]
 
-    Egy tetszőleges helyes program futási ideje és tárigénye is nyilvánvalóan, tetszőleges megfelelő mértékegységben (másodperc, perc Mbyte stb.) mérve pozitív számérték. Amikor (alsó és / vagy felső) becsléseket végzünk a futási időre vagy a tárigényre, legtöbbször az input adatszerkezetek méretének függvényében végezzük a becsléseket.
+    Egy tetszőleges helyes program futási ideje és tárigénye is nyilvánvalóan, tetszőleges megfelelő mértékegységben (másodperc, perc Mbyte stb.) mérve pozitív számérték. Amikor (alsó és / vagy felső) becsléseket végzünk a futási időre vagy a tárigényre, legtöbbször az input adatszerkezetek méretének függvényében végezzük a becsléseket. Így a becsléseket leíró függvények természetesen $\N \to \R$ típusúak. Megkövetelhetnénk, hogy $\N \to \mathbb{P}$ típusúak legyenek, de annak érdekében, hogy képleteink minél egyszerűbbek legyenek, általában megelégszünk azzal, hogy a becsléseket leíró függvények aszimptotikusan pozitívak (AP) legyenek.
 
     Legyen
     \[
-        \mathrm{P} := \{ f \in \N \to \R : f \text{ aszimptotikusan pozitív függvény} \}.
+        \mathrm{P} := \{ f : \N \to \R : f \text{ aszimptotikusan pozitív függvény} \}.
     \]
 
     \tikz \node[definition]
@@ -120,6 +127,14 @@
         \textbf{5. Definíció.} Legyen $g \in \mathrm{P}$. Ekkor legyen
         \[
             \Theta(g) := O(g) \cap \Omega(g).
+        \]
+    };
+
+    \tikz \node[theorem]
+    {
+        \textbf{Következmény.} Egy $g \in P$ esetén a $\Theta(g)$ függvényhalmaz olyan $f \in P$ függvényekből áll, amiket elég nagy $n$ helyettesítési értékekre, megfelelő pozitív konstans szorzókkal alulról és felülről is becsül a $g$ függvény
+        \[
+            \Theta(g) = \{ f \in P : \E c, \, d > 0, \text{ hogy elég nagy } n \text{-ekre} c \cdot g(n) \leq f(n) \leq d \cdot g(n).\}
         \]
     };
     

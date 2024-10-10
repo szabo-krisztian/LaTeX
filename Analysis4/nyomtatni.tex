@@ -382,6 +382,54 @@
         Röviden: a $\varphi$ implicitfüggvény megoldása a szóban forgó kezdetiérték-problémának.
     };
 
+    \newpage
 
+    \section{Gömbi integrál}
+    Mindenek előtt idézzünk fel néhány fontos tulajdonságot, amivel "kiterjeszthetjük" a Riemann-integrálhatóságot speciális halmazokon értelmezett korlátos függvényekre.
+
+    \subsection{Nullamértékű halmaz}
+    \tikz \node[definition]
+    {
+        \textbf{Definíció.} Legyen $1 \leq s \in \N, \, A \subset \R^s$. Azt mondju, hogy az $A$ halmaz \textit{nullamértékű}, ha tetszőleges $\varepsilon > 0$ számhoz megadható $I_k \subset \R^s$ $(k \in \N)$ intervallumoknak egy olyan sorozata, hogy
+        \[
+            A \subset \bigcup_{k=0}^\infty I_k \text{ és } \sum_{k=0}^\infty |I_k| < \varepsilon.
+        \]
+    };
+
+    \subsection{Lebesgue-kritérium}
+
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Tegyük fel, hogy az $I \subset \R^n$ intervallumon értelmezett $f : I \to \R$ függvény korlátos, és legyen az $f$ szakadási helyeinek a halmaza
+        \[
+            \mathcal{A}_f := \left\{ x\in I : f \not\in \mathcal{C}\{x\} \right\}.
+        \]
+        Ekkor az $f$ Riemann-integrálhatósága, azaz $f \in R(I)$ azzal ekvivalens, hogy az $\mathcal{A}_f$ halmaz nullamértékű.
+    };\\
+
+    \tikz \node[theorem]
+    {
+        \textbf{Definíció.} Az $f \in \R^n \to \R$ függvény (esetleges) gyökhelyeitől különböző $\D$-beli elemek halmazának lezárását, azaz a
+        \[
+            \text{supp} \, f := \overline{\{ x \in \D : f(x) \neq 0 \}}
+        \]
+        halmazt az $f$ függvény tartójának nevezzük. Világos, hogy a supp $f$ halmaz zárt, és az $x \in \D \backslash \text{supp} \, f$ helyeken $f(x) = 0$. Ha a $\text{supp} \, f$ halmaz korlátos is, azaz kompakt, akkor egy alkalmas $I \subset \R^n$ intervallummal $\text{supp} \, f \subset I$. Legyen ebben az esetben, most
+        \[
+            F_I(x) :=
+            \begin{cases}
+                f(x) & (x \in \D \cap I) \\
+                0 & (x \in I \backslash \D).
+            \end{cases}
+        \]
+        Belátható, hogy ha $F_I \in R(I)$, akkor egyúttal $F_J \in R(J)$ minden olyan $J \subset \R^n$ intervallumra, amelyre $\text{supp} \, f \subset J$, továbbá
+        \[
+            \int_I F_I = \int_J F_J.
+        \]
+        Van értelme tehát az alábbi definíciónak:
+        \[
+            \int_{\R^n} f := \int_{\D} := \int_I F_I
+        \]
+    };
+    
 
 \end{document}
