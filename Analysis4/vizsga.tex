@@ -16,7 +16,7 @@
 \setlength{\parskip}{0pt}
 \setlength{\parindent}{0pt}
 
-\title{\textcolor{purple}{\Huge\textbf{Analízis 4}}}
+\title{\textcolor{purple}{\Huge\textbf{Analízis 4 vizsgatematika}}}
 \author{Dr. Simon Péter jegyzetéből}
 \date{}
 
@@ -39,14 +39,14 @@
 \tikzset
 {
     definition/.style={
-            draw,
-            fill=white,
-            line width=1pt,
-            rounded corners,
-            drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
-            text width=1\textwidth,
-            inner sep=8pt,
-            align=justify
+        draw,
+        fill=white,
+        line width=1pt,
+        rounded corners,
+        drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+        text width=1\textwidth,
+        inner sep=8pt,
+        align=justify
     },
     theorem/.style={
         draw,
@@ -81,6 +81,240 @@
     \tableofcontents
     \newpage
     
+    \section{Az implicitfüggvény fogalma, kapcsolata a feltételes szélsőérték problémával és az inverzfüggvénnyel. Implicitfüggvény-tétel, inverzfüggvény-tétel. (a bizonyítás vázlata)}
+    \subsection{Az implicitfüggvény fogalma}
+    Legyenek $n, \, m \in \N$ természetes számok, ahol $2 \leq n$ és $1 \leq m \leq n$. Ha
+    \[
+        \xi = (\xi_1, \, \dots, \, \xi_n) \in \R^n,
+    \]
+    akkor legyen
+    \[
+        x := (\xi_1, \, \dots, \, \xi_{n-m}) \in \R^{n-m}, \, y := (\xi_{n-m+1}, \, \dots, \, \xi_n) \in \R^m,
+    \]
+    és ezt következőképpen fogjuk jelölni:
+    \[
+        \xi = (x, \, y).
+    \]
+    Röviden:
+    \[
+        \R^n \equiv \R^{n-m} \times \R^{m}.
+    \]
+    Ha tehát
+    \[
+        f = (f_1, \, \dots, \, f_m) \in \R^n \to \R^m,
+    \]
+    azaz
+    \[
+        f \in \R^{n-m} \times \R^m \to \R^m,
+    \]
+    akkor az $f$-et olyan kétváltozós vektorfüggvénynek tekintjük, ahol az $f(x, \, y)$ helyettesítési értékben az argumentum első változójára $x \in \R^{n-m}$, a második változójára pedig $y \in \R^m$ teljesül.\\
+
+    Tegyük fel, hogy ebben az értelemben valamilyen $(a, \, b) \in \D$ zérushelye az $f$-nek:
+    \[
+        f(a, \, b) = 0.
+    \]
+    Tételezzük fel továbbá, hogy van az $a$-nak egy olyan $K(a) \subset \R^{n-m}$ környezete, a $b$-nek pedig olyan $K(b) \subset \R^m$ környezete, hogy tetszőleges $x \in K(a)$ esetén egyértelműen létezik olyan $y \in K(b)$, amellyel
+    \[
+        f(x, \, y) = 0.
+    \]
+    Definiáljuk ekkor a $\varphi(x) := y$ hozzárendeléssel a
+    \[
+        \varphi : K(a) \to K(b)
+    \]
+    függvényt, amikor is
+    \[
+        f(x, \, \varphi(x)) = 0 \quad (x \in K(a)).
+    \]
+    Itt minden $x \in K(a)$ mellett az $y = \varphi(x)$ az egyetlen olyan $y \in K(b)$ hely amelyre
+    \[
+        f(x, \, y) = 0.
+    \]
+    Az előbbi $\varphi$ függvényt az $f$ által (az $(a, \, b)$ körül) meghatározott \textit{implicitfüggvénynek} nevezzük. Tehát az
+    
+    \[
+    \left\{
+    \begin{array}{ccc}
+        f_1(x_1, \, \dots, \, x_{n-m}, \, y_1, \, \dots, \, y_m) & = & 0 \\
+        \vdots & & \vdots \\
+        f_m(x_1, \, \dots, \, x_{n-m}, \, y_1, \, \dots, \, y_m) & = & 0
+    \end{array}
+    \right.
+    \]
+
+    egyenletrendszernek minden $x = (x_1, \, \dots, \, x_{n-m}) \in K(a)$ mellett egyértelműen létezik
+    \[
+        y = (y_1, \, \dots, \, y_m) = \varphi(x) \in K(b)
+    \]
+    megoldása. Nyilván $\varphi(a) = b$.
+
+    \subsection{Implicitfüggvény-tétel}
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel (implicitfüggvény-tétel).} Adott $n, \, m \in \N, \, 2 \leq n$, valamint $1 \leq m < n$ mellett az
+        \[
+            f \in \R^{n-m} \times \R^m \to \R^m
+        \]
+        függvényről tételezzük fel az alábbiakat: $f \in C^1$, és az $(a, \, b) \in \text{int} \, \D$ helyen
+        \[
+            f(a, \, b) = 0, \, \det \partial_2f(a, \, b) \neq 0.
+        \]
+        Ekkor alkalmas $K(a), \, K(b)$ környezetekkel létezik az $f$ által az $(a, \, b)$ körül meghatározott
+        \[
+            \varphi : K(a) \to K(b)
+        \]
+        implicitfüggvény, ami folytonosan differenciálható, és
+        \[
+            \varphi'(x) = -\partial_2 f(x, \, \varphi(x))^{-1} \cdot \partial_1 f(x, \, \varphi(x)) \quad (x \in K(a)).
+        \]
+    };\\
+
+    \subsection{Lokális invertálhatóság}
+    Elöljáróban idézzük fel az egyváltozós valós függvényekkel kapcsolatban tanultakat. Ha pl.
+    \[
+        h \in \R \to \R, \, h \in C^1\{a\}
+    \]
+    és $h'(a) \neq 0$, akkor egy alkalmas $r>0$ mellett
+    \[
+        I := (a-r, \, a+r) \subset \mathcal{D}_h,
+    \]
+    létezik a $(h_{|_I})^{-1}$ inverzfüggvény, a $g := (h_{|_I})^{-1}$ függvény differenciálható és 
+    \[
+        g'(x) = \frac{1}{h'(g(x))} \quad (x \in \mathcal{D}_g).
+    \]
+    A továbbiakban a most megfogalmazott "egyváltozós" állítás megfelelőjét fogjuk vizsgálni többáltozós vektorfüggvényekre.\\
+
+    Legyen ehhez valamilyen $1 \leq n \in \N$ mellett adott az
+    \[
+        f \in \R^n \to \R^n
+    \]
+    függvény és az $a \in \text{int} \, \D$ pont. Azt mondjuk, hogy az $f$ függvény \textit{lokálisan invertálható} az $a$-ban, ha létezik olyan $K(a) \subset \D$ környezet, hogy a $g := f_{|_{K(a)}}$ leszűkítés invertálható függvény. Minden ilyen esetben a $g^{-1}$ inverzfüggvényt az $f$ $a$-beli \textit{lokális inverzének} nevezzük.\\
+
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} Legyen $1 \leq n \in \N, \, f \in \R^n \to \R^n$. Tegyük fel, hogy egy $a \in \text{int} \, \D$ pontban $f \in C^1\{a\}$ és $\det f'(a) \neq 0$. Ekkor az $f$ függvény az $a$-ban lokálisan invertálható, és az $a$-beli lokális inverze folytonos.
+    };\\
+    
+    \textbf{Bizonyítás (vázlat).} Feltehető, hogy
+    \[
+        a = f(a) = 0 \in \R^n, \, f'(0) = (v_{ik})_{i, \, k = 1}^n \in \R^{n \times n}
+    \]
+    pedig az $n \times n$-es egységmátrix:
+    \[
+        v_{ii} = 1, \, v_{ik} = 0 \quad (i, \, k \in \{ i, \, \dots, \, n \}, \, i \neq k).
+    \]
+    Legyen $y \in \R^n$ és
+    \[
+        \Phi_y(x) := x - f(x) + y =: g(x) + y \quad (x \in \D).
+    \]
+    Ekkor $g \in C^1\{0\}$ és
+    \[
+        g'(0) = \Theta := (0)^n_{i, \, k = 1} \in \R^{n \times n}
+    \]
+    (az $n \times n$-es nullmátrix). Ha tehát
+    \[
+        g = (g_1, \, \dots, \, g_n),
+    \]
+    akkor egy $K_r(0) \subset \D \quad (r > 0)$ környezet minden pontjában a $g$ függvény differenciálható, a $g_k$ koordinátafüggvények $\partial_i g_k$ $(i, \, k = 1, \, \dots, \, n)$ parciális deriváltfüggvényei valamennyien folytonosak a $0$-ban, és
+    \[
+        \partial_i g_k(0) = 0 \quad (i, \, k = 1, \, \dots, \, n).
+    \]
+    Válasszuk a $q > 0$ számot úgy, hogy $n \cdot q < 1 / 2$, ekkor az előbbiek szerint a $K_r(0)$ környezetről az is feltehető, hogy
+    \[
+        G_r(0) := \overline{K_r(0)} = \{ x \in \R^n : \|x\|_\infty \leq r \} \subset \D
+    \]
+    és
+    \[
+        |\partial_i g_k(x)| < q \quad (x \in G_r(0), \, i, \, k = 1, \, \dots, \, n).
+    \]
+    Ezért
+    \[
+        \|g'(x)\|_{(\infty)} = \max \left\{ \sum_{i=1}^n |\partial_i g_k(x)| : k = 1, \, \dots, \, n \right\} < n \cdot q < \frac{1}{2} \quad (x \in G_r(0)).
+    \]
+    Így azt mondhatjuk, hogy
+    \[
+        \| g(x) - g(t) \| \leq
+    \]
+    \[
+        \sup \left\{ \|g'(\xi)\|_{(\infty)} : \xi \in G_r(0) \right\} \cdot \|x-t\|_\infty \leq \frac{1}{2} \cdot \|x-t\|_\infty \quad (x, \, t \in G_r(0)).
+    \]
+    Tehát egyúttal
+    \[  
+        \| \Phi_y(x) - \Phi_y(t)\|_\infty = \|g(x) - g(t)\|_\infty \leq
+    \]
+    \[
+        \frac{1}{2} \cdot \|x-t\|_\infty \quad (x \in \R^n, \, x, \, t \in G_r(0)),
+    \]
+    speciálisan tetszőleges $y \in K_{r/2}(0)$ mellett
+    \[
+        \| \Phi_y(x) \|_\infty \leq \|g(x)\|_\infty + \|y\|_\infty = \|g(x) - g(0)\|_\infty + \|y\|_\infty \leq
+    \]
+    \[
+        \frac{1}{2} \cdot \|x\|_\infty + \|y\|_\infty < r \quad (x \in G_r(0)),
+    \]
+    azaz $\Phi_y(x) \in K_r(0)$. Mindez azt jelenti, hogy bármelyik $y \in K_{r/2}(0)$ esetén a
+    \[
+        \Phi_y : G_r(0) \to K_r(0) \quad (\subset G_r(0))
+    \]
+    leképezés kontrakció. A fixponttétel alkalmazásával ezért $y \in K_{r/2}(0)$ mellett egyértelműen létezik olyan $x_y \in G_r(0)$, ami fixpontja a $\Phi_y$-nak:
+    \[
+        \Phi_y(x_y) = x_y.
+    \]
+    Definiálhatunk tehát egy
+    \[
+        \varphi : K_{r/2}(0) \to G_r(0)
+    \]
+    leképezést, amelyre
+    \[
+        \varphi(y) := x_y \quad (y \in K_{r/2}(0)),
+    \]
+    azaz
+    \[
+        \Phi_y(\varphi(y)) = \varphi(y) \quad (y \in K_{r/2}(0)).
+    \]
+    Más szóval
+    \[
+        \Phi_y(\varphi(y)) = \varphi(y) - f(\varphi(y)) + y = g(\varphi(y)) + y = \varphi(y) \quad (y \in K_{r/2}(0)),
+    \]
+    amiből
+    \[
+        f(\varphi(y)) = y \quad (y \in K_{r/2}(0))
+    \]
+    is rögtön következik. Az eddigieket figyelembe véve
+    \[
+        \|\varphi(y)\|_\infty = \|\Phi_y(\varphi(y))\|_\infty < r \quad (y \in K_{r/2}(0))
+    \]
+    miatt
+    \[
+        \varphi : K_{r/2}(0) \to K_r(0).
+    \]
+    Világos, hogy $\varphi(0) = 0$, hiszen $\Phi_0(0) = -f(0) + 0 = 0$, azaz $y = 0$-ra a $0 \in G_r(0)$ fixpontja a $\Phi_0$-nak.\\
+
+    Mutassuk meg, hogy a $\varphi$ függvény folytonos. Ha ui. $y, \, z \in K_{r/2}(0)$, akkor
+    \[
+        \varphi(y) = \Phi_y(\varphi(y)) + y, \, \varphi(z) = \Phi_z(\varphi(z)) + z
+    \]
+    amiből
+    \[
+        \|\varphi(y) - \varphi(z)\|_\infty \leq \|g(\varphi(y)) - g(\varphi(z))\|_\infty + \|y-z\|_\infty \leq
+    \]
+    \[
+        \frac{1}{2} \cdot \| \varphi(y) - \varphi(z) \|_\infty + \|y-z\|_\infty,
+    \]
+    ezért
+    \[
+        \| \varphi(y) - \varphi(z)\|_\infty \leq 2 \cdot \| y- z \|_\infty.
+    \]
+    Innen már világos, hogy a $\varphi$ (egyenletesen) folytonos. $\blacksquare$\\
+    
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel (inverzfüggvény-tétel).} Legyen $1 \leq n \in \N$, és $f \in \R^n \to \R^n$. Tegyük fel, hogy egy $a \in \text{int} \, \D$ pontban $f \in C^1\{a\}$, $\det f'(a) \neq 0$. Ekkor alkalmas $K(a) \subset \D$ környezettel az $f_{|_{K(a)}}$ leszűkítés invertálható, a $g := (f_{|_{K(a)}})^{-1}$ lokális inverzfüggvény folytonosan differenciálható, és
+		\[
+			h'(x) = \big( f'(h(x)) \big)^{-1} \quad (x \in \mathcal{D}_h).
+		\]
+    };\\
+
+    \newpage
     \section{Lipschitz-feltétel. A Picard-Lindelöf-féle egzisztencia-tétel. A k.é.p. megoldásának az egyértelműsége, unicitási tétel.}
     \subsection{Lipschitz-feltétel}
     Az előzőekben definiáltuk a \textit{k.é.p.} fogalmát: határozzunk meg olyan $\varphi \in I \to \Omega$ függvényt, amelyre (a korábban bevezetett jelölésekkel) igazak a következő állítások:
@@ -239,11 +473,7 @@
         \varphi'(x) = f(x, \, \varphi(x)) \quad \big( x \in (\tau - \delta_1, \, \tau + \delta_2) \big).
     \]
     Világos, hogy a $\varphi(\tau) = \xi$, más szóval a $\varphi$ megoldása a szóban forgó kezdetiérték-problémának. $\blacksquare$
-
-    $\psi : I_* \to \Omega, \, \psi \in C$
-    \[
-        F(t) := (t, \psi(t)) \quad (t \in I_*)
-    \]
+    
     
 
 
