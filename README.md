@@ -1,1 +1,1 @@
-# LateX
+# Math studies
