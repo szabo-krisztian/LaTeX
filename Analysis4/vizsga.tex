@@ -1,0 +1,250 @@
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{amsfonts, amssymb, amsmath}
+\usepackage{titlesec}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{enumitem}
+\usetikzlibrary{shadows.blur}
+\usepackage{lmodern}
+\usepackage{mathrsfs}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+
+\title{\textcolor{purple}{\Huge\textbf{Analízis 4}}}
+\author{Dr. Simon Péter jegyzetéből}
+\date{}
+
+\renewcommand{\contentsname}{Tartalom}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\exists}
+\newcommand{\mm}{\mathbf{m}}
+\newcommand{\MM}{\mathbf{M}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\D}{\mathcal{D}_f}
+\newcommand{\Dp}{\mathcal{D}_\varphi}
+
+\definecolor{modernyellow}{HTML}{F4E4BC}
+\definecolor{moderngreen}{HTML}{BDDCBD}
+
+\titleformat{\section}[block]{\large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.5ex plus 1ex minus .2ex}{1.3ex plus .2ex}
+
+\tikzset
+{
+    definition/.style={
+            draw,
+            fill=white,
+            line width=1pt,
+            rounded corners,
+            drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+            text width=1\textwidth,
+            inner sep=8pt,
+            align=justify
+    },
+    theorem/.style={
+        draw,
+        fill=white,
+        line width=1pt,
+        rounded corners,
+        drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+        text width=1\textwidth,
+        inner sep=8pt,
+        align=justify
+    },
+    proof/.style={
+            fill=white,
+            rectangle,
+            drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex, moderngreen},
+            text width=1\textwidth,
+            inner sep=8pt,
+            align=justify
+    },
+    proof1/.style={
+            fill=white,
+            rectangle,
+            drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=0, moderngreen},
+            text width=1\textwidth,
+            inner sep=8pt,
+            align=justify
+    }
+}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+    
+    \section{Lipschitz-feltétel. A Picard-Lindelöf-féle egzisztencia-tétel. A k.é.p. megoldásának az egyértelműsége, unicitási tétel.}
+    \subsection{Lipschitz-feltétel}
+    Az előzőekben definiáltuk a \textit{k.é.p.} fogalmát: határozzunk meg olyan $\varphi \in I \to \Omega$ függvényt, amelyre (a korábban bevezetett jelölésekkel) igazak a következő állítások:
+    \begin{enumerate}
+        \item $\mathcal{D}_\varphi$ nyílt intervallum;
+        \item $\varphi \in D$;
+        \item $\varphi'(x) = f(x, \, \varphi(x)) \quad (x \in \Dp)$;
+        \item adott $\tau \in I, \, \xi \in \Omega$ mellett $\tau \in \Dp$ és $\varphi(\tau) = \xi$.
+    \end{enumerate}
+    Értelmeztünk a megoldást, az egyértelműen való megoldhatóságot, a teljes megoldást. Speciális esetekben meg is oldottuk a gyakorlat számára is fontos kezdetiérték-problémákat. A továbbiakban megmutatjuk, hogy bizonyos feltételek mellett egy \textit{k.é.p.} mindig megoldható (egzisztenciatétel).\\
+
+    Legyenek tehát $0 < n \in \N$ mellett az $I \subset \R, \, \Omega \subset \R^n$ nyílt intervallumok, az
+    \[
+        f : I \times \Omega \to \R^n
+    \]
+    függvény pedig legyen folytonos. A $\tau \in I, \, \xi \in \Omega$ esetén keressük a fenti differenciálható $\varphi \in I \to \Omega$ függvényt. Az $f$ függvényről feltesszük, hogy minden kompakt $\emptyset \neq Q \subset \Omega$ halmazhoz létezik olyan $L_Q \geq 0$ konstans, amellyel
+    \[
+        \| f(t, \, y) - f(t, \, z) \|_\infty \leq L_Q \cdot \| y - z \|_\infty \quad (t \in I, \, y, \, z \in Q).
+    \]
+    Ekkor azt mondjuk, hogy az $f$ (a \textit{d.e.} jobb oldala) eleget tesz a \textit{Lipschitz-feltételnek}.
+
+    \subsection{Egzisztenciatétel}
+    \begin{center}
+        \tikz \node[theorem]
+        {
+            \textbf{Tétel (Picard-Lindelöf).} \textit{Tegyük fel, hogy egy differenciálegyenlet jobb oldala eleget tesz a Lipschitz-feltételnek. Ekkor a szóban forgó differenciálegyenletre vonatkozó tetszőleges kezdetiérték-probléma megoldható.}
+        };    
+    \end{center}
+    \textbf{Bizonyítás (vázlat).} Legyenek a $\delta_1, \, \delta_2 > 0$ olyan számok, hogy
+    \[
+        I_* := [\tau - \delta_1, \, \tau + \delta_2] \subset I,
+    \]
+    és tekintsük az alábbi függvényhalmazt:
+    \[
+        \mathcal{F} := \{ \psi : I_* \to \Omega : \psi \in C \}.
+    \]
+    Az $\mathcal{F}$ halmaz a
+    \[
+        \rho(\phi, \, \psi) := \max \{ \| \phi(x) - \psi(x)\|_\infty : x \in I_* \} \quad (\phi, \, \psi \in \mathcal{F})
+    \]
+    távolságfüggvénnyel teljes metrikus tér. Ha $\mathcal{X}$ jelöli a
+    \[
+        g : I_* \to \R^n
+    \]
+    függvények összességét, akkor definiáljuk a
+    \[
+        T : \mathcal{F} \to \mathcal{X}
+    \]
+    leképezést a következőképpen:
+    \[
+        T\psi(x) := \xi + \int_\tau^x f(t, \, \psi(t)) \, dt \in \R^n \quad (\psi \in \mathcal{F}, \, x \in I_*).
+    \]
+    Tehát az $f$ függvény koordinátafüggvényeit a "szokásos" $f_1, \, \dots, \, f_n$ szimbólumokkal jelölve, a $\psi$, $f$ függvények (és egyúttal az $f_i$-k) folytonossága miatt
+    \[
+        I_* \ni t \mapsto f_i(t, \, \psi(t)) \in \R \quad (i = 1, \, \dots, \, n)
+    \]
+    függvények folytonosak. következőképpen (minden $x \in I_*$ esetén) van értelme a
+    \[
+        d_i := \int_\tau^x f_i(t, \, \psi(t)) \, dt \quad (i = 1, \, \dots, \, n)
+    \]
+    integráloknak, és így a
+    \[
+        \xi + \int_\tau^x f(t, \, \psi(t)) \, dt := (\xi_1 + d_1, \, \dots, \, \xi_n + d_n) \in \R^n
+    \]
+    "integrálvektoroknak". Továbbá az integrálfüggvények tulajdonságai miatt a $T\psi$ függvény folytonos, minden $x \in (\tau - \delta_1, \, \tau + \delta_2)$ helyen differenciálható, és
+    \[
+        (T\psi)'(x) = f(x, \, \psi(x)).
+    \]
+    Belátjuk, hogy az $I_*$ alkalmas megválasztásával minden $\psi \in \mathcal{F}$ függvényre $T\psi \in \mathcal{F}$, azaz ekkor
+    \[
+        T : \mathcal{F} \to \mathcal{F}.
+    \]
+    Ehhez azt kell biztosítani, hogy
+    \[
+        \xi + \int_\tau^x f(t, \, \psi(t)) \, dt \in \Omega \quad (x \in I_*)
+    \]
+    teljesüljön. Válasszuk ehhez először is a $\mu > 0$ számot úgy, hogy a
+    \[
+        K_\mu := \{ y \in \R^n : \| y - \xi\|_\infty \leq \mu \} \subset \Omega
+    \]
+    tartalmazás fennáljon (ilyen $\mu$ az $\Omega$ nyíltsága miatt létezik), és legyen
+    \[
+        M := \max\{ \| f(x, \, y)\|_\infty : x\in I_*, \, y \in K_\mu \}
+    \]
+    (ami meg az $f$ folytonossága és a Weierstrass-tétel miatt létezik, ti. az $I_* \times K_\mu$ halmaz kompakt). A jelzett $T\psi \in \mathcal{F}$ tartalmazás nyilván teljesül, ha
+    \[
+        \max \left\{  \left| \int_\tau^x f_i(t, \, \psi(t)) \, dt \right| : i = 1, \, \dots, \, n \right\} \leq \mu \quad (x \in I_*).
+    \]
+    Módosítsuk most már az $\mathcal{F}$ definícióját úgy, hogy
+    \[
+        \mathcal{F} := \{ \psi : I_* \to K_\mu : \psi \in C \}.
+    \]
+    Ekkor az előbbi maximum becsülhető $M \cdot \delta$-val, ahol
+    \[
+        \delta := \max\{\delta_1, \, \delta_2\}.
+    \]
+    Így $M \cdot \delta \leq \mu$ esetén a fenti $T\psi$ is $\mathcal{F}$-beli. (Ha a kiindulásul választott $\delta_1, \, \delta_2$-re $M \cdot \delta > \mu$, akkor írjunk a $\delta_1, \, \delta_2$ helyébe olyan "új" $0 < \tilde{\delta_1}, \, \tilde{\delta_2}$-t, hogy
+    \[
+        [\tau - \tilde{\delta_1}, \, \tau + \tilde{\delta_2}] \subset [\tau - \delta_1, \, \tau + \delta_2]
+    \]
+    és
+    \[
+        M \cdot \max \{ \tilde{\delta_1}, \, \tilde{\delta_2} \} \leq \mu
+    \]
+    legyen. Az $I_*$ helyett az $\tilde{I_*} := [\tau - \tilde{\delta_1}, \, \tau + \tilde{\delta_2}]$ intervallummal az "új" $M$ az előzőnél legfeljebb kisebb lesz, így az
+    \[
+        M \cdot \max \{ \tilde{\delta_1}, \, \tilde{\delta_2}\} \leq \mu
+    \]
+    becslés nem "romlik" el.)
+    Ezzel értelmeztünk egy $T : \mathcal{F} \to \mathcal{F}$ leképezést, amelyre tetszőleges $\phi, \, \psi \in \mathcal{F}$ mellett
+    \[
+        \rho(T\psi, \, T\phi) = \max \{ \| T\psi(x) - T\phi(x)\|_\infty : x \in I_* \} =
+    \]
+    \[
+        \max \left\{  \max \left\{  \left| \int_\tau^x (f_i(t, \, \psi(t)) - f_i(t, \, \phi(t)) \, dt) \right| : i = 1, \, \dots, \, n \right\} : x \in I_* \right\} \leq
+    \]
+    \[
+        \max \left\{  \left| \int_\tau^x \max \{ |f_i(t, \, \psi(t)) - f_i(t, \, \phi(t))| : i = 1, \, \dots, \, n \} \, dt \right| : x \in I_* \right\} =
+    \]
+    \[
+        \max \left\{ \left| \int_\tau^x \| f(t, \, \psi(t)) - f(t, \, \phi(t))\|_\infty \, dt \right| : x \in I_* \right\}.
+    \]
+    A Lipschitz-feltétel miatt a $Q := K_\mu$ (nyilván kompakt) halmazhoz van olyan $L_Q \geq 0$ konstans, amellyel
+    \[
+        \| f(t, \, y) - f(t, \, z)\|_\infty \leq L_Q \cdot \| y-z \|_\infty \quad (t \in I, \, y, \, z \in Q),
+    \]
+    speciálisan
+    \[
+        \| f(t, \, \psi(t)) - f(t, \, \phi(t))\|_\infty \leq
+    \]
+    \[
+        L_Q \cdot \| \psi(t) - \phi(t) \|_\infty \leq L_Q \cdot \rho(\psi, \, \phi) \quad (t \in I_*).
+    \]
+    Ezért
+    \[
+        \rho(T\psi, \, T\phi) \leq L_Q \cdot \delta \cdot \rho(\psi, \, \phi).
+    \]
+    Tehát a $T$ leképezés
+    \[
+        L_Q \cdot \max \{\delta_1, \, \delta_2\} < 1
+    \]
+    esetén kontrakció. Válasszuk így a $\delta_1, \, \delta_2$-t, (ezt - az "eddigi" $I_*$-ot legfeljebb újra leszűkítve - megtehetjük), és alkalmazzuk a fixpont-tételt, miszerint van olyan $\psi \in \mathcal{F}$, amelyre
+    \[
+        T\phi = \phi.
+    \]
+    Legyen
+    \[
+        \varphi(x) := \psi(x) \quad \big( x \in (\tau - \delta_1, \, \tau + \delta_2) \big).
+    \]
+    A $T$ definíciója szerint
+    \[
+        \varphi(x) = \xi + \int_\tau^x f(t, \, \varphi(t)) \, dt \quad \big( x \in (\tau - \delta_1, \, \tau + \delta_2) \big).
+    \]
+    Ez azt jelenti, hogy a $\varphi$ függvény egy folytonos függvény integrálfüggvénye, ezért $\varphi \in D$ és
+    \[
+        \varphi'(x) = f(x, \, \varphi(x)) \quad \big( x \in (\tau - \delta_1, \, \tau + \delta_2) \big).
+    \]
+    Világos, hogy a $\varphi(\tau) = \xi$, más szóval a $\varphi$ megoldása a szóban forgó kezdetiérték-problémának. $\blacksquare$
+
+    $\psi : I_* \to \Omega, \, \psi \in C$
+    \[
+        F(t) := (t, \psi(t)) \quad (t \in I_*)
+    \]
+    
+
+
+\end{document}
