@@ -337,6 +337,35 @@
     \end{enumerate}
     kikötésnek is. Az így "kibővített" feladatot \textit{kezdetiérték-problémának} (vagy röviden \textit{Cauchy-feladatnak}) nevezzük, és a továbbiakban minderre a \textit{k.é.p.} rövidítést fogjuk használni. Az 1., 2., 3. feltételeknek (ill. az 1., 2., 3., 4. feltételeknek) eleget tevő bármelyik $\varphi$ függvényt a \textit{d.e.} (ill. a \textit{k.é.p.}) \textit{megoldásának} nevezzük. A fenti definícióban szereplő $f$ függvény az illető \textit{d.e.} ún. \textit{jobb oldala}.
 
+    \subsection{Teljes megoldás}
+    Azt mondjuk, hogy a szóban forgó \textit{k.é.p. egyértelműen oldható meg}, ha tetszőleges $\varphi, \, \psi$ megoldásai esetén
+    \[
+        \varphi(x) = \psi(x) \quad (x \in \Dp \cap \mathcal{D}_\psi).
+    \]
+    (Mivel $\tau \in \Dp \cap \mathcal{D}_\phi$, ezért $\Dp \cap \mathcal{D}_\phi$ egy ($\tau$-t tartalmazó) nyílt intervallum.) Legyen ekkor $\mathcal{M}$ a szóban forgó \textit{k.é.p.} megoldásainak a halmaza és
+    \[
+        J := \bigcup_{\varphi \in \mathcal{M}} \Dp.
+    \]
+    Ez egy $\tau$-t tartalmazó nyílt intervallum és $J \subset I$. Az egyértelmű megoldhatóság értelmezése miatt definiálhatjuk a
+    \[
+        \Phi : J \to \Omega
+    \]
+    függvényt az alábbiak szerint:
+    \[
+        \Phi(x) := \varphi(x) \quad (\varphi \in \mathcal{M}, \, x \in \Dp).
+    \]
+    Nyilvánvaló, hogy $\Phi(\tau) = \xi, \, \Phi \in D$ és
+    \[
+        \Phi'(x) = f(x, \, \Phi(x)) \quad (x \in J).
+    \]
+    Ez azt jelenti, hogy $\Phi \in \mathcal{M}$, és (ld. a $\mathcal{D}_\Phi = J$ definícióját) bármelyik $\varphi \in \mathcal{M}$ esetén
+    \[
+        \varphi(x) = \Phi(x) \quad (x \in \Dp),
+    \]
+    röviden $\varphi = \Phi_{|_{\Dp}}$.\\
+
+    A $\Phi$ függvényt a kezdetiérték-probléma \textit{teljes megoldásának} nevezzük.
+
     \subsection{Szeparábilis differenciálegyenlet}
     Legyen $n := 1$, továbbá az $I, \, J \subset \R$ nyílt intervallumokkal és a
     \[
