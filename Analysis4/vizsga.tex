@@ -150,19 +150,19 @@
     \subsection{Implicitfüggvény-tétel}
     \tikz \node[theorem]
     {
-        \textbf{Tétel (implicitfüggvény-tétel).} Adott $n, \, m \in \N, \, 2 \leq n$, valamint $1 \leq m < n$ mellett az
+        \textbf{Tétel (implicitfüggvény-tétel).} \textit{Adott $n, \, m \in \N, \, 2 \leq n$, valamint $1 \leq m < n$ mellett az}
         \[
             f \in \R^{n-m} \times \R^m \to \R^m
         \]
-        függvényről tételezzük fel az alábbiakat: $f \in C^1$, és az $(a, \, b) \in \text{int} \, \D$ helyen
+        \textit{függvényről tételezzük fel az alábbiakat: $f \in C^1$, és az $(a, \, b) \in \text{int} \, \D$ helyen}
         \[
             f(a, \, b) = 0, \, \det \partial_2f(a, \, b) \neq 0.
         \]
-        Ekkor alkalmas $K(a), \, K(b)$ környezetekkel létezik az $f$ által az $(a, \, b)$ körül meghatározott
+        \textit{Ekkor alkalmas $K(a), \, K(b)$ környezetekkel létezik az $f$ által az $(a, \, b)$ körül meghatározott}
         \[
             \varphi : K(a) \to K(b)
         \]
-        implicitfüggvény, ami folytonosan differenciálható, és
+        \textit{implicitfüggvény, ami folytonosan differenciálható, és}
         \[
             \varphi'(x) = -\partial_2 f(x, \, \varphi(x))^{-1} \cdot \partial_1 f(x, \, \varphi(x)) \quad (x \in K(a)).
         \]
@@ -191,7 +191,7 @@
 
     \tikz \node[theorem]
     {
-        \textbf{Tétel.} Legyen $1 \leq n \in \N, \, f \in \R^n \to \R^n$. Tegyük fel, hogy egy $a \in \text{int} \, \D$ pontban $f \in C^1\{a\}$ és $\det f'(a) \neq 0$. Ekkor az $f$ függvény az $a$-ban lokálisan invertálható, és az $a$-beli lokális inverze folytonos.
+        \textbf{Tétel.} \textit{Legyen $1 \leq n \in \N, \, f \in \R^n \to \R^n$. Tegyük fel, hogy egy $a \in \text{int} \, \D$ pontban $f \in C^1\{a\}$ és $\det f'(a) \neq 0$. Ekkor az $f$ függvény az $a$-ban lokálisan invertálható, és az $a$-beli lokális inverze folytonos.}
     };\\
     
     \textbf{Bizonyítás (vázlat).} Feltehető, hogy
@@ -308,7 +308,7 @@
     
     \tikz \node[theorem]
     {
-        \textbf{Tétel (inverzfüggvény-tétel).} Legyen $1 \leq n \in \N$, és $f \in \R^n \to \R^n$. Tegyük fel, hogy egy $a \in \text{int} \, \D$ pontban $f \in C^1\{a\}$, $\det f'(a) \neq 0$. Ekkor alkalmas $K(a) \subset \D$ környezettel az $f_{|_{K(a)}}$ leszűkítés invertálható, a $g := (f_{|_{K(a)}})^{-1}$ lokális inverzfüggvény folytonosan differenciálható, és
+        \textbf{Tétel (inverzfüggvény-tétel).} \textit{Legyen $1 \leq n \in \N$, és $f \in \R^n \to \R^n$. Tegyük fel, hogy egy $a \in \text{int} \, \D$ pontban $f \in C^1\{a\}$, $\det f'(a) \neq 0$. Ekkor alkalmas $K(a) \subset \D$ környezettel az $f_{|_{K(a)}}$ leszűkítés invertálható, a $g := (f_{|_{K(a)}})^{-1}$ lokális inverzfüggvény folytonosan differenciálható, és}
 		\[
 			h'(x) = \big( f'(h(x)) \big)^{-1} \quad (x \in \mathcal{D}_h).
 		\]
@@ -670,9 +670,17 @@
     \[
         \varphi'(x) = f(x, \, \varphi(x)) \quad \big( x \in (\tau - \delta_1, \, \tau + \delta_2) \big).
     \]
-    Világos, hogy a $\varphi(\tau) = \xi$, más szóval a $\varphi$ megoldása a szóban forgó kezdetiérték-problémának. $\blacksquare$
+    Világos, hogy a $\varphi(\tau) = \xi$, más szóval a $\varphi$ megoldása a szóban forgó kezdetiérték-problémának. $\blacksquare$\\
     
-    
+    A fenti Picard Lindelöf-egzisztenciatételben szereplő Lipschitz-feltétel nem csupán a kezdetiérték-problémák megoldhatóságát, hanem azok egyértelmű megoldhatóságát is biztosítja.\\
+
+    \tikz \node[theorem]
+    {
+        \textbf{Tétel.} \textit{Az előző tétel feltételei mellett az abban szereplő tetszőleges kezdetiérték-probléma egyértelműen oldható meg, azaz bármely $\varphi, \, \psi$ megoldásaira}
+        \[
+            \varphi(t) = \psi(t) \quad (t \in \Dp \cap \mathcal{D}_\psi).
+        \]
+    };\\
 
 
 \end{document}
