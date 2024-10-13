@@ -492,8 +492,25 @@
     \[
         \varphi'(t) = -\frac{\partial_1 F(t, \, \varphi(t))}{\partial_2 F(t, \, \varphi(t))} = g(t) \cdot h(\varphi(t)) \quad (t \in K(\tau)).
     \]
-    Röviden: a $\varphi$ implicitfüggvény megoldása a szóban forgó kezdetiérték-problémának. $\blacksquare$
+    Röviden: a $\varphi$ implicitfüggvény megoldása a szóban forgó kezdetiérték-problémának. $\blacksquare$\\
 
+    A tétel bizonyítása során egyúttal egy módszert ("képletet") is adtunk a
+    \[
+        \varphi'(t) = g(t) \cdot h(\varphi(t)) \quad (t \in \Dp)
+    \]
+    szeparábilis egyenletre vonatkozó $\varphi(\tau) =\xi$ kezdetiérték-probléma megoldására. Ennek a kulcsmozzanata a $G, \, H$ primitív függvények meghatározása:
+    \[
+        G(x) = \int_\tau^x g(t) \, dt, \, H(y) = \int_\xi^y \frac{dt}{h(t)} \quad (x \in I, \, y \in J),
+    \]
+    amiből aztán a $\varphi$-re vonatkozó
+    \[
+        H\big( \varphi(x) \big) = \int_\xi^{\varphi(x)} \frac{dt}{h(t)} = G(x) = \int_\tau^x g(t) \, dt \quad (x \in \Dp),
+    \]
+    azaz
+    \[
+        \int_\xi^{\varphi(x)} \frac{dt}{h(t)} = \int_\tau^x g(t) \, dt \quad (x \in \Dp)
+    \]
+    implicit egyenlet adódott.
 
     \newpage
     \section{Lipschitz-feltétel. A Picard-Lindelöf-féle egzisztencia-tétel. A k.é.p. megoldásának az egyértelműsége, unicitási tétel.}
