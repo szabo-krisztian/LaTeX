@@ -1,0 +1,514 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{amsfonts, amssymb, amsmath}
+\usepackage{titlesec}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{enumitem}
+\usetikzlibrary{shadows.blur}
+\usepackage{lmodern}
+\usepackage{mathrsfs}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+
+\title{\textcolor{purple}{\Huge\textbf{Analízis 4}}}
+\author{Gyakorlati feladatok}
+\date{}
+
+\renewcommand{\contentsname}{Tartalom}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\exists}
+\newcommand{\mm}{\mathbf{m}}
+\newcommand{\MM}{\mathbf{M}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\D}{\mathcal{D}_f}
+\newcommand{\Dp}{\mathcal{D}_\varphi}
+
+\definecolor{modernyellow}{HTML}{F4E4BC}
+\definecolor{moderngreen}{HTML}{BDDCBD}
+
+\titleformat{\section}[block]{\large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.5ex plus 1ex minus .2ex}{1.3ex plus .2ex}
+
+\tikzset
+{
+    definition/.style={
+        draw,
+        fill=white,
+        line width=1pt,
+        rounded corners,
+        drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+        text width=1\textwidth,
+        inner sep=8pt,
+        align=justify
+    },
+    theorem/.style={
+        draw,
+        fill=white,
+        line width=1pt,
+        rounded corners,
+        drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+        text width=1\textwidth,
+        inner sep=8pt,
+        align=justify
+    },
+    proof/.style={
+            fill=white,
+            rectangle,
+            drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex, moderngreen},
+            text width=1\textwidth,
+            inner sep=8pt,
+            align=justify
+    },
+    proof1/.style={
+            fill=white,
+            rectangle,
+            drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=0, moderngreen},
+            text width=1\textwidth,
+            inner sep=8pt,
+            align=justify
+    }
+}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+	
+	\section{Gyakorlat}
+	\subsection{Emlékeztető}
+
+	\tikz \node[definition]
+	{
+		\textbf{Definíció.} Legyen $1 \leq s \in \N, \, A \subset \R^s$. Azt mondjuk, hogy az $A$ halmaz \textit{nullmértékű}, ha tetszőleges $\varepsilon > 0$ számhoz megadható $I_k \subset \R^s \, (k \in \N)$ intervallumoknak egy olyan sorozata, hogy
+		\[
+			A \subset \bigcup_{k=0}^\infty I_k \text{ és } \sum_{k=0}^\infty |I_k| < \varepsilon.
+		\]
+	};\\
+
+	Tekintsük pl. az $I \subset \R^n \, (1 \leq n \in \N)$ intervallum esetén az $f \in R(I)$ függvényt, és legyen
+	\[
+		\text{graf} \,  f := \{ (x, \, f(x)) \in \R^{n+1} : x \in I \}.
+	\]
+	Ekkor a $\text{graf} \, f \subset \R^{n+1}$ halmaz nullmértékű.\\
+
+	Ha az $f \in \R^n \to \R$ függvény $\D \subset \R^n$ értelmezési tartománya korlátos, akkor van olyan $I \subset \R^n$ intervallum, amellyel $\D \subset I.$ Legyen ekkor
+	\[
+		F_I(x) := \begin{cases}
+			f(x) & (x \in \D) \\
+			0 & (x \in I \, \backslash \, \D).
+		\end{cases}
+	\]
+	Nem nehéz meggondolni, hogy ha $F_I \in R(I)$, akkor $F_J \in R(J)$ minden olyan $J \subset \R^n$ intervallumra, amelyre $\D \subset J$ és
+	\[
+		\int_I F_I = \int_J F_J.
+	\]
+	Ez ad értelmet a következő definíciónak:\\
+
+	\tikz \node[definition]
+	{
+		\textbf{Definíció.} A fenti $f$ függvény \textit{Riemann-integrálható}, ha egy alkalmas $I \subset \R^n$ intervallummal $\D \subset I$ és $F_I \in R(I)$. Az utóbbi esetben
+		\[
+			\int_{\R^n} f := \int_{\D} f := \int_I F_I.
+		\]
+	};\\
+
+	Az előző definició olyan függvényekre is kiterjeszthető, amik értelmezési tartománya nem korlátos, viszont a
+	\[
+		\text{supp}\, f := \overline{\{ x \in \D : f(x) \neq 0 \}}
+	\]
+	\textit{tartója} igen.
+	
+	\tikz \node[definition]
+	{
+		\textbf{Definíció.} Legyen az $A \subset \R^n$ halmaz korlátos,
+		\[
+			\chi_A(x) := \begin{cases}
+				1 & (x \in A) \\
+				0 & (x \in \R^n \, \backslash \, A)
+			\end{cases}
+		\]
+		az $A$ \textit{karakterisztikus függvénye}. Azt mondjuk, hogy az $A$ halmaz \textit{Jordan-mérhető}, ha a $\chi_A$ függvény integrálható, amikor is a
+		\[
+			\mu(A) := \int_{\R^n} \chi_A
+		\]
+		nemnegatív szám az $A$ halmaz \textit{Jordan-mértéke}. 
+	};\\
+
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Tekintsük a nyílt halmazon értelmezett és folytonosan differenciálható
+		\[
+			g \in \R^n \to \R^n
+		\]
+		függvényt. Tegyük fel, hogy az $I \subset \mathcal{D}_g$ halmaz kompakt intervallum, továbbá az $I$ belsejére való $g_{|_{\text{int} \, I}}$ leszűkítés injektív függvény. Ekkor az
+		\[
+			f : g(I) \to \R
+		\]
+		korlátos függvény akkor és csak akkor integrálható, ha az
+		\[
+			I \ni x \mapsto f(g(x)) \cdot |\det g'(x)|
+		\]
+		függvény is integrálható. Az utóbbi esetben
+		\[
+			\int_I f(g(x)) \cdot |\det g'(x)| \, dx = \int_{g[I]} f.
+		\]
+	};\\
+
+	\textbf{Speciális esetek.}
+
+	\begin{enumerate}
+		\item \textbf{Síkbeli polárkoordináta-transzformáció.} Legyen $g : \R^2 \to \R^2$ leképezés, amire
+		\[
+			g(r, \, \varphi) := \begin{pmatrix}
+				r \cdot \cos \varphi, \\
+				r \cdot \sin \varphi
+			\end{pmatrix} \quad \big( (r, \, \varphi) \in \R^2 \big).
+		\]
+		Ekkor $g \in C^1$, és
+		\[
+			\det g'(r, \, \varphi) = r \quad \big( (r, \, \varphi) \in \R^2 \big).
+		\]
+		\item \textbf{Módosított síkbeli polárkoordináta-transzformáció.} Legyen $a, \, b \in \R, \, g : \R^2 \to \R^2$ leképezés, amire
+		\[
+			g(r, \, \varphi) := \begin{pmatrix}
+				ar \cdot \cos \varphi, \\
+				br \cdot \sin \varphi
+			\end{pmatrix} \quad \big( (r, \, \varphi) \in \R^2 \big).
+		\]
+		Ekkor $g \in C^1$, és
+		\[
+			\det g'(r, \, \varphi) = abr \quad \big( (r, \, \varphi) \in \R^2 \big).
+		\]
+		\item \textbf{Térbeli polárkoordináta-transzformáció.} Legyen $g : \R^3 \to \R^3$ leképezés, amire
+		\[
+			g(r, \, \varphi, \, \psi) := \begin{pmatrix}
+				r \cdot \cos \varphi \sin \psi \\
+				r \cdot \sin \varphi \sin \psi \\
+				r \cdot \cos \psi
+			\end{pmatrix} \quad \big( (r, \, \varphi, \, \psi) \in \R^3\big).
+		\]
+		Ekkor $g \in C^1$, és
+		\[
+			\det g'(r, \, \varphi, \, \psi) = -r^2 \cdot \sin \psi \quad \big( (r, \, \varphi, \, \psi) \in \R^3\big).
+		\]
+		\item \textbf{Módosított térbeli polárkoordináta-transzformáció (elliptikus koordináták).} Legyen $a, \, b, \, c \in \R, \, g : \R^3 \to \R^3$ leképezés, amire
+		\[
+			g(r, \, \varphi, \, \psi) := \begin{pmatrix}
+				ar \cdot \cos \varphi \sin \psi \\
+				br \cdot \sin \varphi \sin \psi \\
+				cr \cdot \cos \psi
+			\end{pmatrix} \quad \big( (r, \, \varphi, \, \psi) \in \R^3\big).
+		\]
+		Ekkor $g \in C^1$, és
+		\[
+			\det g'(r, \, \varphi, \, \psi) = -abcr^2 \cdot \sin \psi \quad \big( (r, \, \varphi, \, \psi) \in \R^3\big).
+		\]
+		\item \textbf{Hengerkoordináta-transzformáció.} Legyen $g : \R^3 \to \R^3$ leképezés, amire
+		\[
+			g(r, \, \varphi, \, z) := \begin{pmatrix}
+				r \cdot \cos \varphi \\
+				r \cdot \sin \varphi \\
+				z
+			\end{pmatrix} \quad \big( (r, \, \varphi, \, z) \in \R^3 \big).
+		\]
+		Ekkor $g \in C^1$, és
+		\[
+			\det g'(r, \, \varphi, \, z) = r \quad \big( (r, \, \varphi, \, z) \in \R^3 \big).
+		\]
+		\item \textbf{Módosított hengerkoordináta-transzformáció.} Legyen $a, \, b, \, c \in \R, \, g : \R^3 \to \R^3$ leképezés, amire
+		\[
+			g(r, \, \varphi, \, z) := \begin{pmatrix}
+				ar \cdot \cos \varphi \\
+				br \cdot \sin \varphi \\
+				cz
+			\end{pmatrix} \quad \big( (r, \, \varphi, \, z) \in \R^3 \big).
+		\]
+		Ekkor $g \in C^1$, és
+		\[
+			\det g'(r, \, \varphi, \, z) = abcr \quad \big( (r, \, \varphi, \, z) \in \R^3 \big).
+		\]
+	\end{enumerate}
+
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Tegyük fel, hogy valamely $\emptyset \neq \Omega \subset \R^3$ Jordan-mérhető ponthalmazzal jellemzett test sűrűsége a Riemann-integrálható $\rho : \Omega \to [0, \, +\infty)$ függvénnyel írható le. Ekkor $\Omega$-nak valamely $0 \neq e \in \R^3$ irányvektorú, ill. $a \in \R^3$ pontra illeszkedő tengelyére vonatkozó tehetetlenségi nyomatéka a
+		\[
+			\mathbf{\Theta}_t = \int_\Omega \ell^2 (r) \rho(r) \, dr
+		\]
+		valós szám, ahol $\ell(r)$ jelöli az $r \in \Omega$ pontnak a $t$ tengelytől mért távolságát:
+		\[
+			\ell(r) := \text{inf} \, \{ \|r - (a + \tau e)\| \in \R : \tau \in \R \}.
+		\]
+	};\\
+
+	Világos, hogy ha $a = 0$ és $e \in \{e_x, \, e_y, \, e_z\}$, akkor $\Omega$-nak a koordináta-tengelyekre vonatkoztatott tehetetlenségi nyomatéka:
+	\[
+		\mathbf{\Theta}_{t_x} = \int_\Omega (y^2 + z^2) \rho(x, \, y, \, z) \, dx \, dy \, dz
+	\]
+	\[
+		\mathbf{\Theta}_{t_y} = \int_\Omega (x^2 + z^2) \rho(x, \, y, \, z) \, dx \, dy \, dz
+	\]
+	\[
+		\mathbf{\Theta}_{t_z} = \int_\Omega (x^2 + y^2) \rho(x, \, y, \, z) \, dx \, dy \, dz
+	\]
+
+	\tikz \node[definition]
+	{
+		\textbf{Definíció.} Tegyük fel, hogy valamely $\emptyset \neq \Omega \subset \R^3$ Jordan-mérhető ponthalmazzal jellemzett test (tömeg)sűrűsége a Riemann-integrálható $\rho : \Omega \to [0, \, + \infty)$ függvénnyel írható le. (Ha $\rho$ állandó, akkor a testet homogénnek nevezzük.) Ekkor az
+		\[
+			m(\Omega) := \int_\Omega \rho
+		\]
+		számot az $\Omega$ test tömegének nevezzük. Az $\Omega$ tömegközéppontjának koordinátái:
+		\[
+			\overline{x} := \frac{1}{m(\Omega)} \int_\Omega x \cdot \rho(x, \, y, \, z) \, dx \, dy \, dz,
+		\]
+		\[
+			\overline{y} := \frac{1}{m(\Omega)} \int_\Omega y \cdot \rho(x, \, y, \, z) \, dx \, dy \, dz,
+		\]
+		\[
+			\overline{z} := \frac{1}{m(\Omega)} \int_\Omega z \cdot \rho(x, \, y, \, z) \, dx \, dy \, dz.
+		\]
+	};\\
+
+	\subsection{Feladatok}
+	Számítsuk ki annak a korlátos és zárt térbeli testnek a \textit{térfogatát}, amelyet az alábbi egyenletű felületek fognak közre:
+	\[
+		z = x^2 + y^2 -1 \text{ és } z = 2 - x^2 - y^2.
+	\]
+	Az egyenletekből kapunk két paraboloidot. Ezek metszetét kell \textit{paraméterezni}. Válasszuk két részre a ponthalmazt. Nézzük meg az $y = 0$ síkban lévő pontokat:
+	\[
+		z = x^2 - 1 \text{ és } z = 2 - x^2.
+	\]
+	Ez két ellentétes irányba néző parabola, amik metszete
+	\[
+		x^2 - 1 = 2 - x^2 \quad \Longleftrightarrow \quad x_1 := - \sqrt{\frac{3}{2}}, \, x_2 := \sqrt{\frac{3}{2}}.
+	\]
+	Azaz az alábbi térbeli pontokban metszi egymást a két paraboloid:
+	\[
+		p_1 := \left( - \sqrt{\frac{3}{2}}, 0, \frac{1}{2} \right), \, p_2 := \left( \sqrt{\frac{3}{2}}, 0, \frac{1}{2} \right).
+	\]
+	Szimmetriai okok miatt, be tudjuk vezetni a következő hengerkoordináta-transzformációt:
+	\[
+		\Phi(r, \, \varphi, \, z) := \begin{pmatrix}
+			r \cdot \cos \varphi \\
+			r \cdot \sin \varphi \\
+			z
+		\end{pmatrix} \quad \big( (r, \, \varphi, \, z) \in \R^3 \big).
+	\]
+	Legyen
+	\[
+		H_1 := [0, \, \sqrt{3 / 2}] \times [0, \, 2 \pi] \times [1/2, \, 2-r^2] \subset \R^3,
+	\]
+	\[
+		H_2 := [0, \, \sqrt{3 / 2}] \times [0, \, 2 \pi] \times [r^2-1, \, 1/2] \subset \R^3,
+	\]
+	Mivel ezek kompakt intervallumok, igaz lesz, hogy
+	\[
+		\int_{\mathcal{H}} 1 = \int_{H_1} 1 \cdot |r| \, dr \, d\varphi \, dz + \int_{H_2} 1 \cdot |r| \, dr \, d\varphi \, dz, 
+	\]
+	ahol
+	\[
+		\mathcal{H} := \Phi[H_1] \cup \Phi[H_2].
+	\]
+	\newpage
+
+	Számítsuk ki annak a korlátos és zárt térbeli $T$ testnek a \textit{térfogatát, tömegét} és a $z$-tengelyre vonatkozó \textit{tehetetlenségi nyomatékát}, amelyet az alábbi egyenlőtlenségek definiálnak:
+	\[
+		\sqrt{x^2 + y^2} \leq z \text{ és } x^2 + y^2 + z^2 \leq 1,
+	\]
+	illetve a kitöltő anyag pontonkénti sűrűsége egyenesen arányos az origótól mért távolsággal.
+
+	Tehát a sűrűségfüggvény adott $\alpha > 0$ mellett
+	\[
+		\rho(x, \, y, \, z) := \alpha \cdot \sqrt{x^2 + y^2 + z^2} \quad \big( (x, \, y, \, z) \in \R^3\big).
+	\]
+
+	Alkalmazzuk az alábbi térbeli polárkoordináta-transzformációt:
+	\[
+		\Phi(r, \, \varphi, \, \psi) := \begin{pmatrix}
+			r \cdot \cos \varphi \sin \psi \\
+			r \cdot \sin \varphi \sin \psi \\
+			r \cdot \cos \psi
+		\end{pmatrix} \quad \big( (r, \, \varphi, \, \psi) \in \R^3\big).
+	\]
+	Legyen
+	\[
+		H := [0, \, 1] \times [0, \, 2 \pi] \times [0, \, \pi / 4] \subset \R^3,
+	\]
+	ekkor $H$ kompakt intervallum és
+	\[
+		\Phi(H) = T.
+	\]
+	Térfogat:
+	\[
+		\int_H 1 \cdot |-r^2 \sin \psi| \, dr \, d\varphi \, d\psi,
+	\]
+	tömeg:
+	\[
+		\int_H \rho(r \cos \varphi \sin \psi, \, r \sin \varphi \sin \psi, \, r \cos \psi) \cdot |-r^2 \sin \psi| \, dr \, d\varphi \, d\psi,
+	\]
+	tehetetlenségi nyomaték:
+	\[
+		\int_H (r^2 \cos^2\varphi + r^2 \sin^2 \psi) \cdot \rho(r \cos \varphi \sin \psi, \, r \sin \varphi \sin \psi, \, r \cos \psi) \cdot |-r^2 \sin \psi| \, dr \, d\varphi \, d\psi.
+	\]
+	Számoljuk ki a tehetetlenségi nyomatékot. Először írjuk fel tetszőleges $(r, \, \varphi, \, \psi) \in H$ esetén az integrandust ($\alpha$-val történő osztás után)
+	\[
+		r^2 \big( \cos^2 \varphi \sin^2 \psi + \sin^2 \varphi \sin^2 \psi \big) \cdot r \sqrt{\cos^2 \varphi \sin^2 \psi + \sin^2 \varphi \sin^2 \psi + \cos^2 \psi} \cdot r^2 \sin \psi =
+	\]
+	\[
+		r^5 \sin^2 \psi \cdot \sqrt{\cos^2 \varphi \sin^2 \psi + \sin^2 \varphi \sin^2 \psi + 1 - \sin^2 \psi} \cdot \sin \psi =
+	\]
+	\[
+		r^5 \sin^3 \psi \cdot \sqrt{ \sin^2 \psi \big( \cos^2 \varphi + \sin^2 \varphi - 1 \big) + 1} =
+	\]
+	\[
+		r^5 \sin^3 \psi.
+	\]
+	Tehát
+	\[
+		\frac{\mathbf{\Theta}_{t_x}}{\alpha} = \int_H r^5 \sin^3 \psi \, dr \, d\varphi \, d \psi =
+	\]
+	\[
+		\int\limits_0^{\pi / 4} \int\limits_0^{2 \pi} \int \limits_0^{1} r^5 \sin^3 \psi \, dr \, d\varphi \, d\psi = \int\limits_0^{\pi / 4} \int\limits_0^{2 \pi} \left[ \frac{r^6}{6} \sin^3 \psi \right]_{r=0}^{r=1} \, d\varphi \, d\psi = \frac{1}{6} \int\limits_0^{\pi / 4} \int\limits_0^{2 \pi} \sin^3 \psi \, d\varphi \, d\psi =
+	\]
+	\[
+		\frac{1}{6} \int\limits_0^{\pi / 4} [\varphi \sin^3\psi]_{\varphi=0}^{\varphi=2\pi} \, d\psi = \frac{2 \pi}{6} \int\limits_0^{\pi / 4} \sin^3\psi \, d\psi
+	\]
+
+	\newpage
+	\section{Gyakorlat}
+	\subsection{Emlékeztető}
+	Megjegyezzük, hogy ha a
+	\[
+		\Psi = (\Psi_1, \, \Psi_2, \, \Psi_3) \in \R^2 \to \R^3
+	\]
+	függvény differenciálható, akkor a
+	\[
+		\partial_k \Psi := (\partial_k \Psi_1, \, \partial_k \Psi_2, \, \partial_k \Psi_3) \quad (k \in \{1, \, 2\})
+	\]
+	jelöléssel
+	\[
+		\Psi' = \begin{bmatrix}
+			\partial_1 \Psi & \partial_2 \Psi
+		\end{bmatrix} =
+		\begin{bmatrix}
+			\partial_1 \Psi_1 & \partial_2 \Psi_1 \\
+			\partial_1 \Psi_2 & \partial_2 \Psi_2 \\
+			\partial_1 \Psi_3 & \partial_2 \Psi_3
+		\end{bmatrix}.
+	\]
+
+	\tikz \node[definition]
+	{
+		\textbf{Definíció.} Valamely $\mathcal{F} \subset \R^3$ halmazt \textit{felületdarabnak} nevezünk, ha alkalmas $\emptyset \neq K \subset \R^2$ kompakt és Jordan-mérhető halmaz, ill.
+		\[
+			\Psi = (\Psi_1, \, \Psi_2, \, \Psi_3) : K \to \R^3, \, \Psi \in C^1, \, \text{rang} (\Psi') = 2
+		\]
+		függvény esetén
+		\[
+			\mathcal{F} = \mathcal{R}_\Psi = \{ \Psi(u, \, v) \in \R^3 : (u, \, v) \in K\}.
+		\]
+		A $\Psi$ leképezést az adott $\mathcal{F}$ felületdarab \textit{paraméterezésének} nevezzük.
+	};\\
+
+	\begin{enumerate}
+		\item A fenti definícióban a $\Psi$ leképezés folytonos differenciálhatóságán azt értjük, hogy van olyan $K \subset U \subset \R^2$ nyílt halmaz, ill.
+		\[
+			\hat{\Psi} : U \to \R^3, \, \hat{\Psi} \in C^1
+		\]
+		függvény, amelyre $\hat{\Psi}_{|_K} = \Psi$.
+		\item Ha a $\Psi = (\Psi_1, \, \Psi_2, \, \Psi_3) : K \to \R^3$ függvényre $\Psi \in C^1$, akkor a $\text{rang}(\Psi')=2$ feltétel azt jelenti, hogy a $\partial_1 \Psi, \, \partial_2 \Psi$ vektorok lineárisan függetlenek, azaz
+		\[
+			\partial_1 \Psi \times \partial_2 \Psi \neq 0.
+		\]
+		Ha a $\Psi : K \to \R^3$ leképezés valamely felületdarab paraméterezése, akkor az
+		\[
+			n_\Psi(u, \, v) := \partial_1 \Psi (u, \, v) \times \partial_2 \Psi(u, \, v) \quad \big((u, \, v) \in K\big)
+		\]
+		vektor az adott felület $\Psi(u, \, v)$ pontjához tartozó \textit{érintősíkjának} normálvektora.
+	\end{enumerate}
+	
+	\tikz \node[definition]
+	{
+		\textbf{Definíció.} Tegyük fel, hogy az $\mathcal{F} \subset \R^3$ felületdarab paraméterezése az
+		\[
+			\Psi = (\Psi_1, \, \Psi_2, \, \Psi_3) : K \to \R^3
+		\]
+		függvény: $\mathcal{R}_\Psi = \mathcal{F}$. Ekkor az $\mathcal{F}$ felület \textit{felszínén} az
+		\[
+			\mathcal{A}(\mathcal{F}) := \int_K \|n_\Psi\|
+		\]
+		valós számot értjük.
+	};\\
+
+	\begin{enumerate}
+		\item Ha $\mathcal{F}_1 := \mathcal{R}_{\Psi_1}$, ill. $\mathcal{F}_2 := \mathcal{R}_{\Psi_2}$ nullmértékű halmazban (pl. élekben) csatlakozó felületdarabok, akkor
+		\[
+			\mathcal{A}(\mathcal{F}_1 \cup \mathcal{F}_2) = \mathcal{A}(\mathcal{F}_1) + \mathcal{A}(\mathcal{F}_2) = \int_{K_1} \|n_{\Psi_1}\| + \int_{K_2} \|n_{\Psi_2}\|.
+		\]
+	\end{enumerate}
+
+	\subsection{Feladatok}
+
+	Legyen $0 < R \in \R$. Számítsuk ki az
+	\[
+		x^2 + y^2 + z^2 = R^2, \, z \geq 0
+	\]
+	félgömbfelületnek az
+	\[
+		x^2 + y^2 = Rx
+	\]
+	egyenletű hengerfelület által kimetszett részének (Viviani-féle levél) a felszínét!\\
+
+	A $z \geq 0$ féltérben lévő félgömbfelület paraméterezése:
+	\[
+		\Psi(u, \, v) := (u, \, v, \, \sqrt{R^2 - u^2 - v^2}) \quad \big( (u, \, v) \in \R^2 : u^2 + v^2 \leq R^2 \big).
+	\]
+	Ekkor $\Psi \in C^1, \, \text{rang}(\Psi') =2$, továbbá ($u^2+v^2 < R$ esetén)
+	\[
+		\partial_1 \Psi(u, \, v) = \left(1, \, 0, \, -\frac{u}{\sqrt{R^2-u^2-v^2}}\right),
+	\]
+	\[
+		\partial_2 \Psi(u, \, v) = \left(1, \, 0, \, -\frac{v}{\sqrt{R^2-u^2-v^2}}\right).
+	\]
+	\[
+		n_\Psi(u, \, v) = \begin{pmatrix}
+			- \partial_1 g(u, \, v) \\
+			- \partial_2 g(u, \, v) \\
+			1
+		\end{pmatrix} =
+		\begin{pmatrix}
+			\frac{u}{\sqrt{R^2-u^2-v^2}} \\
+			\frac{v}{\sqrt{R^2-u^2-v^2}} \\
+			1
+		\end{pmatrix},
+	\]
+	Azaz
+	\[
+		\|n_\Psi(u, \, v)\| = \sqrt{ \frac{u^2}{R^2-u^2-v^2} + \frac{v^2}{R^2-u^2-v^2} + 1} =
+	\]
+	\[
+		\frac{1}{\sqrt{R^2-u^2-v^2}}.
+	\]
+	Ha most
+	\[
+		\Phi(r, \, \varphi) := \begin{pmatrix}
+			r \cos\varphi \\
+			r \sin \varphi
+		\end{pmatrix} \quad \big( \varphi \in [0, \, \pi / 2], \, r \in [0, \, R \cos(\varphi)]\big)
+	\]
+	Akkor a felszínt így kapjuk meg:
+	\[
+		2R \cdot \lim_{\varepsilon \to 0} \int\limits_\varepsilon^{\pi/2} \int\limits_0^{R\cos(\varphi)} \Big\|n_\Psi\big(\Phi(r, \, \varphi)\big)\Big\| \cdot r \, dr \, d\varphi.
+	\]
+	
+
+
+\end{document}
