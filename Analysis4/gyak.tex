@@ -278,6 +278,7 @@
 	};\\
 
 	\subsection{Feladatok}
+	\subsubsection{Feladat}
 	Számítsuk ki annak a korlátos és zárt térbeli testnek a \textit{térfogatát}, amelyet az alábbi egyenletű felületek fognak közre:
 	\[
 		z = x^2 + y^2 -1 \text{ és } z = 2 - x^2 - y^2.
@@ -317,8 +318,8 @@
 	\[
 		\mathcal{H} := \Phi[H_1] \cup \Phi[H_2].
 	\]
-	\newpage
-
+	
+	\subsubsection{Feladat}
 	Számítsuk ki annak a korlátos és zárt térbeli $T$ testnek a \textit{térfogatát, tömegét} és a $z$-tengelyre vonatkozó \textit{tehetetlenségi nyomatékát}, amelyet az alábbi egyenlőtlenségek definiálnak:
 	\[
 		\sqrt{x^2 + y^2} \leq z \text{ és } x^2 + y^2 + z^2 \leq 1,
@@ -456,7 +457,7 @@
 	\end{enumerate}
 
 	\subsection{Feladatok}
-
+	\subsubsection{Feladat}
 	Legyen $0 < R \in \R$. Számítsuk ki az
 	\[
 		x^2 + y^2 + z^2 = R^2, \, z \geq 0
@@ -495,7 +496,7 @@
 		\|n_\Psi(u, \, v)\| = \sqrt{ \frac{u^2}{R^2-u^2-v^2} + \frac{v^2}{R^2-u^2-v^2} + 1} =
 	\]
 	\[
-		\frac{1}{\sqrt{R^2-u^2-v^2}}.
+		\frac{R}{\sqrt{R^2-u^2-v^2}}.
 	\]
 	Ha most
 	\[
@@ -509,6 +510,73 @@
 		2R \cdot \lim_{\varepsilon \to 0} \int\limits_\varepsilon^{\pi/2} \int\limits_0^{R\cos(\varphi)} \Big\|n_\Psi\big(\Phi(r, \, \varphi)\big)\Big\| \cdot r \, dr \, d\varphi.
 	\]
 	
+	\subsubsection{Feladat}
+	Határozzuk meg az alábbi feltételekkel megadott felület felszínét:
+	\[
+		z = \sqrt{x^2 + y^2} \text{ és } x^2 + y^2 \leq 2ax \quad (a > 0).
+	\]
+	Legyen
+	\[
+		f(x, \, y) := (x, \, y, \, \sqrt{x^2 + y^2}) \quad \big( (x, \, y) \in \Omega \big),
+	\]
+	ahol $\Omega := \{ (x, \, y) \in \R^2 : x^2 + y^2 \leq 2 ax \}$, $f$ egy Euler-Monge módon megadott paraméterezése a $z$-tengely irányába felfelé néző körkúp palástjának, \textit{leszűkítve} annak a hengernek a belsejére, aminek alapját az $\Omega$ halmaz adja. Egyből írjuk is át az $f$ függvényt a megfelelő polár-transzformációval
+	\[
+		\Phi(r, \, \varphi) := (r \cos(\varphi), \, r \sin(\varphi)) \quad \big( \varphi \in [- \pi / 2, \, \pi / 2], \, r \in [0, \, 2a \cos(\varphi)]\big).
+	\]
+	A $\Phi$ transzformáció-függvény értelmezési tartományát a Thálész-tétel alkalmazásával könnyedén megkaptuk. Tehát ha $\mathcal{F} \subset \R^3$ a feladatban definiált felület, akkor
+	\[
+		\Psi(r, \, \varphi) := f \circ \Phi = (r \cos(\varphi), \, r \sin(\varphi), \, r) \quad \big( (r, \, \varphi) \in \mathcal{D}_\Phi \big).
+	\]
+	A felület kiszámításához szükségünk lesz a következőkre:
+	\[
+		\partial_1 \Psi(r, \, \varphi) = (\cos(\varphi), \, \sin(\varphi), \, 1) \quad \big( (r, \, \varphi) \in \mathcal{D}_\Phi \big),
+	\]
+	\[
+		\partial_1 \Psi(r, \, \varphi) = (-r \sin(\varphi), \, r \cos(\varphi), \, 0) \quad \big( (r, \, \varphi) \in \mathcal{D}_\Phi \big),
+	\]
+	\[
+		n_\Psi(r, \, \varphi) = \begin{vmatrix}
+			i & j & k \\
+			\cos(\varphi) & \sin(\varphi) & 1 \\
+			-r\sin(\varphi) & r\cos(\varphi) & 0
+		\end{vmatrix} =
+		\begin{pmatrix}
+			r\cos(\varphi) \\
+			r\sin(\varphi) \\
+			r
+		\end{pmatrix} \quad \big( (r, \, \varphi) \in \mathcal{D}_\Phi \big),
+	\]
+	\[
+		\|n_\Psi(r, \, \varphi)\| = \sqrt{2r^2} = \sqrt{2} r \quad \big( (r, \, \varphi) \in \mathcal{D}_\Phi \big).
+	\]
+	Tehát a keresett felszín
+	\[
+		\mathcal{A}(\mathcal{F}) = \int_{\mathcal{D}_\Phi} \|n_\Psi\| = \sqrt{2} \int\limits_{-\pi/2}^{\pi/2} \int\limits_0^{2a\cos(\varphi)} r \, dr \, d\varphi.
+	\]
+
+	\newpage
+	\section{Gyakorlat}
+	\subsection{Emlékeztető}
+	\tikz \node[definition]
+	{
+		\textbf{Definíció.} Legyen $K \subset \R^2$ kompakt, Jordan-mérhető halmaz,
+		\[
+			\Psi = (\Psi_1, \, \Psi_2, \, \Psi_3) : K \to \R^3, \, \Psi \in C^1, \, \text{rang}(\Psi') = 2,
+		\]
+		továbbá tegyük fel, hogy $\Psi_{|_{\text{int}(K)}}$ injektív. Ekkor
+		\begin{enumerate}
+			\item ha $f : \Psi[K] \to \R, \, f \in C$, akkor az $f$ függvény $\Psi$-re vonatkozó \textit{elsőfajú felületi integráljának} (vagy \textit{felszíni integráljának}) nevezzük az
+			\[
+				\int_\Psi f := \int_K (f \circ \Psi) \cdot \|n_\Psi\|
+			\]
+			valós számot,
+			\item ha $f : \Psi[K] \to \R^3, \, f \in C$, akkor az $f$ függvény $\Psi$-re vonatkozó (\textit{másodfajú}) \textit{felületi integráljának} nevezzük az
+			\[
+				\int_\Psi f := \langle  f \circ \Psi, \, n_\Psi \rangle
+			\]
+			valós számot.
+		\end{enumerate}
+	};
 
 
 \end{document}
