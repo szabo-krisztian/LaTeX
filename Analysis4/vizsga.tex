@@ -683,64 +683,6 @@
     };\\
 
 
-    \newpage
-    Legyen adott $\begin{pmatrix}
-        a \\
-        b
-    \end{pmatrix} \in \R^2$ középpont, $R > 0$ sugár. Ekkor a kör egy paraméterezése:
-    \[
-        k(\varphi) := \begin{pmatrix}
-            R \cdot \cos(\varphi) + a \\
-            R \cdot \sin(\varphi) + b
-        \end{pmatrix} \quad (\varphi \in [0, \, 2 \pi]).
-    \]
-    Egy $\varphi \in [0, \, 2 \pi]$ helyen az érintősugár paraméterezése
-    \[
-        r_\varphi(t) = \begin{pmatrix}
-            - R \cdot \sin(\varphi) \\
-            R \cdot \cos(\varphi)
-        \end{pmatrix} t + k(\varphi) \quad (\varphi \in [0, \, 2 \pi]).
-    \]
-    Keresni akarunk olyan $\varphi \in [0, \, 2 \pi]$ helyeket, ahol az érintősugár tartalmazza az origót, azaz
-    \[
-        \begin{pmatrix}
-            0\\
-            0
-        \end{pmatrix}\in
-        \mathcal{R}_{r_\varphi}.
-    \]
-    Ez azt jelenti, hogy létezik olyan $t \in \R$ paraméter, hogy
-    \[
-        r_\varphi(t) = \begin{pmatrix}
-            0\\
-            0
-        \end{pmatrix}.
-    \]
-    Mindezt kiírva, keressünk olyan $\varphi \in [0, \, 2 \pi]$-t, hogy valamilyen $t \in \R$ paraméterre
-    \begin{equation*}
-        \begin{cases}
-            -R \cdot \sin(\varphi) \cdot t + R \cdot \cos(\varphi) + a = 0 \\
-            R \cdot \cos(\varphi) \cdot t + R \cdot \sin(\varphi) + b = 0
-        \end{cases}.
-    \end{equation*}
-    Legyen $\varphi \in [0, \, 2 \pi]$ esetén $v_\varphi := \begin{pmatrix}
-        -R \cdot \sin(\varphi) \\
-        R \cdot \cos(\varphi)
-    \end{pmatrix}$, $u_\varphi := \begin{pmatrix}
-        R \cdot \cos(\varphi) + a \\
-        R \cdot \sin(\varphi) + b
-    \end{pmatrix}$.
-    Azaz valamilyen $\varphi \in [0, \, 2 \pi]$ esetén
-    \[
-        v_\varphi \cdot t + u_\varphi = \mathbf{0}.
-    \]
-    Ha $v_\varphi, \, u_\varphi$ vektorok lineárisan összefüggőek, akkor létezik egy ilyen $t \in \R$. Tehát olyan $\varphi \in [0, \, 2 \pi]$ számokat kell keresni, amire $v_\varphi, \, u_\varphi$ lineárisan összefüggő lesz.
-
     
-        
-        
-    
-
-
 
 \end{document}
