@@ -578,5 +578,172 @@
 		\end{enumerate}
 	};
 
+	\newpage
+	\section{Gyakorlat}
+	\subsection{Emlékeztető}
+	Valamilyen kompakt $[a, \, b]$ intervallum $(a, \, b \in \R, \, a < b)$ és $(\emptyset \neq U \subset \R^n)$ $(1 \leq n \in N)$ nyílt halmaz esetén tekintsük az
+	\[
+		f : U \times [a, \, b] \to \R
+	\]
+	függvényt. Ha $x \in U$, akkor legyen $f_x : [a, \, b] \to \R$ az a függvény, amire
+	\[
+		f_x(t) := f(x, \, t) \quad (t \in [a, \, b]).
+	\]
+	Tegyük fel, hogy minden $x \in U$ esetén az $f_x$ függvény Riemann-integrálható: $f_x \in R[a, \, b]$, legyen ekkor
+	\[
+		F(x) := \int_a^b f(x, \, t) \, dt := \int_a^b f_x \quad (x \in U).
+	\]
+	Az így definiált $F : U \to \R$ függvényt az $f$ által meghatározott \textit{paraméteres integrálnak} nevezzük.\\
+
+	Világos, hogy
+	\[
+		\D = U \times [a, \, b] \subset \R^{n+1}.
+	\]
+	Vezessük be $\R^n$-en is és $\R^{n+1}$-en is a $\|.\| := \|.\|_\infty$ normát. Nem fog félreértést okozni, ha $\xi \in \R^n$ és $\eta \in \R^{n+1}$ esetén egyaránt a $\|\xi\|, \, \|\eta\|$ jelölést használjuk. Így pl. nyilvánvaló, hogy az
+	\[
+		(x, \, t) \in U \times [a, \, b]
+	\]
+	vektorra
+	\[
+		\| (x, \, t)\| = \max \{ \|x\|, |t| \}.
+	\]
+	Továbbá, ha az
+	\[
+		f : U \times [a, \, b] \to \R
+	\]
+	függvény folytonos, akkor tetszőleges $x \in U$ mellett az $f_x : [a, \, b] \to \R$ függvény is folytonos. Ui., ha $s \in [a, \, b]$ és $\xi := (x, \, s)$, akkor $f \in \mathcal{C}\{\xi\}$ miatt bármilyen $\varepsilon > 0$ esetén van olyan $\delta > 0$, amellyel
+	\[
+		|f(\omega) - f(\xi)| < \varepsilon \quad (\omega \in U \times [a, \, b], \, \|\omega - \xi\| < \delta),
+	\]
+	azaz
+	\[
+		|f(y, \, t) - f(x, \, s)| < \varepsilon \quad ((y, \, t) \in U \times [a, \, b], \, \|(y, \, t) - (x, \, s)\| < \delta).
+	\]
+	Ha itt $y := x$, akkor
+	\[
+		\|(x, \, t) - (x, \, s)\| = \|(0, \, t-s)\| = |t-s|,
+	\]
+	ezért
+	\[
+		|f(x, \, t) - f(x, \, s)| = |f_x(t) - f_x(s)| < \varepsilon (t \in [a, \, b], \, |t-s| < \delta),
+	\]
+	más szóval $f_x \in \mathcal{C}\{s\}$. Következésképpen $f_x \in C[a, \, b]$, így $f_x \in R[a, \, b]$, létezik tehát a fenti $F$ paraméteres integrál.\\
+
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Tegyük fel, hogy adott az $[a, \, b] \, (a, \, b \in \R, \, a < b)$ kompakt intervallum, $1 \leq n \in \N$, és $\emptyset \neq U \subset \R^n$ nyílt halmaz. Ekkor tetszőleges folytonos
+		\[
+			f : U \times [a, \, b] \to \R
+		\]
+		függvény esetén az
+		\[
+			F(x) := \int_a^b f(x, \, t) \, dt \quad (x \in U)
+		\]
+		paraméteres integrálra az alábbiak igazak:
+		\begin{enumerate}
+			\item az $F$ függvény folytonos;
+			\item ha valamilyen $i = 1, \, \dots, \, n$ indexre létezik és folytonos a $\partial_i f$ parciális deriváltfüggvény, akkor létezik a $\partial_i F$ parciális deriváltfüggvény is, és
+			\[
+				\partial_i F(x) = \int_a^b \partial_i f(x, \, t) \, dt \quad (x \in U);
+			\]
+			\item amennyiben az $f$ folytonosan differenciálható, akkor $F$ is.
+		\end{enumerate}
+	};\\
+
+	\subsection{Feladatok}
+	\subsubsection{Feladat}
+	Igazoljuk, hogy
+	\[
+		\int_0^{\pi / 2} \frac{\text{arctg} (y \cdot \text{tg}(x))}{\text{tg}(x)} \, dx = \frac{\pi}{2} \ln(y + 1) \quad (y \geq 0).
+	\]
+	Legyen
+	\[
+		f(y, \, x) := \begin{cases}
+			y & x = 0, \, y \in [0, \, + \infty) \\
+			0 & x = \pi / 2, \, y \in [0, \, + \infty) \\
+			\displaystyle \frac{\text{arctg} (y \cdot \text{tg}(x))}{\text{tg}(x)} & ((y, \, x) \in [0, \, +\infty) \times (0, \, \pi / 2)).	
+		\end{cases}
+	\]
+	Ekkor $f \in C$, ezért a paraméteres integrál is folytonos. Mivel
+	\[
+		\partial_1 f(y, \, x) := \begin{cases}
+			0 & x = \pi / 2, \, y \in [0, \, + \infty) \\
+			\displaystyle \frac{1}{1 + y^2 \text{tg}^2(x)} & ((y, \, x) \in [0, \, +\infty) \times [0, \, \pi / 2))
+		\end{cases}
+	\]
+	$\partial_1f \in C$, tehát a paraméteres integrál deriválható.
+
+
+
+
+	\newpage
+	\section{Gyakorlat}
+	\subsection{Emlékeztető}
+
+	Legyenek $n, \, m \in \N$ természetes számok, ahol $2 \leq n$ és $1 \leq m < n$. Ha
+	\[
+		\xi = (\xi_1, \, \dots, \, \xi_n) \in \R^n,
+	\]
+	akkor legyen
+	\[
+		x := (\xi_1, \, \dots, \, \xi_{n-m}) \in \R^{n-m}, \, y := (\xi_{n-m+1}, \, \dots, \, \xi_n) \in \R^m,
+	\]
+	és ezt következésképpen fogjuk jelölni:
+	\[
+		\xi =(x, \, y).
+	\]
+	Röviden:
+	\[
+		\R^n \equiv \R^{n-m} \times \R^m.
+	\]
+	Ha tehát
+	\[
+		f = (f_1, \, \dots, \, f_m) \in \R^n \to \R^m,
+	\]
+	azaz
+	\[
+		f \in \R^{n-m} \times \R^m \to \R^m,
+	\]
+	akkor $f$-et olyan kétváltozós vetkorfüggvényként tekintjük, ahol az $f(x, \, y)$ helyettesítési értékekben az argumentum első változójára $x \in \R^{n-m}$, a második változójára pedig $y \in \R^m$ teljesül.\\
+
+	Tegyük fel, hogy ebben az értelmemben valamilyen $(a, \, b) \in \text{int} \, \D$ zérushelye az $f$-nek:
+	\[
+		f(a, \, b) = 0.
+	\]
+	Tételezzük fel továbbá, hogy van az $a$-nak olyan $K(a) \subset \R^{n-m}$ környezete, a $b$-nek pedig olyan $K(b) \subset \R^m$ környezete, hogy tetszőleges $x \in K(a)$ esetén egyértelműen létezik olyan $y \in K(b)$, amellyel
+	\[
+		f(x, \, y) = 0.
+	\]
+	Definiáljuk ekkor a $\varphi(x) := y$ hozzárendeléssel a
+	\[
+		\varphi : K(a) \to K(b)
+	\]
+	függvényt, amikor is
+	\[
+		f(x, \, \varphi(x)) = 0 \quad \big(x \in K(a) \big).
+	\]
+	Az előbbi $\varphi$ függvényt az $f$ által (az $(a, \, b)$ körül) meghatározott \textit{implicitfüggvénynek} nevezzük. Nyilván $\varphi(a) = b$.\\
+
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel (implicitfüggvény-tétel).} Adott $n, \, m \in \N, \, 2 \leq n$, valamint $1 \leq m < n$ mellett az
+		\[
+			f \in \R^{n-m} \times \R^m \to \R^m
+		\]
+		függvényről tételezzük fel az alábbiakat: $f \in C^1$ és az $(a, \, b) \in \text{int} \, \D$ helyen
+		\[
+			f(a, \, b) = 0, \, \det \partial_2 f(a, \, b) \neq 0.
+		\]
+		Ekkor alkalmas $K(a), \, K(b)$ környezetekkel létezik az $f$ által az $(a, \, b)$ körül meghatározott
+		\[
+			\varphi : K(a) \to K(b)
+		\]
+		implicitfüggvény, ami folytonosan differenciálható, és
+		\[
+			\varphi'(x) = -\partial_2f(x, \, \varphi(x))^{-1} \cdot \partial_1f(x, \, \varphi(x)) \quad \big(x \in K(a)\big).
+		\]
+	};
+
+	
 
 \end{document}
