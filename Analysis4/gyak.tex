@@ -674,6 +674,72 @@
 	$\partial_1f \in C$, tehát a paraméteres integrál deriválható.
 
 
+	\subsection{Feladat}
+	Indokoljuk meg, hogy tetszőleges $0 < \alpha \in \R$ esetén
+	\[
+		F(\alpha) := \int\limits_0^1 \frac{\text{arctg}(\alpha \sqrt{x})}{\sqrt{x}} \, dx \in \R,
+	\]
+	majd mutassuk meg, hogy fennáll az
+	\[
+		F(\alpha) = 2 \text{arctg}(\alpha) - \frac{\ln(1+\alpha^2)}{\alpha} \quad (0 < \alpha \in \R)
+	\]
+	egyenlőség!\\
+
+	Legyen
+	\[
+		f(\alpha, \, x) := \begin{cases}
+			\alpha & \alpha \in (0, \, + \infty), \, x = 0; \\
+			\frac{\text{arctg}(\alpha \sqrt{x})}{\sqrt{x}} & \alpha \in (0, \, + \infty), \, x \in (0, \, 1];
+		\end{cases}
+	\]
+	akkor $f \in C$, hiszen (Bernoulli-L'Hospital-szabály felhasználásával)
+	\[
+		\lim_{x \to 0 + 0} \frac{\text{arctg}(\alpha\sqrt{x})}{\sqrt{x}} = \lim_{x \to 0 + 0} \frac{\frac{1}{1 + \alpha^2 x} \cdot \frac{1}{2\sqrt{x}} \cdot \alpha}{\frac{1}{2\sqrt{x}}} = \alpha.
+	\]
+	Tehát $F \in C$ is teljesül. Mivel
+	\[
+		\partial_1 f(\alpha, \, x) = \frac{1}{1+ \alpha^2x} \quad \big( (\alpha, \, x) \in (0, \, + \infty) \times [0, \, 1] \big),
+	\]
+	és $\partial_1 f \in C$, ezért $F \in D$.
+	\[
+		F'(\alpha)= \int\limits_0^1 \partial_\alpha \left( \frac{\text{arctg}(\alpha \sqrt{x})}{\sqrt{x}} \, dx \right) = \int\limits_0^1 \frac{1}{1+\alpha^2 x} \, dx = \left[ \frac{\ln(1+\alpha^2x)}{\alpha^2} \right]_0^1 =
+	\]
+	\[
+		\frac{\ln(1+\alpha^2)}{\alpha^2}.
+	\]
+	Tehát
+	\[
+		F'(\alpha) = \frac{\ln(1+\alpha^2)}{\alpha^2}.
+	\]
+	Számoljuk ki $F'$ határozatlan integrálját:
+	\[
+		\int F' = \int \frac{\ln(1+\alpha^2)}{\alpha^2} \, d\alpha = -\frac{\ln(1+\alpha^2)}{\alpha} - \int \left(-\frac{1}{\alpha}\right) \cdot \frac{2\alpha}{1 + \alpha^2} \, d\alpha =
+	\]
+	\[
+		2 \text{arctg}(\alpha) - \frac{\ln(1+\alpha^2)}{\alpha} + c \quad (c \in \R).
+	\]
+	Azaz, mivel
+	\[
+		F \in \int F',
+	\]
+	ezért létezik egy $c \in \R$ konstans, amivel
+	\[
+		F(\alpha) = 2 \text{arctg}(\alpha) - \frac{\ln(1+\alpha^2)}{\alpha} + c.
+	\]
+	Számoljuk ki $F(1)$-et:
+	\[
+		F(1) = \int\limits_0^1 \frac{\text{arctg}(\sqrt{x})}{\sqrt{x}} \, dx = \frac{\pi}{2} - \ln(2).
+	\]
+	Ebből
+	\[
+		F(1) = 2 \text{arctg}(1) - \ln(2) = \frac{\pi}{2} - \ln(2),
+	\]
+	ahonnan $c=0$, tehát
+	\[
+		F(\alpha) = 2 \text{arctg}(\alpha) - \frac{\ln(1+\alpha^2)}{\alpha}
+	\]
+	következik.
+
 
 
 	\newpage
