@@ -810,6 +810,55 @@
 		\]
 	};
 
-	
+	\subsection{Feladatok}
+	\subsection{Feladat}
+	Bizonyítsuk be, hogy az
+	\[
+		x^2 +2xy - y^2 = 7
+	\]
+	egyenletből $y$ kifejezhető $x$ implicitfüggvényeként a $2$ egy környezetében, majd határozzuk meg így adódó implicitfüggvénynek deriváltját az $x=2$ helyen, továbbá írjuk fel az érintőegyenesek egyenleteit!\\
+
+	Legyen
+	\[
+		f(x, \, y) := x^2 + 2xy - y^2 - 7 \big( (x, \, y) \in \R^2 \big).
+	\]
+	Ekkor
+	\[
+		f(2, \, y) = 0 \quad \Longleftrightarrow \quad y \in \{1, \, 3\}.
+	\]
+	Mivel $f \in C^1$, és
+	\[
+		\partial_2 f(2, \, 1) = 2 \neq 0,
+	\]
+	\[
+		\partial_2 f(2, \, 3) = -2 \neq 0,
+	\]
+	így teljesülnek az implicitfüggvényre vonatkozó tétel feltételei. Legyen
+	\[
+		H := \{ (x, \, y) \in \R^2 : x^2 + 2xy - y^2 = 7 \}.
+	\]
+	Így valóban léteznek olyan $U =: K(2), \, V_1 := K(1), \, V_2 := K(3)$ környezetek, hogy $\varphi_1 : U \to V_1$ és $\varphi_2 : U \to V_2$ folytonosan differenciálható függvények grafikonjai rendre megegyeznek a $H$ halmaz $(2, \, 1), \, (2, \, 3)$ pontban vett környezetével.
+	\[
+		f(x, \, \varphi_i(x)) = 0 \quad (x \in U, \, i = 1, \, 2).
+	\]
+	Mivel
+	\[
+		\partial_1 f(2, \, 1) = 6, \text{ ill. } \partial_1f(2, \, 3) = 10,
+	\]
+	ezért
+	\[
+		\varphi_1(2) = 1, \text{ill. a } \varphi_2(2) = 3
+	\]
+	egyenlőségek felhasználásával azt kapjuk, hogy
+	\[
+		\varphi_1'(2) = -3, \, \varphi_2(2) = 5.
+	\]
+	A megfelelő érintők egyenlete:
+	\[
+		y = \varphi_1(2) + \varphi_1'(2)(x-2) = 7-3x \quad (x \in \R),
+	\]
+	\[
+		y = \varphi_2(2) + \varphi_2'(2)(x-2) = 5x-7 \quad (x \in \R).
+	\]
 
 \end{document}
