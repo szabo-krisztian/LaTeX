@@ -1,18 +1,23 @@
 \documentclass{article}
 \usepackage{tikz}
-\usepackage{setspace}
+
 \usepackage{hyperref}
 \usepackage{amsfonts, amssymb, amsmath}
 \usepackage{titlesec}
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
-\usepackage{graphicx}
-\usepackage{wrapfig}
-\usepackage{caption}
+
+
+
 \usepackage{enumitem}
 \usetikzlibrary{shadows.blur}
 \usepackage{lmodern}
-\usepackage{mathrsfs}
+
+\usepackage[utf8]{inputenc}    % For UTF-8 encoding
+\usepackage[T1]{fontenc}       % For proper character output
+\usepackage[hungarian]{babel}  % For Hungarian language support
+
+
 \setlength{\parskip}{0pt}
 \setlength{\parindent}{0pt}
 
@@ -885,7 +890,31 @@
 	\begin{enumerate}[start=4]
 		\item $\tau \in \mathcal{D}_\varphi$ és $\varphi(\tau) = \xi$
 	\end{enumerate}
-	kikötésnek is. Az így "kibővített" feladatot \textit{kezdetiérték-problémának} (vagy \textit{Cauchy-feladatnak}) nevezzük, és a továbbiakban minderre a \textit{k.é.p.} rövidítést fogjuk használni. 
+	kikötésnek is. Az így "kibővített" feladatot \textit{kezdetiérték-problémának} (vagy \textit{Cauchy-feladatnak}) nevezzük, és a továbbiakban minderre a \textit{k.é.p.} rövidítést fogjuk használni.\\
+
+	Azt mondjuk, hogy a szóban forgó k.é.p. \textit{egyértelműen oldható meg}, ha tetszőleges $\varphi, \, \psi$ megoldásai esetén
+	\[
+		\varphi(x) = \psi(x) \quad (x \in \mathcal{D}_\varphi \cap \mathcal{D}_\psi).
+	\]
+	Legyen ekkor $\mathcal{M}$ a szóban forgó k.é.p. megoldásainak a halmaza és
+	\[
+		J := \bigcap_{\varphi \in \mathcal{M}} \Dp.
+	\]
+	Ez egy $\tau$-t tartalmazó nyílt intervallum és $J \subset I$. Az egyértelmű megoldhatóság értelmezése miatt definiálhatjuk a
+	\[
+		\Phi : J \to \Omega
+	\]
+	függvényt az alábbiak szerint:
+	\[
+		\Phi(x) := \varphi(x) \quad (\varphi \in \mathcal{M}, \, x \in \Dp).
+	\]
+	Nyilván, $\Phi(\tau) = \xi, \, \Phi \in D$ és
+	\[
+		\Phi'(x) = f(x, \, Phi(x)) \quad (x \in J).
+	\]
+	Ez azt jelenti, hogy $\Phi \in \mathcal{M}$, és bármelyik $\varphi \in \mathcal{M}$ esetén $\varphi = \Phi_{|_{\Dp}}$.\\
+	
+	A $\Phi$ függvényt a k.é.p. \textit{teljes megoldásának} nevezzük.
 	
 	\subsubsection{Szeparábilis differenciálegyenlet}
 	Legyen $n := 1$, továbbá az $I, \, J \subset \R$ nyílt intervallumokkal és a
@@ -949,7 +978,27 @@
 	\]
 	Ha $G, \, H$ helyett más primitív függvényeket választunk, akkor ugyanezt az egyenlőséget kapjuk.\\
 	
-	Elegendő már csak azt belátni, hogy létezik megoldás. Ld. előadás (implicitfüggvény-tétel megfelelő alkalmazása). $\blacksquare$
+	Elegendő már csak azt belátni, hogy létezik megoldás. Ld. előadás (implicitfüggvény-tétel megfelelő alkalmazása). $\blacksquare$\\
+	
+	A tétel bizonyításával egyúttal egy módszert ("képletet") is adtunk a
+	\[
+		\varphi'(t) = g(t) \cdot h(\varphi(t)) \quad (t \in \Dp)
+	\]
+	szeparábilis egyenletre vonatkozó $\varphi(\tau) = \xi$ k.é.p. megoldására. Ennek a kulcsmozzanata a $G, \, H$ primitív függvények meghatározása:
+	\[
+		G(x) = \int\limits_\tau^x g(t) \, dt, \, H(y) = \int\limits_\xi^y \frac{dt}{h(t)} \quad (x \in I, \, y \in J),
+	\]
+	amiből aztán a $\varphi$-re vonatkozó
+	\[
+		H(\varphi(x)) = \int\limits_\xi^{\varphi(x)} \frac{dt}{h(t)} = G(x) = \int\limits_\tau^x g(t) \, dt \quad (x \in \Dp),
+	\]
+	azaz az
+	\[
+		\int\limits_\xi^{\varphi(x)} \frac{dt}{h(t)} = \int\limits_\tau^x g(t) \, dt \quad (x \in \Dp)
+	\]
+	implicit egyenlet adódott.
+	
+	
 	
 	
 	\subsubsection{Egzakt differenciálegyenlet}
@@ -1190,6 +1239,113 @@
 	\[
 		\varphi(t) = \psi(t) \quad (t \in \Dp \cap \mathcal{D}_\psi).
 	\]
-	$\hfill \blacksquare$
-
+	$\hfill \blacksquare$\\
+	
+	A
+	\[
+		\varphi'(t) = g(t) \cdot \varphi(t) + h(t) \quad (t \in \Dp)
+	\]
+	lineáris d.e.-re vonatkozó k.é.p. megoldására "megoldóképletet" is felírhatunk. Legyen ui.
+	\[
+		G(x) := \int\limits_\tau^x g(t) \, dt, \, m(x) := \int\limits_\tau^x \frac{h(t)}{\varphi_0(t)} \, dt \quad (x \in I),
+	\]
+	ekkor
+	\[
+		\varphi_0(\tau) = e^{G(\tau)} = 1, \, m(\tau) = 0,
+	\]
+	és a szóban forgó k.é.p. "teljes" megoldását jelentő
+	\[
+		\psi(x) := m(x) \cdot \varphi_0(x) + c \cdot \varphi_0(x) \quad (x \in I)
+	\]
+	függvényben
+	\[
+		c := \frac{\xi - m(\tau) \cdot \varphi_0(\tau)}{\varphi_0(\tau)} = \xi.
+	\]
+	
+	\newpage
+	\section{Gyakorlat}
+	\subsection{Emlékeztető}
+	\subsubsection{Lineáris differenciálegyenlet-rendszer}
+	Valamilyen $1 \leq n \in N$ és egy nyílt $I \subset \R$ intervallum esetén adottak a folytonos
+	\[
+		a_{ik} : I \to \R \quad (i, \, k = 1, \, \dots, \, n), \, b = (b_1, \, \dots, \, b_n) : I \to \R^n
+	\]
+	függvények, és tekintsük az
+	\[
+		I \ni x \mapsto A(x) := \big( a_{ik}(x) \big)_{i, \, k =1}^n \in \R^{n \times n}
+	\]
+	\textit{mátrixfüggvényt}. Ha
+	\[
+		f(x, \, y) := A(x) \cdot y + b(x) \quad ((x, \, y) \in I \times \K^n),
+	\]
+	akkor az $f$ függvény, mint jobb oldal által meghatározott
+	\[
+		\varphi'(x) = A(x) \cdot \varphi(x) + b(x) \quad (x \in \Dp)
+	\]
+	differenciálegyenletet \textit{lineáris differenciálegyenletnek} ($n > 1$ esetén \textit{lineáris} \textit{differenciálegyenlet-rendszernek}) nevezzük.\\
+	
+	Legyenek a fentieken túl adottak még a $\tau \in I, \, \xi \in \K^n$ értékek, és vizsgáljuk a $\varphi(\tau) = \xi$ k.é.p.-t. Ha $I_* \subset I$, $\tau \in \text{int} \, I_*$, kompakt intervallum, akkor
+	\[
+		\sup \{ |a_{ik}(x)| : x \in I_* \} \in \R \quad (i, \, k = 1, \, \dots, \, n),
+	\]
+	ezért
+	\[
+		q := \sup \{ \|A(x)\|_{(\infty)} : x \in I_* \} \in \R.
+	\]
+	Következésképpen
+	\[
+		\| f(x, \, y) - f(x, \, z) \|_\infty = \| A(x) \cdot (y- z) \|_\infty \leq
+	\]
+	\[
+		\|A(x)\|_{(\infty)} \cdot \|y-z\|_\infty \leq q \cdot \|y-z\|_\infty \quad (x \in I_*, \, y, \, z \in \K^n).
+	\]
+	Továbbá a
+	\[
+		\beta := \sup\{\|b(x)\| : x \in I_*\} (\in \R)
+	\]
+	jelöléssel
+	\[
+		\|f(x, \, y)\|_\infty = \| A(x) \cdot y + b(x) \|_\infty \leq \|A(x) \cdot y\|_\infty + \|b(x)\|_\infty \leq
+	\]
+	\[
+		\|A(x)\|_{(\infty)} \cdot \|y\|_\infty + \|b(x)\|_\infty \leq q \cdot \|y\|_\infty + \beta \quad (x \in I_*, \, y \in \K^n),
+	\]
+	ezért minden k.é.p. teljes megoldása az $I$ intervallumon van értelmezve. Azt mondjuk, hogy a szóban forgó d.e. \textit{homogén}, ha $b \equiv 0$, \textit{inhomogén}, ha létezik $x \in I$, hogy $b(x) \neq 0$. Legyenek
+	\[
+		\mathcal{M}_h := \{ \psi : I \to \K^n : \psi \in D, \, \psi' = A \cdot \psi \},
+	\]
+	\[
+		\mathcal{M} := \{ \psi : I \to \K^n : \psi \in D, \, \psi' = A \cdot \psi + b\}.
+	\]
+	A lineáris d.e.-ek "alaptétele" a következő\\
+	
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} A bevezetésben mondott feltételek mellett
+		\begin{enumerate}
+			\item az $\mathcal{M}_h$ halmaz $n$ dimenziós lineáris tér a $\K$-ra vonatkozóan;
+			\item tetszőleges $\psi \in \mathcal{M}$ esetén
+			\[
+				\mathcal{M} = \psi + \mathcal{M}_h := \{\psi + \chi : \chi \in \mathcal{M}_h \};
+			\]
+			\item ha a $\phi_k = (\phi_{k1}, \, \dots, \, \phi_{kn})$ $(k = 1, \, \dots, \, n)$ függvények bázist alkotnak az $\mathcal{M}_h$-ban, akkor léteznek olyan $g_k : I \to \K$ $(k = 1, \, \dots, \, n)$ differenciálható függvények, amelyekkel
+			\[
+				\psi := \sum_{k=1}^n g_k \cdot \phi_k \in \mathcal{M}.
+			\]
+		\end{enumerate}
+	};\\
+	
+	\textbf{Bizonyítás.} Az $1.$ állítás bizonyításához mutassuk meg először is azt, hogy bármilyen $\psi, \, \varphi \in \mathcal{M}_h$ és $c \in \K$ esetén $\psi + c \cdot \varphi \in \mathcal{M}_h$:
+	\[
+		(\psi + c \cdot \varphi)' = \psi' + c \cdot \varphi' = A \cdot \psi + c \cdot A \cdot \varphi = A \cdot (\psi + c \cdot \varphi),
+	\]
+	amiből a mondott állítás az $\mathcal{M}_h$ definíciója alapján nyilvánvaló. Tehát az $\mathcal{M}_h$ lineáris tér a $\K$ felett.\\
+	
+	Most megmutatjuk, hogy ha $m \in \N$, és $\chi_1, \, \dots, \, \chi_m \in \mathcal{M}_h$ tetszőleges függvények, akkor az alábbi ekvivalencia igaz:
+	\begin{quote}
+		a $\chi_1, \, \dots, \, \chi_m$ függvények akkor és csak akkor alkotnak lineárisan független rendszert az $\mathcal{M}_h$ vektortérben, ha bármilyen $\tau \in I$ esetén a $\chi_1(\tau), \, \dots, \, \chi_m(\tau)$ vektorok lineárisan függetlenek a $\K^n$-ben.
+	\end{quote}
+	
+	Folytatás később.
+	
 \end{document}
