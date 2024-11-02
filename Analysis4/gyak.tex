@@ -860,5 +860,336 @@
 	\[
 		y = \varphi_2(2) + \varphi_2'(2)(x-2) = 5x-7 \quad (x \in \R).
 	\]
+	
+	\newpage
+	\section{Gyakorlat}
+	\subsection{Emlékeztető}
+	\subsubsection{Közönséges differenciálegyenletek}
+	
+	Legyen $0 < n \in \N, \, I \subset \R, \, \Omega \subset \R^n$ egy-egy nyílt intervallum. Tegyük fel, hogy az
+	\[
+		f : I \times \Omega \to \R^n
+	\]
+	függvény folytonos, és tűzzük ki az alábbi feladat megoldását:
+	\begin{quote}
+		határozzunk meg olyan $\varphi \in I \to \Omega$ függvény, amelyre igazak a következő állítások:
+		\begin{enumerate}
+			\item $\mathcal{D}_\varphi$ nyílt intervallum;
+			\item $\varphi \in D$;
+			\item $\varphi'(x) = f(x, \, \varphi(x)) \quad (x \in \mathcal{D}_\varphi)$.
+		\end{enumerate}
+	\end{quote}
+	A most megfogalmazott feladatot \textit{explicit elsőrendű közönséges differenciálegyenletnek} (röviden \textit{differenciálegyenletnek}) fogjuk nevezni, és a \textit{d.e.} rövidítéssel idézni.\\
+	
+	Ha adottak a $\tau \in I, \, \xi \in \Omega$ elemek, akkor a fenti $\varphi$ függvény $1., \, 2.$ és $3.$ mellett tegyen eleget a
+	\begin{enumerate}[start=4]
+		\item $\tau \in \mathcal{D}_\varphi$ és $\varphi(\tau) = \xi$
+	\end{enumerate}
+	kikötésnek is. Az így "kibővített" feladatot \textit{kezdetiérték-problémának} (vagy \textit{Cauchy-feladatnak}) nevezzük, és a továbbiakban minderre a \textit{k.é.p.} rövidítést fogjuk használni. 
+	
+	\subsubsection{Szeparábilis differenciálegyenlet}
+	Legyen $n := 1$, továbbá az $I, \, J \subset \R$ nyílt intervallumokkal és a
+	\[
+		g : I \to \R, \, h : J \to \R \, \backslash \, \{0\}
+	\]
+	folytonos függvényekkel
+	\[
+		f(x, \, y) := g(x) \cdot h(y) \quad \big( (x, \, y) \in I \times J \big).
+	\]
+	A $\varphi \in I \to J$ megoldásra tehát
+	\[
+		\varphi'(t) = g(t) \cdot h(\varphi(t)) \quad (t \in \mathcal{D}_\varphi).
+	\]
+	(\textit{Szeparábilis} (vagy más szóval \textit{szétválasztható változójú}) differenciálegyenlet.) Legyenek még adottak a $\tau \in I, \, \xi \in J$ számok, amikor is
+	\[
+		\tau \in \Dp, \, \varphi(\tau) = \xi.
+	\]
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Tetszőleges szeparábilis differenciálegyenletre vonatkozó kezdetiérték-probléma megoldható, és bármilyen $\varphi, \, \psi$ megoldásaira
+		\[
+			\varphi(t) = \psi(t) \quad (t \in \Dp \cap \mathcal{D}_\psi).
+		\]
+	};\\
+	
+	\textbf{Bizonyítás.} Mivel a $h$ függvény sehol sem nulla, ezért egy $\varphi$ megoldásra (ha az létezik)
+	\[
+		\frac{\varphi'(t)}{h(\varphi(t))} = g(t) \quad (t \in \Dp).
+	\]
+	A $g : I \to \R$ is, és az $1 / h : J \to \R$ is egy-egy nyílt intervallumon értelmezett folytonos függvények, így léteznek a
+	\[
+		G \in \int g, \, H \in \int \frac{1}{h},
+	\]
+	\[
+		G : I \to \R, \, H : J \to \R
+	\]
+	primitív függvényeik. Az összetett függvény deriválásával kapcsolatos tétel szerint
+	\[
+		\frac{\varphi'(t)}{h(\varphi(t))} = (H \circ \varphi - G)'(t) = 0 \quad (t \in \Dp).
+	\]
+	Tehát (mivel a $\Dp$ is nyílt intervallum) van olyan $c \in \R$, hogy
+	\[
+		H(\varphi(t)) - G(t) = c \quad (t \in \Dp).
+	\]
+	Az $1/h$ függvény nyilván nem vesz fel 0-t a $J$ intervallum egyetlen pontjában sem, így ugyanez igaz a $H'$ függvényre is. A deriváltfüggvény Darboux-tulajdonsága miatt tehát a $H'$ állandó előjelű. Következésképpen $H$ szigorúan monoton, amiért invertálható. A $H^{-1}$ inverzzel
+	\[
+		\varphi(t) = H^{-1}(G(t) + c) \quad (t \in \Dp).
+	\]
+	Ha $\tau \in I, \, \xi \in J$, és a $\varphi$ megoldás eleget tesz a $\varphi(\tau) = \xi$ kezdeti feltételnek is, akkor
+	\[
+		\xi = H^{-1}(G(\tau) + c),
+	\]
+	azaz $H(\xi) = G(\tau) + c$, ill.
+	\[
+		c = H(\xi) - G(\tau).
+	\]
+	Így
+	\[
+		\varphi(t) = H^{-1}\big( G(t) + H(\xi) - G(\tau) \big) \quad (t \in \Dp).
+	\]
+	Ha $G, \, H$ helyett más primitív függvényeket választunk, akkor ugyanezt az egyenlőséget kapjuk.\\
+	
+	Elegendő már csak azt belátni, hogy létezik megoldás. Ld. előadás (implicitfüggvény-tétel megfelelő alkalmazása). $\blacksquare$
+	
+	
+	\subsubsection{Egzakt differenciálegyenlet}
+	Speciálisan legyen $n := 1$, és az $I, \, J \subset$ nyílt intervallumok, valamint a
+	\[
+		g : I \times J \to \R \text{ és } h : I \times J \to \R \, \backslash \, \{0\}
+	\]
+	folytonos függvényekkel
+	\[
+		f(x, \, y) := - \frac{g(x, \, y)}{h(x, \, y)} \quad ((x, \, y) \in I \times J).
+	\]
+	Ekkor a fenti minden $\varphi$ megoldásra
+	\[
+		\varphi'(x) = -\frac{g(x, \, \varphi(x))}{h(x, \, \varphi(x))} \quad (x \in \Dp).
+	\]
+	Azt mondjuk, hogy az így kapott \textit{d.e. egzakt differenciálegyenlet}, ha az
+	\[
+		I \times J \ni (x, \, y) \mapsto (g(x, \, y), \, h(x, \, y)) \in \R^2
+	\]
+	leképezésnek van primitív függvénye. Ez utóbbi követelmény azt jelenti, hogy egy alkalmas differenciálható
+	\[
+		G : I \times J \to \R	
+	\]
+	függvénnyel
+	\[
+		\text{grad} \, G = (\partial_1 G, \, \partial_2 G) = (g, \, h).
+	\]
+	Ha $\tau \in I, \, \xi \in J$ és a $\varphi$ függvénytől azt is elvárjuk, hogy
+	\[
+		\tau \in \Dp, \, \varphi(\tau) = \xi,
+	\]
+	akkor igaz az\\
+	
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Tetszőleges egzakt differenciálegyenletre vonatkozó minden kezdetiérték-probléma megoldható, és ennek bármilyen $\varphi, \, \psi$ megoldásaira
+		\[
+			\varphi(t) = \psi(t) \quad (t \in \Dp \cap \mathcal{D}_\psi).
+		\]
+	};\\
+	
+	\textbf{Bizonyítás.} Valóban, $0 \not \in \mathcal{R}_h$ miatt a feltételezett $\varphi$ megoldásra
+	\[
+		g(x, \, \varphi(x)) + h(x, \, \varphi(x)) \cdot \varphi'(x) = 0 \quad (x \in \Dp).
+	\]
+	Ha van ilyen $\varphi$ függvény, akkor az
+	\[
+		F(x) := G(x, \, \varphi(x)) \quad (x \in \Dp)
+	\]
+	egyváltozós valós függvény differenciálható, és tetszőleges $x \in \Dp$ helyen
+	\[
+		F'(x) = \langle \text{grad} \, G(x, \, \varphi(x)), \, (1, \, \varphi'(x)) \rangle = 
+	\]
+	\[
+		g(x, \, \varphi(x)) + h(x, \, \varphi(x)) \cdot \varphi'(x) = 0.
+	\]
+	A $\mathcal{D}_F = \mathcal{D}_\varphi$ halmaz nyílt intervallum, ezért az $F$ konstans függvény, azaz létezik olyan $c \in \R$, amellyel
+	\[
+		G(x, \, \varphi(x)) = c \quad (x \in \Dp).
+	\]
+	Mivel $\varphi(\tau) = \xi$, ezért
+	\[
+		c = G(\tau, \, \xi).
+	\]
+	A $G$-ről feltehetjük, hogy $G(\tau, \, \xi) = 0$, ezért a szóban forgó kezdetiérték-probléma $\varphi$ megoldása eleget tesz a
+	\[
+		G(x, \, \varphi(x)) = 0 \quad (x \in \Dp)
+	\]
+	egyenletnek.\\
+	
+	Világos, hogy a $\varphi$ nem más, mint egy, a $G$ által meghatározott implicitfüggvény. Más szóval a szóban forgó kezdetiérték-probléma minden megoldása (ha létezik) a fenti implicitfüggvény-egyenletből határozható meg. \\
+	
+	Ugyanakkor a feltételek alapján $G \in C^1, \, G(\tau, \, \xi) = 0$, továbbá
+	\[
+		\partial_2 G(\tau, \, \xi) = h(\tau, \, \xi) \neq 0,
+	\]
+	ezért $G$-re (a $(\tau, \, \xi)$ helyen) teljesülnek az implicitfüggvény-tétel feltételei. Következésképpen van olyan differenciálható
+	\[
+		\psi \in I \to J
+	\]
+	(implicit)függvény, amelyre $\mathcal{D}_\psi \subset I$ nyílt intervallum,
+	\[
+		\tau \in \mathcal{D}_\psi, \, G(x, \, \psi(x)) = 0 \, (x \in \mathcal{D}_\psi), \, \psi(\tau) = \xi,
+	\]
+	és
+	\[
+		\psi'(x) = - \frac{\partial_1 G(x, \, \psi(x))}{\partial_2 G(x, \, \psi(x))} = - \frac{g(x, \, \psi(x))}{h(x, \, \psi(x))} \quad (x \in \mathcal{D}_\psi).
+	\]
+	$\hfill\blacksquare$
+	
+	
+	
+	
+	\subsubsection{Lineáris differenciálegyenlet}
+	Legyen most $n =: 1$ és az $I \subset \R$ egy nyílt intervallum, valamint a
+	\[
+		g, \, h : I \to \R
+	\]
+	folytonos függvények segítségével
+	\[
+		f(x, \, y) := g(x) \cdot y + h(x) \quad ((x, \, y) \in I \times \R).
+	\]
+	Ekkor
+	\[
+		\varphi'(t) = g(t) \cdot \varphi(t) + h(t) \quad (t \in \Dp).
+	\]
+	Ezt a feladatot \textit{lineáris differenciálegyenletnek} nevezzük. \\
+	
+	Ha valamilyen $\tau \in I, \, \xi \in \R$ mellett
+	\[
+		\tau \in \Dp, \, \varphi(\tau) = \xi,
+	\]
+	akkor az illető lineáris differenciálegyenletre vonatkozó kezdetiérték-problémáról beszélünk.\\
+	
+	Tegyük fel, hogy a $\theta$ függvény is és a $\psi$ függvény is megoldása a lineáris d.e.-nek és $\mathcal{D}_\theta \cap \mathcal{D}_\psi \neq \emptyset$. Ekkor
+	\[
+		(\theta - \psi)'(t) = g(t) \cdot \big( \theta(t) - \psi(t) \big) \quad (t \in \mathcal{D}_\theta \cap \mathcal{D}_\psi).
+	\]
+	Így a $\theta - \psi$ függvény megoldása annak a lineáris d.e.-nek, amelyben $h \equiv 0$:
+	\[
+		\varphi'(t) = g(t) \cdot \varphi(t) \quad (t \in \Dp).
+	\]
+	Ez utóbbi feladatot \textit{homogén lineáris differenciálegyenletnek} fogjuk nevezni. (Ennek megfelelően a szóban forgó lineáris differenciálegyenlet \textit{inhomogén}, ha a benne szereplő $h$ függvény vesz fel 0-tól különböző értéket is.)\\
+	
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Minden lineáris differenciálegyenletre vonatkozó kezdetiérték-probléma megoldható, és tetszőleges $\varphi, \, \psi$ megoldásaira
+		\[
+			\varphi(t) = \psi(t) \quad (t \in \mathcal{D}_\varphi \cap \mathcal{D}_\psi).
+		\]
+	};\\
+	
+	\textbf{Bizonyítás.} Legyen a
+	\[
+		G : I \to \R
+	\]
+	olyan függvény, amelyik differenciálható és $G' = g$ (a $g$-re tett  feltételek miatt ilyen $G$ primitív függvény van). Ekkor a
+	\[
+		\varphi_0(t) := e^{G(t)} \quad (t \in I)
+	\]
+	(csak pozitív értékeket felvevő) függvény megoldása az előbb említett homogén lineáris differenciálegyenletnek:
+	\[
+		\varphi_0'(t) = G'(t) \cdot e^{G(t)} = g(t) \cdot \varphi_0(t) \quad (t \in I).
+	\]
+	Tegyük fel most azt, hogy a
+	\[
+		\chi \in I \to \R
+	\]
+	függvény is megoldása a szóban forgó homogén lineáris differenciálegyenletnek:
+	\[
+		\chi'(t) = g(t) \cdot \chi(t) \quad (t \in \mathcal{D}_\chi).
+	\]
+	Ekkor a differenciálható
+	\[
+		\frac{\chi}{\varphi_0} : \mathcal{D}_\chi \to \R
+	\]
+	függvényre azt kapjuk, hogy bármelyik $t \in \mathcal{D}_\chi$ helyen
+	\[
+		\left( \frac{\chi}{\varphi_0} \right)'(t) = \frac{\chi'(t) \cdot \varphi_0(t) - \chi(t) \cdot \varphi_0'(t)}{\varphi_0^2(t)} =
+	\]
+	\[
+		\frac{g(t) \cdot \chi(t) \cdot \varphi_0(t) - \chi(t) \cdot g(t) \cdot \varphi_0(t)}{\varphi_0^2(t)} = 0,
+	\]
+	azaz (lévén a $\mathcal{D}_\chi$ nyílt intervallum) egy alkalmas $c \in \R$ számmal
+	\[
+		\frac{\chi(t)}{\varphi_0(t)} = c \quad (t \in \mathcal{D}_\chi).
+	\]
+	Más szóval, az illető homogén lineáris differenciálegyenlet bármelyik
+	\[
+		\chi \in I \to \R
+	\]
+	megoldása a következő alakú:
+	\[
+		\chi(t) = c \cdot \varphi_0(t) \quad (t \in \mathcal{D}_\chi),
+	\]
+	ahol $c \in \R$. Nyilván minden ilyen $\chi$ függvény -- könnyen ellenőrizhető módon -- megoldása a mondott homogén lineáris differenciálegyenletnek.\\
+	
+	Ha tehát a fenti (inhomogén) lineáris differenciálegyenletnek a $\theta$ függvény is és a $\psi$ függvény is megoldása és $\mathcal{D}_\theta \cap \mathcal{D}_\psi \neq \emptyset$, akkor egy alkalmas $c \in \R$ együtthatóval
+	\[
+		\theta(t) - \psi(t) = c \cdot \varphi_0(t) \quad (t \in \mathcal{D}_\theta \cap \mathcal{D}_\psi).
+	\]
+	Mutassuk meg, hogy van olyan differenciálható
+	\[
+		m : I \to \R
+	\]
+	függvény, hogy az $m \cdot \varphi_0$ függvény megoldása a most vizsgált (inhomogén) lineáris differenciálegyenletnek (\textit{az állandók variálásának módszere}). Ehhez azt kell "biztosítani", hogy
+	\[
+		(m \cdot \varphi_0)' = g \cdot m \cdot \varphi_0 + h,
+	\]
+	azaz
+	\[
+		m' \cdot \varphi_0 + m \cdot \varphi_0' = m' \cdot \varphi_0 + m \cdot g \cdot \varphi_0 = g \cdot m \cdot \varphi_0 + h.
+	\]
+	Innen szükséges feltételként az adódik az $m$-re, hogy
+	\[
+		m' = \frac{h}{\varphi_0}.
+	\]
+	Ilyen $m$ függvény valóban létezik, mivel a
+	\[
+		\frac{h}{\varphi_0} : I \to \R
+	\]
+	folytonos leképezésnek van primitív függvénye. Továbbá -- az előbbi rövid számolás "megfordításából" -- azt is beláthatjuk, hogy a $h / \varphi_0$ függvény bármelyik $m$ primitív függvényét is véve, az $m \cdot \varphi_0$ függvény megoldása a lineáris differenciálegyenletünknek.\\
+	
+	Összefoglalva az eddigieket azt mondhatjuk, hogy a fenti lineáris differenciálegyenletnek van megoldása, és tetszőleges $\varphi \in I \to \R$ megoldása
+	\[
+		\varphi(t) = m(t) \cdot \varphi_0(t) + c \cdot \varphi_0(t) \quad (t \in \Dp)
+	\]
+	alakú, ahol $m$ egy tetszőleges primitív függvénye a $h / \varphi_0$ függvénynek. Sőt, az is kiderül, hogy akármilyen $c \in \R$ és $J \subset I$ nyílt intervallum esetén a
+	\[
+		\varphi(t) := m(t) \cdot \varphi_0(t) + c \cdot \varphi_0(t) \quad (t \in J)
+	\]
+	függvény megoldás. Ezt megint csak egyszerű behelyettesítéssel ellenőrizhető:
+	\[
+		\varphi'(t) = m'(t) \cdot \varphi_0(t) + (c + m(t)) \cdot \varphi_0'(t) =
+	\]
+	\[
+		\frac{h(t)}{\varphi_0(t)} \cdot \varphi_0(t) + (c + m(t)) \cdot g(t) \cdot \varphi_0(t) = g(t) \cdot \varphi(t) + h(t) \quad (t \in J).
+	\]
+	Speciálisan az "egész" $I$ intervallumon értelmezett
+	\[
+		\psi_c(t) := m(t) \cdot \varphi_0(t) + c \cdot \varphi_0(t) \quad (c \in \R, \, t \in I)
+	\]
+	megoldások olyanok, hogy bármelyik $\varphi$ megoldásra egy alkalmas $c \in \R$ mellett
+	\[
+		\varphi(t) = \psi_c(t) \quad (t \in \Dp),
+	\]
+	azaz a $J := \Dp$ jelöléssel $\varphi = \psi_{c_{|_J}}$.\\
+	
+	Ha $\tau \in I, \, \xi \in \R$, és a $\varphi(\tau) = \xi$ kezdetiérték-feladatot kell megoldanunk, akkor a
+	\[
+		c := \frac{\xi - m(\tau) \cdot \varphi_0(\tau)}{\varphi_0(\tau)}
+	\]
+	választással a szóban forgó kezdetiérték-probléma
+	\[
+		\psi_c : I \to \R
+	\]
+	megoldását kapjuk. Mivel a fentiek alapján a szóban forgó k.é.p. minden $\varphi, \, \psi$ megoldására $\varphi = \psi_{c_{|_{\Dp}}}$ és $\psi = \psi_{c_{|_{\mathcal{D}_\psi}}}$, ezért egyúttal az is teljesül, hogy
+	\[
+		\varphi(t) = \psi(t) \quad (t \in \Dp \cap \mathcal{D}_\psi).
+	\]
+	$\hfill \blacksquare$
 
 \end{document}
