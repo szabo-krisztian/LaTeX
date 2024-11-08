@@ -1522,8 +1522,60 @@
 	\[
 		t_i \neq 0 \quad (i = 1, \, \dots, \, n),
 	\]
-	ezért mindez röviden azt jelenti, hogy a $\lambda_1, \, \dots, \, \lambda_n$ számok az $A$ mátrix sajátértékei, a $t_1, \, \dots, \, t_n$ vektorok pedig rendre a megfelelő sajátvektorok. Lévén, a $t_i$-k lineárisan függetlenek, az $A$-ra vonatkozó feltételünk úgy fogalmazható, hogy van a $K^n$-ben (az $A$ sajátvektoraiból álló) sajátvektorbázis.\\
-
-	Folytatás később.
+	ezért mindez röviden azt jelenti, hogy a $\lambda_1, \, \dots, \, \lambda_n$ számok az $A$ mátrix sajátértékei, a $t_1, \, \dots, \, t_n$ vektorok pedig rendre a megfelelő sajátvektorok. Lévén, a $t_i$-k lineárisan függetlenek, az $A$-ra vonatkozó feltételünk úgy fogalmazható, hogy van a $\K^n$-ben (az $A$ sajátvektoraiból álló) sajátvektorbázis.\\
+	
+	A homogén egyenlet tehát a következőképpen írható fel:
+	\[
+		\varphi' = A \cdot \varphi = T \Lambda T^{-1} \cdot \varphi,
+	\]
+	amiből
+	\[
+		(T^{-1}\varphi)' = \Lambda \cdot (T^{-1} \varphi)
+	\]
+	következik. Vegyük észre, hogy ha $\varphi \in \mathcal{M}_h$, akkor a $\psi := T^{-1}\varphi$ függvény megoldása a $\Lambda$ diagonális mátrix által meghatározott állandó együtthatós homogén lineáris egyenletnek. Ez utóbbit ez előző tétel alapján nem nehéz megoldani. Legyenek iu. a
+	\[
+		\psi_i : I \to \K^n \quad (i = 1, \, \dots, \, n)
+	\]
+	függvények a következők:
+	\[
+		\psi_i(x) := e^{\lambda_i \cdot x} \cdot e_i \quad (x \in I, \, i = 1, \, \dots, \, n).
+	\]
+	Világos, hogy $\psi_i \in D$ és
+	\[
+		\psi_i'(x) = \lambda_i \cdot e^{\lambda_i \cdot x} \cdot e_i = e^{\lambda_i \cdot x} \cdot (\Lambda \cdot e_i) =
+	\]
+	\[
+		\Lambda \cdot (e^{\lambda_i \cdot x} \cdot e_i) = \Lambda \cdot \psi_i(x) \quad (x \in I, \, i = 1, \, \dots, \, n).
+	\]
+	Más szóval a $\psi_i$-k valóban megoldásai a $\Lambda$ által meghatározott homogén lineáris differenciálegyenletnek. Mivel bármely $\tau \in I$ esetén a
+	\[
+		\psi_i(\tau) = e^{\lambda_i \cdot \tau} \cdot e_i \quad (i = 1, \, \dots, \, n)
+	\]
+	vektorok nyilván lineárisan függetlenek, ezért az előző tétel bizonyításában mondottak szerint a $\psi_i$ $(i = 1, \, \dots, \, n)$ függvények lineárisan függetlenek. Ha
+	\[
+		\phi_i := T \cdot \psi_i \quad (i = 1, \, \dots, \, n),
+	\]
+	akkor nyilván a $\phi_i$-k is lineárisan függetlenek,
+	\[
+		\phi_i(x) = e^{\lambda_i \cdot x} \cdot t_i \quad (x \in I, \, i = 1, \, \dots, \, n),
+	\]
+	és minden $i = 1, \, \dots, \, n$ indexre
+	\[
+		\phi_i' = A \cdot \phi_i.
+	\]
+	Tehát $\phi_i \in \mathcal{M}_h$ $(i = 1, \, \dots, \, n)$ egy bázis. Ezzel beláttuk az alábbi tételt:\\
+	
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Tegyük fel, hogy az $A \in \R^{n \times n}$ mátrix diagonalizálható. Legyenek a sajátértékei $\lambda_1, \, \dots, \, \lambda_n \in \K$, egy-egy megfelelő sajátvektora pedig $t_1, \, \dots, \, t_n \in \K^n$. Ekkor a
+		\[
+			\varphi' = A \cdot \varphi
+		\]
+		homogén lineáris differenciálegyenletnek a
+		\[
+			\phi_i(x) := e^{\lambda_i \cdot x} \cdot t_i \quad (x \in \R, \, i = 1, \, \dots, \, n)
+		\]
+		függvények lineárisan független megoldásai.
+	};
 
 \end{document}
