@@ -34,6 +34,7 @@
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\D}{\mathcal{D}_f}
 \newcommand{\Dp}{\mathcal{D}_\varphi}
+\newcommand{\p}{\varphi}
 
 \definecolor{modernyellow}{HTML}{F4E4BC}
 \definecolor{moderngreen}{HTML}{BDDCBD}
@@ -1488,7 +1489,7 @@
 		\]	
 	\end{enumerate}
 	
-	\subsubsection{Állandó együtthatós lineáris differenciálegyenlet-rendszer}
+	\subsubsection{Állandó együtthatós lineáris differenciálegyenlet-rendszer, diagonalizálható mátrix}
 	Legyen most
 	\[
 		f(x, \, y) := A \cdot y + b(x) \quad \big( (x, \, y) \in I \times \K^n \big),
@@ -1577,5 +1578,39 @@
 		\]
 		függvények lineárisan független megoldásai.
 	};
+
+	\subsubsection{Állandó együtthatós lineáris differenciálegyenlet-rendszer, általános eset}
+	Csak az $n=2$ esettel foglalkozunk. Legyen $I \subset \R$ nyílt intervallum, $b : I \to \R^2$ folytonos függvény, $A \in \R^{2 \times 2}$ és vizsgáljuk a
+	\[
+		\p'(x) = A \cdot \p(x) + b(x) \quad (x \in \Dp)
+	\]
+	lineáris differenciálegyenletet. Valamilyen $a, \, b, \, c, \, d \in \R$ számokkal
+	\[
+		A = \begin{bmatrix}
+			a & b \\ 
+			c & d
+		\end{bmatrix} \in \R^{2 \times 2}.
+	\]
+	Könnyű meggyőződni arról, hogy ez a mátrix pontosan akkor nem diagonalizálható, ha
+	\[
+		(a - d)^2 + 4bc = 0 \text{ és } |b| + |c| > 0.
+	\]
+	Ekkor egyetlen sajátértéke van az $A$-nak, nevezetesen
+	\[
+		\lambda := \frac{a+d}{2},
+	\]
+	legyen a $t_1$ egy hozzá tartozó sajátvektor:
+	\[
+		0 \neq t_1 \in \R^2, \, At_1 = \lambda t_1.
+	\]
+	Egyszerű számolással igazolható, hogy létezik $t_2 \in \R^2$ vektor, amelyik lineárisan független a $t_1$-től és
+	\[
+		At_2 = t_1 + \lambda t_2.
+	\]
+	Ekkor
+	\[
+	\boxed{\phi_1(x) := e^{\lambda x} \cdot t_1, \, \phi_2(x) := e^{\lambda x} \cdot (t_2 + x t_1)} \quad (x \in \R)
+	\]
+	függvénypár egy alaprendszer. 
 
 \end{document}
