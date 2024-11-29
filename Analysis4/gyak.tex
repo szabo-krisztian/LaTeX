@@ -1612,5 +1612,112 @@
 	\boxed{\phi_1(x) := e^{\lambda x} \cdot t_1, \, \phi_2(x) := e^{\lambda x} \cdot (t_2 + x t_1)} \quad (x \in \R)
 	\]
 	függvénypár egy alaprendszer. 
+	
+	\newpage
+	\section{Gyakorlat}
+	
+	\subsection{Emlékeztető}
+	\subsubsection{Weierstrass-kritérium}
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Tegyük fel, hogy valamilyen $\emptyset \neq X$ mellett $\emptyset \neq \mathcal{D} \subset X$, és adott az
+		\[
+			f_n : X \to \K \quad (n \in \N)
+		\]
+		függvények által meghatározott $\sum(f_n)$ függvénysor. Legyen továbbá egy $\emptyset \neq A \subset \mathcal{D}$ halmazzal és egy $(a_n)$ számsorozattal
+		\[
+			\sup \{ |f_n(x)| : x \in A \} \leq a_n \quad (n \in \N),
+		\]
+		ahol $\sum_{n=0}^\infty a_n < + \infty$. Ekkor a $\sum(f_n)$ függvénysor az $A$ halmazon egyenletesen konvergens. 
+	};\\
+	
+	Például, a
+	\[
+		h_n(x) := x^n \quad (x \in \R, \, n \in \N)
+	\]
+	függvénysorozattal legyen $0 < \delta < 1$ és $A := [-\delta, \, \delta]$, amikor
+	\[
+		\sum_{n=0}^\infty \sup\{ |h_n(x)| : x \in A\} = \sum_{n=0}^\infty \sup\{|x^n| : x \in [-\delta, \, \delta]\} = \sum_{n=0}^\infty \delta^n < + \infty.
+	\]
+	Tehát a szóban forgó $\sum(h_n)$ függvénysor a $[-\delta, \, \delta]$ intervallumon egyenletesen konvergens.\\
+	
+	A Weierstrass-kritérium nyilvánvaló következményeként kapjuk az alábbi állítást is: ha az $(a_n), \, (b_n)$ számsorozatokra
+	\[
+		\sum_{n=0}^\infty (|a_n| + |b_n|) < + \infty,
+	\]
+	akkor az általuk meghatározott $\sum(a_n \cos(nx) + b_n \sin(nx))$ trigonometrikus sor egyenletesen konvergens.
+
+	\subsubsection{Folytonossági tétel}
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Tegyük fel, hogy az
+		\[
+			f_n \in \K \to \K \quad (n \in \N)
+		\]
+		függvények által meghatározott $(f_n)$ függvénysorozat egyenletesen konvergens az $\emptyset \neq X \subset \K$ halmazon. Legyen a határfüggvénye az
+		\[
+			f : X \to \K
+		\]
+		függvény. Ha $a \in X$ és $f_n \in \mathcal{C}\{a\} \quad (n \in \N)$, akkor $f \in \mathcal{C}\{a\}$. 
+	};\\
+	
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Legyen adott a
+		\[
+			g_n : X \to \K \quad (n \in \N)
+		\]
+		függvények által meghatározott $\sum(g_n)$ függvénysor, ami egyenletesen konvergens, az összegfüggvénye pedig a
+		\[
+			G : X \to \K
+		\]
+		függvény. Ha $a \in X$ és $g_n \in \mathcal{C}\{a\} \quad (n \in \N)$, akkor $G \in \mathcal{C}\{a\}$. 
+	};
+	
+	\subsubsection{Integrálhatósági tétel}
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Tekintsük az $[a, \, b] \quad (a, \, b \in \R, \, a < b)$ intervallumon értelmezett $f_n : [a, \, b] \to \R \quad (n \in \N)$ függvényekből álló $(f_n)$ függvénysorozatot, amelyikről tegyük fel, hogy egyenletesen konvergens. Ha $f_n \in R[a, \, b] \quad (n \in \N)$ és $f$ jelöli az $(f_n)$ sorozat határfüggvényét, akkor $f \in R[a, \, b]$, az integrálok $(\int\limits_a^b f_n)$ sorozata konvergens, és
+		\[
+			\int\limits_a^b f = \lim_{n \to \infty} \int\limits_a^b f_n.
+		\]
+	};\\
+	
+	\tikz \node[theorem]
+	{
+		\textbf{Tétel.} Tegyük fel, hogy az $[a, \, b] \quad (a, \, b \in \R, \, a < b)$ intervallumon értelmezett
+		\[
+			g_n : [a, \, b] \to \R \quad (n \in \N)
+		\]
+		függvényekből álló $\sum(g_n)$ függvénysor egyenletesen konvergens. Ha $g_n \in R[a, \, b] \quad (n \in \N)$ és $G$ jelöli a $\sum(g_n)$ sor összegfüggvényét, akkor $G \in R[a, \, b]$, az integrálok alkotta $\sum(\int\limits_a^b g_n)$ sor konvergens, valamint
+		\[
+			\int\limits_a^b G = \sum_{n=0}^\infty \int\limits_a^b g_n.
+		\]
+	};\\
+	
+	Legyen adott $(g_n)$ a fentebb említett sorozat. Ekkor 
+	\[
+		G_n(x) := \sum_{k=0}^n g_k(x) = g_0(x) + g_1(x) + \cdots +  g_n(x) \quad (x \in [a, \, b]).
+	\]
+	$G_n \equiv \sum(g_n)$. Legyen
+	\[
+		G(x) := \lim_{n \to \infty} G_n(x) \quad (x \in [a, \, b]).
+	\]
+	Adott $x \in [a, \, b]$ mellett
+	\[
+		\int\limits_a^b G_n(x) \, dx = \int\limits_a^b \left( \sum_{k=0}^n g_k(x) \right) \, dx = \sum_{k=0}^n \int\limits_a^b g_k(x) \, dx = \int\limits_a^b g_0(x) \, dx + \cdots + \int\limits_a^b g_n(x) \, dx.
+	\]
+	Ekkor
+	\[
+		\int\limits_a^b G(x) \, dx = \sum_{n=0}^\infty \int\limits_a^b g_n(x) \, dx,
+	\]
+	azaz
+	\[
+		\int\limits_a^b \lim_{n \to \infty} G_n(x) \, dx = \lim_{n \to \infty} \sum_{k=0}^n \int\limits_a^b g_k(x) \, dx = \lim_{n \to \infty} \int\limits_a^b G_n(x) \, dx.
+	\]
+	Részletesebben kiírva:
+	\[
+		\int\limits_a^b (g_0(x) + g_1(x) + \cdots) \, dx = \int\limits_a^b g_0(x) \, dx + \int\limits_a^b g_1(x) \, dx + \cdots.
+	\]
 
 \end{document}
