@@ -1,18 +1,25 @@
 \newpage
-\section{A differenciálegyenlet (rendszer) fogalma. Kezdetiérték-probléma (Cauchy-feladat). Egzakt egyenlet, szeparábilis egyenlet, a rakéta emelkedési idejének a kiszámítása.}
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{A differenciálegyenlet (rendszer) fogalma. Kezdetiérték-probléma (Cauchy-feladat). Egzakt egyenlet, szeparábilis egyenlet, a rakéta emelkedési idejének a kiszámítása.}
+\end{quote}
+
 \subsection{Közönséges differenciálegyenletek}
 Legyen $0 < n \in \N, \, I \subset \R, \, \Omega \subset \R^n$ egy-egy nyílt intervallum. Tegyük fel, hogy az
 \[
 f : I \times \Omega \to \R^n
 \]    
-függvény folytonos, és tűzzük ki az alábbi feladat megoldását:\\
+függvény folytonos, és tűzzük ki az alábbi feladat megoldását:
 
-határozzunk meg olyan $\varphi \in I \to \Omega$ függvényt, amelyre igazak a következő állítások:
-\begin{enumerate}
-	\item $\Dp$ nyílt intervallum;
-	\item $\varphi \in \D$;
-	\item $\varphi'(x) = f(x, \, \varphi(x)) \quad (x \in \Dp)$.
-\end{enumerate}
+\begin{quote}
+	határozzunk meg olyan $\varphi \in I \to \Omega$ függvényt, amelyre igazak a következő állítások:
+	\begin{enumerate}
+		\item $\Dp$ nyílt intervallum;
+		\item $\varphi \in D$;
+		\item $\varphi'(x) = f(x, \, \varphi(x)) \quad (x \in \Dp)$.
+	\end{enumerate}
+\end{quote}
+
 A most megfogalmazott feladatot \textit{explicit elsőrendű közönséges differenciálegyenletnek} (röviden \textit{differenciálegyenletnek}) fogjuk nevezni, és a \textit{d.e.} rövidítéssel idézni.\\
 
 Ha adottak a $\tau \in I, \, \xi \in \Omega$ elemek, akkor a fenti $\varphi$ függvény $1. \, 2.$ és 3. mellett tegyen eleget a
@@ -71,7 +78,7 @@ Legyenek még adottak a $\tau \in I, \, \xi \in J$ számok, amikor is
 
 \tikz \node[theorem]
 {
-	\textbf{Tétel.} \textit{Tetszőleges szeparábilis differenciálegyenletre vonatkozó kezdetiérték-probléma megoldható, és bármilyen $\varphi, \, \psi$ megoldásaira}
+	\textbf{Tétel.} Tetszőleges szeparábilis differenciálegyenletre vonatkozó kezdetiérték-probléma megoldható, és bármilyen $\varphi, \, \psi$ megoldásaira
 	\[
 	\varphi(t) = \psi(t) \quad (t \in \D \cap \mathcal{D}_\psi).
 	\]
@@ -176,22 +183,98 @@ folytonosan differenciálható implicitfüggvény, amire $\varphi(\tau) = \xi$ �
 \[
 \varphi'(t) = -\frac{\partial_1 F(t, \, \varphi(t))}{\partial_2 F(t, \, \varphi(t))} = g(t) \cdot h(\varphi(t)) \quad (t \in K(\tau)).
 \]
-Röviden: a $\varphi$ implicitfüggvény megoldása a szóban forgó kezdetiérték-problémának. $\blacksquare$\\
+Röviden: a $\varphi$ implicitfüggvény megoldása a szóban forgó kezdetiérték-problémának.
+$\hfill \blacksquare$
 
-A tétel bizonyítása során egyúttal egy módszert ("képletet") is adtunk a
+\subsection{Rakéta emelkedési ideje}
+BEFEJEZNI
+
+
+\subsection{Egzakt differenciálegyenlet}
+Speciálisan legyen $n := 1$, és az $I, \, J \subset \R$ nyílt intervallumok, valamint a
 \[
-\varphi'(t) = g(t) \cdot h(\varphi(t)) \quad (t \in \Dp)
+	g : I \times J \to \R \text{ és } h : I \times J \to \R \, \backslash \, \{0\}
 \]
-szeparábilis egyenletre vonatkozó $\varphi(\tau) =\xi$ kezdetiérték-probléma megoldására. Ennek a kulcsmozzanata a $G, \, H$ primitív függvények meghatározása:
+folytonos függvényekkel
 \[
-G(x) = \int_\tau^x g(t) \, dt, \, H(y) = \int_\xi^y \frac{dt}{h(t)} \quad (x \in I, \, y \in J),
+	f(x, \, y) := - \frac{g(x, \, y)}{h(x, \, y)} \quad \big( (x, \, y) \in I \times J \big).
 \]
-amiből aztán a $\varphi$-re vonatkozó
+Ekkor a fenti minden $\p$ megoldásra
 \[
-H\big( \varphi(x) \big) = \int_\xi^{\varphi(x)} \frac{dt}{h(t)} = G(x) = \int_\tau^x g(t) \, dt \quad (x \in \Dp),
+	\p'(x) = - \frac{g(x, \, \p(x))}{h(x, \, \p(x))} \quad (x \in \Dp).
 \]
-azaz
+Azt mondjuk, hogy az így kapott d.e. \textit{egzakt differenciálegyenlet}, ha az
 \[
-\int_\xi^{\varphi(x)} \frac{dt}{h(t)} = \int_\tau^x g(t) \, dt \quad (x \in \Dp)
+	I \times J \ni (x, \, y) \mapsto \big( g(x, \, y), \, h(x, \, y) \big) \in \R^2
 \]
-implicit egyenlet adódott.
+leképezésnek van primitív függvénye. Ez utóbbi követelmény azt jelenti, hogy egy alkalmas differenciálható
+\[
+	G : I \times J \to \R
+\]
+függvénnyel 
+\[
+	\text{grad} \, G = (\partial_1 G, \, \partial_2 G) = (g, \, h).
+\]
+Ha $\tau \in I, \, \xi \in J$ és a $\p$ függvénytől azt is elvárjuk, hogy
+\[
+	\tau \in \Dp, \, \p(\tau) = \xi,
+\]
+akkor igaz az\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel}. Tetszőleges egzakt differenciálegyenletre vonatkozó minden
+	kezdetiérték-probléma megoldható, és ennek bármilyen $\p, \, \psi$ megoldásaira
+	\[
+		\p(t) = \psi(t) \quad (t \in \Dpps).
+	\]
+};\\
+
+\textbf{Bizonyítás.} Valóban, $0 \not \in \mathcal{R}_h$ miatt a feltételezett $\p$ megoldásra
+\[
+	g(x, \, \p(x)) + h(x, \, \p(x)) \cdot \p'(x) = 0 \quad (x \in \Dp).
+\]
+Ha van ilyen $\p$ függvény, akkor az
+\[
+	F(x) := G(x, \, \p(x)) \quad (x \in \Dp)
+\]
+egyváltozós valós függvény differenciálható, és tetszőleges $x \in \Dp$ helyen
+\[
+	F'(x) = \big\langle \text{grad} \, G(x, \, \p(x)), \, (1, \, \p'(x)) \big\rangle =
+\]
+\[
+	g(x, \, \p(x)) + h(x, \, \p(x)) \cdot \p'(x) = 0.
+\]
+A $\mathcal{D}_F = \Dp$ halmaz nyílt intervallum, ezért az $F$ konstans függvény, azaz létezik olyan $c \in \R$, amellyel
+\[
+	G(x, \, \p(x)) = c \quad (x \in \Dp).
+\]
+Mivel $\p(\tau) = \xi$, ezért
+\[
+	c = G(\tau, \, \xi).
+\]
+A $G$-ről feltehetjük, hogy $G(\tau, \, \xi) = 0$, ezért a szóban forgó k.é.p. $\p$ megoldása eleget tesz a 
+\[
+	G(x, \, \p(x)) \quad (x \in \Dp)
+\]
+egyenletnek.\\
+
+Világos, hogy a $\p$ nem más, mint egy, a $G$ által meghatározott implicitfüggvény. Más szóval a szóban forgó k.é.p. minden megoldása (ha létezik) a fenti implicitfüggvény-egyenletből határozható meg.\\
+
+Ugyanakkor a feltételek alapján $G \in C^1, \, G(\tau, \, \xi) = 0$, továbbá
+\[
+	\partial_2G(\tau, \, \xi) = h(\tau, \, \xi) \neq 0,
+\]
+ezért a $G$-re (a $(\tau, \, \xi)$ helyen) teljesülnek az implicitfüggvény-tétel feltételei. Következésképpen van olyan differenciálható
+\[
+	\psi \in I \to J
+\]
+(implicit)függvény, amelyre $\mathcal{D}_\psi \subset I$ nyílt intervallum,
+\[
+	\tau \in \mathcal{D}_\psi, \, G(x, \, \psi(x)) = 0 \quad (x \in \mathcal{D}_\psi), \, \psi(\tau) = \xi,
+\]
+és
+\[
+	\psi'(x) = - \frac{\partial_1G(x, \, \psi(x))}{\partial_2G(x, \, \psi(x))} = - \frac{g(x, \, \psi(x))}{h(x, \, \psi(x))} \quad (x \in \mathcal{D}_\psi).
+\]
+$\hfill \blacksquare$
