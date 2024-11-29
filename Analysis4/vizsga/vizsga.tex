@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{shadows.blur}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{amsfonts, amssymb, amsmath}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{enumitem}
+
+
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+
+\title{\textcolor{purple}{\Huge\textbf{Analízis alkalmazásai vizsgatematika}}}
+\author{Dr. Simon Péter jegyzetéből}
+\date{}
+\renewcommand{\contentsname}{Tartalom}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\K}{\mathbf{K}}
+\newcommand{\Q}{\mathbf{Q}}
+
+
+\newcommand{\p}{\varphi}
+
+\newcommand{\mm}{\mathbf{m}}
+\newcommand{\MM}{\mathbf{M}}
+
+\newcommand{\D}{\mathcal{D}_f}
+\newcommand{\Dp}{\mathcal{D}_\varphi}
+
+\tikzset
+{
+    theorem/.style={
+        draw,
+        fill=white,
+        line width=1pt,
+        rounded corners,
+        drop shadow={shadow blur steps=5,shadow xshift=1ex,shadow yshift=-1ex},
+        text width=1\textwidth,
+        inner sep=8pt,
+        align=justify
+    }
+}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    
+    \include{kerdesek/1}
+	\include{kerdesek/2}
+	
+
+
+    
+
+\end{document}

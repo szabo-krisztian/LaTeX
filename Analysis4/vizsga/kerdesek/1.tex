@@ -1,0 +1,121 @@
+\newpage
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{Az implicitfüggvény fogalma, kapcsolata a feltételes szélsőérték problémával és az inverzfüggvénnyel. Implicitfüggvény-tétel, inverzfüggvény-tétel (a bizonyítás vázlata).}
+\end{quote}
+
+Legyenek $n, \, m \in \N$ természetes számok, ahol $2 \leq n$ és $1 \leq m \leq n$. Ha
+\[
+	\xi = (\xi_1, \, \dots, \, \xi_n) \in \R^n,
+\]
+akkor legyen
+\[
+	x := (\xi_1, \, \dots, \, \xi_{n-m}) \in \R^{n-m}, \, y := (\xi_{n-m+1}, \, \dots, \, \xi_n) \in \R^m,
+\]
+és ezt következőképpen fogjuk jelölni:
+\[
+	\xi = (x, \, y).
+\]
+Röviden:
+\[
+	\R^n \equiv \R^{n-m} \times \R^{m}.
+\]
+Ha tehát
+\[
+	f = (f_1, \, \dots, \, f_m) \in \R^n \to \R^m,
+\]
+azaz
+\[
+	f \in \R^{n-m} \times \R^m \to \R^m,
+\]
+akkor az $f$-et olyan kétváltozós vektorfüggvénynek tekintjük, ahol az $f(x, \, y)$ helyettesítési értékben az argumentum első változójára $x \in \R^{n-m}$, a második változójára pedig $y \in \R^m$ teljesül.\\
+
+Tegyük fel, hogy ebben az értelemben valamilyen $(a, \, b) \in \D$ zérushelye az $f$-nek:
+\[
+	f(a, \, b) = 0.
+\]
+Tételezzük fel továbbá, hogy van az $a$-nak egy olyan $K(a) \subset \R^{n-m}$ környezete, a $b$-nek pedig olyan $K(b) \subset \R^m$ környezete, hogy tetszőleges $x \in K(a)$ esetén egyértelműen létezik olyan $y \in K(b)$, amellyel
+\[
+	f(x, \, y) = 0.
+\]
+Definiáljuk ekkor a $\varphi(x) := y$ hozzárendeléssel a
+\[
+	\varphi : K(a) \to K(b)
+\]
+függvényt, amikor is
+\[
+	f(x, \, \varphi(x)) = 0 \quad (x \in K(a)).
+\]
+Itt minden $x \in K(a)$ mellett az $y = \varphi(x)$ az egyetlen olyan $y \in K(b)$ hely amelyre
+\[
+	f(x, \, y) = 0.
+\]
+Az előbbi $\varphi$ függvényt az $f$ által (az $(a, \, b)$ körül) meghatározott \textit{implicitfüggvénynek} nevezzük. Tehát az
+
+\[
+	\left\{
+	\begin{array}{ccc}
+		f_1(x_1, \, \dots, \, x_{n-m}, \, y_1, \, \dots, \, y_m) & = & 0 \\
+		\vdots & & \vdots \\
+		f_m(x_1, \, \dots, \, x_{n-m}, \, y_1, \, \dots, \, y_m) & = & 0
+	\end{array}
+	\right.
+\]
+
+egyenletrendszernek minden $x = (x_1, \, \dots, \, x_{n-m}) \in K(a)$ mellett egyértelműen létezik
+\[
+	y = (y_1, \, \dots, \, y_m) = \varphi(x) \in K(b)
+\]
+megoldása. Nyilván $\varphi(a) = b$.\\
+
+\subsection{Implicitfüggvény-tétel}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} \textit{Adott $n, \, m \in \N, \, 2 \leq n$, valamint $1 \leq m < n$ mellett az}
+	\[
+	f \in \R^{n-m} \times \R^m \to \R^m
+	\]
+	\textit{függvényről tételezzük fel az alábbiakat: $f \in C^1$, és az $(a, \, b) \in \text{int} \, \D$ helyen}
+	\[
+	f(a, \, b) = 0, \, \det \partial_2f(a, \, b) \neq 0.
+	\]
+	\textit{Ekkor alkalmas $K(a), \, K(b)$ környezetekkel létezik az $f$ által az $(a, \, b)$ körül meghatározott}
+	\[
+	\varphi : K(a) \to K(b)
+	\]
+	\textit{implicitfüggvény, ami folytonosan differenciálható, és}
+	\[
+	\varphi'(x) = -\partial_2 f(x, \, \varphi(x))^{-1} \cdot \partial_1 f(x, \, \varphi(x)) \quad (x \in K(a)).
+	\]
+};\\
+
+Elöljáróban idézzük fel az egyváltozós valós függvényekkel kapcsolatban tanultakat. Ha pl.
+\[
+h \in \R \to \R, \, h \in C^1\{a\}
+\]
+és $h'(a) \neq 0$, akkor egy alkalmas $r>0$ mellett
+\[
+I := (a-r, \, a+r) \subset \mathcal{D}_h,
+\]
+létezik a $(h_{|_I})^{-1}$ inverzfüggvény, a $g := (h_{|_I})^{-1}$ függvény differenciálható és 
+\[
+g'(x) = \frac{1}{h'(g(x))} \quad (x \in \mathcal{D}_g).
+\]
+A továbbiakban a most megfogalmazott "egyváltozós" állítás megfelelőjét fogjuk vizsgálni többáltozós vektorfüggvényekre.\\
+
+Legyen ehhez valamilyen $1 \leq n \in \N$ mellett adott az
+\[
+f \in \R^n \to \R^n
+\]
+függvény és az $a \in \text{int} \, \D$ pont. Azt mondjuk, hogy az $f$ függvény \textit{lokálisan invertálható} az $a$-ban, ha létezik olyan $K(a) \subset \D$ környezet, hogy a $g := f_{|_{K(a)}}$ leszűkítés invertálható függvény. Minden ilyen esetben a $g^{-1}$ inverzfüggvényt az $f$ $a$-beli \textit{lokális inverzének} nevezzük.
+
+\subsection{Inverzfüggvény-tétel}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} \textit{Legyen $1 \leq n \in \N$, és $f \in \R^n \to \R^n$. Tegyük fel, hogy egy $a \in \text{int} \, \D$ pontban $f \in C^1\{a\}$, $\det f'(a) \neq 0$. Ekkor alkalmas $K(a) \subset \D$ környezettel az $f_{|_{K(a)}}$ leszűkítés invertálható, a $g := (f_{|_{K(a)}})^{-1}$ lokális inverzfüggvény folytonosan differenciálható, és}
+	\[
+	h'(x) = \big( f'(h(x)) \big)^{-1} \quad (x \in \mathcal{D}_h).
+	\]
+};

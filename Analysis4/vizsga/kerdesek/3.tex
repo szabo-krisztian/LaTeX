@@ -1,0 +1,197 @@
+\newpage
+\section{A differenciálegyenlet (rendszer) fogalma. Kezdetiérték-probléma (Cauchy-feladat). Egzakt egyenlet, szeparábilis egyenlet, a rakéta emelkedési idejének a kiszámítása.}
+\subsection{Közönséges differenciálegyenletek}
+Legyen $0 < n \in \N, \, I \subset \R, \, \Omega \subset \R^n$ egy-egy nyílt intervallum. Tegyük fel, hogy az
+\[
+f : I \times \Omega \to \R^n
+\]    
+függvény folytonos, és tűzzük ki az alábbi feladat megoldását:\\
+
+határozzunk meg olyan $\varphi \in I \to \Omega$ függvényt, amelyre igazak a következő állítások:
+\begin{enumerate}
+	\item $\Dp$ nyílt intervallum;
+	\item $\varphi \in \D$;
+	\item $\varphi'(x) = f(x, \, \varphi(x)) \quad (x \in \Dp)$.
+\end{enumerate}
+A most megfogalmazott feladatot \textit{explicit elsőrendű közönséges differenciálegyenletnek} (röviden \textit{differenciálegyenletnek}) fogjuk nevezni, és a \textit{d.e.} rövidítéssel idézni.\\
+
+Ha adottak a $\tau \in I, \, \xi \in \Omega$ elemek, akkor a fenti $\varphi$ függvény $1. \, 2.$ és 3. mellett tegyen eleget a
+\begin{enumerate}[start=4]
+	\item $\tau \in \Dp$ és $\varphi(\tau) = \xi$
+\end{enumerate}
+kikötésnek is. Az így "kibővített" feladatot \textit{kezdetiérték-problémának} (vagy röviden \textit{Cauchy-feladatnak}) nevezzük, és a továbbiakban minderre a \textit{k.é.p.} rövidítést fogjuk használni. Az 1., 2., 3. feltételeknek (ill. az 1., 2., 3., 4. feltételeknek) eleget tevő bármelyik $\varphi$ függvényt a \textit{d.e.} (ill. a \textit{k.é.p.}) \textit{megoldásának} nevezzük. A fenti definícióban szereplő $f$ függvény az illető \textit{d.e.} ún. \textit{jobb oldala}.
+
+\subsection{Teljes megoldás}
+Azt mondjuk, hogy a szóban forgó \textit{k.é.p. egyértelműen oldható meg}, ha tetszőleges $\varphi, \, \psi$ megoldásai esetén
+\[
+\varphi(x) = \psi(x) \quad (x \in \Dp \cap \mathcal{D}_\psi).
+\]
+(Mivel $\tau \in \Dp \cap \mathcal{D}_\phi$, ezért $\Dp \cap \mathcal{D}_\phi$ egy ($\tau$-t tartalmazó) nyílt intervallum.) Legyen ekkor $\mathcal{M}$ a szóban forgó \textit{k.é.p.} megoldásainak a halmaza és
+\[
+J := \bigcup_{\varphi \in \mathcal{M}} \Dp.
+\]
+Ez egy $\tau$-t tartalmazó nyílt intervallum és $J \subset I$. Az egyértelmű megoldhatóság értelmezése miatt definiálhatjuk a
+\[
+\Phi : J \to \Omega
+\]
+függvényt az alábbiak szerint:
+\[
+\Phi(x) := \varphi(x) \quad (\varphi \in \mathcal{M}, \, x \in \Dp).
+\]
+Nyilvánvaló, hogy $\Phi(\tau) = \xi, \, \Phi \in D$ és
+\[
+\Phi'(x) = f(x, \, \Phi(x)) \quad (x \in J).
+\]
+Ez azt jelenti, hogy $\Phi \in \mathcal{M}$, és (ld. a $\mathcal{D}_\Phi = J$ definícióját) bármelyik $\varphi \in \mathcal{M}$ esetén
+\[
+\varphi(x) = \Phi(x) \quad (x \in \Dp),
+\]
+röviden $\varphi = \Phi_{|_{\Dp}}$.\\
+
+A $\Phi$ függvényt a kezdetiérték-probléma \textit{teljes megoldásának} nevezzük.
+
+\subsection{Szeparábilis differenciálegyenlet}
+Legyen $n := 1$, továbbá az $I, \, J \subset \R$ nyílt intervallumokkal és a
+\[
+g : I \to \R, \, h : J \to \R \, \backslash \, \{0\}
+\]
+folytonos függvényekkel
+\[
+f(x, \, y) := g(x) \cdot h(y) \quad ((x, \, y) \in I \times J).
+\]
+A $\varphi \in I \to J$ megoldásra tehát
+\[
+\varphi'(t) = g(t) \cdot h(\varphi(t)) \quad (t \in \Dp).
+\]
+Legyenek még adottak a $\tau \in I, \, \xi \in J$ számok, amikor is
+\[
+\tau \in \Dp, \, \varphi(\tau) = \xi
+\]
+(kezdetiérték-probléma).\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} \textit{Tetszőleges szeparábilis differenciálegyenletre vonatkozó kezdetiérték-probléma megoldható, és bármilyen $\varphi, \, \psi$ megoldásaira}
+	\[
+	\varphi(t) = \psi(t) \quad (t \in \D \cap \mathcal{D}_\psi).
+	\]
+};\\
+
+\textbf{Bizonyítás.} Mivel a $h$ függvény sehol sem nulla, ezért egy $\varphi$ megoldásra
+\[
+\frac{\varphi'(t)}{h(\varphi(t))} = g(t) \quad (t \in \Dp).
+\]
+A $g : I \to \R$ is, és az $1 / h : J \to \R$ is egy-egy nyílt intervallumon értelmezett folytonos függvény, így léteznek a
+\[
+G : I \to \R, \, H : J \to \R
+\]
+primitív függvényeik: $G' = g$ és $H' = 1/h$. Az összetett függvény deriválásával kapcsolatos tétel szerint
+\[
+\frac{\varphi'(t)}{h(\varphi(t))} = (H \circ \varphi)'(t) = g(t) = G'(t) \quad (t \in \Dp),
+\]
+azaz
+\[
+(H \circ \varphi - G)'(t) = 0 \quad (t \in \Dp).
+\]
+Tehát (mivel a $\Dp$ is egy nyílt intervallum) van olyan $c \in \R$, hogy
+\[
+H(\varphi(t)) - G(t) = c \quad (t \in \Dp).
+\]
+Az $1/h$ függvény nyilván nem vesz fel $0$-t a $J$ intervallum egyetlen pontjában sem, így ugyanez igaz a $H'$ függvényre is. A deriváltfüggvény Darboux-tulajdonsága miatt tehát a $H'$ állandó előjelű. Következésképpen a $H$ függvény szigorúan monoton függvény, amiért invertálható. A $H^{-1}$ inverz függvény segítségével ezért azt kapjuk, hogy
+\[
+\varphi(t) = H^{-1}(G(t) + c) \quad (t \in \Dp).
+\]
+Ha $\tau \in I, \, \xi \in J$, és a $\varphi$ megoldás eleget tesz a $\varphi(\tau) = \xi$ kezdeti feltételnek is, akkor
+\[
+\xi = H^{-1}(G(\tau) + c),
+\]
+azaz
+\[
+c = H(\xi) - G(\tau).
+\]
+Így
+\[
+\varphi(t) = H^{-1}\big(G(t) + H(\xi) - G(\tau)\big)  \quad (t \in \Dp).
+\]
+Ha a $G, \, H$ helyett más primitív függvényeket választunk (legyenek ezek $\tilde{G}, \, \tilde{H}$), akkor alkalmas $\alpha, \, \beta \in \R$ konstansokkal
+\[
+\tilde{G} = G + \alpha, \, \tilde{H} = H + \beta,
+\]
+és
+\[
+\tilde{H}(\varphi(t)) - \tilde{G}(t) = H(\varphi(t)) - G(t) + \beta - \alpha = \tilde{c} \quad (t \in \Dp)
+\]
+adódik valamilyen $\tilde{c} \in \R$ konstanssal. Ezért
+\[
+\varphi(t) = H^{-1}(G(t) + \tilde{c} - \beta + \alpha) \quad (t \in \Dp),
+\]
+ahol (a $t := \tau$ helyettesítés után)
+\[
+H(\xi) - G(\tau) = \tilde{c} - \beta + \alpha,
+\]
+amiből megint csak
+\[
+\varphi(t) = H^{-1}(G(t) + H(\xi) - G(\tau)) \quad (t \in \Dp)
+\]
+következik. Ez azt jelenti, hogy a fentiekben mindegy, hogy melyik $G, \, H$ primitív függvényekből indulunk ki. Más szóval, ha a $\psi$ függvény is megoldása a vizsgált kezdetiérték-problémának, akkor
+\[
+\psi(t) = H^{-1}(G(t) + H(\xi) - G(\tau)) \quad (t \in \mathcal{D}_\psi).
+\]
+Mivel a $\Dp, \, \mathcal{D}_\psi$ értelmezési tartományok mindegyike egy-egy $\tau$-t tartalmazó nyílt intervallum, ezért $\Dp \cap \mathcal{D}_\psi$ is ilyen intervallum, és
+\[
+\psi(t) = \varphi(t) \quad (t \in \Dp \cap \mathcal{D}_\psi).
+\]
+Elegendő már csak azt belátnunk, hogy van megoldás. Tekintsük ehhez azokat a $G, \, H$ primitív függvényeket, amelyekre
+\[
+H(\xi) = G(\tau) = 0,
+\]
+és legyen
+\[
+F(x, \, y) := H(y) - G(x) \quad (x \in I, \, y \in J).
+\]
+Ekkor az
+\[
+F : I \times J \to \R
+\]
+függvényre léteznek és folytonosak a
+\[
+\partial_1 F(x, \, y) = -G'(x) = -g(x) \quad (x \in I, \, y \in J),
+\]
+\[
+\partial_2 F(x, \, y) = H'(y) = \frac{1}{h(y)} \quad (x \in I, \, y \in J)
+\]
+parciális deriváltfüggvények. Ez azt jelenti, hogy az $F$ függvény folytonosan differenciálható,
+\[
+F(\tau, \, \xi) = H(\xi) - G(\tau) = 0,
+\]
+továbbá
+\[
+\partial_2 F(\tau, \, \xi) = H'(\xi) = \frac{1}{h(\xi)} \neq 0.
+\]
+Ezért az $F$-re alkalmazható az implicitfüggvény-tétel, miszerint alkalmas $K(\tau) \subset I, \, K(\xi) \subset J$ környezetekkel létezik az $F$ által a $(\tau, \, \xi)$ körül meghatározott
+\[
+\varphi : K(\tau) \to K(\xi)
+\]
+folytonosan differenciálható implicitfüggvény, amire $\varphi(\tau) = \xi$ és
+\[
+\varphi'(t) = -\frac{\partial_1 F(t, \, \varphi(t))}{\partial_2 F(t, \, \varphi(t))} = g(t) \cdot h(\varphi(t)) \quad (t \in K(\tau)).
+\]
+Röviden: a $\varphi$ implicitfüggvény megoldása a szóban forgó kezdetiérték-problémának. $\blacksquare$\\
+
+A tétel bizonyítása során egyúttal egy módszert ("képletet") is adtunk a
+\[
+\varphi'(t) = g(t) \cdot h(\varphi(t)) \quad (t \in \Dp)
+\]
+szeparábilis egyenletre vonatkozó $\varphi(\tau) =\xi$ kezdetiérték-probléma megoldására. Ennek a kulcsmozzanata a $G, \, H$ primitív függvények meghatározása:
+\[
+G(x) = \int_\tau^x g(t) \, dt, \, H(y) = \int_\xi^y \frac{dt}{h(t)} \quad (x \in I, \, y \in J),
+\]
+amiből aztán a $\varphi$-re vonatkozó
+\[
+H\big( \varphi(x) \big) = \int_\xi^{\varphi(x)} \frac{dt}{h(t)} = G(x) = \int_\tau^x g(t) \, dt \quad (x \in \Dp),
+\]
+azaz
+\[
+\int_\xi^{\varphi(x)} \frac{dt}{h(t)} = \int_\tau^x g(t) \, dt \quad (x \in \Dp)
+\]
+implicit egyenlet adódott.

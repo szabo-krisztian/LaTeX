@@ -1,0 +1,190 @@
+\newpage
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{Feltételes szélsőérték, szükséges, ill. elégséges feltétel (a szükséges feltétel bizonyítása).}
+\end{quote}
+
+Legyen $1 \leq n, \, m \in \N, \, \emptyset \neq U \subset \R^n$, és
+\[
+	f : U \to \R, \, g = (g_1, \, \dots, \, g_m) : U \to \R^m.
+\]
+Azt mondjuk, hogy az $f$ függvénynek a $g = 0$ \textit{feltételre vonatkozóan feltételes lokális maximuma (minimuma) van} a
+\[
+	c \in \{ g = 0 \} := \{ \xi \in U : g(\xi) = 0 \}
+\]
+pontban, ha az
+\[
+	\tilde{f}(\xi) := f(\xi) \quad (\xi \in \{g = 0\})
+\]
+függvénynek a $c$-ben lokális maximuma (minimuma) van. Feltesszük, hogy
+\[
+	\{ g = 0 \} \neq \emptyset.
+\]
+Használjuk az $f(c)$-re a \textit{feltételes lokális maximum (minimum)}, ill. \textit{szélsőérték}, továbbá $c$-re a \textit{feltételes lokális maximumhely (minimumhely)}, ill. \textit{szélsőértékhely} elnevezést is.\\
+
+Ha tehát az $f$-nek a $c \in \{g=0\}$ helyen feltételes lokális szélsőértéke van a $g=0$ feltételre nézve, akkor egy alkalmas $K(c)$ környezettel
+\[
+	f(\xi) \leq f(c) \quad \big(\xi \in \{g=0\} \cap K(c)\big)
+\]
+(ha maximumról van szó), ill.
+\[
+	f(\xi) \geq f(c) \quad \big(\xi \in \{g=0\} \cap K(c)\big)
+\]
+(ha minimumról van szó) teljesül.
+
+\subsection{Elsőrendű szükséges feltétel}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Tegyük fel, hogy $1 \leq n, \, m \in \N, \, m < n, \, \emptyset \neq U \subset \R^n$ nyílt halmaz, és $f : U \to \R, \, g : U \to \R^m$. Ha $f \in D, \, g \in C^1$, az $f$-nek a $c \in \{g=0\}$ helyen feltételes lokális szélsőértéke van a $g=0$ feltételre vonatkozóan, továbbá a $g'(c)$ Jacobi-mátrix rangja megegyezik $m$-mel, akkor létezik olyan $\lambda \in \R^m$ vektor, hogy
+	\[
+		\text{grad} \, (f + \lambda g)(c)=0.
+	\]
+};\\
+
+A tételben szereplő $\lambda g$ függvényen a következőt értjük:
+\[
+(\lambda g)(\xi) := \langle \lambda, \, g(\xi) \rangle \quad (\xi \in U).
+\]
+Ez tehát ugyanolyan jellegű, mint a feltétel nélküli esetben, csak a szóban forgó $f$ függvény helyett (egy alkalmas $\lambda \in \R^m$ vektorral) az $F := f + \lambda g$ függvényre vonatkozóan.\\
+
+Ez az analógia megmarad a másodrendű feltételeket illetően is.\\
+
+\textbf{Bizonyítás.} A rangfeltétel szerint a $g'(c) \in \R^{m\times n}$ Jacobi-mátrixnak van olyan $A \in \R^{m \times m}$ részmátrixa, amelyre $\det A \neq 0$. Feltehető, hogy az $A$-t a $g'(c)$ mátrix utolsó $m$ oszlopa határozza meg, amikor is az $\R^n \equiv \R^{n-m} \times \R^{m}$ felbontást úgy képzeljük el, hogy a
+\[
+	\xi = (\xi_1, \, \dots, q, \xi_n) = (x, \, y) \in \R^n
+\]
+vektorokra
+\[
+	x := (\xi_1, \, \dots, \, \xi_{n-m}) \in \R^{n-m}, \, y := (\xi_{n-m+1}, \, \dots, \, \xi_n) \in \R^m.
+\]
+Legyen ennek megfelelően $c = (a, \, b)$. Ekkor tehát
+\[
+	\det \partial_2g(a, \, b) = \det A \neq 0.
+\]
+Mivel $g(a, \, b) = 0$, ezért alkalmazható az implicitfüggvény tétel: alkalmas
+\[
+	K(a) \subset \R^{n-m}, \, K(b) \subset \R^m
+\]
+környezettel létezik a $g$ függvény által az $(a, \, b)$ körül meghatározott
+\[
+	h : K(a) \to K(b)
+\]
+$h \in C^1$ implicitfüggvény:
+\[
+	\big( K(a) \times K(b) \big) \cap \{ g = 0\} = \{ (x, \, h(x)) \in U : x \in K(a)\},
+\]
+és
+\[
+	h'(x) = - \big( \partial_2g(x, \, h(x)) \big)^{-1} \cdot \partial_1g(x, \, h(x)) \quad \big( x \in K(a) \big).
+\]
+A feltételeink szerint egy alkalmas $K(c) \subset U$ környezettel (pl.)
+\[
+	f(\xi) \leq f(c) \quad \big(\xi = (x, \, y) \in K(c) \cap \{g=0\}\big).
+\]
+Nyilván feltehető, hogy
+\[
+	K(a) \times K(b) \subset K(c),
+\]
+ezért a
+\[
+	\Phi(x) := f(x, \, h(x)) \quad \big( x \in K(a) \big)
+\]
+függvényre $\Phi \in \R^{n-m} \to \R$ és
+\[
+	\Phi(x) \leq f(c) = \Phi(a) \quad \big( x \in K(a) \big).
+\]
+Más szóval a $\Phi$ függvénynek az $a$-ban lokális maximuma van. A $\Phi$ differenciálható, ezért
+\[
+	\Phi'(a) = \text{grad} \, \Phi(a) = 0.
+\]
+A
+\[
+	\p(x) := (x, \, h(x)) \quad \big(x \in K(a)\big)
+\]
+függvénnyel $\Phi = f \circ \p$ és $\p \in D$, valamint $I$-vel jelölve az $\R^{(n-m) \times (n-m)}$-beli egységmátrixot
+\[
+	\p'(x) = \begin{bmatrix}
+		I\\
+		h'(x)
+	\end{bmatrix} \in \R^{n \times (n-m)} \quad \big(x \in K(a)\big).
+\]
+Következésképpen
+\[
+	0 = \Phi'(a) = f'(\p(a)) \cdot \p'(a) = f'(a, \, h(a)) \cdot \begin{bmatrix}
+		I\\
+		h'(a)
+	\end{bmatrix} =
+\]
+\[
+	f'(c) \cdot \begin{bmatrix}
+		I\\
+		h'(a)
+	\end{bmatrix} = \partial_1f(c) + \partial_2f(c) \cdot h'(a) =
+\]
+\[
+	\partial_1f(c) - \partial_2f(c) \cdot \big( \partial_2 f(c) \big)^{-1} \cdot \partial_1g(c) = \partial_1f(c) + \lambda \cdot \partial_1g(c),
+\]
+ahol
+\[
+	\lambda := -\partial_2f(c) \cdot \big( \partial_2g(c) \big)^{-1} \in \R^m.
+\]
+Tehát (a $\partial_1$ értelmezéséből)
+\begin{equation}
+	\partial_k f(c) + \sum_{l=1}^{m} \lambda_l \cdot \partial_k g_l(c) = 0 \quad (k = 1, \dots, n - m).
+	\label{eq:eq1}
+\end{equation}
+A $\lambda$ vektor definíciójából "átszorzással" azt kapjuk, hogy
+\[
+	\partial_2f(c) + \lambda \cdot g(c) = 0,
+\]
+azaz (a $\partial_2$ definíciójából)
+\begin{equation}
+	\partial_jf(c) + \sum_{l=1}^m \lambda_l \cdot \partial_j g_l(c) = 0 \quad (j = n-m+1, \, \dots, \, n).
+	\label{eq:eq2}
+\end{equation}
+A (1), (2) formulák együtt nyilván azt jelentik, hogy
+\[
+	\partial_kf(c) + \sum_{l=1}^m \lambda_l \cdot \partial_k g_l(c) = 0 \quad (k = 1, \, \dots, \, n),
+\]
+más szóval
+\[
+	\text{grad} \, (f + \lambda g)(c) = 0 =
+\]
+\[
+	\Big( \partial_1f(c) + \sum_{l=1}^m \lambda_l \cdot \partial_1 g_l(c), \, \dots, \, \partial_nf(c) + \sum_{l=1}^m \lambda_l \cdot \partial_n g_l(c) \Big) = 0. 
+\]
+$\hfill \blacksquare$
+
+Legyen adott a
+\[
+	Q : \R^n \to \R
+\]
+kvadratikus alak, a $B \in \R^{m \times n}$ mátrix, és tekintsük az alábbi halmazt:
+\[
+	\mathcal{A}_B := \{ x \in \R^n : Bx = 0 \}.
+\]
+Feltesszük, hogy $m < n$, és a $B$ mátrix rangja $m$. Ekkor azt mondjuk, hogy a $Q$ kvadratikus alak a $B$-re nézve
+\begin{enumerate}
+	\item \textit{feltételesen pozitív definit}, ha $Q(x) > 0$ $(0 \neq x \in \mathcal{A}_B)$;
+	\item \textit{feltételesen negatív definit}, ha $Q(x) > 0$ $(0 \neq x \in \mathcal{A}_B)$;
+	\item \textit{feltételesen pozitív szemidefinit}, ha $Q(x) \geq 0$ $(x \in \mathcal{A}_B)$;
+	\item \textit{feltételesen negatív szemidefinit}, ha $Q(x) \leq 0$ $(x \in \mathcal{A}_B)$.
+\end{enumerate}
+
+\subsection{Másodrendű elégséges feltétel}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Az $1 \leq n, \, m \in \N, m < n$ paraméterek mellett legyen adott az $\emptyset \neq U \subset \R^n$ nyílt halmaz, és tekintsük az $f : U \to \R, \, g : U \to \R^m$ függvényeket. Feltesszük, hogy $f, \, g \in D^2, \, c \in \{g=0\}$, a $g'(c)$ Jacobi-mátrix rangja $m$, továbbá valamilyen $\lambda \in \R^m$ vektorral az $F := f + \lambda g$ függvényre
+	\begin{enumerate}
+		\item $\text{grad} \, F(c) = 0$;
+		\item A $Q_c^F$ kvadratikus alak a $g'(c)$ mátrixra nézve feltételesen pozitív (negatív) definit.
+	\end{enumerate}
+	Ekkor az $f$-nek a $c$-ben a $g=0$ feltételre vonatkozóan feltételes lokális minimuma (maximuma) van.
+};\\
+
+Idézzük fel, hogy
+\[
+	Q_c^F(x) := \langle F''(c) \cdot x, \, x \rangle \quad (x \in \R^n).
+\]
