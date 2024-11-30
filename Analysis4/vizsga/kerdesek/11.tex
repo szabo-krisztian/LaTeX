@@ -1,0 +1,272 @@
+\newpage
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{A függvénysorozat, függvénysor fogalma. Hatványsorok, trigonometrikus sorok, Fourier-sorok. A Dirichlet-féle magfüggvény. Konvergencia, határfüggvény (összegfüggvény), egyenletes konvergencia. A Weierstrass-féle majoráns kritérium.}
+\end{quote}
+
+\subsection{Függvénysorozatok, függvénysorok}
+
+A függvénysorozatok fogalmával rész találkoztunk már korábban is: az $(f_n)$ sorozatot \textit{függvénysorozatnak} nevezzük, ha minden $n \in \N$ esetén az $f_n$ függvény. A továbbiakban mindig azzal a feltételezéssel élünk, hogy valamilyen $\empty \neq X$ halmazzal
+\[
+	f_n \in X \to \K \quad (n \in N),
+\]
+és egy $\emptyset \neq \DD \subset X$ halmazzal
+\[
+	\DD_{f_n} = \DD \quad (n \in \N).
+\]
+Pl. a
+\[
+	h_n(t) := t^n \quad (t \in \DD := \R, \, n \in N)
+\]
+függvények egy $(h_n)$ függvénysorozatot határoznak meg.\\
+
+A fenti $(f_n)$ függvénysorozat által meghatározott $\sum(f_n)$ \textit{függvénysor}:
+\[
+	\sum(f_n) := \left( \sumk f_k \right).
+\]
+A $\sum(f_n)$ függvénysor tehát nem más, mint az
+\[
+	F_n := \sumk f_k \quad (n \in \N)
+\]
+\textit{részletösszegfüggvények} által meghatározott $(F_n)$ függvénysorozat:
+\[
+	\sum(f_n) := (F_n).
+\]
+Így pl. az előbbi
+\[
+	h_n(t) := t^n \quad (t \in \R, \, n \in \N)
+\]
+függvények esetén $\sum(h_n) = (H_n)$, ahol az $n \in \N$ indexekre
+\[
+	H_n(t) = \sumk h_k(t) = \sumk t^k = \begin{cases}
+		n + 1 & (t = 1) \\
+		\displaystyle \frac{1-t^{n+1}}{1-t} & (t \neq 1)
+	\end{cases} \quad (t \in \R).
+\]
+
+\subsection{Konvergencia, határfüggvény}
+
+Tekintsük a fenti $(f_n)$ függvénysorozatot. Ha egy $x \in \DD$ elem esetén konvergens a helyettesítési értékeknek az $\big(f_n(x)\big)$ sorozata, akkor azt mondjuk, hogy az $(f_n)$ függvénysorozat \textit{konvergens} az $x$ helyen. A
+\[
+	\DD_0 := \big\{ x \in \DD : \big(f_n(x)\big) \text{ konvergens} \big\}
+\]
+halmaz az $(f_n)$ függvénysorozat \textit{konvergenciatartománya}. Ha $\DD_0 \neq \emptyset$, akkor az
+\[
+	f(x) := \limn f_n(x) \quad (x \in \DD_0)
+\]
+definícióval értelmezett
+\[
+	f : \DD_0 \to \K
+\]
+függvény az $(f_n)$ függvénysorozat \textit{határfüggvénye}. A $\DD_0 = \D$ esetben azt röviden azt mondjuk, hogy az $(f_n)$ függvénysorozat \textit{pontonként konvergens}.\\
+
+Pl. az előbbi $(h_n)$ függvénysorozattal $\DD_0 = (-1, \, 1]$, és
+\[
+	h(x) := \begin{cases}
+		0 & (-1 < x < 1) \\
+		1 & (x = 1)
+	\end{cases}
+\]
+a $(h_n)$ sorozat határfüggvénye.\\
+
+A függvénysorok "nyelvén" a pontonkénti konvergencia a következőképpen fogalmazható meg: legyen $X \neq \emptyset$, és a $\emptyset \neq \DD \subset X$ halmazzal adott az
+\[
+	f_n : \DD \to \K \quad (n \in \N)
+\]
+függvénysorozat. Ekkor a $\sum(f_n)$ függvénysor $x$-beli konvergenciája azt jelenti, hogy a részletösszegek $\displaystyle \Big(\sumk f_k \Big)$ sorozata konvergens az $x$ helyen, azaz a $\displaystyle \Big(\sumk f_k(x) \Big)$ sorozat konvergens. Nem fog félreértést okozni, ha az ilyen $x \in \DD$ elemek összegét fogjuk most $\DD_0$-val jelölni. Tehát $\DD_0$ most nem más, mint a $\displaystyle \Big(\sumk f_k \Big)$ függvénysorozat konvergenciatartománya. Ha $\DD_0 \neq \emptyset$, akkor legyen
+\[
+	F(x) := \limsum f_k(x) = \limn \sumk f_k(x) \quad (x \in \DD_0)
+\]
+A szóban forgó függvénysor \textit{összegfüggvénye}. Pl. a
+\[
+	h_n(x) := x^n \quad (x \in \R, \, n \in \N)
+\]
+függvényekkel
+\[
+	\sumk h_k(x) = \sumk x^k = \begin{cases}
+		n + 1 & (x = 1) \\
+		\displaystyle \frac{1 - x^{n+1}}{1-x} & (x \neq 1)
+	\end{cases} \quad (x \in \R, \, n \in \N)
+\]
+miatt a $\sum(h_n)$ függvénysor konvergenciatartománya a $(-1, \, 1)$ intervallum, a $H$ összegfüggvénye pedig a
+\[
+	H(x) := \frac{1}{1-x} \quad (-1 < x < 1)
+\]
+függvény.\\
+
+Emlékeztetünk a hatványsor fogalmára: legyen valamilyen $a \in \K$ \textit{középpont} és egy
+\[
+	(a_n) : \N \to \K
+\]
+\textit{együttható-sorozat} esetén
+\[
+	f_n(x) := a_n(x-a)^n \quad (x \in \R, \, n \in \N).
+\]
+Ekkor a
+\[
+	\sum\Big( a_n(x-a)^n \Big) := \sum(f_n)
+\]
+függvénysort neveztük \textit{hatványsornak}. A Cauchy-Hadamard-tétel szerint egyértelműen létezik olyan
+\[
+	0 \leq r \leq + \infty
+\]
+(\textit{konvergenciasugár}) amellyel a hatványsor $\DD_0$ konvergenciatartományára a $0 < r < + \infty$ esetben
+\[
+	K_r(a) \subset \DD_0 \subset \overline{K_r(a)}.
+\]
+Nyilvánvaló, hogy $a \in \DD_0$ mindig igaz, és az $a$ helyen a fenti hatványsor összege $0$.
+
+\subsection{Trigonometrikus sorok, Fourier-sorok}
+A $\sum(f_n)$ függvénysort \textit{trigonometrikus sornak} nevezzük, ha
+\[
+	f_0(x) := \alpha_0, \, f_n(x) := \alpha_n \cdot \cos(nx) + \beta_n \cdot \sin(nx) \quad (1 \leq n \in \N, \, x \in \R),
+\]
+ahol adottak az $\alpha_k \in \R \quad (k \in \N)$ és a $\beta_j \quad (1 \leq j \in \N)$ \textit{együtthatók}. Használni fogjuk minderre a
+\[
+	\trigseries
+\]
+szimbólumot is. Tehát egy adott trigonometrikus sor $n$-edik részletösszege egy $x \in \R$ helyen az alábbi módon néz ki:
+\[
+	\alpha_0 + \alpha_1 \cdot \cos(x) + \beta_1 \cdot \sin(x) + \cdots + \alpha_n \cdot \cos(nx) + \beta_n \cdot \sin(nx).
+\]
+A szóban forgó $\trigseries$ trigonometrikus sor
+\[
+	S_n(x) := \alpha_0 + \sum_{k=1}^n \Big( \alpha_k \cdot \cos(kx) + \beta_k \cdot \sin(kx) \Big) \quad (x \in \R, \, n \in \N)
+\]
+részletösszegfüggvényei \textit{trigonometrikus polinomok}.\\
+
+Legyen $R_{2\pi}$ az összes olyan $2\pi$ szerint periodikus
+\[
+	f : \R \to \R
+\]
+függvény halmaza, amelyre
+\[
+	f \in R[0, \, 2\pi]
+\]
+teljesül. A periodicitás miatt nyilvánvaló, hogy ekkor tetszőleges $2\pi$-hosszúságú kompakt $I \subset \R$ intervallumra is (az előbbi értelemben) $f \in R(I)$.\\
+
+Legyen továbbá $C_{2\pi}$ az olyan $2\pi$ szerint periodikus
+\[
+	f : \R \to \R
+\]
+függvények halmaza, amelyekre $f \in C$. Ekkor
+\[
+	C_{2\pi} \subset R_{2\pi},
+\]
+továbbá $C_{2\pi}, \, R_{2\pi}$ lineáris terek az $\R$-re vonatkozóan, a $C_{2\pi}$ altere az $R_{2\pi}$-nek. Továbbá bármely $f \in R_{2\pi}$ függvény az $f \in R[0, \, 2\pi]$ integrálhatóság miatt korlátos, azaz
+\[
+	\sup\{|f(x)| : x \in \R\} = \sup\{|f(x)| : x \in [0, \, 2\pi]\} < + \infty.
+\]
+Vezessük be az alábbi fogalmakat: $f \in R_{2\pi}$ esetén legyen
+\[
+	a_0(f) := a_0 := \frac{1}{2\pi} \int\limits_0^{2\pi} f(x) \, dx,
+\]
+\[
+	a_n(f) := a_n := \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \cdot \cos(nx) \, dx \quad (1 \leq n \in \N),
+\]
+\[
+	b_n(f) := b_n := \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \cdot \sin(nx) \, dx \quad (1 \leq n \in \N),
+\]
+\[
+	Sf := \trigserieslatin \quad (n \in \N, \, x \in \R).
+\]
+Ekkor az $Sf$ trigonometrikus sor az $f$ \textit{Fourier-sora}, az együtthatói az $f$ \textit{Fourier-együtthatói}, az $S_nf \quad (n \in \N)$ trigonometrikus polinom pedig az $f$ függvény $n$-edik \textit{Fourier-részletösszege}.\\
+
+Ha $f \in R_{2\pi}, \, n \in \N$, akkor a fenti $f$ \textit{Fourier-részletösszegei} a következők:
+\[
+	S_0f(x) = a_0 \quad (x \in \R),
+\]
+ill. $1 \leq n \in \N, \, x \in \R$ esetén
+\[
+	S_nf(x) = \frac{1}{2\pi} \int\limits_0^{2\pi} f(t) \, dt +
+\]
+\[
+	\sum_{k=1}^n \left( \frac{1}{\pi} \int\limits_0^{2\pi} f(t) \cdot \cos(kt) \, dt \cdot \cos(kx) + \frac{1}{\pi} \int\limits_0^{2\pi} f(t) \cdot \sin(kt) \, dt \cdot \sin(kx) \right) =
+\]
+\[
+	\frac{1}{2\pi} \int\limits_0^{2\pi} f(t) \, dt + \frac{1}{\pi} \int\limits_0^{2\pi} f(t) \cdot \sum_{k=1}^n \Big( \cos(kt) \cdot \cos(kx) + \sin(kt) \cdot \sin(kx) \Big) \, dt =
+\]
+\[
+	\frac{1}{\pi} \int\limits_0^{2\pi} f(t) \cdot \left( \frac{1}{2} + \sum_{k=1}^n \cos\Big(k(x-t)\Big) \right) \, dt.
+\]
+Ha tehát
+\[
+	D_0(z) := \frac{1}{2}, \, D_n(z) := \frac{1}{2} + \sum_{k=1}^n \cos(kz) \quad (1 \leq n \in \N, \, z \in \R),
+\]
+akkor
+\[
+	S_nf(x) = \frac{1}{\pi} \int\limits_0^{2\pi} f(t) \cdot D_n(x-t) \, dt \quad (n \in \N, \, x \in \R).
+\]
+A most definiált $D_n \quad (n \in \N)$ függvény az $n$-edik \textit{Dirichlet-magfüggvény}. Világos, hogy minden $D_n$ páros függvény, periodikus $2\pi$ szerint, és bármilyen $2\pi$ hosszúságú kompakt $I \subset \R$ intervallumra
+\[
+	\int_I D_n = \int_I \frac{1}{2} \, dz + \sum_{k=1}^n \int_I \cos(kz) \, dz = \int_I \frac{1}{2} \, dz = \pi \quad (n \in \N).
+\]
+Nem nehéz "zárt" alakra hozni a szóvan forgó magfüggvényeket. Ha ui. $0 < u < 2\pi$ és $n \in \N$, akkor
+\[
+	\sin(z/2) \cdot D_n(z) = \frac{\sin(z/2)}{2} + \sum_{k=1}^n \sin(z/2) \cdot \cos(kz) =
+\]
+\[
+	\frac{\sin(z/2)}{2} + \frac{1}{2} \cdot \sum_{k=1}^n \Bigg( \sin\Big( (k+ 1/2)z \Big) - \sin\Big( (k-1/2)z \Big) \Bigg) =
+\]
+\[
+	\frac{\sin(z/2)}{2} + \frac{\sin\Big( (n+1 / 2)z  - \sin(z/2) \Big)}{2} = \frac{\sin\Big( (n+1/2)z \Big)}{2}.
+\]
+Innen az következik, hogy
+\[
+	D_n(z) = \frac{\sin\Big( (n+1/2)z \Big)}{2 \cdot \sin(z/2)} \quad (0 < z < 2\pi).
+\]
+Tehát a $D_n$ definíciójából adódóan a
+\[
+	\frac{\sin\Big( (n+1/2)0 \Big)}{2 \cdot \sin(0/2)} := D_n(0) = \frac{1}{2} + n
+\]
+megállapodással tetszőleges $f \in R_{2\pi}$ függvényre az alábbi integrál-előállítást kapjuk a Fourier-részletösszegekre:
+\[
+	S_nf(x) = \frac{1}{\pi} \int\limits_0^{2\pi} f(t) \cdot D_n(x-t) \, dt \quad (n \in \N, \, x \in \R).
+\]
+
+\subsection{Egyenletes konvergencia}
+Tekintsük az $(f_n)$ függvénysorozatot, ahol
+\[
+	f_n \in X \to \K \quad (n \in \N)
+\]
+és
+\[
+	\DD_{f_n} =: \DD \quad (n \in \N).
+\]
+Legyen
+\[
+	\DD_0 := \Big\{ t \in \DD : \Big( f_n(x)\Big) \text { konvergens} \Big\} \neq \emptyset
+\]
+az $(f_n)$ konvergenciatartománya, és 
+\[
+	f(x) := \limn f_n(x) \quad (x \in \DD_0)
+\]
+az $(f_n)$ függvénysorozat határfüggvénye. Tehát $f : \DD_0 \to \K$ és tetszőleges $x \in \DD_0$, valamint $\varepsilon > 0$ esetén van olyan $N_{x, \, \varepsilon} \in \N$, hogy
+\[
+	|f_n(x) - f(x)| < \varepsilon \quad (N_{x, \, \varepsilon} < n \in \N).
+\]
+Hangsúlyozni kell, hogy az itt szereplő $N_{x, \, \varepsilon}$ küszöbindex általában függ az $x$-től is, és az $\varepsilon$-tól is. Elképzelhető ugyanakkor, hogy bizonyos esetekben bármilyen $\varepsilon > 0$ mellett olyan (csak az $\varepsilon$-tól függő)
+\[
+	N := N_\varepsilon \in \N
+\]
+is megadható, amelyik az előbbi becslésben egy $\emptyset \neq A \subset \DD_0$ halmaz mellett független az $x \in A$ elemtől. Ekkor azt mondjuk, hogy az $(f_n)$ függvénysorozat az $A$ halmazon \textit{egyenletesen konvergens} az $f$ függvényhez, azaz: minden $\varepsilon > 0$ számhoz létezik olyan $N \in \N$, amellyel
+\[
+	|f_n(x) - f(x)| < \varepsilon \quad (x \in A, \, N < n \in \N).
+\]
+Világos, hogy ekkor minden $\emptyset \neq B \subset A$ halmaz esetén is az $(f_n)$ sorozat egyenletesen konvergál a $B$-n az $f$-hez. Ha az egyenletes konvergencia definíciójában $A = \DD_0$ írható, akkor egyszerűen azt mondjuk, hogy az $(f_n)$ függvénysorozat \textit{egyenletesen konvergens}.\\
+
+A $\sum(f_n)$ függvénysor egyenletesen konvergens az $\emptyset \neq A \subset \DD_0$ halmazon, ha a részletösszegek $\series$ sorozata egyenletesen konvergens az $A$-n.\\
+
+Ez tehát azt jelenti, hogy létezik olyan
+\[
+	F : A \to \K
+\]
+függvény és tetszőleges $\varepsilon > 0$ számhoz van olyan $N \in \N$, amellyel
+\[
+	\left| F(x) - \sumk f_k(x) \right| < \varepsilon \quad (x \in A, \, N < n \in \N).
+\]
+A Cauchy-kritérium miatt ez azzal ekvivalens, hogy bármilyen $\varepsilon > 0$ esetén egy alkalmas $N \in \N$ természetes számmal
+\[
+	\left|  \sum_{k=n+1}^m f_k(x) \right| < \varepsilon \quad (x \in A, \, N < n, \, m \in N, \, n < m)
+\]
+(\textit{egyenletes Cauchy-kritérium}).
