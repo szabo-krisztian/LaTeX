@@ -1,0 +1,75 @@
+\newpage
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{A lineáris differenciálegyenlet-rendszer vizsgálata: homogén, inhomogén rendszerek. A megoldáshalmaz szerkezete.}
+\end{quote}
+
+\subsection{Lineáris differenciálegyenlet-rendszer}
+Valamilyen $1 \leq n \in N$ és egy nyílt $I \subset \R$ intervallum esetén adottak a folytonos
+\[
+a_{ik} : I \to \R \quad (i, \, k = 1, \, \dots, \, n), \, b = (b_1, \, \dots, \, b_n) : I \to \R^n
+\]
+függvények, és tekintsük az
+\[
+I \ni x \mapsto A(x) := \big( a_{ik}(x) \big)_{i, \, k =1}^n \in \R^{n \times n}
+\]
+\textit{mátrixfüggvényt}. Ha
+\[
+f(x, \, y) := A(x) \cdot y + b(x) \quad ((x, \, y) \in I \times \K^n),
+\]
+akkor az $f$ függvény, mint jobb oldal által meghatározott
+\[
+\varphi'(x) = A(x) \cdot \varphi(x) + b(x) \quad (x \in \Dp)
+\]
+differenciálegyenletet \textit{lineáris differenciálegyenletnek} ($n > 1$ esetén \textit{lineáris} \textit{differenciálegyenlet-rendszernek}) nevezzük.\\
+
+Legyenek a fentieken túl adottak még a $\tau \in I, \, \xi \in \K^n$ értékek, és vizsgáljuk a $\varphi(\tau) = \xi$ k.é.p.-t. Ha $I_* \subset I$, $\tau \in \text{int} \, I_*$, kompakt intervallum, akkor
+\[
+\sup \{ |a_{ik}(x)| : x \in I_* \} \in \R \quad (i, \, k = 1, \, \dots, \, n),
+\]
+ezért
+\[
+q := \sup \{ \|A(x)\|_{(\infty)} : x \in I_* \} \in \R.
+\]
+Következésképpen
+\[
+\| f(x, \, y) - f(x, \, z) \|_\infty = \| A(x) \cdot (y- z) \|_\infty \leq
+\]
+\[
+\|A(x)\|_{(\infty)} \cdot \|y-z\|_\infty \leq q \cdot \|y-z\|_\infty \quad (x \in I_*, \, y, \, z \in \K^n).
+\]
+Továbbá a
+\[
+\beta := \sup\{\|b(x)\| : x \in I_*\} (\in \R)
+\]
+jelöléssel
+\[
+\|f(x, \, y)\|_\infty = \| A(x) \cdot y + b(x) \|_\infty \leq \|A(x) \cdot y\|_\infty + \|b(x)\|_\infty \leq
+\]
+\[
+\|A(x)\|_{(\infty)} \cdot \|y\|_\infty + \|b(x)\|_\infty \leq q \cdot \|y\|_\infty + \beta \quad (x \in I_*, \, y \in \K^n),
+\]
+ezért minden k.é.p. teljes megoldása az $I$ intervallumon van értelmezve. Azt mondjuk, hogy a szóban forgó d.e. \textit{homogén}, ha $b \equiv 0$, \textit{inhomogén}, ha létezik $x \in I$, hogy $b(x) \neq 0$. Legyenek
+\[
+\mathcal{M}_h := \{ \psi : I \to \K^n : \psi \in D, \, \psi' = A \cdot \psi \},
+\]
+\[
+\mathcal{M} := \{ \psi : I \to \K^n : \psi \in D, \, \psi' = A \cdot \psi + b\}.
+\]
+A lineáris d.e.-ek "alaptétele" a következő\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} A bevezetésben mondott feltételek mellett
+	\begin{enumerate}
+		\item az $\mathcal{M}_h$ halmaz $n$ dimenziós lineáris tér a $\K$-ra vonatkozóan;
+		\item tetszőleges $\psi \in \mathcal{M}$ esetén
+		\[
+		\mathcal{M} = \psi + \mathcal{M}_h := \{\psi + \chi : \chi \in \mathcal{M}_h \};
+		\]
+		\item ha a $\phi_k = (\phi_{k1}, \, \dots, \, \phi_{kn})$ $(k = 1, \, \dots, \, n)$ függvények bázist alkotnak az $\mathcal{M}_h$-ban, akkor léteznek olyan $g_k : I \to \K$ $(k = 1, \, \dots, \, n)$ differenciálható függvények, amelyekkel
+		\[
+		\psi := \sum_{k=1}^n g_k \cdot \phi_k \in \mathcal{M}.
+		\]
+	\end{enumerate}
+};\\

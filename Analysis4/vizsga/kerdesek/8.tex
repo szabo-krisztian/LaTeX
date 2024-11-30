@@ -1,0 +1,125 @@
+\newpage
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{Magasabb rendű lineáris differenciálegyenlet. Az átviteli elv. A megoldáshalmaz szerkezete. Az állandók variálásának a módszere.}
+\end{quote}
+
+\subsection{"Új" feladat megfogalmazása}
+Legyen $1 \leq n \in \N, \, I \subset \R$ nyílt intervallum, az
+\[
+	a_k : I \to \R \quad (k = 0, \, \dots, \, n-1), \, c: I \to \R
+\]
+függvényekről tegyük fel, hogy folytonosak. Olyan $\p \in I \to \K$ függvényt keresünk, amelyikre
+\begin{enumerate}
+	\item $\Dp \subset I$ nyílt intervallum;
+	\item $\p \in D^n$;
+	\item $\displaystyle \p^{(n)}(x) + \sum_{k=0}^{n-1} a_k(x) \cdot \p^{k}(x) = c(x) \quad (x \in \Dp)$.
+\end{enumerate}
+Ezt a feladatot röviden \textit{$n$-edrendű lineáris differenciálegyenletnek} nevezzük. Minden olyan $\p$ függvény amelyik eleget tesz az előbbi kívánalmaknak, az illető differenciálegyenlet (egy) \textit{megoldása}.\\
+
+Tegyük fel, hogy a fentieken túl adottak még a
+\[
+	\tau \in I, \, \xi_0, \, \dots, \, \xi_{n-1} \in \K
+\]
+számok. Ha az előbbi $\p$ megoldástól azt is elvárjuk, hogy
+\begin{enumerate}[start=4]
+	\item $\tau \in \Dp, \, \p^{(k)} = \xi_k \quad (k = 0, \, \dots, \, n-1)$,
+\end{enumerate}
+akkor a szóban forgó $n$-edrendű lineáris differenciálegyenletre vonatkozó \textit{kezdetiérték-problémáról} beszélünk.\\
+
+Ha $n=1$, akkor egy lineáris differenciálegyenletről van szó, ezért a továbbiakban nyugodtan feltehetjük már, hogy $n \geq 2$.\\
+
+Az \textit{átviteli elv} segítségével a most megfogalmazott feladat visszavezethető a lineáris differenciálegyenlet-rendszerek vizsgálatára. (A későbbiekben szereplő állítások is részben ennek az elvnek a segítségével láthatók majd be.) Vezessük be ui. az alábbi jelöléseket: legyen $2 \leq n \in N$ és
+\[
+	b := (b_1, \, \dots, \, b_n) : I \to \R^n, \, b(x) := \begin{pmatrix}
+		0 \\
+		0 \\
+		\vdots \\
+		c(x)
+	\end{pmatrix} \quad (x \in I),
+\]
+\[
+	A := (a_{ik})_{i, \, k = 1}^n = \begin{bmatrix}
+		0 & 1 & 0 & 0 & \cdots & 0 \\
+		0 & 0 & 1 & 0 & \cdots & 0 \\
+		\vdots & \vdots & \vdots & \vdots & \cdots & \vdots \\
+		\vdots & \vdots & \vdots & \vdots & \cdots & \vdots \\
+		\vdots & \vdots & \vdots & \vdots & \cdots & \vdots \\
+		0 & 0 & 0 & 0 & \cdots & 1 \\
+		-a_0 & -a_1 & -a_2 & -a_3 & \cdots & -a_{n-1}
+	\end{bmatrix} : I \to \R^{n \times n}
+\]
+Ekkor
+\[
+	f(x, y) := A(x) \cdot y + b(x) \quad (x \in I, \, y \in \K^n).
+\]
+Ha tehát a
+\[
+	\psi = (\psi_1, \, \dots, \, \psi_n) \in I \to \K^n
+\]
+differenciálható függvény ez utóbbi lineáris differenciálegyenlet-rendszernek (egy) megoldása, akkor $\mathcal{D}_\psi \subset I$ nyílt intervallum, és bármely $x \in \mathcal{D}_\psi$ esetén
+\[
+	\psi'(x) = A(x) \cdot \psi(x) + b(x) \quad (x \in \mathcal{D}_\psi),
+\]
+azaz
+
+\begin{equation}\label{eqn:einstein}
+	\begin{cases}
+		\psi_i'(x) = \psi_{i+1}(x) \quad (i = 1, \, \dots, \, n-1)\\
+		\\
+		\displaystyle \psi'_n(x) = \sum_{k=1}^n a_{k-1}(x) \cdot \psi_k(x) + c(x).
+	\end{cases}
+	\tag{$\star$}
+\end{equation}
+Ennek alapján eléggé nyilvánvaló az alábbi állítás.\\
+
+\subsection{Átviteli elv}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Ha a $\p$ függvény megoldása a fenti $n$-edrendű lineáris differenciálegyenletnek, akkor az
+	\[
+		I \ni x \mapsto \psi(x) := \big(\p(x), \, \p'(x), \, \dots, \, \p^{(n-1)}(x)\big) \in \K^n
+	\]
+	függvényre igazak a $(\star)$ egyenlőségek. Fordítva, ha a $\psi = (\psi_1, \, \dots, \, \psi_n)$ függvény eleget tesz a $(\star)$-nak, akkor a $\p := \psi_1$ (első) komponensfüggvény megoldása a szóban forgó $n$-edrendű lineáris differenciálegyenletnek. Ha adottak a $\tau \in I, \, \xi_0, \, \dots, \, \xi_{n-1} \in \K$ kezdeti értékek, és a $\p$, megoldása a
+	\[
+		\p^{(k)}(\tau) = \xi_k \quad (k = 0, \, \dots, \, n-1)
+	\]
+	k.é.p.-nak, akkor a $(\star)$ lineáris differenciálegyenlet-rendszer előbbi $\psi$ megoldása kielégíti a
+	\[
+		\psi(\tau) = (\xi_0, \, \dots, \, \xi_{n-1}) \in \K^n
+	\]
+	kezdeti feltételt.
+};\\
+
+Legyen most
+\[
+	\mathcal{M}_h := \Big\{ \p : I \to \K : \p \in D^n, \, \p^{(n)} + \sum_{k=0}^{n-1} a_k \cdot \p^{(k)} = 0 \Big\}.
+\]
+Az $\mathcal{M}_h$ függvényhalmaz tehát nem más, mint a
+\[
+	c(x) := 0 \quad (x \in I)
+\]
+esetnek megfelelő \textit{homogén $n$-edrendű lineáris differenciálegyenlet} $I$ intervallumon értelmezett megoldásainak a halmaza. Legyen továbbá
+\[
+	\mathcal{M} := \Big\{ \p : I \to \K : \p \in D^n, \, \p^{(n)} + \sum_{k=0}^{n-1} a_k \cdot \p^{(k)} = c \Big\}
+\]
+a kiindulási $n$-edrendű lineáris differenciálegyenlet $I$-n értelmezett megoldásainak a halmaza. Az utóbbival kapcsolatban már nyilván feltehető, hogy valamilyen $x \in I$ helyen $c(x) \neq 0$, azaz az illető egyenlet \textit{inhomogén}. Ekkor az átviteli elv alapján a következőket mondhatjuk.\\
+
+\subsection{Állandók variálásának módszere}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Az $n$-edrendű lineáris differenciálegyenletet illetően
+	\begin{enumerate}
+		\item az $\mathcal{M}_h$ halmaz $n$ dimenziós lineáris tér a $\K$-ra vonatkozóan;
+		\item tetszőleges $\omega \in \mathcal{M}$ esetén
+		\[
+			\mathcal{M} = \omega + \mathcal{M}_h := \{ \omega + \chi : \chi \in \mathcal{M}_h \};
+		\]
+		\item ha a $\p_1, \, \dots, \, \p_n$ függvények bázist alkotnak az $\mathcal{M}_h$-ban, akkor léteznek olyan differenciálható $g_k : I \to \K \quad (k = 1, \, \dots, \, n)$ függvények, amelyekkel
+		\[
+			\omega := \sum_{k=1}^n g_k \p_k \in \mathcal{M}.
+		\]
+	\end{enumerate}
+};

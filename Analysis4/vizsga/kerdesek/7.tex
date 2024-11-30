@@ -1,0 +1,153 @@
+\newpage
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{Alaprendszer, alapmátrix. Az állandók variálásának a módszere. Alapmátrix előállítása állandó együtthatós diagonalizálható mátrix esetén. Az $n=2$ eset vizsgálata tetszőlege, állandó együtthatós mátrixra.}
+\end{quote}
+
+\subsection{Állandók variálásának módszere}
+BEFEJEZNI.
+
+\subsection{Állandó együtthatós diagonalizálható eset}
+
+Legyen most
+\[
+f(x, \, y) := A \cdot y + b(x) \quad \big( (x, \, y) \in I \times \K^n \big),
+\]
+ahol $1 \leq n \in \N, \, I \subset \R$ nyílt intervallum mellett
+\[
+A \in \R^{n \times n}, \, b : I \to \R^n, \, b \in C.
+\]
+Tegyük fel, hogy $A$ diagonalizálható, azaz létezik $T \in \K^{n \times n}, \, \det T \neq 0$, hogy $T^{-1}AT$ mátrix diagonális: alkalmas $\lambda_1, \, \dots, \, \lambda_n \in \K$ számokkal
+\[
+\Lambda := T^{-1}AT = \begin{bmatrix}
+	\lambda_1 & 0 & \cdots & 0 \\
+	0 & \lambda_2 & \cdots & 0 \\
+	\vdots & \vdots & \cdots & \vdots \\
+	0 & 0 & \cdots & \lambda_n
+\end{bmatrix}.
+\]
+$T$ invertálhatósága miatt a
+\[
+T = [t_1 \cdots t_n]
+\]
+$t_i$ $(i=1, \, \dots, \, n)$ oszlopvektorok lineárisan függetlenek, azaz
+\[
+AT = [At_1 \cdots At_n] = T\Lambda = [\lambda_1 \cdot t_1 \cdots \lambda_n \cdots t_n]
+\]
+miatt
+\[
+A \cdot t_i = \lambda_i \cdot t_i \quad (i = 1, \, \dots, \, n).
+\]
+Mivel
+\[
+t_i \neq 0 \quad (i = 1, \, \dots, \, n),
+\]
+ezért mindez röviden azt jelenti, hogy a $\lambda_1, \, \dots, \, \lambda_n$ számok az $A$ mátrix sajátértékei, a $t_1, \, \dots, \, t_n$ vektorok pedig rendre a megfelelő sajátvektorok. Lévén, a $t_i$-k lineárisan függetlenek, az $A$-ra vonatkozó feltételünk úgy fogalmazható, hogy van a $\K^n$-ben (az $A$ sajátvektoraiból álló) sajátvektorbázis.\\
+
+A homogén egyenlet tehát a következőképpen írható fel:
+\[
+\varphi' = A \cdot \varphi = T \Lambda T^{-1} \cdot \varphi,
+\]
+amiből
+\[
+(T^{-1}\varphi)' = \Lambda \cdot (T^{-1} \varphi)
+\]
+következik. Vegyük észre, hogy ha $\varphi \in \mathcal{M}_h$, akkor a $\psi := T^{-1}\varphi$ függvény megoldása a $\Lambda$ diagonális mátrix által meghatározott állandó együtthatós homogén lineáris egyenletnek. Ez utóbbit ez előző tétel alapján nem nehéz megoldani. Legyenek iu. a
+\[
+\psi_i : I \to \K^n \quad (i = 1, \, \dots, \, n)
+\]
+függvények a következők:
+\[
+\psi_i(x) := e^{\lambda_i \cdot x} \cdot e_i \quad (x \in I, \, i = 1, \, \dots, \, n).
+\]
+Világos, hogy $\psi_i \in D$ és
+\[
+\psi_i'(x) = \lambda_i \cdot e^{\lambda_i \cdot x} \cdot e_i = e^{\lambda_i \cdot x} \cdot (\Lambda \cdot e_i) =
+\]
+\[
+\Lambda \cdot (e^{\lambda_i \cdot x} \cdot e_i) = \Lambda \cdot \psi_i(x) \quad (x \in I, \, i = 1, \, \dots, \, n).
+\]
+Más szóval a $\psi_i$-k valóban megoldásai a $\Lambda$ által meghatározott homogén lineáris differenciálegyenletnek. Mivel bármely $\tau \in I$ esetén a
+\[
+\psi_i(\tau) = e^{\lambda_i \cdot \tau} \cdot e_i \quad (i = 1, \, \dots, \, n)
+\]
+vektorok nyilván lineárisan függetlenek, ezért az előző tétel bizonyításában mondottak szerint a $\psi_i$ $(i = 1, \, \dots, \, n)$ függvények lineárisan függetlenek. Ha
+\[
+\phi_i := T \cdot \psi_i \quad (i = 1, \, \dots, \, n),
+\]
+akkor nyilván a $\phi_i$-k is lineárisan függetlenek,
+\[
+\phi_i(x) = e^{\lambda_i \cdot x} \cdot t_i \quad (x \in I, \, i = 1, \, \dots, \, n),
+\]
+és minden $i = 1, \, \dots, \, n$ indexre
+\[
+\phi_i' = A \cdot \phi_i.
+\]
+Tehát $\phi_i \in \mathcal{M}_h$ $(i = 1, \, \dots, \, n)$ egy bázis. Ezzel beláttuk az alábbi tételt:\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Tegyük fel, hogy az $A \in \R^{n \times n}$ mátrix diagonalizálható. Legyenek a sajátértékei $\lambda_1, \, \dots, \, \lambda_n \in \K$, egy-egy megfelelő sajátvektora pedig $t_1, \, \dots, \, t_n \in \K^n$. Ekkor a
+	\[
+	\varphi' = A \cdot \varphi
+	\]
+	homogén lineáris differenciálegyenletnek a
+	\[
+	\phi_i(x) := e^{\lambda_i \cdot x} \cdot t_i \quad (x \in \R, \, i = 1, \, \dots, \, n)
+	\]
+	függvények lineárisan független megoldásai.
+};
+
+\subsection{Tetszőleges állandó együtthatós mátrix}
+
+Tekintsük az $n=2$ esetet, amikor is valamilyen $a, \, b, \, c, \, d \in \R$ számokkal
+\[
+	A = \begin{bmatrix}
+		a & b \\
+		c & d
+	\end{bmatrix} \in \R^{2 \times 2}.
+\]
+Könnyű meggyőződni arról, hogy ez a mátrix pontosan akkor nem diagonalizálható, ha
+\[
+	(a-d)^2 + 4bc = 0 \text{ és } |b| + |c| > 0.
+\]
+Ekkor egyetlen sajátértéke van az $A$-nak nevezetesen
+\[
+	\lambda := \frac{a+d}{2},
+\]
+
+legyen a $t_1$ egy hozzá tartozó sajátvektor:
+\[
+	0 \neq t_1 \in \R^2, \, At_1 = \lambda t_1.
+\]
+Egyszerű számolással igazolható olyan $t_2 \in \R^2$ vektor létezése, amelyik lineárisan független a $t_1$-től és
+\[
+	At_2 = t_1 + \lambda t_2.
+\]
+Ha mármost a $T \in \R^{2 \times 2}$ mátrix oszlopvektorai rendre a $t_1, \, t_2$ vektorok: $T := [t_1 t_2]$, akkor
+\[
+	T^{-1}AT = \begin{bmatrix}
+		\lambda & 1 \\
+		0 & \lambda
+	\end{bmatrix}.
+\]
+Ezt felhasználva könnyen belátható, hogy a
+\[
+	\phi_1(x) := e^{\lambda x} \cdot t_1, \, \phi_2(x) := e^{\lambda x} \cdot (t_2 + xt_1) \quad (x \in \R)
+\]
+függvénypár egy alaprendszer. Valóban, $\phi_i \in \mathcal{M}_h \quad (i = 1, \, 2)$, mert egyrészt
+\[
+	\phi_1'(x) = \lambda e^{\lambda x} \cdot t_1 = e^{\lambda x} A t_1 = A(e^{\lambda x} \cdot t_1) = A\phi_1(x),
+\]
+másrészt
+\[
+	\phi_2'(x) = \lambda e^{\lambda x} \cdot t_2 + e^{\lambda x} \cdot t_1 + \lambda e^{\lambda x} \cdot t_1 = e^{\lambda x} \big( (t_1 + \lambda \cdot t_2) + \lambda x \cdot t_1 \big) =
+\]
+\[
+	e^{\lambda x} (At_2 + xAt_1) = A\big( e^{\lambda x}(t_2 + x \cdot t_1) \big) = A \phi_2(x) \quad (x \in \R).
+\]
+Mivel a
+\[
+	\phi_1(0) = t_1, \, \phi_2(0) = t_2
+\]
+vektorok lineárisan függetlenek, ezért a $\phi_1, \, \phi_2$ függvények is lineárisan függetlenek, azaz a $\phi_1, \, \phi_2$ egy alaprendszer.
