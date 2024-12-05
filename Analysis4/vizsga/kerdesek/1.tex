@@ -4,7 +4,7 @@
 	\textit{Az implicitfüggvény fogalma, kapcsolata a feltételes szélsőérték problémával és az inverzfüggvénnyel. Implicitfüggvény-tétel, inverzfüggvény-tétel (a bizonyítás vázlata).}
 \end{quote}
 
-Legyenek $n, \, m \in \N$ természetes számok, ahol $2 \leq n$ és $1 \leq m \leq n$. Ha
+Legyenek $n, \, m \in \N$ természetes számok, $1 \leq m < n$. Ha
 \[
 	\xi = (\xi_1, \, \dots, \, \xi_n) \in \R^n,
 \]
@@ -72,19 +72,19 @@ megoldása. Nyilván $\varphi(a) = b$.\\
 
 \tikz \node[theorem]
 {
-	\textbf{Tétel.} \textit{Adott $n, \, m \in \N, \, 2 \leq n$, valamint $1 \leq m < n$ mellett az}
+	\textbf{Tétel.} Adott $n, \, m \in \N$, valamint $1 \leq m < n$ mellett az
 	\[
 	f \in \R^{n-m} \times \R^m \to \R^m
 	\]
-	\textit{függvényről tételezzük fel az alábbiakat: $f \in C^1$, és az $(a, \, b) \in \text{int} \, \D$ helyen}
+	függvényről tételezzük fel az alábbiakat: $f \in C^1$, és az $(a, \, b) \in \text{int} \, \D$ helyen
 	\[
 	f(a, \, b) = 0, \, \det \partial_2f(a, \, b) \neq 0.
 	\]
-	\textit{Ekkor alkalmas $K(a), \, K(b)$ környezetekkel létezik az $f$ által az $(a, \, b)$ körül meghatározott}
+	Ekkor alkalmas $K(a), \, K(b)$ környezetekkel létezik az $f$ által az $(a, \, b)$ körül meghatározott
 	\[
 	\varphi : K(a) \to K(b)
 	\]
-	\textit{implicitfüggvény, ami folytonosan differenciálható, és}
+	implicitfüggvény, ami folytonosan differenciálható, és
 	\[
 	\varphi'(x) = -\partial_2 f(x, \, \varphi(x))^{-1} \cdot \partial_1 f(x, \, \varphi(x)) \quad (x \in K(a)).
 	\]
@@ -114,7 +114,7 @@ függvény és az $a \in \text{int} \, \D$ pont. Azt mondjuk, hogy az $f$ függv
 
 \tikz \node[theorem]
 {
-	\textbf{Tétel.} \textit{Legyen $1 \leq n \in \N$, és $f \in \R^n \to \R^n$. Tegyük fel, hogy egy $a \in \text{int} \, \D$ pontban $f \in C^1\{a\}$, $\det f'(a) \neq 0$. Ekkor alkalmas $K(a) \subset \D$ környezettel az $f_{|_{K(a)}}$ leszűkítés invertálható, a $g := (f_{|_{K(a)}})^{-1}$ lokális inverzfüggvény folytonosan differenciálható, és}
+	\textbf{Tétel.} Legyen $1 \leq n \in \N$, és $f \in \R^n \to \R^n$. Tegyük fel, hogy egy $a \in \text{int} \, \D$ pontban $f \in C^1\{a\}$, $\det f'(a) \neq 0$. Ekkor alkalmas $K(a) \subset \D$ környezettel az $f_{|_{K(a)}}$ leszűkítés invertálható, a $h := (f_{|_{K(a)}})^{-1}$ lokális inverzfüggvény folytonosan differenciálható, és
 	\[
 	h'(x) = \big( f'(h(x)) \big)^{-1} \quad (x \in \mathcal{D}_h).
 	\]

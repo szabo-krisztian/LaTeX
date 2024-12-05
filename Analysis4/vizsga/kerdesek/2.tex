@@ -136,7 +136,7 @@ Tehát (a $\partial_1$ értelmezéséből)
 \end{equation}
 A $\lambda$ vektor definíciójából "átszorzással" azt kapjuk, hogy
 \[
-	\partial_2f(c) + \lambda \cdot g(c) = 0,
+	\partial_2f(c) + \lambda \cdot \partial_2 g(c) = 0,
 \]
 azaz (a $\partial_2$ definíciójából)
 \begin{equation}
@@ -176,7 +176,7 @@ Feltesszük, hogy $m < n$, és a $B$ mátrix rangja $m$. Ekkor azt mondjuk, hogy
 
 \tikz \node[theorem]
 {
-	\textbf{Tétel.} Az $1 \leq n, \, m \in \N, m < n$ paraméterek mellett legyen adott az $\emptyset \neq U \subset \R^n$ nyílt halmaz, és tekintsük az $f : U \to \R, \, g : U \to \R^m$ függvényeket. Feltesszük, hogy $f, \, g \in D^2, \, c \in \{g=0\}$, a $g'(c)$ Jacobi-mátrix rangja $m$, továbbá valamilyen $\lambda \in \R^m$ vektorral az $F := f + \lambda g$ függvényre
+	\textbf{Tétel.} Az $n, \, m \in \N, 1 \leq m < n$ paraméterek mellett legyen adott az $\emptyset \neq U \subset \R^n$ nyílt halmaz, és tekintsük az $f : U \to \R, \, g : U \to \R^m$ függvényeket. Feltesszük, hogy $f, \, g \in D^2, \, c \in \{g=0\}$, a $g'(c)$ Jacobi-mátrix rangja $m$, továbbá valamilyen $\lambda \in \R^m$ vektorral az $F := f + \lambda g$ függvényre
 	\begin{enumerate}
 		\item $\text{grad} \, F(c) = 0$;
 		\item A $Q_c^F$ kvadratikus alak a $g'(c)$ mátrixra nézve feltételesen pozitív (negatív) definit.
@@ -188,3 +188,14 @@ Idézzük fel, hogy
 \[
 	Q_c^F(x) := \langle F''(c) \cdot x, \, x \rangle \quad (x \in \R^n).
 \]
+
+\subsection{Másodrendű szükséges feltétel}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Az $n, \, m \in \N, \, 1 \leq m < n$ paraméterek mellett legyen adott az $\emptyset \neq U \subset \R^n$ nyílt halmaz, és $f : U \to \R, \, g : U \to \R^m$, $f, \, g \in D^2$ függvények. Tegyük fel, hogy valamilyen $c \in \{ g=0 \}$ helyen $f$-nek lokális minimuma (maximuma) van a $\{g=0\}$ feltételre vonatkozóan, a $g'(c)$ Jacobi-mátrix rangja megegyezik $m$-mel. Ekkor létezik olyan $\lambda \in \R^m$, hogy az $F := f + \lambda g$ függvényre az alábbiak teljesülnek:
+	\begin{enumerate}
+		\item $\text{grad} \, F(c) = 0$;
+		\item a $Q_c^F$ kvadratikus alak a $g'(c)$ mátrixra nézve feltételesen pozitív (negatív) szemidefinit.
+	\end{enumerate}
+};
