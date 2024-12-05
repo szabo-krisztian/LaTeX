@@ -119,3 +119,75 @@ függvény és az $a \in \text{int} \, \D$ pont. Azt mondjuk, hogy az $f$ függv
 	h'(x) = \big( f'(h(x)) \big)^{-1} \quad (x \in \mathcal{D}_h).
 	\]
 };
+
+\subsection{Hiperkoordinátás parciális deriváltak}
+Legyen adott $n, \, m \in \N, \, 1 \leq m < n \in \N$ mellett
+\[
+	f : \R^n \to \R^m.
+\]
+Az előbbiek alapján most adott $k \in \N, \, 1 \leq k < n$ esetén legyen $\R^n \equiv \R^{n-k} \times \R^k$. Ha $\xi \in \D$, akkor legyen $(a, \, b) = \xi$, ahogy eddig. Azaz $f$-et fel lehet fogni egy kétváltozós függvénynek. Tekintsük az alábbi definíciót:
+\[
+	\mathcal{D}_1^{(a, \, b)} := \{ x \in \R^{n-k} : (x, \, b) \in \D \},
+\]
+\[
+	\mathcal{D}_2^{(a, \, b)} := \{ y \in \R^{k} : (a, \, y) \in \D \}.
+\]
+Ekkor analóg módon a \textit{szokásos} parciális deriváltakhoz
+\[
+	f_{(a, \, b), \, 1}  \in \R^{n-k} \to \R^m, 
+\]
+\[
+	f_{(a, \, b), \, 2}  \in \R^{k} \to \R^m,
+\]
+ahol
+\[
+	f_{(a, \, b), \, 1}(x) := f(x, \, b) \quad (x \in \mathcal{D}_1^{(a, \, b)}),
+\]
+\[
+	f_{(a, \, b), \, 2}(y) := f(a, \, y) \quad (y \in \mathcal{D}_2^{(a, \, b)}).
+\]
+Ebben az esetben a \textit{hiperkoordinátás} alakja a parciális deriváltaknak (amennyiben értelmes a derivált):
+\[
+	\partial_{\mathbf{1}}f(a, \, b) := \partial_1f(a, \, b) := f'_{(a, \, b), \, 1}(a),
+\]
+\[
+	\partial_{\mathbf{2}}f(a, \, b) := \partial_2f(a, \, b) := f'_{(a, \, b), \, 2}(b).	
+\]
+Azaz egy $(a, \, b)$ helyen lerögzítjük az első vagy második változók és az így kapott függvénynek vesszük a deriváltját. Ha $f$ egy differenciálható függvény az $(a, \, b) \in \D$ helyen, akkor
+\[
+	f'(a, \, b) = \begin{bmatrix}
+		\partial_{\mathbf{1}}f(a, \, b) & \partial_{\mathbf{2}}f(a, \, b)
+	\end{bmatrix} = \begin{bmatrix}
+		\partial_1f_1(a, \, b) & \partial_2f_1(a, \, b) & \cdots & \partial_nf_1(a, \, b) \\
+		\partial_1f_2(a, \, b) & \partial_2f_2(a, \, b) & \cdots & \partial_nf_2(a, \, b) \\
+		\vdots & \vdots &\cdots & \vdots \\
+		\partial_1f_n(a, \, b) & \partial_2f_n(a, \, b) & \cdots & \partial_nf_n(a, \, b)
+	\end{bmatrix},
+\]
+ahol a $\partial_{\mathbf{1}}f(a, \, b) \in \R^{m \times (n-k)}, \, \partial_{\mathbf{2}}f(a, \, b) \in \R^{m \times k}$ mátrixok rendre az $f'(a, \, b) \in \R^{m \times n}$ mátrix első $n-k$-adik és utolsó $k$-adik oszlopvektorai. Pl. legyen $f \in \R^3 \to \R^4$ $(a, \, b) \in \text{int} \, \D$-ben differenciálható függvény, $k := 2$. Ekkor
+\[
+	f \in \R \times \R^2 \to \R^4
+\]
+és 
+\[
+	f'(a, \, b) = \begin{bmatrix}
+		\partial_1f_1(a, \, b) & \partial_2f_1(a, \, b) & \partial_3f_1(a, \, b) \\
+		\partial_1f_2(a, \, b) & \partial_2f_2(a, \, b) & \partial_3f_2(a, \, b) \\
+		\partial_1f_3(a, \, b) & \partial_2f_3(a, \, b) & \partial_3f_3(a, \, b) \\
+		\partial_1f_4(a, \, b) & \partial_2f_4(a, \, b) & 	\partial_3f_4(a, \, b) \\
+	\end{bmatrix},
+\]
+\[
+	\partial_{\mathbf{1}}f(a, \, b) = \begin{bmatrix}
+		\partial_1f_1(a, \, b) \\
+		\partial_1f_2(a, \, b) \\
+		\partial_1f_3(a, \, b) \\
+		\partial_1f_4(a, \, b) \\
+	\end{bmatrix},
+	\partial_{\mathbf{2}}f(a, \, b) = \begin{bmatrix}
+		\partial_2f_1(a, \, b) & \partial_3f_1(a, \, b) \\
+		\partial_2f_2(a, \, b) & \partial_3f_2(a, \, b) \\
+		\partial_2f_3(a, \, b) & \partial_3f_3(a, \, b) \\
+		\partial_2f_4(a, \, b) & \partial_3f_4(a, \, b) \\
+	\end{bmatrix}.
+\]
