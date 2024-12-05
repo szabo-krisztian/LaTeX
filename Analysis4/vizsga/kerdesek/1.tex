@@ -68,6 +68,19 @@ egyenletrendszernek minden $x = (x_1, \, \dots, \, x_{n-m}) \in K(a)$ mellett eg
 \]
 megoldása. Nyilván $\varphi(a) = b$.\\
 
+A $\p : K(a) \to K(b)$ implicitfüggvényre a következő igaz:
+\[
+	\big(K(a) \times K(b)\big) \cap \{ f=0\} = \{ (x, \, \p(x)) \in \R^n : x \in K(a) \}.
+\]
+Geometriai szóhasználattal éve
+\[
+	\text{graf} \, \p := \{ (x, \, \p(x)) \in \R^n : x \in K(a) \}
+\]
+(a $\p$ függvény "grafikonja", ami a függvény definíciója miatt persze maga a $\p$ függvény), tehát az előbbi egyenlőség így néz ki:
+\[
+	\big( K(a) \times K(b) \big) \cap \{f=0\} = \text{graf} \, \p = \p.
+\]
+
 \subsection{Implicitfüggvény-tétel}
 
 \tikz \node[theorem]
@@ -90,6 +103,18 @@ megoldása. Nyilván $\varphi(a) = b$.\\
 	\]
 };\\
 
+A tételben $f \in C^1, \, \partial_2f(a, \, b) \neq 0$ feltételekből következően a $K(a), \, K(b)$ környezetekről az is feltehető, hogy
+\[
+	\det \partial_2 f(x, \, y) \neq 0 \quad (x \in K(a), \, y \in K(b)),
+\]
+egyúttal
+\[
+	\det \partial_2f(x, \, \p(x)) \neq 0 \quad (x \in K(a)).
+\]
+Ezért az $x \in K(a)$ helyeken a $\partial_2f(x, \, \p(x))$ mátrix valóban invertálható.\\
+
+\subsection{Inverzfüggvény-tétel}
+
 Elöljáróban idézzük fel az egyváltozós valós függvényekkel kapcsolatban tanultakat. Ha pl.
 \[
 h \in \R \to \R, \, h \in C^1\{a\}
@@ -108,9 +133,7 @@ Legyen ehhez valamilyen $1 \leq n \in \N$ mellett adott az
 \[
 f \in \R^n \to \R^n
 \]
-függvény és az $a \in \text{int} \, \D$ pont. Azt mondjuk, hogy az $f$ függvény \textit{lokálisan invertálható} az $a$-ban, ha létezik olyan $K(a) \subset \D$ környezet, hogy a $g := f_{|_{K(a)}}$ leszűkítés invertálható függvény. Minden ilyen esetben a $g^{-1}$ inverzfüggvényt az $f$ $a$-beli \textit{lokális inverzének} nevezzük.
-
-\subsection{Inverzfüggvény-tétel}
+függvény és az $a \in \text{int} \, \D$ pont. Azt mondjuk, hogy az $f$ függvény \textit{lokálisan invertálható} az $a$-ban, ha létezik olyan $K(a) \subset \D$ környezet, hogy a $g := f_{|_{K(a)}}$ leszűkítés invertálható függvény. Minden ilyen esetben a $g^{-1}$ inverzfüggvényt az $f$ $a$-beli \textit{lokális inverzének} nevezzük.\\
 
 \tikz \node[theorem]
 {

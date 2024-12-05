@@ -156,6 +156,20 @@ más szóval
 \]
 $\hfill \blacksquare$
 
+A fentiekben az $m < n$ feltételezéssel éltünk. Ha $m = n$, akkor pl. az $g'(c) \in \R^{n \times n}$, és a $\text{rang} \, g'(c) = m = n$ \textit{rangfeltétel} jelentése az, hogy a
+\[
+g'(c) = \begin{bmatrix}
+	\text{grad} \, g_1(a) \\
+	\vdots \\
+	\text{grad} \, g_n(a) \\
+\end{bmatrix} \in \R^{n \times n}
+\]
+Jacobi-mátrix invertálható. Tehát a $\text{grad} \, g_k(a) \in \R^n \quad (k = 1, \, \dots, \, n)$ vektorok lineárisan függetlenek, más szóval bázist alkotnak az $\R^n$-ben. Így (egyértelműen) léteznek olyan $\lambda_j \in \R \quad (j = 1, \, \dots, \, n)$ számok, amelyekkel
+\[
+- \text{grad} \, f(c) = \sum_{j=1}^n \lambda_j \, \text{grad} \, g_j(c),
+\]
+azaz a $\lambda := (\lambda_1, \, \dots, \, \lambda_n) \in \R^n$ vektorral $\text{grad} \, (f + \lambda g)(c) = 0$. Röviden: ekkor is igaz a tétel, de az állítása triviális.\\
+
 Legyen adott a
 \[
 	Q : \R^n \to \R
