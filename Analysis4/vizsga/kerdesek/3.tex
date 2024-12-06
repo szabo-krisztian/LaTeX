@@ -309,3 +309,41 @@ ezért a $G$-re (a $(\tau, \, \xi)$ helyen) teljesülnek az implicitfüggvény-t
 	\psi'(x) = - \frac{\partial_1G(x, \, \psi(x))}{\partial_2G(x, \, \psi(x))} = - \frac{g(x, \, \psi(x))}{h(x, \, \psi(x))} \quad (x \in \mathcal{D}_\psi).
 \]
 $\hfill \blacksquare$
+
+\subsection{Multiplikátor módszer}
+
+Az egzakt differenciálegyenlet definíciójában szereplő $\text{grad} \, G = (g, \, h)$ feltételből a
+\[
+	\partial_1 G = g, \, \partial_2 G = h
+\]
+egyenlőségek következnek. Ha $g, \, h \in D$, akkor $G \in D^2$, így a Young-tétel miatt
+\[
+	\partial_{12}G = \partial_2 g = \partial_{21}G = \partial_1 h,
+\]
+azaz ekkor a
+\[
+	\partial_2 g = \partial_1 h
+\]
+feltétel teljesülése szükséges az "egzaktsághoz".\\
+
+Azonban, ha $g, \, h \in D$, de ez előző
+\[
+	\partial_2g = \partial_1 h
+\]
+feltétel nem teljesül, akkor esetenként alkalmas ekvivalens átalakításokkal a feladat "egzakt alakra hozható". Ezek közül az átalakítások közül az ún. \textit{multiplikátor módszer} a következőt jelenti. Tegyük fel, hogy a
+\[
+	\mu : I \times J \to \R
+\]
+differenciálható függvény (pl.) minden helyen pozitív. Ekkor a
+\[
+	\p'(x) = - \frac{g(x, \, \p(x))}{h(x, \, \p(x))} \quad (x \in \Dp)
+\]
+egyenlőség nyilván ekvivalens a
+\[
+	\p'(x) = - \frac{g(x, \, \p(x)) \cdot \mu(x, \, \p(x))}{h(x, \, \p(x)) \cdot \mu(x, \, \varphi(x))} \quad (x \in \Dp)
+\]
+egyenlőséggel, azaz a $g, \, h$ függvények "kicserélhetők" a $g\mu, \, h\mu$ függvényekre. Ekkor az egzaktságnak az előző megjegyzésben megfogalmazott szükséges feltételéhez a
+\[
+	\partial_2(g\mu) = g \cdot \partial_2 \mu + \mu \cdot \partial_2 g = \partial_1 (h \mu) = h \cdot \partial_1 \mu + \mu \cdot \partial_1 h
+\]
+egyenlőségeknek kell teljesülniük. 

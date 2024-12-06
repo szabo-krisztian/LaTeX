@@ -153,5 +153,60 @@ megoldását kapjuk. Mivel a fentiek alapján a szóban forgó k.é.p. minden $\
 \]
 $\hfill \blacksquare$
 
+A tétel bizonyításából a következők is kiderültek: legyen
+\[
+	\mathcal{M} := \{ \p : I \to \R : \p'(t) = g(t) \cdot \p(t) + h(t) \quad (t \in I) \},
+\]
+\[
+	\mathcal{M}_h := \{ \p : I \to \R : \p'(t) = g(t) \cdot \p(t) \quad (t \in I) \}.
+\]
+Ekkor
+\[
+	\mathcal{M}_h = \{ c \cdot \p_0 : c \in \R \}
+\]
+(azaz algebrai nyelven mondva az $\mathcal{M}_h$ egy 1 dimenziós vektortér), és
+\[
+	\mathcal{M} = m \cdot \p_0 + \mathcal{M}_h := \{ \p + m \cdot \p_0 : \p \in \mathcal{M}_h \}.
+\]
+Itt $m \cdot \p_0$ helyébe bármelyik $\psi \in \mathcal{M}$ (ún. \textit{partikuláris megoldás}) írható, így
+\[
+	\mathcal{M} = \psi + \mathcal{M}_h = \{ \p + \psi : \p \in \mathcal{M}_h \}.
+\]
+
 \subsection{Radioaktív bomlás}
-BEFEJEZNI
+\textit{Radioaktív anyag bomlik, a bomlási sebesség egyenesen arányos a még fel nem bomlott anyag mennyiségével. A bomlás kezdetétől számítva mennyi idő alatt bomlik el az anyag fele?}\\
+
+Legyen $m_0$ az anyag eredeti, $\p(t)$ pedig a $t \quad (t \in \R)$ időpontban még el nem bomlott anyag mennyisége. A feladatban szereplő arányossági tényező $0 < \alpha \in \R$. Ekkor
+\[
+	\p'(t) = -\alpha \p(t) \quad (t \in \R),
+\]
+ahol $\p(0) = m_0.$ A $T$ \textit{(felezési időt)} keressül, amikor is $\p(T) = m_0 / 2$.\\
+
+Ez egy homogén lineáris differenciálegyenlet, ahol $g \equiv -\alpha$. Ezért (pl.)
+\[
+	G(t) = -\alpha t \quad (t \in I).
+\]
+valamint
+\[
+	\p_0(t) = e^{- \alpha t} \quad (t \in I),
+\]
+ill.
+\[
+	\p(t)  = c e ^{- \alpha t } \quad (t \in I, \, c \in \R).
+\]
+Mivel
+\[
+	m_0 = \p(0) = c,
+\]
+ezért
+\[
+	\p(t) = m_0 e^{- \alpha t} \quad (t \in I).
+\]
+A $T$ definíciója alapján
+\[
+	\p(T) = m_0 e^{- \alpha T} = \frac{m_0}{2},
+\]
+azaz $e^{- \alpha T} = 1 /2$. Innen
+\[
+	T = \frac{\ln 2}{\alpha}.
+\]
