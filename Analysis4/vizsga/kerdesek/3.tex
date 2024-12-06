@@ -33,7 +33,7 @@ Azt mondjuk, hogy a szóban forgó \textit{k.é.p. egyértelműen oldható meg},
 \[
 \varphi(x) = \psi(x) \quad (x \in \Dp \cap \mathcal{D}_\psi).
 \]
-(Mivel $\tau \in \Dp \cap \mathcal{D}_\phi$, ezért $\Dp \cap \mathcal{D}_\phi$ egy ($\tau$-t tartalmazó) nyílt intervallum.) Legyen ekkor $\mathcal{M}$ a szóban forgó \textit{k.é.p.} megoldásainak a halmaza és
+(Mivel $\tau \in \Dp \cap \mathcal{D}_\psi$, ezért $\Dp \cap \mathcal{D}_\psi$ egy ($\tau$-t tartalmazó) nyílt intervallum.) Legyen ekkor $\mathcal{M}$ a szóban forgó \textit{k.é.p.} megoldásainak a halmaza és
 \[
 J := \bigcup_{\varphi \in \mathcal{M}} \Dp.
 \]
@@ -80,7 +80,7 @@ Legyenek még adottak a $\tau \in I, \, \xi \in J$ számok, amikor is
 {
 	\textbf{Tétel.} Tetszőleges szeparábilis differenciálegyenletre vonatkozó kezdetiérték-probléma megoldható, és bármilyen $\varphi, \, \psi$ megoldásaira
 	\[
-	\varphi(t) = \psi(t) \quad (t \in \D \cap \mathcal{D}_\psi).
+	\varphi(t) = \psi(t) \quad (t \in \mathcal{D}_\p \cap \mathcal{D}_\psi).
 	\]
 };\\
 
@@ -187,8 +187,39 @@ Röviden: a $\varphi$ implicitfüggvény megoldása a szóban forgó kezdetiért
 $\hfill \blacksquare$
 
 \subsection{Rakéta emelkedési ideje}
-BEFEJEZNI
+\textit{Egy $m$ tömegű rakétát $v_0$ kezdősebességgel függőlegesen fellövünk (függőleges hajítás). Tegyük fel, hogy a mozgás során a rakétára mindössze két erő hat: a nehézségi erő (jelöljük $\alpha$-val a nehézségi gyorsulást) és a pillanatnyi sebesség négyzetével arányos súrlódási erő (az ezzel kapcsolatos arányossági tényező legyen $\beta$). Mennyi ideig emelkedik a rakéta?}\\
 
+Ha $v \in \R \to \R$ jelenti a sebesség-idő függvényt, akkor -- feltételezve, hogy $v \in D, \, \mathcal{D}_v$ intervallum és $0 \in \mathcal{D}_v$ -- a feladat matematikai modellje a következő (ld. a fizika Newton-féle mozgástörvényeit): adott $m, \, \alpha, \, \beta$ pozitív számok mellett olyan differenciálható $v$ függvényt keresünk, amelyre
+\[
+	mv'(t) = -m\alpha - \beta v^2(t) \quad (t \in \mathcal{D}_v).
+\]
+Világos, hogy $v(0) = v_0$. Azt a $T \in \mathcal{D}_v$ "pillanatot" kell meghatározni, amikor $v(T) = 0$.
+
+\[
+	I := J := \R, \, g(x) := - \alpha, \, h(y) := 1 + \frac{\beta y^2}{m \alpha} \quad (x, \, y \in \R)
+\]
+választással egy szeparábilis differenciálegyenlethez jutunk. Legyen $\tau := 0, \, \xi := v_0$, ekkor a
+\[
+	G(x) := \int\limits_0^x - \alpha \, dt = - \alpha x \quad (x \in \R),
+\]
+\[
+	H(y) := \int\limits_{v_0}^y \left( 1 + \frac{\beta t^2}{m \alpha} \right) \, dt = 
+\]
+\[
+	\sqrt{\frac{m \alpha}{\beta}} \cdot \left( \text{arctg} \, \sqrt{\frac{\beta}{m \alpha}} \cdot y - \text{arctg} \, \sqrt{\frac{\beta}{m \alpha}} \cdot v_0 \right) \quad (y \in \R)
+\]
+függvények eleget tesznek az előbbi tétel bizonyításában mondottaknak. Következésképpen
+\[
+	H(v(t)) = G(t) \quad (t \in \mathcal{D}_v),
+\]
+azaz
+\[
+	\text{arctg} \, \left( \sqrt{\frac{\beta}{m \alpha}} \cdot v(t) \right) = - \sqrt{\frac{\beta \alpha}{m}} \cdot t + \text{arctg} \, \left( \sqrt{\frac{\beta}{m \alpha}} \cdot v_0 \right) \quad (t \in \mathcal{D}_v).
+\]
+A $v(T) = 0$ egyenlőségből a $t := T$ helyettesítéssel -- figyelembe véve, hogy $\text{arctg}(0) = 0$ -- az adódik, hogy
+\[
+	 T = \sqrt{\frac{m}{\beta \alpha}} \cdot \text{arctg}\left( \sqrt{\frac{\beta}{m \alpha}} \cdot v_0 \right).
+\]
 
 \subsection{Egzakt differenciálegyenlet}
 Speciálisan legyen $n := 1$, és az $I, \, J \subset \R$ nyílt intervallumok, valamint a
@@ -255,7 +286,7 @@ Mivel $\p(\tau) = \xi$, ezért
 \]
 A $G$-ről feltehetjük, hogy $G(\tau, \, \xi) = 0$, ezért a szóban forgó k.é.p. $\p$ megoldása eleget tesz a 
 \[
-	G(x, \, \p(x)) \quad (x \in \Dp)
+	G(x, \, \p(x)) = 0 \quad (x \in \Dp)
 \]
 egyenletnek.\\
 
