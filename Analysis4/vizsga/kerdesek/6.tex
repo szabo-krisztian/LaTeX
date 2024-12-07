@@ -73,3 +73,142 @@ A lineáris d.e.-ek "alaptétele" a következő\\
 		\]
 	\end{enumerate}
 };\\
+
+\textbf{Bizonyítás.} Az 1. állítás bizonyításához mutassuk meg először is azt, hogy bármilyen $\psi, \, \p \in \mathcal{M}_h$ és $c \in \K$ esetén $\psi + c \cdot \p \in \mathcal{M}_h$:
+\[
+	(\psi + c \cdot \p)' = \psi' + c \cdot \p' = A \cdot \psi + c \cdot A \cdot \p = A(\psi + c \cdot \p),
+\]
+amiből a mondott állítás az $\mathcal{M}_h$ definíciója alapján nyilvánvaló. Tehát az $\mathcal{M}_h$ lineáris tér a $\K$ felett.\\
+
+Most megmutatjuk, hogy ha $m \in \N$, és $\chi_1, \, \dots, \, \chi_m \in \mathcal{M}_h$, tetszőleges függvények, akkor az alábbi ekvivalencia igaz:
+
+\begin{quote}
+	a $\chi_1, \, \dots, \, \chi_m$ függvények akkor és csak akkor alkotnak lineárisan független rendszert az $\mathcal{M}_h$ vektortérben, ha bármilyen $\tau \in I$ esetén a $\chi_1(\tau), \, \dots, \, \chi_m(\tau)$ vektorok lineárisan függetlenek a $\K^n$-ben.
+\end{quote}
+
+Az ekvivalencia fele nyilvánvaló: ha a $\chi_1, \, \dots, \, \chi_m$-ek lineárisan összefüggnek, akkor alkalmas $c_1, \, \dots, \, c_m \in \K$, $|c_1| + \dots + |c_n| > 0$ együtthatókkal
+\[
+	\sum_{k=1}^m c_k \cdot \chi_k \equiv 0.
+\]
+Speciálisan minden $\tau \in I$ helyen is
+\[
+	\sum_{k=1}^m c_k \cdot \chi_k(\tau) = 0 \quad (\in \K^n).
+\]
+Így a $\chi_1(\tau), \, \dots, \, \chi_m(\tau)$ vektorok összefüggő rendszert alkotnak a $\K^n$-ben.\\
+
+Fordítva, legyen $\tau \in I$, és tegyük fel, hogy a $\chi_1(\tau), \, \dots, \, \chi_m(\tau)$ vektorok összefüggnek. Ekkor az előbbi (nem csupa nulla) $c_1, \, \dots, \, c_m \in \K$ együtthatókkal
+\[
+	\sum_{k=1}^m c_k \cdot \chi_k(\tau) = 0.
+\]
+Már tudjuk, hogy
+\[
+	\phi := \sum_{k=1}^m c_k \cdot \chi_k \in \mathcal{M}_h,
+\]
+ezért az így definiált $\phi : I \to \K^n$ függvény megoldása a
+\[
+	\p' = A \cdot \p, \, \p(\tau) = 0
+\]
+homogén lineáris differenciálegyenletre vonatkozó kezdetiérték-problémának. Világos ugyanakkor, hogy a $\Psi \equiv 0$ is a most mondott k.é.p. megoldása az $I$-n. Azt is tudjuk azonban, hogy (ld. fent) ez a k.é.p. (is) egyértelműen oldható meg, ezért $\phi \equiv \Psi \equiv 0$. Tehát a $\chi_1, \, \dots, \, \chi_m$ függvények is összefüggnek.\\
+
+Ezzel egyúttal azt is beláttuk, hogy az $\mathcal{M}_h$ vektortér véges dimenziós és a $\dim \mathcal{M}_h$ dimenziója legfeljebb $n$.\\
+
+Tekintsük most a
+\[
+	\p' = A \cdot \p, \, \p(\tau) = e_i  \quad (i = 1, \, \dots, \, n)
+\]
+kezdetiérték-problémákat, ahol az $e_i \in \K^n \quad (i = 1, \, \dots, \, n)$ vektorok a $\K^n$ tér "szokásos" (kanonikus) bázisvektorait jelölik. Ha
+\[
+	\chi_i : I \to \K^n
+\]
+jelöli az említett k.é.p. teljes megoldását, akkor a
+\[
+	\chi_i(\tau) = e_i \quad (i = 1, \, \dots, \, n)
+\]
+vektorok lineárisan függetlenek. Így az előbbiek alapján a $\chi_1, \, \dots, \, \chi_n$ függvények is azok. Tehát az $\mathcal{M}_h$ dimenziója legalább $n$, azaz a fentiekre tekintettel $\dim \mathcal{M}_h = n$.\\
+
+A 2. állítás igazolásához legyen $\chi \in \mathcal{M}_h$. Ekkor $\psi + \chi \in D$, és
+\[
+	(\psi + \chi)' = \psi' + \chi' = A \cdot \psi + b + A \cdot \chi = A \cdot (\psi + \chi) + b,
+\]
+amiből $\psi + \chi \in \mathcal{M}$ következik. Ha most egy $\p \in \mathcal{M}$ függvényből indulunk ki és $\chi := \p - \psi$, akkor $\chi \in D$, és 
+\[
+	\chi' = \p' - \psi' = A \cdot \p + b - (A \cdot \psi + b) = A \cdot (\p - \psi) = A \cdot \chi,
+\]
+amiből $\chi \in \mathcal{M}_h$ adódik. Tehát $\p = \psi + \chi$ a 2.-ben mondott előállítása a $\p$ függvénynek.\\
+
+A tétel 3. részének a bizonyítása érdekében vezessük be az alábbi jelöléseket, ill. fogalmakat. A
+\[
+	\phi_k = (\phi_{k1}, \, \dots, \, \phi_{kn}) \quad (k = 1, \, \dots, \, n)
+\]
+bázisfüggvények mint oszlopvektor-függvények segítségével tekintsük a
+\[
+	\Phi : I \to \K^{n \times n}
+\]
+mátrixfüggvényt:
+\[
+	\Phi := \begin{bmatrix}
+		\phi_1 & \cdots & \phi_n
+	\end{bmatrix} = \begin{bmatrix}
+	\phi_{11} & \phi_{21} & \cdots & \phi_{n1} \\
+	\phi_{12} & \phi_{22} & \cdots & \phi_{n2} \\
+	\vdots & \vdots & \cdots & \vdots \\
+	\phi_{1n} & \phi_{2n} & \cdots & \phi_{nn} \\
+	\end{bmatrix}.
+\]
+Legyen
+\[
+	\Phi' := \begin{bmatrix}
+		\phi'_1 & \cdots & \phi'_n
+	\end{bmatrix} = \begin{bmatrix}
+		\phi'_{11} & \phi'_{21} & \cdots & \phi'_{n1} \\
+		\phi'_{12} & \phi'_{22} & \cdots & \phi'_{n2} \\
+		\vdots & \vdots & \cdots & \vdots \\
+		\phi'_{1n} & \phi'_{2n} & \cdots & \phi'_{nn} \\
+	\end{bmatrix}
+\]
+a $\Phi$ deriváltja. Ekkor könnyen belátható, hogy
+\[
+	\Phi' = A \cdot \Phi.
+\]
+Továbbá tetszőleges $g_1, \, \dots, \, g_n : I \to \K$ differenciálgató függvényekkel a
+\[
+	g := (g_1, \, \dots, \, g_n) : I \to \K^n
+\]
+vektorfüggvény differenciálható,
+\[
+	\psi := \sum_{k=1}^n g_k \cdot \phi_k = \Phi \cdot g,
+\]
+és
+\[
+	\psi' = \Phi' \cdot g + \Phi \cdot g' = (A \cdot \Phi) \cdot g + \Phi \cdot g'.
+\]
+A $\psi \in \mathcal{M}$ tartalmazás nyilván azzal ekvivalens, hogy
+\[
+	\psi' = (A \cdot \Phi) \cdot g + \Phi \cdot g' = A \cdot \psi + b = A \cdot (\Phi \cdot g) + b = (A \cdot \Phi) \cdot g + b,
+\] 
+következésképpen azzal, hogy
+\[
+	\Phi \cdot g' = b.
+\]
+
+A 2. pont alapján tetszőleges $x \in I$ helyen a $\phi_1(x), \, \dots, \, \phi_n(x)$ vektorok lineárisan függetlenek, azaz a $\Phi(x)$ mátrix nem szinguláris. A mátrixok inverzének a kiszámítása alapján egyszerűen adódik, hogy a
+\[
+	\Phi^{-1}(x) := \big(\Phi(x)\big)^{-1} \quad (x \in I)
+\]
+definícióval értelmezett
+\[
+	\Phi^{-1} : I \to \K^{n \times n}
+\]
+mátrixfüggvény komponens-függvényei is folytonosak. Ezért a
+\[
+	(h_1, \, \dots, \, h_n) := \Phi^{-1} \cdot b : I \to \K^n
+\]
+függvény is folytonos. Olyan folytonosan differenciálható
+\[
+	g : I \to \K^n
+\]
+függvényt keresünk tehát amelyikre $g' = \Phi^{-1} \cdot b$, azaz
+\[
+	g_i' = h_i \quad (i = 1, \, \dots, \, n).
+\]
+Ilyen $g_i$ létezik, nevezetesen a (folytonos) $h_i \quad (i = 1, \, \dots, \, n)$ függvények bármelyik primitív függvénye ilyen. $\hfill \blacksquare$

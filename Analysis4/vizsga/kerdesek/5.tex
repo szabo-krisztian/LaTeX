@@ -28,7 +28,7 @@ Ekkor azt mondjuk, hogy az $f$ (a \textit{d.e.} jobb oldala) eleget tesz a \text
 \begin{center}
 	\tikz \node[theorem]
 	{
-		\textbf{Tétel (Picard-Lindelöf).} \textit{Tegyük fel, hogy egy differenciálegyenlet jobb oldala eleget tesz a Lipschitz-feltételnek. Ekkor a szóban forgó differenciálegyenletre vonatkozó tetszőleges kezdetiérték-probléma megoldható.}
+		\textbf{Tétel (Picard-Lindelöf).} Tegyük fel, hogy egy differenciálegyenlet jobb oldala eleget tesz a Lipschitz-feltételnek. Ekkor a szóban forgó differenciálegyenletre vonatkozó tetszőleges kezdetiérték-probléma megoldható.
 	};    
 \end{center}
 \textbf{Bizonyítás (vázlat).} Legyenek a $\delta_1, \, \delta_2 > 0$ olyan számok, hogy
@@ -171,3 +171,9 @@ A fenti Picard Lindelöf-egzisztenciatételben szereplő Lipschitz-feltétel nem
 	\varphi(t) = \psi(t) \quad (t \in \Dp \cap \mathcal{D}_\psi).
 	\]
 };\\
+
+Legyen az $f : I \times \Omega \to \R^n$ jobb oldal olyan, hogy $\Omega := \R^n$, és (az előző tétel feltételein kívül) valamilyen $\alpha, \, \beta$ pozitív együtthatókkal
+\[
+	\| f(x, \, y)\|_\infty \leq \alpha \cdot \|y\|_\infty + \beta \quad (x \in I, \, y \in \R^n).
+\] 
+Ekkor belátható, hogy az $f$ által meghatározott differenciálegyenletre vonatkozó bármelyik k.é.p. teljes megoldása az $I$-n van értelmezve. 
