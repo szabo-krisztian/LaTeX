@@ -1,11 +1,29 @@
 \newpage
 \section{Vizsgakérdés}
 \begin{quote}
-	\textit{Alaprendszer, alapmátrix. Az állandók variálásának a módszere. Alapmátrix előállítása állandó együtthatós diagonalizálható mátrix esetén. Az $n=2$ eset vizsgálata tetszőlege, állandó együtthatós mátrixra.}
+	\textit{Alaprendszer, alapmátrix. Az állandók variálásának a módszere. Alapmátrix előállítása állandó együtthatós diagonalizálható mátrix esetén. Az $n=2$ eset vizsgálata tetszőleges, állandó együtthatós mátrixra.}
 \end{quote}
 
+\subsection{Alaprendszer, alapmátrix}
+
+Az $\mathcal{M}_h$ vektortérben minden bázist az illető egyenlet \textit{alaprendszerének} nevezünk. Ha $\phi_1, \, \dots, \, \phi_n \in \mathcal{M}_h$ egy alaprendszer, akkor a
+\[
+	\Phi := \begin{bmatrix}
+		\phi_1 & \cdots & \phi_n
+	\end{bmatrix} : I \to \K^{n \times n}
+\]
+mátrixfüggvény a szóban forgó lineáris differenciálegyenlet (egy) ún. \textit{alapmátrixa}. Tehát
+\[
+	\mathcal{M}_h = \left\{ \sum_{k=1}^n c_k \cdot \phi_k : c_1, \, \dots, \, c_n \in \K \right\} = \{ \Phi \cdot c : c \in \K^n \}.
+\]
+Az $\mathcal{M} = \psi + \mathcal{M}_h$ előállításban minden $\psi \in \mathcal{M}$ függvényt \textit{partikuláris megoldásként} említünk.
+
 \subsection{Állandók variálásának módszere}
-BEFEJEZNI.
+Ld. ~\ref{subsec:diff_systems_core} alcímben tárgyalt tétel 3. pontjának bizonyítása. A partikuláris megoldás
+\[
+	\psi = \Phi \cdot g
+\]
+alakban való előállítása (alkalmas $g : I \to \K^n$ differenciálható függvénnyel) az ~\ref{subsec:diff_systems_core} alcímben tárgyalt tétel bizonyításában "bemutatott" módszer az \textit{állandók variálása}.
 
 \subsection{Állandó együtthatós diagonalizálható eset}
 
@@ -124,7 +142,7 @@ Egyszerű számolással igazolható olyan $t_2 \in \R^2$ vektor létezése, amel
 \[
 	At_2 = t_1 + \lambda t_2.
 \]
-Ha mármost a $T \in \R^{2 \times 2}$ mátrix oszlopvektorai rendre a $t_1, \, t_2$ vektorok: $T := [t_1 t_2]$, akkor
+Ha mármost a $T \in \R^{2 \times 2}$ mátrix oszlopvektorai rendre a $t_1, \, t_2$ vektorok: $T := [t_1 \, t_2]$, akkor
 \[
 	T^{-1}AT = \begin{bmatrix}
 		\lambda & 1 \\
