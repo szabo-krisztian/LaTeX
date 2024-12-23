@@ -23,7 +23,7 @@ Ld. ~\ref{subsec:diff_systems_core} alcímben tárgyalt tétel 3. pontjának biz
 \[
 	\psi = \Phi \cdot g
 \]
-alakban való előállítása (alkalmas $g : I \to \K^n$ differenciálható függvénnyel) az ~\ref{subsec:diff_systems_core} alcímben tárgyalt tétel bizonyításában "bemutatott" módszer az \textit{állandók variálása}.
+alakban való előállítása (alkalmas $g : I \to \K^n$ differenciálható függvénnyel) az ~\ref{subsec:diff_systems_core} alcímben tárgyalt tétel bizonyításában bemutatott módszer az \textit{állandók variálása}.
 
 \subsection{Állandó együtthatós diagonalizálható eset}
 
@@ -159,7 +159,7 @@ függvénypár egy alaprendszer. Valóban, $\phi_i \in \mathcal{M}_h \quad (i = 
 \]
 másrészt
 \[
-	\phi_2'(x) = \lambda e^{\lambda x} \cdot t_2 + e^{\lambda x} \cdot t_1 + \lambda e^{\lambda x} \cdot t_1 = e^{\lambda x} \big( (t_1 + \lambda \cdot t_2) + \lambda x \cdot t_1 \big) =
+	\phi_2'(x) = \lambda e^{\lambda x} \cdot t_2 + e^{\lambda x} \cdot t_1 + \lambda e^{\lambda x}x \cdot t_1 = e^{\lambda x} \big( (t_1 + \lambda \cdot t_2) + \lambda x \cdot t_1 \big) =
 \]
 \[
 	e^{\lambda x} (At_2 + xAt_1) = A\big( e^{\lambda x}(t_2 + x \cdot t_1) \big) = A \phi_2(x) \quad (x \in \R).
@@ -169,3 +169,58 @@ Mivel a
 	\phi_1(0) = t_1, \, \phi_2(0) = t_2
 \]
 vektorok lineárisan függetlenek, ezért a $\phi_1, \, \phi_2$ függvények is lineárisan függetlenek, azaz a $\phi_1, \, \phi_2$ egy alaprendszer.
+
+\subsection{Valós értékű megoldások}
+Tegyük fel, hogy a $\lambda \in \K$ szám az $A \in \R^{n \times n}$ (diagonalizálható) együtthatómátrixnak egy sajátértéke, a $t_\lambda \in \K^n$ vektor pedig egy $\lambda$-hoz tartozó sajátvektor. Ha a $\lambda$ valós, akkor nyilván a $t_\lambda$ sajátvektor is választható "valósnak", azaz feltehető, hogy $t_\lambda \in \R^n$. Ebben az esetben az $\mathcal{M}_h$-beli
+\[
+	\phi_\lambda(x) := e^{\lambda x} \cdot t_\lambda \quad (x \in \R)
+\]
+bázisfüggvény is "valós" tehát $\phi_\lambda : \R \to \R^n$.\\
+
+Ha viszont a $\lambda$ (nem valós) komplex szám, azaz
+\[
+	\lambda = u + \imath v \in \mathbf{C} \, \backslash \, \R
+\]
+(alkalmas $u \in \R$ és $0 \neq v \in \R$ számokkal), akkor -- lévén az $A$ karakterisztikus polinomja valós együtthatós -- az $A$-nak egyúttal a
+\[
+	\overline{\lambda} = u + \imath v
+\]
+(komplex konjugált) is (ugyanannyiszoros) sajátértéke. Hasonlóan, ha a
+\[
+	t_\lambda = S_\lambda + \imath Y_\lambda \in \K^n
+\]
+vektor (alkalmas $S_\lambda, \, Y_\lambda \in \R^n$ vektorokkal) az $A$-nak a $\lambda$-hoz tartozó sajátvektora, akkor a
+\[
+	\overline{t}_\lambda = S_\lambda - \imath Y_\lambda
+\]
+vektor a $\overline{\lambda}$-hoz tartozó sajátvektor. Továbbá a megfelelő bázisfüggvények a következők:
+\[
+	\phi_\lambda(x) := e^{\lambda x} \cdot t_\lambda, \, \phi_{\overline{\lambda}}(x) := e^{\overline{\lambda}x} \cdot \overline{t}_\lambda \quad (x \in \R).
+\]
+Rövid számolással ellenőrizhető, hogy
+\[
+	\phi_{\overline{\lambda}}(x) = \overline{\phi_\lambda(x)} \quad (x \in \R).
+\]
+Mivel a homogén egyenlet (teljes) megoldásainak az $\mathcal{M}_h$ halmaza a $\K$ felett vektortér, ezért a
+\[
+	\frac{\phi_\lambda + \overline{\phi_\lambda}}{2} = \text{Re}\, \phi_\lambda, \, \frac{\phi_\lambda - \overline{\phi_\lambda}}{2} = \text{Im} \, \phi_\lambda
+\]
+függvények is $\mathcal{M}_h$-beliek. Világos, hogy
+\[
+	e^{\lambda x} = e^{u x} \cdot \B{ \cos(vx) + \imath \sin(vx) } \quad (x \in \R)
+\]
+miatt
+\[
+	\phi_{\lambda, \, r}(x) := \text{Re} \, \phi_\lambda(x) = e^{ux} \cdot \B{ \cos(vx) \cdot S_\lambda - \sin(vx) \cdot Y_\lambda } \quad (x \in \R),
+\]
+\[
+	\phi_{\lambda, \, i}(x) := \text{Im} \, \phi_\lambda(x) = e^{ux} \cdot \B{ \sin(vx) \cdot S_\lambda + \cos(vx) \cdot Y_\lambda } \quad (x \in \R).
+\]
+Továbbá
+\[
+	\phi_{\lambda, \, r}(0) = S_\lambda = \frac{t_\lambda + \overline{t_\lambda}}{2},
+\]
+\[
+	\phi_{\lambda, \, i}(0) = Y_\lambda = \frac{t_\lambda - \overline{t_\lambda}}{2 \imath}.
+\]
+A $t_\lambda, \, \overline{t}_\lambda$ sajátvektorok lineárisan függetlenek, ezért az $S_\lambda, \, Y_\lambda$ vektorok is azok, következésképpen a $\phi_{\lambda, \, r}, \, \phi_{\lambda, \, i}$ függvények is lineárisan függetlenek. Így $\phi_\lambda, \, \phi_{\overline{\lambda}}$ függvényeket kicserélve az előző függvényekre, továbbra is alaprendszert kapunk.
