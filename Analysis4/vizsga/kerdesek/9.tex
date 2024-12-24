@@ -65,7 +65,7 @@ homogén lineáris differenciálegyenletnek a karakterisztikus polinomja:
 \[
 	\sum_{k=0}^{n-1} (k+1)a_{k+1} t^k = P'(t) \quad (t \in \R),
 \]
-ahol a $\lambda$ a $P'$ (derivált)polinomnak a $\mu := \nu - 1$-szeres gyöke. Mivel $\mu - 1 \geq j$, ezért az indukciós feltevés szerint
+ahol a $\lambda$ a $P'$ (derivált)polinomnak $\mu := \nu - 1$-szeres gyöke. Mivel $\mu - 1 \geq j$, ezért az indukciós feltevés szerint
 \[
 	\sum_{k=0}^{n-1}(k+1)a_{k+1}e_{\lambda, \, j}^{(k)} \equiv 0,
 \]
@@ -97,3 +97,38 @@ Ennél még több is igaz, nevezetesen:\\
 	\]
 	függvények a szóban forgó állandó együtthatós $n$-edrendű lineáris differenciálegyenlet egy alaprendszerét alkotják.
 };
+
+\subsection{Valós értékű megoldások}
+
+Az előző tétel alapján kapott
+\[
+	\p_{lj}(x) := x^j e^{\lambda_l x} \quad (x \in I, \, l = 1, \, \dots, \, k; \, j = 0, \, \dots, \, \nu_l)
+\]
+alaprendszerben a $\p_{lj} \quad (l = 1, \, \dots, \, k; \, j = 0, \, \dots, \, \nu_l)$ függvények valós értékűek, ha a szóban forgó $n$-edrendű lineáris differenciálegyenlet $P$ karakterisztikus polinomjában a $\lambda_l$ gyök valós szám. Ha viszont valamilyen $l = 1, \, \dots, \, k$ esetén a $\lambda_l$ gyök nem valós komplex szám, akkor a következőket mondhatjuk. Legyen ekkor
+\[
+	\lambda_k = u_k + \imath v_l,
+\]
+ahol $u_l, \, v_l \in \R$ és $v_l \neq 0$. Mivel a $P$ polinom valós együtthatós, ezért a
+\[
+	\overline{\lambda_l} = u_l + \imath v_l
+\]
+komplex konjugált is $v_l$-szeres gyöke a $P$-nek. Ez azt jelenti, hogy a fenti alaprendszerben a
+\[
+	\hat{\p}_{lj}(x) := x^j \cdot e^{\overline{\lambda_l} x} = \overline{\p_{lj}(x)} \quad (x \in I, \, j = 0, \, \dots, \, \nu_l - 1)
+\]
+függvények is szerepelnek. Tudjuk, hogy az $\mathcal{M}_h$ halmaz vektortér a $\K$-ra nézve, ezért
+\[
+	\phi_{lj} := \frac{\p_{lj} + \hat{\p}_{lj}}{2} = \text{Re} \, \p_{lj} \in \mathcal{M}_h \text{ és } \hat{\phi}_{lj} := \frac{\p_{lj} - \hat{\p}_{lj}}{2i} = \text{Im} \, \p_{lj} \in \mathcal{M}_h.
+\]
+Itt tetszőleges $j = 0, \, \dots, \, \nu_l - 1$ mellett
+\[
+	\phi_{lj}(x) = \text{Re} \, \p_{lj}(x) = \text{Re} \, (x^j \cdot e^{\lambda_l x}) = \text{Re} \, (x^j \cdot e^{u_lx + \imath v_l x}) =
+\]
+\[
+	\text{Re} \, \B{ x^j \cdot e^{u_l x} (\cos(v_lx) + \imath \sin(v_l x)) = x^j \cdot e^{u_l x} \cdot \cos(v_l x)} \quad (x \in I),
+\]
+és (analóg számolás után)
+\[
+	\hat{\phi}_{lj}(x) = x^j \cdot e^{u_l x} \cdot \sin(v_l x) \quad (x \in I).
+\]
+Könnyen belátható, hogy ha a fenti $\p_{lj}, \, \hat{\p}_{lj}$ (összesen $2\nu_l$ darab) függvényt kicseréljük a $\phi_{lj}, \, \hat{\phi}_{lj}$ (ugyancsak $2\nu_l$ darab) függvényre, akkor továbbra is lineárisan független függvényrendszert kapunk. Ha ezt a cserét a $P$ polinom minden nem valós gyökével kapcsolatban megtesszük, akkor az $\mathcal{M}_h$ egy valós értékű függvényekből álló bázisát kapjuk, azaz egy valós függvényekből álló alaprendszert. 
