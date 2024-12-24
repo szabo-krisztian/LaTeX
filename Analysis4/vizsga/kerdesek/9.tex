@@ -3,3 +3,97 @@
 \begin{quote}
 	\textit{Állandó együtthatós magasabb rendű homogén lineáris differenciálegyenlet egy alaprendszerének az előállítása, a karakterisztikus polinom szerepe (a bizonyítás vázlata).}
 \end{quote}
+
+Az előzőekben vizsgált
+\[
+	\p^{(n)} + \sum_{k=1}^{n-1} a_k(x) \cdot \p^{(k)}(x) = c(x) \quad (x \in \Dp)
+\]
+$n$-edrendű lineáris differenciálegyenlet megoldásához tehát elegendő az $\mathcal{M}_h$ egy bázisát meghatározni. Ez általában "reménytelen" feladat, általános módszer nem is adható.\\
+
+Ezért csak abban az esetben tesszük ezt meg, ha az $a_k \quad (k = 0, \, \dots, \, n-1)$ együtthatófüggvények mindegyike konstansfüggvény. Ez az ún. \textit{állandó együtthatós} eset:
+\[
+	\p^{(n)}(x) = \sum_{k=1}^{n-1} a_k \cdot \p^{(k)}(x) = c(x) \quad (x \in \Dp),
+\]
+A $c=0$ (\textit{homogén egyenlet}) választással
+\[
+	\p^{(n)} + \sum_{k=0}^{n-1} a_k \cdot \p^{(k)} \equiv 0.
+\]
+Tekintsük ehhez a
+\[
+	P(x) := x^n + \sum_{i=0}^{n-1} a_i x^i \quad (x \in \K)
+\]
+$n$-edfokú polinomot, a differenciálegyenlet \textit{karakterisztikus polinomját}.\\
+
+Ha a $\lambda \in \K$ szám a $P$-nek gyöke, akkor az
+\[
+	e_\lambda(x) := e^{\lambda x} \quad (x \in \R)
+\]
+és az $a_n := 1$ jelöléssel
+\[
+	\sum_{k=0}^n a_k e_\lambda^{(k)}(x) = \sum_{k=0}^n a_k \lambda^k e^{\lambda x} = e^{\lambda x} \cdot P(\lambda) = 0 \quad (x \in \R)
+\]
+miatt az $e_\lambda$ függvény megoldása a szóban forgó homogén differenciálegyenletnek.\\
+
+Legyen az előbbi $\lambda$ gyök multiplicitása $\nu \geq 2$. Belátjuk, hogy az
+\[
+	e_{\lambda, \, j}(x) := x^j e^{\lambda x} \quad (x \in \R, \, j = 0, \, \dots, \, \nu - 1)
+\]
+függvények is megoldásai a homogén differenciálegyenletnek:
+\[
+	\sum_{k=0}^n a_k e_{\lambda, \, j}^{(k)} \equiv 0.
+\]
+Tegyük fel ui., hogy ezt valamilyen $j \in \N$ mellett minden olyan esetben már tudjuk, amikor (az aktuális differenciálegyenletre) $\nu - 1 \geq j$. Például a $j=0$ ilyen, hiszen ezt az $e_{\lambda, \, 0} \equiv e_\lambda$ függvényre az előbb láttuk. Vegyük észre, hogy
+\[
+	e_{\lambda, \, j+1}(x) = x e_{\lambda, \, j}(x) \quad (x \in \R),
+\]
+ezért (ami teljes indukcióval rögtön adódik)
+\[
+	e_{\lambda, \, j+1}^{(k)}(x) = x e_{\lambda, \, j}^{(k)}(x) + k e_{\lambda, \, j}^{(k-1)}(x) \quad (x \in \R, \, 1 \leq k \in \N).
+\]
+Így -- feltételezve most azt, hogy $\nu -1 \geq j + 1$ -- az alábbiakat kapjuk:
+\[
+	\sum_{k=0}^n a_k e_{\lambda, \, j+1}^{(k)}(x)  = x \cdot \sum_{k=0}^n e_{\lambda, \, j}^{(k)}(x) + \sum_{k=1}^n k a_k e_{\lambda, \, j}^{(k-1)}(x) =
+\]
+\[
+	\sum_{k=0}^{n-1} (k+1) a_{k+1} e_{\lambda, \, j}^{(k)}(x) \quad (x \in \R).
+\]
+A
+\[
+	\sum_{k=0}^{n-1} (k+1)a_{k+1} \p^{(k)} \equiv 0
+\]
+homogén lineáris differenciálegyenletnek a karakterisztikus polinomja:
+\[
+	\sum_{k=0}^{n-1} (k+1)a_{k+1} t^k = P'(t) \quad (t \in \R),
+\]
+ahol a $\lambda$ a $P'$ (derivált)polinomnak a $\mu := \nu - 1$-szeres gyöke. Mivel $\mu - 1 \geq j$, ezért az indukciós feltevés szerint
+\[
+	\sum_{k=0}^{n-1}(k+1)a_{k+1}e_{\lambda, \, j}^{(k)} \equiv 0,
+\]
+következésképpen (a fentiekre tekintettel)
+\[
+	\sum_{k=0}^{n} a_k e_{\lambda, \, j+1}^{(k)} \equiv 0.
+\]
+Tehát az $e_{\lambda, \, j+1}$ függvény is megoldása a homogén egyenletnek.\\
+
+\subsection{Alaprendszer}
+
+Tegyük fel, hogy a $P$ gyöktényezős előállítása a következő:
+\[
+	P(x) = \prod_{l = 1}^k (x - \lambda_l)^{\nu_l} \quad (x \in \K),
+\]
+ahol $1 \leq k \in \N$ és $\lambda_1, \, \dots, \, \lambda_k \in \K$ jelöli a $P$ összes, páronként különböző gyökét, $1 \leq \nu_l \in \N$ pedig a $\lambda_l$ gyök multiplicitását $(l = 1, \, \dots, \, k)$. Ekkor tehát a
+\[
+	\p_{lj}(x) := x^j \cdot e^{\lambda_l x} \quad (x \in I, \, l = 1, \, \dots, \, k \text{ és } j = 0, \, \dots, \, \nu_l - 1)
+\]
+függvények valamennyien $\mathcal{M}_h$-beliek.\\
+
+Ennél még több is igaz, nevezetesen:\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} A fentiekben definiált
+	\[
+		\p_{lj} \quad (l = 1, \, \dots, \, k \text{ és } j = 0, \, \dots, \, \nu_l - 1)
+	\]
+	függvények a szóban forgó állandó együtthatós $n$-edrendű lineáris differenciálegyenlet egy alaprendszerét alkotják.
+};
