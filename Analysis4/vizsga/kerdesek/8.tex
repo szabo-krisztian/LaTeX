@@ -29,7 +29,7 @@ akkor a szóban forgó $n$-edrendű lineáris differenciálegyenletre vonatkozó
 
 Ha $n=1$, akkor egy lineáris differenciálegyenletről van szó, ezért a továbbiakban nyugodtan feltehetjük már, hogy $n \geq 2$.\\
 
-Az \textit{átviteli elv} segítségével a most megfogalmazott feladat visszavezethető a lineáris differenciálegyenlet-rendszerek vizsgálatára. (A későbbiekben szereplő állítások is részben ennek az elvnek a segítségével láthatók majd be.) Vezessük be ui. az alábbi jelöléseket: legyen $2 \leq n \in N$ és
+Az \textit{átviteli elv} segítségével a most megfogalmazott feladat visszavezethető a lineáris differenciálegyenlet-rendszerek vizsgálatára. (A későbbiekben szereplő állítások is részben ennek az elvnek a segítségével láthatók majd be.) Vezessük be ui. az alábbi jelöléseket: legyen $2 \leq n \in \N$ és
 \[
 	b := (b_1, \, \dots, \, b_n) : I \to \R^n, \, b(x) := \begin{pmatrix}
 		0 \\
@@ -47,7 +47,7 @@ Az \textit{átviteli elv} segítségével a most megfogalmazott feladat visszave
 		\vdots & \vdots & \vdots & \vdots & \cdots & \vdots \\
 		0 & 0 & 0 & 0 & \cdots & 1 \\
 		-a_0 & -a_1 & -a_2 & -a_3 & \cdots & -a_{n-1}
-	\end{bmatrix} : I \to \R^{n \times n}
+	\end{bmatrix} : I \to \R^{n \times n}.
 \]
 Ekkor
 \[
@@ -59,15 +59,69 @@ Ha tehát a
 \]
 differenciálható függvény ez utóbbi lineáris differenciálegyenlet-rendszernek (egy) megoldása, akkor $\mathcal{D}_\psi \subset I$ nyílt intervallum, és bármely $x \in \mathcal{D}_\psi$ esetén
 \[
-	\psi'(x) = A(x) \cdot \psi(x) + b(x) \quad (x \in \mathcal{D}_\psi),
+	\psi'(x) = A(x) \cdot \psi(x) + b(x) \quad (x \in \mathcal{D}_\psi).
 \]
-azaz
-
+Azaz
+\[
+	\begin{pmatrix}
+		\psi_1' \\
+		\psi_2' \\
+		\vdots \\
+		\vdots \\
+		\psi_n' \\
+	\end{pmatrix} =
+	\psi_1 \cdot \begin{pmatrix}
+		0 \\
+		0 \\
+		\vdots \\
+		0 \\
+		-a_0
+	\end{pmatrix} + 
+	\psi_2 \cdot \begin{pmatrix}
+		1 \\
+		0 \\
+		\vdots \\
+		0 \\
+		-a_1
+	\end{pmatrix} + \cdots + 
+	\psi_n \cdot \begin{pmatrix}
+		0 \\
+		0 \\
+		\vdots \\
+		1 \\
+		-a_{n-1}
+	\end{pmatrix} +
+	\begin{pmatrix}
+		0 \\
+		0 \\
+		\vdots \\
+		0 \\
+		c
+	\end{pmatrix},
+\]
+tehát
+\[
+	\begin{pmatrix}
+		\psi_1' \\
+		\psi_2' \\
+		\vdots \\
+		\vdots \\
+		\psi_n' \\
+	\end{pmatrix} =
+	\begin{pmatrix}
+		\psi_2 \\
+		\psi_3 \\
+		\vdots \\
+		\vdots \\
+		\sum_{k=1}^n (-a_{k-1}) \cdot \psi_k + c
+	\end{pmatrix}.
+\]
+Ez azt jelenti, hogy
 \begin{equation}
 	\begin{cases}
 		\psi_i'(x) = \psi_{i+1}(x) \quad (i = 1, \, \dots, \, n-1)\\
 		\\
-		\displaystyle \psi'_n(x) = \sum_{k=1}^n a_{k-1}(x) \cdot \psi_k(x) + c(x).
+		\displaystyle \psi'_n(x) = \sum_{k=1}^n (-a_{k-1}(x)) \cdot \psi_k(x) + c(x).
 	\end{cases}
 	\tag{$\star$}
 \end{equation}
@@ -122,4 +176,60 @@ a kiindulási $n$-edrendű lineáris differenciálegyenlet $I$-n értelmezett me
 			\omega := \sum_{k=1}^n g_k \p_k \in \mathcal{M}.
 		\]
 	\end{enumerate}
-};
+};\\
+
+Bizonyításképpen elegendő annyit megjegyezni, hogy az $\mathcal{M}_h$-beli
+\[
+	\p_1, \, \dots, \p_m : I \to \K \quad (1 \leq m \in \N)
+\]
+függvények akkor és csak akkor függetlenek, ha a
+\[
+	\hat{\p}_j := \BB{ \p_j, \, \p_j', \, \dots, \, \p_j^{(n-1)} } : I \to \K^n \quad (j = 1, \, \dots, \ m)
+\]
+(vektor)függvények is azok.\\
+
+Ha $\phi_1, \, \dots, \, \phi_n \in \mathcal{M}_h$ bázis, akkor minden bázist (most is) \textit{alaprendszernek}, az előző tételben szereplő $\omega$ függvényt pedig \textit{partikuláris megoldásnak} nevezünk. Egy partikuláris megoldásnak az előző tétel szerinti előállítását az \textit{állandók variálásaként} említjük, \\
+
+Tegyük fel tehát, hogy $\p_1, \, \dots, \, \p_n \in \mathcal{M}_h$ alaprendszer, ekkor a
+\[
+	\hat{\p_j} := \BB{ \p_j, \, \p_j', \, \dots, \, \p_j^{(n-1)} } \quad (j = 1, \, \dots, \, n)
+\]
+függvények alaprendszert alkotnak az átviteli elvből adódó $(\star)$ lineáris differenciálegyenlet-rendszerre vonatkozóan. Más szóval a
+\[
+	\Phi := [ \hat{\p}_1  \cdots \hat{\p}_n] = \begin{bmatrix}
+		\p_1   & \p_1  & \cdots & \p_n \\
+		\p'_1  & \p'_1 & \cdots & \p'_n \\
+		\vdots & \vdots & \cdots & \vdots \\
+		\p_1^{(n-1)} & \p_2^{(n-1)} & \cdots & \p_n^{(n-1)}
+	\end{bmatrix} : I \to \K^{n \times n}
+\]
+mátrixfüggvény alapmátrixa a $(\star)$-rendszernek. Innen tudjuk, hogy a
+\[
+	g = (g_1, \, \dots, \, g_n) : I \to \K^n
+\]
+jelöléssel a $\Phi \cdot g$ függvény pontosan akkor partikuláris megoldása a $(\star)$-nak (alkalmas differenciálható $g_1, \, \dots, \, g_n : I \to \K$ függvényekkel), ha
+\[
+	\Phi \cdot g' = b = (0, \, \dots, \, 0, \, c).
+\]
+Ez azt jelenti, hogy a $\Phi \cdot g$ függvény első komponense, azaz az
+\[
+	\omega := \sum_{k=1}^n \p_k \cdot g_k
+\]
+függvény akkor és csak akkor partikuláris megoldása az $n$-edrendű lineáris differenciálegyenletnek, ha
+\[
+\begin{array}{ccccccccccc}
+	\varphi_1 \cdot g_1' &+& \varphi_2 \cdot g_2' &+& \cdots &+& \varphi_n \cdot g_n' &=& 0 \\
+	\varphi_1' \cdot g_1' &+& \varphi_2' \cdot g_2' &+& \cdots &+& \varphi_n' \cdot g_n' &=& 0 \\
+	\vdots & & \vdots & & \vdots & & \vdots & & \vdots \\
+	\varphi_1^{(n-2)} \cdot g_1' &+& \varphi_2^{(n-2)} \cdot g_2' &+& \cdots &+& \varphi_n^{(n-2)} \cdot g_n' &=& 0 \\
+	\varphi_1^{(n-1)} \cdot g_1' &+& \varphi_2^{(n-1)} \cdot g_2' &+& \cdots &+& \varphi_n^{(n-1)} \cdot g_n' &=& c.
+\end{array}
+\]
+Ennek a $(g_1', \, \dots, \, g_n'$ függvényekre mint "ismeretlenekre" vonatkozó) lineáris (függvény)egyenletrendszernek a determinánsa (determináns-függvénye), azaz a
+\[
+	W(x) := \det \BB{\p_i^{(k-1)}(x)}_{k, \, i = 1}^n = \det \B{\Phi(x)} \quad (x \in I)
+\]
+leképezés (az ún. \textit{Wronski-determináns}) a $\hat{\p}_1, \, \dots, \, \hat{\p}_n$ függvények lineáris függetlensége miatt egyetlen $x \in I$ helyen sem tűnik el.
+
+
+

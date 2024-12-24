@@ -23,7 +23,14 @@ Ld. ~\ref{subsec:diff_systems_core} alcímben tárgyalt tétel 3. pontjának biz
 \[
 	\psi = \Phi \cdot g
 \]
-alakban való előállítása (alkalmas $g : I \to \K^n$ differenciálható függvénnyel) az ~\ref{subsec:diff_systems_core} alcímben tárgyalt tétel bizonyításában bemutatott módszer az \textit{állandók variálása}.
+alakban való előállítása (alkalmas $g : I \to \K^n$ differenciálható függvénnyel) az ~\ref{subsec:diff_systems_core} alcímben tárgyalt tétel bizonyításában bemutatott módszer az \textit{állandók variálása}. Tetszőleges $\phi_1, \, \dots, \, \phi_n$ alaprendszerrel és $\psi \in \mathcal{M}$ partikuláris megoldással
+\[
+	\mathcal{M} = \Big\{ \psi + \sum_{k=1}^n c_k \cdot \phi_k : c_1, \, \dots, \, c_n \in \K  \Big\}.
+\]
+Ha $\Phi$ egy alapmátrix, akkor ugyanez a következőképpen írható:
+\[
+	\mathcal{M} = \{ \psi + \Phi \cdot c : c \in \K^n \} = \{ \Phi \cdot (g + c) : c \in \K^n \}.
+\]
 
 \subsection{Állandó együtthatós diagonalizálható eset}
 
@@ -70,12 +77,12 @@ amiből
 \[
 (T^{-1}\varphi)' = \Lambda \cdot (T^{-1} \varphi)
 \]
-következik. Vegyük észre, hogy ha $\varphi \in \mathcal{M}_h$, akkor a $\psi := T^{-1}\varphi$ függvény megoldása a $\Lambda$ diagonális mátrix által meghatározott állandó együtthatós homogén lineáris egyenletnek. Ez utóbbit ez előző tétel alapján nem nehéz megoldani. Legyenek iu. a
+következik. Vegyük észre, hogy ha $\varphi \in \mathcal{M}_h$, akkor a $\psi := T^{-1}\varphi$ függvény megoldása a $\Lambda$ diagonális mátrix által meghatározott állandó együtthatós homogén lineáris egyenletnek. Ez utóbbit ez előző tétel alapján nem nehéz megoldani. Legyenek ui. a
 \[
 \psi_i : I \to \K^n \quad (i = 1, \, \dots, \, n)
 \]
 függvények a következők:
-\[
+\[ 
 \psi_i(x) := e^{\lambda_i \cdot x} \cdot e_i \quad (x \in I, \, i = 1, \, \dots, \, n).
 \]
 Világos, hogy $\psi_i \in D$ és
