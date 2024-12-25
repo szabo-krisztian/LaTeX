@@ -6,9 +6,9 @@
 
 \subsection{Függvénysorozatok, függvénysorok}
 
-A függvénysorozatok fogalmával rész találkoztunk már korábban is: az $(f_n)$ sorozatot \textit{függvénysorozatnak} nevezzük, ha minden $n \in \N$ esetén az $f_n$ függvény. A továbbiakban mindig azzal a feltételezéssel élünk, hogy valamilyen $\empty \neq X$ halmazzal
+A függvénysorozatok fogalmával részben találkoztunk már korábban is: az $(f_n)$ sorozatot \textit{függvénysorozatnak} nevezzük, ha minden $n \in \N$ esetén az $f_n$ függvény. A továbbiakban mindig azzal a feltételezéssel élünk, hogy valamilyen $\empty \neq X$ halmazzal
 \[
-	f_n \in X \to \K \quad (n \in N),
+	f_n \in X \to \K \quad (n \in \N),
 \]
 és egy $\emptyset \neq \DD \subset X$ halmazzal
 \[
@@ -16,7 +16,7 @@ A függvénysorozatok fogalmával rész találkoztunk már korábban is: az $(f_
 \]
 Pl. a
 \[
-	h_n(t) := t^n \quad (t \in \DD := \R, \, n \in N)
+	h_n(t) := t^n \quad (t \in \DD := \R, \, n \in \N)
 \]
 függvények egy $(h_n)$ függvénysorozatot határoznak meg.\\
 
@@ -58,7 +58,7 @@ definícióval értelmezett
 \[
 	f : \DD_0 \to \K
 \]
-függvény az $(f_n)$ függvénysorozat \textit{határfüggvénye}. A $\DD_0 = \D$ esetben azt röviden azt mondjuk, hogy az $(f_n)$ függvénysorozat \textit{pontonként konvergens}.\\
+függvény az $(f_n)$ függvénysorozat \textit{határfüggvénye}. A $\DD_0 = \D$ esetben röviden azt mondjuk, hogy az $(f_n)$ függvénysorozat \textit{pontonként konvergens}.\\
 
 Pl. az előbbi $(h_n)$ függvénysorozattal $\DD_0 = (-1, \, 1]$, és
 \[
@@ -269,4 +269,33 @@ A Cauchy-kritérium miatt ez azzal ekvivalens, hogy bármilyen $\varepsilon > 0$
 \[
 	\left|  \sum_{k=n+1}^m f_k(x) \right| < \varepsilon \quad (x \in A, \, N < n, \, m \in \N, \, n < m)
 \]
-(\textit{egyenletes Cauchy-kritérium}).
+(\textit{egyenletes Cauchy-kritérium}).\\
+
+\subsection{Weierstrass-kritérium}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Tegyük fel, hogy valamilyen $\emptyset \neq X$ mellett $\emptyset \neq \mathcal{D} \subset X$, és adott az
+	\[
+		f_n : \mathcal{D} \to \K \quad (n \in \N)
+	\]
+	függvények által meghatározott $\sum(f_n)$ függvénysor. Legyen továbbá egy $\emptyset \neq A \subset \mathcal{D}$ halmazzal és egy $(a_n)$ számsorozattal
+	\[
+		\sup \{ |f_n(x)| : x \in A \} \leq a_n \quad (n \in \N),
+	\]
+	ahol $\sum_{n=0}^\infty a_n < + \infty$. Ekkor a $\sum(f_n)$ függvénysor az $A$ halmazon egyenletesen konvergens. 
+};\\
+
+\textbf{Bizonyítás.} Az alábbi becslés a tétel feltételei alapján nyilvánvaló:
+\[
+	\left|  \sum_{k=n+1}^m f_k(x) \right| \leq \sum_{k=n+1}^m |f_k(x)| \leq \sum_{k=n+1}^m a_k \quad (x \in A, \, n, \, m \in \N, \, n < m).
+\]
+Ha az $\varepsilon > 0$ egy pozitív szám, akkor a $\sum_{n=0}^\infty a_n < + \infty$ feltételezés miatt van olyan $N \in \N$, amellyel
+\[
+	\sum_{k=n+1}^m a_k < \varepsilon \quad (n, \, m \in \N, \, N < n < m).
+\]
+Ezért
+\[
+	\left|  \sum_{k=n+1}^m f_k(x) \right| < \varepsilon \quad (x \in A, \, n, \, m \in \N, \, N < n < m).
+\]
+$\hfill \blacksquare$

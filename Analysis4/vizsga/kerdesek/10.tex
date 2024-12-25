@@ -3,3 +3,197 @@
 \begin{quote}
 	\textit{Partikuláris megoldás kvázi-polinom jobb oldal esetén (a bizonyítás vázlata). A csillapítás nélküli kényszerrezgés vizsgálata, rezonancia.}
 \end{quote}
+
+\subsection{Kvázipolinomok}
+
+Az állandó együtthatós
+\begin{equation}
+	\p^{(n)}(x) + \sum_{k=0}^{n-1} a_k \cdot \p^{(k)}(x) = c(x) \quad (x \in \Dp)
+	\tag{$\star$}
+\end{equation}
+
+$n$-edrendű lineáris differenciálegyenlet egy partikuláris megoldásának az állandók variálásával való előállítása esetenként sok számolást igénylő feladat. Ezért "megbecsülendők" azok a módszerek, amelyek révén (az illető differenciálegyenlettől függően) más úton juthatunk el egy partikuláris megoldáshoz. Ez a más út gyakran a feladat jobb oldala, azaz a $c$ függvény speciális "szerkezete" révén lehetséges. Ilyen függvények pl. az ún. kvázipolinomok.
+Az
+\[
+	f : \R \to \K
+\]
+függvényt \textit{kvázipolinomnak} nevezzük, ha egy $R$ (algebrai) polinom és $\lambda \in \K$ szám mellett
+\[
+	f(x) = R(x) \cdot e_\lambda(x) = R(x) \cdot e^{\lambda x} \quad (x \in \R).
+\]
+
+\subsection{Kvázopolinom jobb oldal}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Tegyük fel, hogy $1 \leq n \in \N$, $a_0, \, \dots, \, a_{n-1} \in \R$, és valamilyen $r \in \N$ esetén a $\lambda \in \K$ szám a
+	\[
+		P(x) := x^n + \sum_{k=0}^{n-1} a_k \cdot x^k \quad (x \in \K)
+	\]
+	polinomnak $r$-szeres gyöke. Ha a $Q$ polinom fokszáma $m \in \N$, akkor van olyan legfeljebb $m$-edfokú $R$ polinom, hogy az
+	\[
+		\omega(x) := x^r \cdot R(x) \cdot e^{\lambda x} \quad (x \in \R)
+	\]
+	kvázipolinomra
+	\[
+		\omega^{(n)}(x) + \sum_{k=0}^{n-1} a_k \cdot \omega^{(k)}(x) = Q(x) \cdot e^{\lambda x} \quad (x \in \R).
+	\]
+};\\
+
+Tehát  a $\p := \omega$ függvény (kvázipolinom) a
+\[
+	 c(x) := Q(x) \cdot e^{\lambda x} \quad (x \in \R)
+\]
+jobb oldal (kvázipolinom) esetén eleget tesz a $(\star)$ egyenlőségnek, azaz megoldása az illető differenciálegyenletnek. Ha itt pl. $r=0$, azaz $P(\lambda) \neq 0$, akkor a keresett $R$ polinommal
+\[
+	\omega = R \cdot e_\lambda.
+\]
+Ehhez ui. legyen $a_n := 1$, amikor is azt kell belátnunk, hogy
+\[
+	\sum_{k=0}^n a_k \cdot (R \cdot e_\lambda)^{(k)} = Q \cdot e_\lambda.
+\]
+A "binomiális szabályt" alkalmazva
+\[
+	\sum_{k=0}^n a_k \cdot (R \cdot e_\lambda)^{(k)} = \sum_{k=0}^n a_k \sum_{j=0}^k \binom{k}{j} R^{(j)} \cdot \lambda^{k-j} \cdot e_\lambda = Q \cdot e_\lambda.
+\]
+Ezért a kívánt $R$ polinom létezése a következő egyenlőséggel ekvivalens:
+\begin{equation}
+	\sum_{k=0}^n a_k \sum_{j=0}^k \binom{k}{j} R^{(j)} \cdot \lambda^{k-j} = Q.
+	\tag{$\star \star$}
+\end{equation}
+
+Világos, hogy ennek az egyenlőtlenségnek mindkét oldalán egy-egy polinom áll, így együttható-összehasonlítással azt kell megmutatni, hogy alkalmasan választott $\alpha_j \in \K \quad (j = 0, \, \dots, \, m)$ számokkal az
+\[
+	R(x) := \sum_{j=0}^m \alpha_j \cdot x^j \quad (x \in \K)
+\]
+polinom eleget tesz a $(\star \star)$ egyenlőségnek. Legyen a $Q$ algebrai alakja a $\beta_j \in \R \quad (j = 0, \, \dots, \, m)$ együtthatókkal az alábbi:
+\[
+	Q(x) := \sum_{j=0}^m \beta_j \cdot x^j \quad (x \in \K).
+\]
+Ekkor a $(\star \star)$ bal oldalán a főegyüttható a következő:
+\[
+	\sum_{k=0}^n a_k \cdot \alpha_m \cdot \lambda^k = \alpha_m \cdot P(\lambda),
+\]
+Így az $\alpha_m \cdot P(\lambda) = \beta_m$ egyenlőségnek kell teljesülni. Mivel most $P(\lambda) \neq 0$, ezért az
+\[
+	\alpha_m := \frac{\beta_m}{P(\lambda)}
+\]
+választás megfelelő. Az $\alpha_m$ ismeretében az $\alpha_{m-1}$ meghatározása $(\star \star)$ alapján a
+\[
+	\beta_{m-1} = \sum_{k=0}^n a_k \cdot \alpha_{m-1} \cdot \lambda^k + \sum_{k=1}^n k \cdot a_k \cdot m \cdot \alpha_m \cdot \lambda^{k-1} =
+\]
+\[
+	P(\lambda) \cdot \alpha_{m-1} + m \cdot \alpha_m \cdot P'(\lambda)
+\]
+egyenlőségből történhet:
+\[
+	\alpha_{m-1} = \frac{\beta_{m-1} - m \cdot \alpha_m \cdot P'(\lambda)}{P(\lambda)}.
+\]
+Az eljárást analóg módon folytatva kapjuk a keresett $R$ polinom többi együtthatóját is.  
+
+\subsection{Rezgések}
+
+Tekintsük a rezgésekre vonatkozó
+\[
+	ms'' = F - \alpha \cdot s - \beta \cdot s'
+\]
+másodrendű állandó együtthatós lineáris differenciálegyenletet, vagy "standard" alakban felírva ugyanez:
+\[
+	s'' + \frac{\beta}{m} \cdot s' + \frac{\alpha}{m} \cdot s = \frac{F}{m}.
+\]
+Ennek a karakterisztikus polinomja a következő:
+\[
+	P(x) := x^2 + \frac{\beta}{m} x + \frac{\alpha}{m} \quad (x \in \K),
+\]
+aminek gyökei:
+\[
+	\lambda_{1, \, 2} := \frac{- \beta \pm \sqrt{\beta^2 - 4m \alpha}}{2m}.
+\]
+A fizika "nyelvén" fogalmazva az $F / m$ függvény (a differenciálegyenlet jobb oldala) a "kényszer" (kényszererő). Ha nincs kényszer, azaz $F \equiv 0$, akkor $\beta > 0$ esetén \textit{csillapított rezgőmozgásról}, a $\beta = 0$ esetben pedig \textit{harmonikus rezgőmozgásról} beszélünk.\\
+
+A tényleges kényszerrezgések között különösen érdekes a periodikus külső kényszer esete:
+\[
+	F(x) := A \cdot \sin(\omega x + \theta) \quad (x \in \R),
+\]
+ahol $A > 0$ (\textit{amplitúdó}), $\omega > 0$ (\textit{kényszerfrekvencia}) és $\theta \in [0, \, 2\pi]$ (\textit{fázisszög}). Tekintsünk most el a csillapítástól, azaz legyen $\beta := 0$. Ekkor egy (valós) alaprendszert az
+\[
+	\omega_0 := \sqrt{\alpha / m}
+\]
+\textit{sajátfrekvenciával} az
+\[
+	\R \ni x \mapsto \cos(\omega_0 x), \, \R \ni x \mapsto \sin(\omega_0 x)
+\]
+függvényrendszer. Egyszerűen megadhatunk egy partikuláris megoldást is. Ez ui. könnyen ellenőrizhetően
+\begin{enumerate}
+	\item $\omega \neq \omega_0$ esetén pl. az
+	\[
+		\R \ni x \mapsto \frac{q}{\omega_0^2 - \omega^2} \cdot \sin(\omega x + \theta),
+	\]
+	\item $\omega = \omega_0$ (\textit{rezonancia}) esetén pedig pl. az
+	\[
+		\R \ni x \mapsto -\frac{q}{2 \omega} x \cdot \cos(\omega x + \theta)
+	\]
+\end{enumerate}
+függvény, ahol $q := A / m$.\\
+
+Valóban, ha $\omega \neq \omega_0$, akkor egy $\gamma \in \R$ együtthatóval a
+\[
+	\p_\gamma(x) := \gamma \cdot \sin(\omega x + \theta) \quad (x \in \R)
+\]
+függvény akkor és csak akkor partikuláris megoldás, ha
+\[
+	\p_\gamma''(x) + \omega_0^2 \p_\gamma(x) = - \gamma \cdot \omega^2 \cdot \sin(\omega x + \theta) + \omega_0^2 \cdot \gamma \cdot \sin(\omega x + \theta) =
+\]
+\[
+	q \cdot \sin(\omega x + \theta) \quad (x \in \R).
+\]
+Mindez azzal egyenértékű, hogy $\gamma \cdot (\omega_0^2 - \omega^2) = q$, azaz, hogy
+\[
+	\gamma = \frac{q}{\omega_0^2 - \omega^2}.
+\]
+Ha viszont $\omega = \omega_0$, akkor most egy $\gamma \in \R$ együtthatóval a
+\[
+	\p_\gamma(x) := \gamma \cdot x \cdot \cos(\omega x + \theta) \quad (x \in \R)
+\]
+függvényre kell, hogy fennáljon a
+\[
+	\p_\gamma''(x) + \omega_0^2 \p_\gamma(x) =
+\]
+\[
+	-2 \gamma \cdot \omega \cdot \sin(\omega x + \theta) - \gamma \cdot x \cdot \omega^2 \cdot \cos(\omega x + \theta) + \gamma \cdot x \cdot \omega^2 \cdot \cos(\omega x + \theta) =
+\]
+\[
+	- 2 \gamma \cdot \omega \cdot \sin(\omega x + \theta) = q \cdot \sin(\omega x + \theta) \quad (x \in \R)
+\]
+egyenlőség. Ezért $\gamma = - q / (2\omega)$.
+A $\omega_0 \neq \omega$ feltétel mellett tehát
+\[
+	s(x) = \gamma \cdot \cos(\omega_0 x) + \delta \cdot \sin(\omega_0 x) + \frac{q}{\omega_0^2 - \omega^2} \cdot \sin(\omega x + \theta) \quad (x \in \R),
+\]
+ahol a $\gamma, \, \delta$ együtthatókat az
+\[
+	s(0) = s_0, \, s'(0) = s_0'
+\]
+egyenlőségekből kapjuk. Alkalmas $r > 0$ és $\theta_0 \in [0, \, 2\pi)$ segítségével felírhatjuk $s(x)$-et a következő alakban:
+\[
+	s(x) = r \cdot \sin(\omega_0 x + \theta_0) + \frac{q}{\omega_0^2 - \omega^2} \cdot \sin(\omega x + \theta) \quad (x \in \R),
+\]
+ami nem más mint két harmonikus rezgés összege.\\
+
+Ha $\omega_0 = \omega$, akkor
+\[
+	s(x) = \gamma \cdot \cos(\omega x) + \delta \cdot \sin(\omega x) - \frac{q}{2\omega} x \cdot \cos(\omega x + \theta) \quad (x \in \R),
+\]
+ahol
+\[
+	s(0) = s_0, \, s'(0) = s_0'.
+\]
+Tehát a 2. esetben megfelelően választott $r > 0$ és $\theta_0 \in [0, \, 2\pi)$ paraméterekkel 
+\[
+	s(x) = r \cdot \sin(\omega x + \theta_0) - \frac{q}{2\omega} \cdot \cos(\omega x + \theta) \quad (x \in \R).
+\]
+Az $\omega$ sajátfrekvenciájú (korlátos) harmonikus rezgésre ekkor nem egy harmonikus rezgés, hanem az
+\[
+	x \mapsto - \frac{q}{2 \omega} x \cdot \cos(\omega x + \theta)
+\]
+\textit{aperiodikus} mozgás szuperponálódik. 
