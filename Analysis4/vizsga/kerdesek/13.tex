@@ -100,4 +100,37 @@ Mindez azt jelenti, hogy $f \in D\{b\}$ és
 \[
 	f'(b) = \lim_{x \to b} \frac{f(x) - f(b)}{x-b} = \lim_{n \to \infty} f'_n(b) \quad (b \in I).
 \]
-$\hfill \blacksquare$
+$\hfill \blacksquare$\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Tegyük fel, hogy az $I \subset \R$ korlátos és nyílt intervallumon értelmezett
+	\[
+		g_n : I \to \R \quad (n \in \N)
+	\]
+	függvények mindannyian differenciálhatók, a deriváltakból álló $\sum(g'_n)$ függvénysor pedig egyenletesen konvergens. Ha van olyan $a \in I$, hogy a $\sum \BB{ g_n(a)}$ (helyettesítési értékekből álló) sor konvergens, akkor
+	\begin{itemize}
+		\item a $\sum(g_n)$ függvénysor egyenletesen konvergens
+		\item ha $G$ jelöli az $\sum(g_n)$ sor összegfüggvényét, akkor $G \in D$ és
+		\[
+			G' = \sum_{n=0}^\infty g'_n.
+		\]
+	\end{itemize}
+};\\
+
+Ui. a differenciálhatóság, ill. a derivált linearitása miatt az
+\[
+	f_n := \sum_{k=0}^n g_k \quad (n \in \N)
+\]
+függvények differenciálhatók, és
+\[
+	f'_n = \sum_{k=0}^n g'_k \quad (n \in \N).
+\]
+Tehát a deriváltakból álló $(f'_n)$ függvénysorozat egyenletesen konvergens, továbbá az $\B{f_n(a)}$ sorozat is konvergens. Így a $\sum(g_n) = (f_n)$ függvénysor egyenletesen konvergál a $G$ függvényhez, $G \in D$, és
+\[
+	G' = \lim_{n \to \infty} f'_n = \lim_{n \to \infty} \sum_{k=0}^n g'_k = \sum_{n=0}^\infty g'_n.
+\]
+Következésképpen
+\[
+	\left( \sum_{n=0}^\infty g_n \right)' = \sum_{n=0}^\infty g'_n.
+\]
