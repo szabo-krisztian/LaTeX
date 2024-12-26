@@ -1,0 +1,89 @@
+\newpage
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{A trigonometrikus rendszer ortogonalitása. Egyenletesen konvergens trigonometrikus sor összegfüggvényének a Fourier-sora. Bessel-azonosság, Bessel-egyenlőtlenség.}
+\end{quote}
+
+\subsection{Trigonometrikus rendszer}
+
+Legyen 
+\[
+	c_0(x) := 1, \, c_n(x) := \cos(nx), \, s_n(x) := \sin(nx) \quad (x \in \R, \, 1 \leq n \in \N),
+\]
+és
+\[
+	\mathcal{R} := \{ c_0, \, c_n, \, s_n : 1 \leq n \in \N \}
+\]
+az ún. \textit{trigonometrikus rendszer.}\\
+
+\tikz \node[theorem]
+{
+	\textbf{Lemma.} A trigonometrikus rendszer ortogonális a következő értelemben: bármely $2\pi$ hosszúságú korlátos és zárt $I \subset \R$ intervallumra
+	\[
+		\int_I \p(x) \cdot \psi(x) \, dx = \begin{cases}
+			0 & (\p \neq \psi) \\
+			2 \pi & (\p = \psi = c_0) \\
+			\pi & (\p = \psi \neq c_0)
+		\end{cases} \quad (\p, \, \psi \in \mathcal{R}).
+	\]
+};\\
+
+\textbf{Bizonyítás.} Az $\mathcal{R}$ elemeinek a $2\pi$ szerinti periodicitása miatt nyilván feltehető, hogy (pl.) $I = [0, \, 2\pi]$. Ekkor:
+\[
+	\int_I c_0^2(x) \, dx = \int_I 1 \, dx = 2\pi;
+\]
+\[
+	\int_I c_n^2(x) \, dx = \int_I \cos^2(nx) \, dx = \int_I \frac{1 + \cos(2nx)}{2} \, dx = 
+\]
+\[
+	\frac{1}{2} \left( \int_I 1 \, dx + \int_I \cos(2nx) \, dx \right) = \pi \quad (1 \leq n \in \N);
+\]
+\[
+	\int_I s_n^2(x) \, dx = \int_I \sin^2(nx) \, dx = \int_I \frac{1 - \cos(2nx)}{2} \, dx = 
+\]
+\[
+	\frac{1}{2} \left( \int_I 1 \, dx - \int_I \sin(2nx) \, dx \right) = \pi \quad (1 \leq n \in \N);
+\]
+\[
+	\int_I s_n(x) \cdot c_k(x) \, dx = \int_I \sin(nx) \cdot \cos(kx) \, dx =
+\]
+\[
+	\int_I \frac{\sin\B{(n+k)x} + \sin\B{(n-k)x}}{2} \, dx
+\]
+\[
+	\frac{1}{2} \left( \int_I \sin\B{(n+k)x} \, dx + \int_I \sin\B{(n-k)x} \, dx \right) = 0 \quad (1 \leq n \in \N, \, k \in \N).
+\]
+ui. $n = k$ esetén
+\[
+	\int_I \sin\B{(n-k)x} \, dx = 0
+\]
+és
+\[
+	\int_I \sin\B{(n+k)x} \, dx = \int_I \sin(2nx) \, dx = 0,
+\]
+míg $n \neq k$ mellett alkalmas $1 \leq m, \, r \in \N$ paraméterekkel
+\[
+	\int_I \sin\B{(n+k)x} \, dx = \int_I \sin(mx) \, dx = 0 =
+\]
+\[
+	\int_I \sin(rx) \, dx = \pm \int_I \sin\B{(n-k)x} \, dx.
+\]
+$\hfill \blacksquare$
+
+\subsection{Egyenletesen konvergens trigonometrikus sorok}
+
+Lássuk be, hogy egyenletesen konvergens trigonometrikus sorok együtthatói "kiszámíthatók" a sor összegfüggvényének a segítségével.\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Tegyük fel, hogy a $\sum\B{ \alpha_n \cdot \cos(nx) + \beta_n \cdot \sin(nx) }$ trigonometrikus sor egyenletesen konvergens, legyen
+	\[
+		f(x) := \alpha_0 + \sum_{k=1}^\infty \B{ \alpha_k \cdot \cos(kx) + \beta_k \cdot \sin(kx) } \quad (x \in \R).
+	\]
+	Ekkor $f$ Fourier-sora megegyezik a szóban forgó trigonometrikus sorral, azaz
+	\[
+		\alpha_0 = a_0(f), \, \alpha_n = a_n(f), \, \beta_n = b_n(f) \quad (1 \leq n \in \N).
+	\]
+};\\
+
+\textbf{Bizonyítás.} BEFEJEZNI.
