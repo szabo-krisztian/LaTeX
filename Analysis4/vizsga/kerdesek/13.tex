@@ -1,0 +1,103 @@
+\newpage
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{A határfüggvény differenciálhatósága, ill. a deriválás és a határátmenet felcserélhetőségére vonatkozó tétel.}
+\end{quote}
+
+\subsection{Differenciálhatóság és a határátmenet}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Legyen az $I \subset \R$ korlátos, nyílt intervallum, az
+	\[
+		f_n : I \to \R \quad (n \in \N)
+	\]
+	függvényekről pedig tegyük fel, hogy valamennyien differenciálhatók, a deriváltakból álló $(f'_n)$ függvénysorozat pedig egyenletesen konvergens. Ha van olyan $a \in I$, hogy az $(f_n(a))$ (helyettesítési értékekből álló) sorozat konvergens, akkor
+	\begin{itemize}
+		\item az $(f_n)$ függvénysorozat egyenletesen konvergens
+		\item ha $f$ jelöli az $(f_n)$ sorozat határfüggvényét, akkor $f \in D$ és
+		\[
+			f' = \lim_{n \to \infty} f'_n.
+		\]
+	\end{itemize}
+};\\
+
+\textbf{Bizonyítás.} Legyen $b \in I$, és vezessük be a következő jelöléseket:
+\[
+	\Phi_{bn}(x) := \begin{cases}
+		\displaystyle \frac{f_n(x) - f_n(b)}{x - b} & (x \neq b)\\
+		f_n'(b) & (x = b) 
+	\end{cases} \quad (x \in I, \, n \in \N).
+\]
+A $\Phi_{bn}$-ek mind folytonosak. Ez ui. a $b$-től különböző helyeken az $f_n$-ek folytonossága alapján a műveleti szabályok és a folytonosság kapcsolatából következik. A $b$ helyen pedig a
+\[
+	\lim_{x \to b} \Phi_{bn}(x) = \lim_{x \to b} \frac{f_n(x) - f_n(b)}{x- b} = f_n'(b) = \Phi_{bn}(b) \quad (n \in \N)
+\]
+egyenlőségből. Azt sem nehéz belátni, hogy a $(\Phi_{bn})$ függvénysorozat egyenletesen konvergens. Ti. legyen ehhez
+\[
+	n, \, m \in \N, \, b \neq x \in I,
+\]
+ekkor a Lagrange-középértéktétel szerint alkalmasan $b$ és $x$ közötti $\xi_{nm}$-mel
+\[
+	\frac{ \BB{f_n(x) - f_m(x)} - \BB{ f_n(b) - f_m(b) } }{x- b} = (f_n - f_m)'(\xi_{nm}) =
+\]
+\[
+	f'_n(\xi_{nm}) -f'_m(\xi_{nm}).
+\]
+Ezt felhasználva azt kapjuk, hogy
+\[
+	|\Phi_{bn}(x) - \Phi_{bm}(x)| = \begin{cases}
+		|f'_n(\xi_{nm}) -f'_m(\xi_{nm})| & (b \neq x \in I) \\
+		|f'_n(b) - f_m'(b)| & (x = b) 
+	\end{cases} \quad (n, \, m \in \N).
+\]
+A feltételeink szerint az $(f'_n)$ sorozat egyenletesen konvergens, ezért minden $\varepsilon > 0$ mellett egy $N \in \N$ indexszel
+\[
+	|f'_n(t) - f'_m(t)| < \varepsilon \quad (t \in I, \, N < n, \, m \in \N).
+\]
+Innen világos, hogy
+\[
+	|\Phi_{bn}(x) - \Phi_{bm}(x)| < \varepsilon \quad (x \in I, \, N < n, \, m \in \N)
+\]
+azaz a $(\Phi_{bn})$ függvénysorozatra teljesül az egyenletesen Cauchy-kritérium: a $(\Phi_{bn})$ sorozat egyenletesen konvergens. Legyen
+\[
+	\Phi_b := \lim_{n \to \infty} \Phi_{bn},
+\]
+ami (ld. előző tétel) folytonos.\\
+
+Vegyük észre, hogy
+\[
+	f_n(x) = (x-a) \cdot \Phi_{an}(x) + f_n(a) \quad (x \in I, \, n \in \N).
+\]
+Tehát a
+\[
+	g(x) := x-a, \, h_n(x) := f_n(a) \quad (x \in I, \, n \in \N)
+\]
+függvényekkel
+\[
+	(f_n) = (g \Phi_{an}) + (h_n).
+\]
+Az $I$ intervallum korlátossága miatt a $g$ függvény korlátos, ezért a $(g \Phi_{an})$ sorozat egyenletesen konvergens. Nyilván ugyanez igaz a $(h_n)$ (konstans)sorozatra is, amiből az $(f_n)$ függvénysorozat egyenletesen konvergenciája már következik, legyen
+\[
+	f := \lim_{n \to \infty} f_n.
+\]
+A $(\Phi_{bn}) \quad (b \in I)$ sorozat definíciója alapján most már világos, hogy
+\[
+	\Phi_b(x) = \lim_{n \to \infty} \Phi_{bn}(x) = \begin{cases}
+		\displaystyle \frac{f(x) - f(b)}{x-b} & (x \neq b) \\
+		\displaystyle \lim_{n \to \infty} f'_n(b) \quad (x = b)
+	\end{cases} \quad (x \in I, \, n \in \N).
+\]
+Láttuk, hogy a $\Phi_b$ függvény folytonos, így létezik a $\displaystyle \lim_{x \to b} \Phi_b(x)$ határérték és
+\[
+	\lim_{x \to b} \Phi_b(x) = \Phi_b(b).
+\]
+Tehát
+\[
+	\Phi_b(b) = \lim_{n \to \infty}\Phi_{bn}(b) = \lim_{x \to b} \Phi_b(x) = \lim_{x \to b} \frac{f(x) - f(b)}{x -b }.
+\]
+Mindez azt jelenti, hogy $f \in D\{b\}$ és
+\[
+	f'(b) = \lim_{x \to b} \frac{f(x) - f(b)}{x-b} = \lim_{n \to \infty} f'_n(b) \quad (b \in I).
+\]
+$\hfill \blacksquare$

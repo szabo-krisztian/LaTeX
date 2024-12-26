@@ -1,0 +1,237 @@
+\newpage
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{A folytonosság, ill. a Riemann-integrálhatóság kérdése konvergens függvénysorozatokkal kapcsolatban. Egyenletesen konvergens függvénysorozat határfüggvényének folytonossága, ill. integrálhatósága. Az integrálás és a határátmenet felcserélhetősége.}
+\end{quote}
+
+Tekintsük az $(f_n)$ függvénysorozatot, legyen $f$ a határfüggvénye. Azt fogjuk vizsgálni, hogy az $f_n \quad (n \in \N)$ függvényekre fennálló bizonyos tulajdonságok "öröklődnek-e" az $f$ határfüggvényre. Az említett tulajdonságokat illetően a folytonosság, integrálhatóság, deriválhatóság fognak a vizsgálódásaink középpontjában állni.\\
+
+Az utóbbi kettővel kapcsolatban az is egy "izgalmas" kérdés lesz, hogy ha (pl.) az $f_n \quad (n \in \N)$ függvények valamennyien differenciálhatók, és ugyanez igaz az $f$ határfüggvényre is, akkor fennáll-e az
+\[
+	f' = \lim_{n \to \infty} f_n'
+\]
+egyenlőség? Ugyanez másképpen írva: igaz-e, hogy
+\[
+	\BB{ \lim_{n \to \infty} f_n }' = \lim_{n \to \infty} f'_n,
+\]
+azaz, hogy a differenciál- es a limesz-operátor felcserélhető?\\
+
+Hasonlóan, ha
+\[
+	f_n \in R[a, \, b] \quad (n \in \N)
+\]
+és az $(f_n)$ függvénysorozat $f$ határfüggvényére is igaz, hogy $f \in R[a, \, b]$, akkor teljesül-e az
+\[
+	\int\limits_a^b f = \lim_{n \to \infty} \int\limits_a^b f_n
+\]
+egyenlőség? Más szóval
+\[
+	\int\limits_a^b \lim_{n \to \infty} f_n = \lim_{n \to \infty} \int\limits_a^b f_n?
+\]
+
+Az alábbi nagyon egyszerű példák azt mutatják, hogy a fenti kérdésekre minden további nélkül nem lehet igennel felelni. Legyen ui.
+\[
+	f_n(x) := \begin{cases}
+		1 - nx & (0 \leq x \leq 1/n)\\
+		0 & (1/n \leq x \leq 1) 
+	\end{cases} \quad (0 < n \in \N).
+\]
+Világos, hogy $f_n \in C[0, \, 1] \quad (n \in \N^+)$, az $(f_n)$ függvénysorozat pontonként konvergens, és az $f$ határfüggvénye a következő:
+\[
+	f(x) = \begin{cases}
+		1 & (x = 0) \\
+		0 & (1 < x \leq 1).
+	\end{cases}
+\]
+Az is nyilvánvaló, hogy $f \in C\{0\}$.\\
+
+Legyen most valamilyen $a_n \in \R \quad (0 < n \in \N)$ számsorozat mellett
+\[
+	f_n(x) := \begin{cases}
+		a_n & (0 < x < 1/n) \\
+		0 & (x \in [0, \, 1] \, \backslash \, (0, \, 1/n))
+	\end{cases} \quad (0 < n \in \N).
+\]
+Ekkor
+\[
+	f_n R[0, \, 1], \, \int\limits_0^1 f_n = \frac{a_n}{n} \quad (0 < n \in \N),
+\]
+továbbá minden $x \in [0, \, 1]$ helyen könnyen beláthatóan
+\[
+	\lim_{n \to \infty} f_n(x) = 0.
+\]
+Tehát az $(f_n)$ függvénysorozat pontonként konvergens, és az $f$ határfüggvénye a ($[0, \, 1]$ intervallumon) az $f \equiv 0$ függvény. Így $f \in R[0, \, 1]$ és $\int\limits_0^1 f = 0$. Ugyanakkor az
+\[
+	a_n := n \quad (0 < n \in \N)
+\]
+esetben az integrálok $(\int\limits_0^1 f_n)$ sorozata konvergens, de
+\[
+	\lim_{n \to \infty} \int\limits_0^1 f_n = \lim(1) \neq 0 = \int\limits_0^1 f = \int\limits_0^1 \lim_{n\to \infty} f_n.
+\]
+Az
+\[
+	a_n := (-1)^n \cdot n \quad (0 < n \in \N)
+\]
+választással az $(\int\limits_0^1 f_n)$  = $\B{ (-1)^n }$ sorozat nem is konvergens.\\
+
+Az $f$ határfüggvényre (az $f_n \in R[a, \, b] \quad (0 < n \in \N )$ esetben) az sem teljesül "automatikusan", hogy integrálható. Legyen ui. az $(r_k)$ sorozat a $[0, \, 1]$-beli racionális számok sorozata, és
+\[
+	f_n(x) := \begin{cases}
+		1 & (x \in \{ r_0, \, \dots, \, r_n \}) \\
+		0 & (x \not \in \{ r_0, \, \dots, \, r_n \})
+	\end{cases} \quad (x \in [0, \, 1], \, n \in \N).
+\] 
+Ekkor $f_n \in R[0, \, 1]$ és $\int\limits_0^1 f_n = 0 \quad (n \in \N)$, tehát létezik az integrálsorozat
+\[
+	\lim_{n\to \infty} \int\limits_0^1 f_n = 0
+\]
+határértéke, azonban az
+\[
+	f(x) = \lim_{n \to \infty} f_n(x) = \begin{cases}
+		1 & (x \in \mathbf{Q}) \\
+		0 & (x \not \in \mathbf{Q})
+	\end{cases} \quad (x \in [0, \, 1])
+\]
+Dirichlet-függvény nem Riemann-integrálható.\\
+
+A differenciálhatóságot illetően tekintsük a következő függvénysorozatot:
+\[
+	f_n(x) := |x|^{1 + 1/n} \quad (x \in \R, \, 0 < n \in \N).
+\]
+Ekkor $f_n \in D \quad (0 < n \in \N)$, de az
+\[
+	f(x) := |x| \quad (x \in \R)
+\]
+határfüggvény nem differenciálható a $0$-ban.\\
+
+A folytonosság és a határátmenet kapcsolatát illetően a következőket mondhatjuk:
+
+\subsection{Folytonosság és a határátmenet}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Tegyük fel, hogy az
+	\[
+		f_n \in \K \to \K \quad (n \in \N)
+	\]
+	függvények által meghatározott $(f_n)$ függvénysorozat egyenletesen konvergens az $\emptyset \neq X \subset \K$ halmazon. Legyen a határfüggvénye az
+	\[
+		f: X \to \K
+	\]
+	függvény. Ha $a \in X$ és $f_n \in C\{a\} \quad (n \in \N)$, akkor $f \in C\{a\}$. 
+};\\
+
+\textbf{Bizonyítás.} Az egyenletes konvergencia miatt tetszőleges $\varepsilon > 0$ számhoz van olyan $N \in \N$, amellyel
+\[
+	|f_n(x) - f(x)| < \varepsilon \quad (x \in X, \, N < n \in \N).
+\]
+Ugyanakkor a háromszög-egyenlőtlenség alapján minden $n \in \N$ indexre
+\[
+	|f(x) - f(a)| \leq
+\]
+\[
+	|f(x) - f_n(x)| + |f_n(x) - f_n(a)| + |f_n(a) - f(a)| \quad (x \in X),
+\]
+ezért
+\[
+	|f(x) - f(a)| < 2 \varepsilon + |f_n(x) - f_n(a)| \quad (x \in X, \, N < n \in \N).
+\]
+Legyen a továbbiakban egy $N < n \in \N$ index rögzítve. Mivel $f_n \in C\{a\}$, ezért egy alkalmas $\delta > 0$ esetén
+\[
+	|f_n(x)- f_n(a)| < \varepsilon \quad (x \in X, \, |x - a| < \delta),
+\]
+amiből
+\[
+	|f(x) - f(a)| < 3 \varepsilon \quad (x \in X, \, |x-a| < \delta),
+\]
+azaz $f \in C\{a\}$. $\hfill \blacksquare$\\
+
+Fogalmazzuk át az előbbi állításunkat a függvénysorok esetére.\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Legyen adott a
+	\[
+		g_n : X \to \K \quad (n \in \N)
+	\]
+	függvények által meghatározott $\sum(g_n)$ függvénysor, ami egyenletesen konvergens az $\emptyset \neq X \subset \K$ halmazon. Legyen az összegfüggvénye az
+	\[
+		G : X \to \K
+	\]
+	függvény. Ha $a \in X$ és $g_n \in C\{a\} \quad (n \in \N)$, akkor $G \in C\{a\}$.
+};\\
+
+Ha ui. 
+\[
+	f_n := \sum_{k=0}^n g_k \quad (n \in \N),
+\]
+ekkor az $(f_n)$ egyenletesen konvergál a $G$-hez. Mivel $f_n \in C\{a\} \quad (n \in \N)$, ezért az első tétel szerint $G \in C\{a\}$ is igaz. 
+
+\subsection{Riemann-integrálhatóság és a határátmenet}
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Tekintsük az $[a, \, b] \quad (a, \, b \in \R, \, a < b)$ intervallumon értelmezett $f_n : [a, \, b] \to \R \quad (n \in \N)$ függvényekből álló $(f_n)$ függvénysorozatot, amelyről tegyük fel, hogy egyenletesen konvergens. Ha $f_n \in R[a, \, b] \quad (n \in \N)$ és $f$ jelöli az $(f_n)$ sorozat határfüggvényét, akkor $f \in R[a, \, b]$, az integrálok $(\int\limits_a^b f_n)$ sorozata konvergens, és
+	\[
+		\int\limits_a^b f = \lim_{n \to \infty} \int\limits_a^b f_n.
+	\]
+};\\
+
+\textbf{Bizonyítás.} Legyen $\varepsilon > 0$ tetszőleges szám, ekkor egy $N \in \N$ küszöbindexszel
+\[
+	|f_n(x) - f(x)| < \varepsilon \quad (x \in [a, \, b], \, N < n \in \N).
+\]
+Ezért bármilyen $J \subset [a, \, b]$ intervallum esetén
+\[
+	|f(u) - f(v)| \leq |f(u) - f_n(u)| + |f_n(u) - f_n(v)| + |f_n(v) - f(v)| <
+\]
+\[
+	2 \varepsilon + |f_n(u) - f_n(v)| \quad (u, \, v \in J, \, N < n \in \N).
+\]
+Következésképpen
+\[
+	o_J(f) := \sup \{ |f(u) - f(v)| : u, \, v \in J \} \leq
+\]
+\[
+	2 \varepsilon + \sup\{ |f_n(u) - f_n(v)| : u, \, v \in J \} = 2 \varepsilon + o_J(f_n) \quad (N < n \in \N).
+\]
+Tehát bármilyen $\tau \subset [a, \, b]$ felosztásra
+\[
+	\omega(f, \, \tau) = \sum_{J \in \mathcal{F}(\tau)} o_J(f) \cdot |J| \leq \sum_{J \in \mathcal{F}(\tau)} 2 \varepsilon \cdot |J| + \sum_{J \in \mathcal{F}(\tau)} o_J(f_n) \cdot |J| =
+\]
+\[
+	2(b-a) \varepsilon + \omega(f_n, \, \tau) \quad (N < n \in \N).
+\]
+Legyen az $N < n \in \N$ rögzítve, ekkor $f_n \in R[a, \, b]$ miatt van olyan $\tau$, hogy $\omega(f_n, \, \tau) < \varepsilon$. Így
+\[
+	\omega(f, \, \tau) < (2(b-a) + 1) \varepsilon,
+\]
+ami (szükséges és) elegendő ahhoz, hogy $f \in R[a, \, b]$.\\
+
+Ha $N < n \in \N$, akkor
+\[
+	\left|  \int\limits_a^b f - \int\limits_a^b f_n \right| = \left| \int\limits_a^b (f - f_n) \right| \leq \int\limits_a^b |f(x) - f_n(x)| \, dx \leq (b-a) \cdot \varepsilon,
+\]
+ami azt jelenti, hogy
+\[
+	\lim_{n \to \infty} \int\limits_a^b f_n = \int\limits_a^b f.
+\]
+$\hfill \blacksquare$\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Tegyük fel, hogy az $[a, \, b] \quad (a, \, b \in \R, \, a < b)$ intervallumon értelmezett
+	\[
+		g_n : [a, \, b] \to \R \quad (n \in \N)
+	\]
+	függvényekből álló $\sum(g_n)$ függvénysor egyenletesen konvergens. Ha $g_n \in R[a, \, b] \quad (n \in \N)$ és $G$ jelöli a $\sum(g_n)$ sor összegfüggvényét, akkor $G \in R[a, \, b]$, az integrálok alkotta $\sum(\int\limits_a^b g_n)$ sor konvergens, valamint
+	\[
+		\int\limits_a^b G = \sum_{n=0}^\infty \int\limits_a^b g_n.
+	\]
+};\\
+
+Indoklásképpen elegendő az 
+\[
+	f_n := \sum_{k=0}^n g_k \quad (n \in \N)
+\]
+függvényekre alkalmazni a Riemann-integrálhatóság linearitására vonatkozó ismert állítást. 
