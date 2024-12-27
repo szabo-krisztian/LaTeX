@@ -86,4 +86,102 @@ Lássuk be, hogy egyenletesen konvergens trigonometrikus sorok együtthatói "ki
 	\]
 };\\
 
-\textbf{Bizonyítás.} BEFEJEZNI.
+\textbf{Bizonyítás.} A tagonkénti integrálhatóságból
+\[
+	\int\limits_0^{2\pi} f(x) \, dx =
+\]
+\[
+	\int\limits_0^{2\pi} \alpha_0 \, dx + \sum_{k=1}^\infty \left( \alpha_k \cdot \int\limits_0^{2\pi} \cos(kx) \, dx + \beta_k \cdot \int\limits_0^{2\pi} \sin(kx) \, dx \right) =
+\]
+\[
+	\int\limits_0^{2\pi} \alpha_0 \, dx = 2\pi \cdot \alpha_0.
+\]
+Mivel a $\cos, \, \sin$ függvények korlátosak, ezért $1 \leq \N$ esetén a
+\[
+	\sum\BB{ \cos(nx) (\alpha_k \cdot \cos(kx) + \beta_k \cdot \sin(kx)) },
+\]
+\[
+	\sum\BB{ \sin(nx) (\alpha_k \cdot \cos(kx) + \beta_k \cdot \sin(kx)) },	
+\]
+sorok is egyenletesen konvergensek. Megint csak a tagonkénti integrálhatóság és a trigonometrikus rendszer ortogonalitása miatt
+\[
+	\int\limits_0^{2\pi} f(x) \cdot \cos(nx) \, dx = \alpha_0 \cdot \int\limits_0^{2\pi} \cos(nx) \, dx +
+\]
+
+\[
+	\sum_{k=1}^\infty \left( \alpha_k \cdot \int\limits_0^{2\pi} \cos(kx) \cdot \cos(nx) \, dx + \beta_k \cdot \int\limits_0^{2\pi} \sin(kx) \cdot \cos(nx) \, dx \right) =
+\]
+\[
+	\alpha_n \cdot \int\limits_0^{2\pi} \cos^2(nx) \, dx = \pi \alpha_n,
+\]
+és
+\[
+	\int\limits_0^{2\pi} f(x) \cdot \sin(nx) \, dx = \alpha_0 \cdot \int\limits_0^{2\pi} \sin(nx) \, dx +
+\]
+\[
+	\sum_{k=1}^\infty \left( \alpha_k \cdot \int\limits_0^{2\pi} \cos(kx) \cdot \sin(nx) \, dx + \beta_k \cdot \int\limits_0^{2\pi} \sin(kx) \cdot \sin(nx) \, dx \right) =
+\]
+\[
+	\beta_n \cdot \int\limits_0^{2\pi} \sin^2(nx) \, dx = \pi \cdot \beta_n,
+\]
+amiből az állításunk már következik. $\hfill \blacksquare$\\
+
+Tehát: ha a
+\[
+	\sum\Big( \alpha_k \cdot \cos(kx) + \beta_k \sin(kx)\Big)
+\]
+trigonometrikus sor egyenletesen konvergens és
+\[
+	f(x) := \alpha_0 + 	\sum_{k=1}^\infty\Big( \alpha_k \cdot \cos(kx) + \beta_k \sin(kx)\Big) \quad (x \in \R)
+\]
+az összegfüggvénye, akkor $f \in C_{2\pi}$, és a szóban forgó trigonometrikus sor az $f$ függvény Fourier-sora. Azt is mondjuk ilyenkor, hogy az $f$ függvény \textit{Fourier-sorba fejthető}.
+
+\subsection{Bessel - Parseval}
+
+Legyenek $f \in R_{2\pi}$ esetén
+\[
+	a_0 := \frac{1}{2\pi} \int\limits_0^{2\pi} f(x) \, dx,
+\]
+\[
+	a_n := \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \cdot \cos(nx) \, dx \quad (1 \leq n \in \N),
+\]
+\[
+	b_n := \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \cdot \sin(nx) \, dx \quad (1 \leq n \in \N),
+\]
+\[
+	S_nf(x) := a_0 + \sum_{k=1}^n \BB{ a_n \cdot \cos(kx) + b_n \cdot \sin(kx) } \quad (n \in \N, \, x \in \R)
+\]
+az $f$ függvény Fourier-együtthatói, $n$-edik Fourier-részletösszege, és
+\[
+	\| f\| := \sqrt{ \int\limits_0^{2\pi} |f(x)|^2 \, dx }.
+\]
+Továbbá adott
+\[
+	\alpha_k \in \R \quad (k \in \N) \text{ és } \beta_j \in \R \quad (1 \leq j \in \N)
+\]
+együtthatókkal
+\[
+	T_n(x) := \alpha_0 + \sum_{k=1}^n \BB{ \alpha_k \cdot \cos(kx) + \beta_k \cdot \sin(kx) } \quad (n \in \N, \, x \in \R).
+\]
+Ekkor (a trigonometrikus rendszer ortogonalitása miatt)
+\[
+	\|f-T_n \|^2 = \int\limits_0^{2\pi} (f - T_n)^2 = \int\limits_0^{2\pi} f^2 - 2 \cdot \int\limits_0^{2\pi} f T_n + \int\limits_0^{2\pi} T^2_n =
+\]
+\[
+	\int\limits_0^{2\pi} f^2 - 2\left( 2 \pi a_0 \alpha_0 + \pi \cdot \sum_{k=1}^n (\alpha_k a_k + \beta_k b_k) \right) + 2 \pi \alpha_0^2 + \pi \sum_{k=1}^n (\alpha_k^2 + \beta_k^2).
+\]
+Speciálisan (\textit{Bessel-azonosság})
+\[
+	\|f - S_nf\|^2 = \int\limits_0^{2\pi} f^2 - \pi \left( 2a_0^2 + \sum_{k=1}^n (a_k^2 + b_k^2) \right) \quad (n \in \N).
+\]
+Innen
+\[
+	2a_0^2 + \sum_{k=1}^\infty (a_k^2 + b_k^2) \leq \frac{1}{\pi} \int\limits_0^{2\pi} f^2
+\]
+(\textit{Bessel-egyenlőtlenség}). \\
+
+Belátható, hogy a fenti Bessel-egyenlőtlenségben valójában egyenlőség van:
+\[
+	2a_0^2 + \sum_{k=1}^\infty (a_k^2 + b_k^2)  = \frac{1}{\pi} \int\limits_0^{2\pi} f^2
+\]
+(\textit{Parseval-egyenlőtlenség}).

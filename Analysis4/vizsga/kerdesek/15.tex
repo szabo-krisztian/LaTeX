@@ -3,3 +3,176 @@
 \begin{quote}
 	\textit{Egyenletesen konvergens Fourier-sorok, a trigonometrikus rendszer teljessége $C_{2\pi}$-re.}
 \end{quote}
+
+\subsection{Teljesség}
+
+Emlékeztető: ha a
+\[
+	\trigseries
+\]
+trigonometrikus sor egyenletesen konvergens és
+\[
+	F(x) := \alpha_0 + \sum_{n=1}^\infty \B{ \alpha_n \cdot \cos(nx) + \beta_n \cdot \sin(nx) } \quad (x \in \R)
+\]
+az összegfüggvénye, akkor $F \in C_{2\pi}$, a szóban forgó trigonometrikus sor pedig az $F$ függvény Fourier-sora.\\
+
+Legyen most $f \in C_{2\pi}$, és tegyük fel, hogy az $Sf$ Fourier-sora egyenletesen konvergens. Ha az $Sf$ trigonometrikus sor összegfüggvényét $g$-vel jelöljük, akkor joggal vetődik fel a kérdés: mi köze van egymáshoz az $f$ és a $g$ függvénynek? Az előbbiek szerint $Sf = Sg$, azaz
+\[
+	a_0(f) = a_0(g), \, a_n(f) = a_n(g), \, b_n(f) = b_n(g) \quad (1 \leq n \in \N).
+\]
+Ha
+\[
+	h := f - g,
+\]
+akkor egyrészt $h \in C_{2\pi}$, másrészt a Fourier-együtthatók definíciója alapján rögtön adódik az, hogy
+\[
+	a_0(h) = a_0(f) - a_0(g) = 0
+\]
+és
+\[
+	a_n(h) = a_n(f) - a_n(g) = 0, \, b_n(h) = b_n(f) - b_n(g) = 0 \quad (1 \leq n \in \N).
+\]
+Meg fogjuk mutatni, hogy mindebből $h \equiv 0$ következik, azaz $f = g$.\\
+
+Ehhez szükségünk lesz az alábbi, önmagában is fontos állításra.\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Ha a $h \in C_{2\pi}$ függvény valamennyi Fourier-együtthatója nulla, akkor a $h$ az azonosan nulla függvény. 
+};\\
+
+\textbf{Bizonyítás.} Tegyük fel indirekt módon, hogy valamilyen $a \in \R$ esetén $h(a) \neq 0$. Nyugodtan feltehetjük a továbbiakban, hogy
+\[
+	a = 0 \text{ és } h(0) > 1.
+\]
+Figyelembe véve, hogy a $h$ függvény folytonos, van olyan $0 < \delta < \pi / 2$, amellyel
+\[
+	h(x) > 1 \quad (|x| \leq \delta).
+\]
+Vegyük észre, hogy bármilyen
+\[
+	T(x) := \alpha_0 + \sum_{k=1}^n \B{ \alpha_k \cdot \cos(kx) + \beta_k \cdot \sin(kx) } \quad (x \in \R, \, n \in \N)
+\]
+trigonometrikus polinomra
+\[
+	\int\limits_{-\pi}^\pi h(x) \cdot T(x) \, dx =
+\]
+\[
+	\alpha_0 \cdot \int\limits_{-\pi}^\pi h(x) \, dx + \sum_{k=1}^n \left(  \alpha_k \cdot \int\limits_{-\pi}^\pi h(x) \cdot \cos(kx) \, dx + \beta_k \cdot \int\limits_{-\pi}^\pi h(x) \cdot \sin(kx) \, dx \right) =
+\]
+\begin{equation}
+	2\pi \cdot \alpha_0 \cdot a_0(h) + \pi \cdot \sum_{k=1}^n \B{ \alpha_k \cdot a_k(h) + \beta_k \cdot b_k(h) } = 0.
+	\tag{$\star$}
+\end{equation}
+
+Meg fogjuk mutatni, hogy ennek ellenére egy alkalmas $T$ trigonometrikus polinommal
+\[
+	\int\limits_{-\pi}^\pi h(x) \cdot T(x) \, dx \neq 0.
+\]
+Legyen ehhez
+\[
+	T_n(x) := (\cos x + 1 - \cos \delta)^n \quad (x \in \R, \, n \in \N).
+\]
+Teljes indukcióval könnyen ellenőrizhető, hogy minden $n \in \N$ esetén a $T_n$ függvény egy trigonometrikus polinom. Továbbá
+\[
+	\cos x + 1 - \cos \delta \geq 1 \quad (|x| \leq \delta),
+\]
+valamint bármilyen $\delta < \tau < \pi / 2$ választással
+\[
+	q_\tau := \max \{ |\cos x + 1 - \cos \delta| : x \in [-\pi, \, -\tau] \cup [\tau, \, \pi]\} < 1
+\]
+és
+\[
+	|\cos x + 1 - \cos \delta| \leq 1 \quad (x \in [-\tau, \, -\delta] \cup [\delta, \, \tau]).
+\]
+
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[
+			axis lines = middle,
+			xlabel = \(x\),
+			ylabel = {\(\cos x\)},
+			xmin = -1.25*pi, xmax = 1.25*pi,
+			ymin = -1.5, ymax = 1.5,
+			samples = 100,
+			domain = -2*pi:2*pi,
+			xtick = {-pi, -pi/2,-1, -0.6, 0.6, 1, pi/2, pi},
+			xticklabels={$-\pi$, $-\frac{\pi}{2}$,-$\tau$, -$\delta$, $\delta$,$\tau$, $\frac{\pi}{2}$, $\pi$},
+			x = 1.5cm
+			]
+			\addplot[color=blue, thick] {cos(deg(x))};
+			   
+			\addplot[thin, dotted, color=red] coordinates {(-1, -1.5) (-1, 1.5)};
+			\addplot[thin, dotted, color=red] coordinates {(1, -1.5) (1, 1.5)};
+			\addplot[thin, dotted, color=red] coordinates {(-0.6, -1.5) (-0.6, 1.5)};
+			\addplot[thin, dotted, color=red] coordinates {(0.6, -1.5) (0.6, 1.5)};
+		\end{axis}
+	\end{tikzpicture}	
+\end{center}
+Ekkor a
+\[
+	J_1 := [-\pi, \, -\tau], \, J_2 := [-\tau, \, -\delta], \, J_3 := [-\delta, \, \delta], \, J_4 := [\delta, \, \tau], \, J_5 := [\tau, \, \pi]
+\]
+intervallumokkal minden $n \in \N$ esetén
+\[
+	\left| \int\limits_{-\pi}^\pi h(x) \cdot T_n(x) \, dx \right| = \left| \sum_{i=1}^5 \int_{J_i} h(x) \cdot T_n(x) \, dx\right| \geq
+\]
+\[
+	\left| \int\limits_{-\delta}^\delta h(x) \cdot T_n(x) \, dx \right| - \sum_{3 \neq i = 1}^5 \int_{J_i} |h(x) \cdot T_n(x)| \, dx.
+\]
+Az előzményekre tekintettel itt a
+\[
+	C := \max \{ |h(x)| : |x| \leq \pi \} \quad (< + \infty)
+\]
+jelöléssel
+\[
+	\left| \int\limits_{-\delta}^\delta h(x) \cdot T_n(x) \, dx \right| = \int\limits_{-\delta}^\delta h(x) \cdot T_n(x) \, dx \geq \int\limits_{-\delta}^\delta 1 \, dx = 2\delta,
+\]
+valamint
+\[
+	\int_{J_1} |h(x) \cdot T_n(x)| \, dx, \, \int_{J_5} |h(x) \cdot T_n(x)| \, dx \leq C \cdot q_\tau^n \cdot \tau
+\]
+és
+\[
+	\int_{J_2} |h(x) \cdot T_n(x)| \, dx,
+	\int_{J_4} |h(x) \cdot T_n(x)| \, dx \leq C \cdot (\tau - \delta).
+\]
+Következésképpen
+\[
+	\left| \int\limits_{-\pi}^\pi h(x) \cdot T_n(x) \, dx \right| \geq 2\delta - \B{ 2 C \cdot q_\tau^n \cdot \pi + 2C \cdot (\tau - \delta) }.
+\]
+A $\tau$ (az eddigieken túl) nyilván megválasztható úgy is, hogy
+\[
+	2C \cdot (\tau - \delta) < \delta / 2
+\]
+teljesüljön. Ekkor
+\[
+	\left| \int\limits_{-\pi}^\pi h(x) \cdot T_n(x) \, dx \right| > 3\pi / 2 - 2C \cdot q_\tau^n \cdot \pi.
+\]
+Mivel $0 < q_\tau < 1$, ezért
+\[
+	q_\tau^n \to 0 \quad (n \to \infty).
+\]
+Így létezik olyan $N \in \N$, amellyel
+\[
+	2C \cdot q_\tau^N \cdot \pi < \delta/2
+\]
+amikor is
+\[
+	\left| \int\limits_{-\pi}^\pi h(x) \cdot T_N(x) \, dx \right| > \delta.
+\]
+Tehát
+\[
+	\int\limits_{-\pi}^\pi h(x) \cdot T_N(x) \, \neq 0,
+\]
+azaz a $T := T_N$ választás ellentmond a $(\star)$ egyenlőségnek. $\hfill \blacksquare$\\
+
+Az előzményekre is tekintettel igaz az alábbi tétel:\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Ha az $f \in C_{2\pi}$ függvény Fourier-sora egyenletesen konvergens, akkor az $Sf$ Fourier-sor összegfüggvénye megegyezik az $f$-fel, azaz
+	\[
+		f(x) = a_0 + \sum_{n=1}^\infty \BB{ a_n \cdot \cos(nx) + b_n \cdot \sin(nx) } \quad (x \in \R).
+	\]
+};
