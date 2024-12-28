@@ -14,7 +14,7 @@ Megmutatjuk, hogy igaz a\\
 	\[
 		\sum_{k=1}^\infty \frac{\sin(kx)}{k} = \frac{\pi - x}{2},
 	\]
-	ls ez a szinusz-sor minden $\delta \in (0, \, \pi)$ mellett egyenletesen konvergens a $[\delta, \, 2\pi - \delta]$ intervallumon.
+	és ez a szinusz-sor minden $\delta \in (0, \, \pi)$ mellett egyenletesen konvergens a $[\delta, \, 2\pi - \delta]$ intervallumon.
 };\\
 
 \textbf{Bizonyítás.} Legyen $m, \, n \in \N$, $m < n$, ekkor az $x \in [\delta, \, 2\pi - \delta]$ helyeken
@@ -25,7 +25,7 @@ Megmutatjuk, hogy igaz a\\
 	\frac{1}{2} \cdot \left| \sum_{k=m+1}^n \frac{\cos\BB{ (k-1 / 2)x } - \cos \BB{ (k+1/2)x }}{k} \right| =
 \]
 \[
-	\frac{1}{2} \cdot \left| \sum_{k=m+1}^{n-1}  \left( \frac{1}{k} - \frac{1}{k+1} \right) \cdot c_k(x) + \frac{c_n(x)}{n} . \frac{c_m(x)}{m+1}\right| \leq 
+	\frac{1}{2} \cdot \left| \sum_{k=m+1}^{n-1}  \left( \frac{1}{k} - \frac{1}{k+1} \right) \cdot c_k(x) + \frac{c_n(x)}{n} - \frac{c_m(x)}{m+1}\right| \leq 
 \]
 \[
 	\frac{1}{2} \cdot \left( \frac{1}{m+1} - \frac{1}{n} + \frac{1}{n} + \frac{1}{m+1} \right) = \frac{1}{m+1}.
@@ -168,7 +168,7 @@ Tegyük fel most, hogy $\lambda > 0$. Ekkor a magasabb rendű homogén lineáris
 \[
 	F(x) = \gamma \cdot e^{x \sqrt{\lambda / q}} + \delta \cdot e^{-x \sqrt{\lambda / q}} \quad (x \in \R)
 \]
-(ahol $\lambda, \, beta, \, \gamma, \, \delta \in \R$ alkalmas együtthatók). Ismét figyelembe véve a peremfeltételeket
+(ahol $\lambda, \, \beta, \, \gamma, \, \delta \in \R$ alkalmas együtthatók). Ismét figyelembe véve a peremfeltételeket
 \[
 	u(0, \, t) = (\gamma + \delta) \cdot \B{ \alpha \cdot e^{t \sqrt{\lambda}} + \beta \cdot e ^{- t \sqrt{\lambda}} } = 0 \quad (t \geq 0),
 \]
@@ -178,7 +178,7 @@ ezért
 \]
 vagy
 \[
-	\gamma + \delta = 0-
+	\gamma + \delta = 0.
 \]
 Az első eset (könnyen beláthatóan) csak az $\alpha = \beta = 0$ együtthatókkal állhat fenn, ekkor $u \equiv 0$. Ha tehát $|\alpha| + |\beta| > 0$, akkor $\gamma + \delta = 0$. Továbbá
 \[
