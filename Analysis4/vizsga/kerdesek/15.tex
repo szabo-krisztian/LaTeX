@@ -100,12 +100,12 @@ valamint bármilyen $\delta < \tau < \pi / 2$ választással
 			xticklabels={$-\pi$, $-\frac{\pi}{2}$,-$\tau$, -$\delta$, $\delta$,$\tau$, $\frac{\pi}{2}$, $\pi$},
 			x = 1.5cm
 			]
-			\addplot[color=blue, thick] {cos(deg(x))};
+			\addplot[color=black, thick] {cos(deg(x))};
 			   
-			\addplot[thin, dotted, color=red] coordinates {(-1, -1.5) (-1, 1.5)};
-			\addplot[thin, dotted, color=red] coordinates {(1, -1.5) (1, 1.5)};
-			\addplot[thin, dotted, color=red] coordinates {(-0.6, -1.5) (-0.6, 1.5)};
-			\addplot[thin, dotted, color=red] coordinates {(0.6, -1.5) (0.6, 1.5)};
+			\addplot[thin, dotted, color=black] coordinates {(-1, -1.5) (-1, 1.5)};
+			\addplot[thin, dotted, color=black] coordinates {(1, -1.5) (1, 1.5)};
+			\addplot[thin, dotted, color=black] coordinates {(-0.6, -1.5) (-0.6, 1.5)};
+			\addplot[thin, dotted, color=black] coordinates {(0.6, -1.5) (0.6, 1.5)};
 		\end{axis}
 	\end{tikzpicture}	
 \end{center}
@@ -122,7 +122,7 @@ intervallumokkal minden $n \in \N$ esetén
 \]
 Az előzményekre tekintettel itt a
 \[
-	C := \max \{ |h(x)| : |x| \leq \pi \} \quad (< + \infty)
+	C := \max \big\{ |h(x)| : |x| \leq \pi \big\} \quad (< + \infty)
 \]
 jelöléssel
 \[

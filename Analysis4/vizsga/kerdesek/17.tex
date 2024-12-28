@@ -1,0 +1,248 @@
+\newpage
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{A $\sum_{n=1}^\infty n^{-1} \cdot \sin(nx) \, \, (x \in \R)$ sor konvergenciája, összegfüggvénye. A rezgő húr problémája.}
+\end{quote}
+
+\subsection{A $\sum\B{ \sin(nx) /n }$ trigonometrikus sor} 
+
+Megmutatjuk, hogy igaz a\\
+
+\tikz \node[theorem]
+{
+	\textbf{Tétel.} Tetszőleges $x \in (0, \, 2\pi)$ helyen
+	\[
+		\sum_{k=1}^\infty \frac{\sin(kx)}{k} = \frac{\pi - x}{2},
+	\]
+	ls ez a szinusz-sor minden $\delta \in (0, \, \pi)$ mellett egyenletesen konvergens a $[\delta, \, 2\pi - \delta]$ intervallumon.
+};\\
+
+\textbf{Bizonyítás.} Legyen $m, \, n \in \N$, $m < n$, ekkor az $x \in [\delta, \, 2\pi - \delta]$ helyeken
+\[
+	\sin(x/2) \cdot \left| \sum_{k=m+1}^n \frac{\sin(kx)}{k}  \right| = \left| \sum_{k=m+1}^n \frac{\sin(kx) \cdot \sin(x/2)}{k} \right| = 
+\]
+\[
+	\frac{1}{2} \cdot \left| \sum_{k=m+1}^n \frac{\cos\BB{ (k-1 / 2)x } - \cos \BB{ (k+1/2)x }}{k} \right| =
+\]
+\[
+	\frac{1}{2} \cdot \left| \sum_{k=m+1}^{n-1}  \left( \frac{1}{k} - \frac{1}{k+1} \right) \cdot c_k(x) + \frac{c_n(x)}{n} . \frac{c_m(x)}{m+1}\right| \leq 
+\]
+\[
+	\frac{1}{2} \cdot \left( \frac{1}{m+1} - \frac{1}{n} + \frac{1}{n} + \frac{1}{m+1} \right) = \frac{1}{m+1}.
+\]
+Így
+\[
+	\left| \sum_{k=m+1}^n \frac{\sin(kx)}{k} \right| \leq \frac{1}{(m+1) \cdot \sin(x/2)} \leq \frac{1}{(m+1) \cdot \sin(\delta / 2)}.
+\]
+Innen az egyenletes Cauchy-kritérium teljesülése nyilvánvaló.\\
+
+Így a $\sum\B{\sin(nx)/n}$ trigonometrikus sor minden kompakt
+\[
+	[u, \, v] \subset (0, \, 2\pi)
+\]
+intervallumon egyenletesen konvergens. Vegyük észre, hogy az egyenletesen konvergens
+\[
+	\sum\BB{ \cos(nx) / n^2}
+\]
+sor (formális) tagonkénti deriválásával a
+\[
+	\sum\BB{ -\sin(nx) /n }
+\]
+sort kapjuk, ami tehát az előbbi $(u, \, v)$ intervallumon egyenletesen konvergens. Következésképpen (ld. korábbi tételeket) az
+\[
+	f_{uv}(x) := \sum_{n=1}^\infty \frac{\cos(nx)}{n^2} = \frac{(x-\pi)^2}{2} - \frac{\pi^2}{12} \quad \big( x \in (u, \, v) \big)
+\]
+előírással definiált $f_{uv}$ függvény differenciálható, és
+\[
+	f'_{uv}(x) = \frac{x-\pi}{2} = - \sum_{n=1}^\infty \frac{\sin(nx)}{n} \quad \B{ x \in (u, \, v)}.
+\]
+Mivel itt $[u, \, v] \subset (0, \, 2\pi)$ tetszőleges volt, ezért egyúttal
+\[
+	\sum_{n=1}^\infty \frac{\sin(nx)}{n} = \frac{\pi-x}{2} \quad (0 < x < 2\pi)
+\]
+is igaz. $\hfill \blacksquare$
+
+\subsection{Rezgő húr}
+
+A két végén kifeszített homogén, rezgő húr alakjának a meghatározása a feladat. Feltesszük, hogy az $l \, \, (>0)$ hosszúságú húr transzverzális síkrezgést végez. Megfelelő koordináta-rendszert választva a húr alakját egy
+\[
+	u \in \R^2 \to \R
+\]
+függvény írja le. ( Az $u(x, \, t) \in \R \quad (x \in [0, \, l], \, t \in \R)$ helyettesítési érték a húr $x$ abszcisszájú pontjának a kitérését adja meg a $t$ időpillanatban. ) Ha $u \in D^2$, akkor (fizikai megfontolások alapján) egy pozitív $q$ együtthatóval
+\[
+	\partial_{22} u = q \cdot \partial_{11} u,
+\]
+ami egy (speciális) \textit{parciális differenciálegyenlet}. Megadva a húr kezdeti alakját és a sebességét ($u(x, \, 0)$-t, ill. $\partial_2u(x, \, 0)$-t $\quad (x \in [0, \, l])$), az $u$ függvény meghatározható. \\
+
+A közönséges differenciálegyenletekre nyert eredmények esetenként sikerrel alkalmazhatók a parciális differenciálegyenletek megoldása során is. Ilyen a rezgő húr mozgását modellező fenti egyenlet is. Legyen a keresett
+\[
+	u : [0, \, l] \times [0, \, + \infty) \to \R
+\]
+függvény kétszer folytonosan differenciálható, amire adott
+\[
+	f, \, g \in \R \to \R
+\]
+függvények az alábbi \textit{perem}-, ill. \textit{kezdeti feltételek} teljesülnek:
+\[
+	u(0, \, t) = u(l, \, t) = 0 \quad (t \in [0, \, +\infty)),
+\]
+\[
+	u(x, \, 0) = f(x) \quad (x \in [0, \, l]),
+\]
+\[
+	\partial_2u(x, \, 0) = g(x) \quad (x \in [0, \, l]).
+\]
+Euler, Lagrange, D'Alembert, D. Bernoulli és végül Fourier munkássága nyomán kristályosodott ki (a más feladatokra is alkalmazható) alábbi módszer. Ennek az alapötlete a következő: keressük az $u$ megoldást
+\[
+	u(x, \, t) = F(x) \cdot G(t) \quad \BB{ x \in [0, \, l], \, t \in [0, \, + \infty) }
+\]
+alakban (\textit{Fourier-módszer}), ahol
+\[
+	F, \, G \in \R \to \R
+\]
+kétszer folytonosan differenciálható (alkalmas) függvények. Ekkor az
+\[
+	x \in [0, \, l], \, t \in [0, \, + \infty)
+\]
+helyeken
+\[
+	\partial_{22}u(x, \, t) = G''(t) F(x)
+\]
+és
+\[
+	\partial_{11}u(x, \, t) = F''(x) G(t),
+\]
+azaz
+\[
+	\partial_{22}u = q \cdot \partial_{11}u
+\]
+miatt teljesülnie kell a
+\[
+	G''(t) F(x) = q \cdot F''(x) G(t) \quad \BB{ x \in [0, \, l], \, t \in [0, \, + \infty) }
+\]
+egyenlőségnek. Világos, hogy ez csak úgy lehetséges, ha egy megfelelő $\lambda \in \R$ konstanssal
+\[
+	G''(t) = \lambda G(t) \quad \B{ t \in [0, \, + \infty)}
+\]
+és
+\[
+	F''(x) = \frac{\lambda}{q} F(x) \quad \big(x \in [0, \, l]\big).
+\]
+Mindez nem más, mint (két) homogén lineáris állandó együtthatós másodrendű differenciálegyenlet.\\
+
+Ha itt $\lambda = 0$, akkor $G'' \equiv F'' \equiv 0$, azaz valamilyen $c_1, \, c_2, \, c_3, \, c_4 \in \R$ együtthatókkal
+\[
+	G(t) = c_1 + c_2 t \quad (t \in \R)
+\]
+és
+\[
+	F(x) = c_3 + c_4 x \quad (x \in \R).
+\]
+Következésképpen
+\[
+	u(x, \, t) = (c_1 + c_2t)(c_3 + c_4 x) \quad (x \in [0, \, l], \, t \geq 0).
+\]
+Mivel
+\[
+	u(0, \, t) = c_3(c_1 + c_2 t) = 0 \quad (t \geq 0),
+\]
+ezért $c_3 = 0$, vagy
+\[
+	c_1 + c_2t = 0 \quad (t \geq 0),
+\]
+azaz
+\[
+	c_1 = c_2 = 0.
+\]
+Az utóbbi esetben $u \equiv 0$. Ha $|c_1| + |c_2| > 0$, akkor tehát $c_3 = 0$, és
+\[
+	u(l, \, t) = c_4l(c_1 + c_2t)  = 0 \quad (t \geq 0),
+\]
+amiből $c_4 = 0$ következik. Így ismét csak (a feladat szempontjából érdektelen) $u \equiv 0$ adódik.\\
+
+Tegyük fel most, hogy $\lambda > 0$. Ekkor a magasabb rendű homogén lineáris differenciálegyenletek megoldásáról mondottak alapján
+\[
+	G(t) = \alpha \cdot e^{t \sqrt{\lambda}} + \beta \cdot e^{-t \sqrt{\lambda}} \quad (t \geq 0)
+\]
+és
+\[
+	F(x) = \gamma \cdot e^{x \sqrt{\lambda / q}} + \delta \cdot e^{-x \sqrt{\lambda / q}} \quad (x \in \R)
+\]
+(ahol $\lambda, \, beta, \, \gamma, \, \delta \in \R$ alkalmas együtthatók). Ismét figyelembe véve a peremfeltételeket
+\[
+	u(0, \, t) = (\gamma + \delta) \cdot \B{ \alpha \cdot e^{t \sqrt{\lambda}} + \beta \cdot e ^{- t \sqrt{\lambda}} } = 0 \quad (t \geq 0),
+\]
+ezért
+\[
+	\alpha  \cdot e^{t \sqrt{\lambda}} + \beta \cdot e^{-t \sqrt{\lambda}} = 0 \quad (t \geq 0),
+\]
+vagy
+\[
+	\gamma + \delta = 0-
+\]
+Az első eset (könnyen beláthatóan) csak az $\alpha = \beta = 0$ együtthatókkal állhat fenn, ekkor $u \equiv 0$. Ha tehát $|\alpha| + |\beta| > 0$, akkor $\gamma + \delta = 0$. Továbbá
+\[
+	u(l, \, t) = \BB{ \gamma \cdot e^{l \sqrt{\lambda / q}} + \delta \cdot e^{-l \sqrt{\lambda / q}}} \BB{ \alpha \cdot e^{t \sqrt{\lambda}} + \beta \cdot e^{-t \sqrt{\lambda}} } = 0 \quad (t \geq 0),
+\]
+amiből
+\[
+	\gamma \cdot e^{l \sqrt{\lambda / q}} + \delta \cdot e^{-l \sqrt{\lambda / q}} = \gamma \cdot \BB{ e^{l \sqrt{\lambda / q}} - e^{-l \sqrt{\lambda / q}}} = 0
+\]
+következik. Ez azt jelenti, hogy vagy $\gamma = 0$, azaz egyúttal $\delta = 0$, vagy
+\[
+	e^{l \sqrt{\lambda / q}} - e^{-l \sqrt{\lambda / q}} = 0.
+\]
+Az utóbbi egyenlőségből $e^{2l \sqrt{\lambda / q}} = 1$, ami csak $\lambda = 0$ esetén állhat fenn. Mivel most $\lambda > 0$, ezért $\gamma = \delta = 0$, más szóval ismét $u \equiv 0$.\\
+
+Vizsgáljuk végül a $\lambda < 0$ esetet. Ismét magasabb rendű homogén lineáris differenciálegyenletek valós megoldásaira vonatkozó ismereteink szerint
+\[
+	G(t) = a \cdot \cos(t \sqrt{|\lambda|}) + b \cdot \sin(t \sqrt{|\lambda|}) \quad (t \geq 0)
+\]
+és
+\[
+	F(x) = c \cdot \cos(x \sqrt{|\lambda| / q}) + d \cdot \sin(x \sqrt{|\lambda| / q}) \quad (x \in \R)
+\]
+(valamilyen $a, \, b, \, c, \, d \in \R$ együtthatókkal). Az
+\[
+	u(0, \, t) = c \cdot \BB{ a \cdot \cos(t \sqrt{|\lambda|}) + b \cdot \sin(t\sqrt{|\lambda|}) } = 0 \quad ( t \geq 0)
+\]
+feltételből az előbbiekkel analóg módon kapjuk az $a = b = 0$ egyenlőséget, amikor is $u \equiv 0$, vagy
+\[
+	|a| + |b| > 0 \text{ és } c = 0,
+\]
+így
+\[
+	u(l, \, t) =
+\]
+\[
+	d \cdot \sin(l \sqrt{|\lambda| / q}) \cdot \BB{ a \cos(t\sqrt{|\lambda|})  + b \cdot \sin(t \sqrt{|\lambda|})} = 0 \quad (t \geq 0).
+\]
+Innen vagy $d = 0$, azaz ismét $u \equiv 0$ következik, vagy
+\[
+	\sin(l \sqrt{\lambda / q}) = 0.
+\]
+Az utóbbi egyenlőség viszont azzal ekvivalens, hogy valamilyen $0 < n \in \N$ számmal
+\[
+	\sqrt{|\lambda|} = \frac{\sqrt{q}\pi}{l}\cdot n.
+\]
+Egyszerűen ellenőrizhető, hogy tetszőleges $n \in \N$ és $a_n \, b_n, \, d_n \in \R$ paraméterekkel az
+\[
+	u_n(x, \, t) :=
+\]
+\[
+	d_n \cdot \sin(\pi n x /l) \cdot \B{ a_n \cdot \cos(\pi \sqrt{q} n t / l)  + b_n \cdot \sin(\pi \sqrt{q} n t / l)} \quad \big(x \in [0, \, l], \, t \geq 0\big)
+\]
+függvények megoldások.\\
+
+A részletek mellőzésével jegyezzük meg, hogy alkalmas feltételek mellett az
+\[
+	u(x, \, t) := \sum_{n=0}^\infty u_n (x, \, t) \quad \big(x \in [0, \, l], \, t \geq 0 \big)
+\]
+(függvénysor-)összegfüggvény létezik, szintén megoldás, és a kezdeti feltételek a következő alakúak:
+\[
+	u(x, \, 0) = \sum_{n=0}^\infty a_n d_n \cdot \sin(\pi n x / l) = f(x) \quad \big(x \in [0, \, l]\big),
+\]
+\[
+	\partial_2u(x, \, 0) = \frac{\pi \sqrt{q}}{l} \sum_{n=0}^\infty b_n d_n \cdot n \cdot \sin(\pi n x / l) = g(x) \quad \big(x \in [0, \, l]\big).
+\]
+Ezek az egyenlőségek tehát az $f$, ill. a $g$ függvény Fourier-sorba (speciálisan szinusz-sorba) fejtését jelentik. 

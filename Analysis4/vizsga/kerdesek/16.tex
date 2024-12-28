@@ -1,0 +1,84 @@
+\newpage
+\section{Vizsgakérdés}
+\begin{quote}
+	\textit{Kétszer folytonosan differenciálható függvények Fourier-sora. Az $f \in C_{2\pi}$, $f(x) := (x - \pi)^2 \, \, (0 \leq x \leq 2\pi)$ függvény Fourier-sora, a $\pi^2 / 6 = \sum_{n=1}^\infty n^{-1}$ egyenlőség.}
+\end{quote}
+
+A Weierstrass-kritérium nyilvánvaló következményeként kapjuk az alábbi állítást is: ha az $(a_n), \, (b_n)$ számsorozatokra
+\[
+	\sum_{n=0}^\infty (|a_n| + |b_n|) < + \infty,
+\]
+akkor az általuk meghatározott $\trigserieslatin$ trigonometrikus sor egyenletesen konvergens. Ui. 
+\[
+	|a_n \cdot \cos(nx) + b_n \cdot \sin(nx)| \leq |a_n| + |b_n| \quad (n \in \N, \, x \in \R).
+\]
+Ez a helyzet pl. akkor, ha az előbbi $a_n, \, b_n$ együtthatók egy $f \in C_{2\pi}$ függvény Fourier-együtthatói, és az $f$ kétszer folytonosan differenciálható. Ekkor ui. $1 \leq n \in \N$ mellett (kétszeri parciális integrálással)
+\[
+	\pi \cdot a_n = \int\limits_0^{2\pi} f(x) \cdot \cos(nx) \, dx =
+\]
+\[
+	-\frac{1}{n} \int\limits_0^{2\pi} f'(x) \cdot \sin(nx) \, dx = - \frac{1}{n^2} \int\limits_0^{2\pi} f''(x) \cdot \cos(nx) \, dx.
+\]
+Az $f''$ függvény (folytonos lévén) korlátos, mondjuk egy alkalmas $C$ számmal $|f''| \leq C$, így
+\[
+	|\pi \cdot a_n| \leq - \frac{1}{n^2} \int\limits_0^{2\pi} |f''(x)| \, dx \leq \frac{2 C \pi}{n^2}.
+\]
+Tehát
+\[
+	|a_n| \leq \frac{2C}{n^2}.
+\]
+Analóg módon járhatunk el a "szinuszos" együtthatók becslésénél:
+\[
+	|b_n| \leq \frac{2C}{n^2} \quad (1 \leq n \in \N).
+\]
+Mindebből már nyilvánvaló, hogy
+\[
+	\sum_{n=1}^\infty \BB{ |a_n| + |b_n| } < + \infty.
+\]
+
+\subsection{Függöny függvény Fourier-sora}
+
+Tekintsük az alábbi $f \in C_{2\pi}$ függvényt:
+\[
+	f(x) := \frac{(x-\pi)^2}{2} \quad \big(x \in [0, \, 2\pi]\big).
+\]
+Ekkor az $f$ páros függvény, ezért tetszőleges $1 \leq n \in \N$ esetén az
+\[
+	\R \ni \mapsto f(x) \cdot \sin(nx)
+\]
+függvény páratlan, és emiatt
+\[
+	\int\limits_{-\pi}^\pi f(x) \cdot \sin(nx) = \pi \cdot b_n = 0,
+\]
+azaz
+\[
+	b_n = 0 \quad (1 \leq n \in \N).
+\]
+Ugyanakkor
+\[
+	a_0 = \frac{1}{2\pi} \int\limits_0^{2\pi} f(x) \, dx = \frac{1}{4\pi} \cdot \int\limits_0^{2\pi} (x - \pi)^2 \, dx = \frac{\pi^2}{6},
+\]
+valamint az $1 \leq n \in \N$ indexekre (parciálisan integrálva)
+\[
+	a_n = \frac{1}{\pi} \cdot \int\limits_0^{2\pi} f(x) \cdot \cos(nx) \, dx = \frac{1}{2\pi} \int\limits_0^{2\pi} (x-\pi)^2 \cdot \cos(nx) \, dx = \frac{2}{n^2}.
+\]
+Tehát
+\[
+	|a_0| + \sum_{n=1}^\infty \BB{ |a_n| + |b_n| } = \frac{\pi^2}{6} + 2 \cdot \sum_{n=1} \frac{1}{n^2} < + \infty.
+\]
+Alkalmazható a Weierstrass-kritérium, miszerint az $f$ Fourier-sora egyenletesen konvergens, így
+\[
+	\frac{\pi^2}{6} + 2 \cdot \sum_{n=1}^\infty \frac{\cos(nx)}{n^2} \quad (x \in \R).
+\]
+Speciálisan
+\[
+	\frac{\pi^2}{6} + 2 \cdot \sum_{n=1}^\infty \frac{\cos(nx)}{n^2} = \frac{(x-\pi)^2}{2} \quad \big(x \in [0, \, 2\pi]\big).
+\]
+Ha itt $x = 0$-t írunk, akkor
+\[
+	\frac{\pi^2}{6} + 2 \cdot \sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{2},
+\]
+amiből rögtön adódik a (nem triviális) sorösszeg:
+\[
+	\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}.
+\]
