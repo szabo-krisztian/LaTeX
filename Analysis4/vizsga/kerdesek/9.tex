@@ -6,7 +6,7 @@
 
 Az előzőekben vizsgált
 \[
-	\p^{(n)} + \sum_{k=1}^{n-1} a_k(x) \cdot \p^{(k)}(x) = c(x) \quad (x \in \Dp)
+	\p^{(n)} + \sum_{k=0}^{n-1} a_k(x) \cdot \p^{(k)}(x) = c(x) \quad (x \in \Dp)
 \]
 $n$-edrendű lineáris differenciálegyenlet megoldásához tehát elegendő az $\mathcal{M}_h$ egy bázisát meghatározni. Ez általában "reménytelen" feladat, általános módszer nem is adható.\\
 
@@ -52,7 +52,7 @@ ezért (ami teljes indukcióval rögtön adódik)
 \]
 Így -- feltételezve most azt, hogy $\nu -1 \geq j + 1$ -- az alábbiakat kapjuk:
 \[
-	\sum_{k=0}^n a_k e_{\lambda, \, j+1}^{(k)}(x)  = x \cdot \sum_{k=0}^n e_{\lambda, \, j}^{(k)}(x) + \sum_{k=1}^n k a_k e_{\lambda, \, j}^{(k-1)}(x) =
+	\sum_{k=0}^n a_k e_{\lambda, \, j+1}^{(k)}(x)  = x \cdot \sum_{k=0}^n a_k e_{\lambda, \, j}^{(k)}(x) + \sum_{k=1}^n k a_k e_{\lambda, \, j}^{(k-1)}(x) =
 \]
 \[
 	\sum_{k=0}^{n-1} (k+1) a_{k+1} e_{\lambda, \, j}^{(k)}(x) \quad (x \in \R).
@@ -102,15 +102,15 @@ Ennél még több is igaz, nevezetesen:\\
 
 Az előző tétel alapján kapott
 \[
-	\p_{lj}(x) := x^j e^{\lambda_l x} \quad (x \in I, \, l = 1, \, \dots, \, k; \, j = 0, \, \dots, \, \nu_l)
+	\p_{lj}(x) := x^j e^{\lambda_l x} \quad (x \in I, \, l = 1, \, \dots, \, k; \, j = 0, \, \dots, \, \nu_l - 1)
 \]
 alaprendszerben a $\p_{lj} \quad (l = 1, \, \dots, \, k; \, j = 0, \, \dots, \, \nu_l)$ függvények valós értékűek, ha a szóban forgó $n$-edrendű lineáris differenciálegyenlet $P$ karakterisztikus polinomjában a $\lambda_l$ gyök valós szám. Ha viszont valamilyen $l = 1, \, \dots, \, k$ esetén a $\lambda_l$ gyök nem valós komplex szám, akkor a következőket mondhatjuk. Legyen ekkor
 \[
-	\lambda_k = u_k + \imath v_l,
+	\lambda_l = u_l + \imath v_l,
 \]
 ahol $u_l, \, v_l \in \R$ és $v_l \neq 0$. Mivel a $P$ polinom valós együtthatós, ezért a
 \[
-	\overline{\lambda_l} = u_l + \imath v_l
+	\overline{\lambda_l} = u_l - \imath v_l
 \]
 komplex konjugált is $v_l$-szeres gyöke a $P$-nek. Ez azt jelenti, hogy a fenti alaprendszerben a
 \[
@@ -125,7 +125,7 @@ Itt tetszőleges $j = 0, \, \dots, \, \nu_l - 1$ mellett
 	\phi_{lj}(x) = \text{Re} \, \p_{lj}(x) = \text{Re} \, (x^j \cdot e^{\lambda_l x}) = \text{Re} \, (x^j \cdot e^{u_lx + \imath v_l x}) =
 \]
 \[
-	\text{Re} \, \B{ x^j \cdot e^{u_l x} (\cos(v_lx) + \imath \sin(v_l x)) = x^j \cdot e^{u_l x} \cdot \cos(v_l x)} \quad (x \in I),
+	\text{Re} \, \B{ x^j \cdot e^{u_l x} (\cos(v_lx) + \imath \sin(v_l x))} = x^j \cdot e^{u_l x} \cdot \cos(v_l x) \quad (x \in I),
 \]
 és (analóg számolás után)
 \[

@@ -4,7 +4,7 @@
 	\textit{Partikuláris megoldás kvázi-polinom jobb oldal esetén (a bizonyítás vázlata). A csillapítás nélküli kényszerrezgés vizsgálata, rezonancia.}
 \end{quote}
 
-\subsection{Kvázipolinomok}
+\subsection{Kvázi-polinomok}
 
 Az állandó együtthatós
 \begin{equation}
@@ -12,17 +12,17 @@ Az állandó együtthatós
 	\tag{$\star$}
 \end{equation}
 
-$n$-edrendű lineáris differenciálegyenlet egy partikuláris megoldásának az állandók variálásával való előállítása esetenként sok számolást igénylő feladat. Ezért "megbecsülendők" azok a módszerek, amelyek révén (az illető differenciálegyenlettől függően) más úton juthatunk el egy partikuláris megoldáshoz. Ez a más út gyakran a feladat jobb oldala, azaz a $c$ függvény speciális "szerkezete" révén lehetséges. Ilyen függvények pl. az ún. kvázipolinomok.
+$n$-edrendű lineáris differenciálegyenlet egy partikuláris megoldásának az állandók variálásával való előállítása esetenként sok számolást igénylő feladat. Ezért "megbecsülendők" azok a módszerek, amelyek révén (az illető differenciálegyenlettől függően) más úton juthatunk el egy partikuláris megoldáshoz. Ez a más út gyakran a feladat jobb oldala, azaz a $c$ függvény speciális "szerkezete" révén lehetséges. Ilyen függvények pl. az ún. kvázi-polinomok.
 Az
 \[
 	f : \R \to \K
 \]
-függvényt \textit{kvázipolinomnak} nevezzük, ha egy $R$ (algebrai) polinom és $\lambda \in \K$ szám mellett
+függvényt \textit{kvázi-polinomnak} nevezzük, ha egy $R$ (algebrai) polinom és $\lambda \in \K$ szám mellett
 \[
 	f(x) = R(x) \cdot e_\lambda(x) = R(x) \cdot e^{\lambda x} \quad (x \in \R).
 \]
 
-\subsection{Kvázopolinom jobb oldal}
+\subsection{Kvázi-polinom jobb oldal}
 
 \tikz \node[theorem]
 {
@@ -34,17 +34,17 @@ függvényt \textit{kvázipolinomnak} nevezzük, ha egy $R$ (algebrai) polinom �
 	\[
 		\omega(x) := x^r \cdot R(x) \cdot e^{\lambda x} \quad (x \in \R)
 	\]
-	kvázipolinomra
+	kvázi-polinomra
 	\[
 		\omega^{(n)}(x) + \sum_{k=0}^{n-1} a_k \cdot \omega^{(k)}(x) = Q(x) \cdot e^{\lambda x} \quad (x \in \R).
 	\]
 };\\
 
-Tehát  a $\p := \omega$ függvény (kvázipolinom) a
+Tehát  a $\p := \omega$ függvény (kvázi-polinom) a
 \[
 	 c(x) := Q(x) \cdot e^{\lambda x} \quad (x \in \R)
 \]
-jobb oldal (kvázipolinom) esetén eleget tesz a $(\star)$ egyenlőségnek, azaz megoldása az illető differenciálegyenletnek. Ha itt pl. $r=0$, azaz $P(\lambda) \neq 0$, akkor a keresett $R$ polinommal
+jobb oldal (kvázi-polinom) esetén eleget tesz a $(\star)$ egyenlőségnek, azaz megoldása az illető differenciálegyenletnek. Ha itt pl. $r=0$, azaz $P(\lambda) \neq 0$, akkor a keresett $R$ polinommal
 \[
 	\omega = R \cdot e_\lambda.
 \]
@@ -155,7 +155,7 @@ Ha viszont $\omega = \omega_0$, akkor most egy $\gamma \in \R$ együtthatóval a
 \[
 	\p_\gamma(x) := \gamma \cdot x \cdot \cos(\omega x + \theta) \quad (x \in \R)
 \]
-függvényre kell, hogy fennáljon a
+függvényre kell, hogy fennálljon a
 \[
 	\p_\gamma''(x) + \omega_0^2 \p_\gamma(x) =
 \]
