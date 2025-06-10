@@ -1,0 +1,154 @@
+\intro{A nullamértékű halmaz fogalma, a majdnem mindenütt terminológia. A Riemann-integrálhatóság Lebesgue-kritériuma.}
+
+Túl szűk azoknak a függvényeknek az összessége, amelyek Riemann-integrálhatók, nevezetesen, bizonyos értelemben a folytonosság "majdnem" szükséges az integrálhatósághoz. Másrészt pl. olyan, az analízis szempontjából alapvető művelet, mint a határátmenet eredményére nem "öröklődik" az integrálhatóság, ill. ha ez utóbbi teljesül is, akkor is csak erős feltételek mellett cserélhető fel a határátmenet és az integrálás. Az sem mellékes, hogy pl. a valós vagy a komplex számok körében alapvető fontosságú teljesség (azaz a sorozatok konvergenciájának és a Cauchy-tulajdonságának az
+ekvivalenciája) nem igaz az $R[a, \, b]$-ben természetes módon értelmezhető távolságfogalom tekintetében. Többek között ezek a szempontok is tették szükségessé egy olyan integrálfogalom megalkotását, amelyik pl. a most felsorolt hiányosságokat kiküszöböli.
+
+\subsection{Nullamértékű halmaz fogalma}
+
+Megmutatjuk, hogy "lényegében" csak a folytonos függvények Riemann-integrálhatók. Vezessük be ehhez először is a (Lebesgue szerint) nullamértékű halmaz fogalmát: azt mondjuk, hogy az $A \subset \R$ halmaz \textit{nullamértékű}, ha tetszőleges $\varepsilon > 0$ számhoz megadható $I_k \subset \R \, \, (k \in \N)$ intervallumoknak egy olyan sorozata, hogy
+
+\[
+	A \subset \bigcup_{k=0}^\infty I_k \quad \text{ és } \quad \sum_{k=0}^\infty |I_k| < \varepsilon.
+\]
+
+Egyszerűen belátható, hogy az $\R$ minden, legfeljebb megszámlálható részhalmaza nullamértékű. Sőt, ha $X_k \subset \R \, \, (k \in \N)$ nullamértékű, akkor az $\cup_{k=0}^\infty$ halmaz is nullamértékű. Az is egyszerűen adódik, hogy a nullamértékűség előbbi definíciójában (ha adott esetben szükség van rá) nyugodtan feltehető, hogy a szóban forgó $I_k \, \, (k \in \N)$ intervallumok mindegyike nyílt. Világos, hogy egy nullamértékű halmaz minden részhalmaza is nullamértékű.
+
+Könnyű meggondolni azt is, hogy egy $[a, \, b] \, \, (a, \, b \in \R, \, a < b)$ intervallum nem nullamértékű.
+
+\subsection{Lebesgue-kritérium}
+
+\bblock{Tétel}{
+	Tegyük fel, hogy az $[a, \, b] \subset \R \, \, (a, \, b \in \R, \, a < b)$ kompakt intervallumon értelmezett $f : [a, \, b] \to \R$ függvény korlátos, és legyen az $f$ szakadási helyeinek a halmaza
+	\[
+		\mathcal{A}_f := \big\{ x \in [a, \, b] : f \not\in C\{x\} \big\}.
+	\]
+	Ekkor
+	\[
+		f \in R[a, \, b] \quad \Longleftrightarrow \quad \mathcal{A}_f \text{ nullamértékű halmaz.}
+	\]
+}
+
+\textbf{Bizonyítás.} Induljunk ki először abból, hogy $f \in 
+R[a, \, b]$. Legyen $\alpha \in [a, \, b]$, és valamilyen $J \subset \R$ intervallum esetén $\alpha \in \text{int} \, J$, amikor is
+\[
+	O_Jf := \sup \big\{ |f(x) - f(y)| : x, \, y \in J \cap [a, \, b] \big\}
+\]
+az $f$ \textit{oszcillációja} a $J$ intervallumon. Az $f$ függvény $\alpha$-beli lokális oszcillációját a következőképpen értelmezzük:
+\[
+	\Delta_\alpha f := \inf \{ O_Jf : J \subset \R \text{ intervallum}, \, \alpha \in \text{int} \, J\}.
+\]
+Mutassuk meg először is azt, hogy
+\[
+	f \in C\{\alpha\} \quad \Longleftrightarrow \quad \Delta_\alpha f = 0.
+\]
+Valóban, ha $f \in C\{\alpha\}$, akkor minden $\varepsilon > 0$ számhoz van olyan $\delta > 0$, hogy
+\[
+	|f(x) - f(\alpha)| < \varepsilon \quad (x \in [a, \, b], \, |x - \alpha| < \delta).
+\]
+Ezért
+\[
+	|f(x) - f(y)| \leq
+\]
+\[
+	|f(x) - f(\alpha)| + |f(\alpha) - f(y)| < 2\varepsilon \quad (x, \, y \in [a, \, b], \, |x - \alpha|, \, |y - \alpha| < \delta).
+\]
+Így minden olyan $J \subset \R$ intervallumra, amelyre $\alpha \in \text{int} \, J$ és $d_J < \delta$, igaz, hogy
+\[
+	|f(x) - f(y)| < 2\varepsilon,
+\]
+amiből $O_Jf \leq 2\varepsilon$ következik. Ez azt jelenti, hogy $(0 \leq) \, \, \Delta_\alpha f \leq 2\varepsilon$. Mindez csak úgy lehetséges, ha $\Delta_\alpha f = 0$.
+
+Ha most azt tesszük fel, hogy $\Delta_\alpha f = 0$, akkor az infimum tulajdonságait figyelembe véve bármilyen $\varepsilon > 0$ számhoz találunk olyan $J \subset R$ intervallumot, amellyel $\alpha \in \text{int} \, J$, és $O_J f < \varepsilon$. Tehát
+\[
+	|f(x) - f(y)| < \varepsilon \quad (x, \, y \in J \cap [a, \, b]),
+\]
+speciálisan
+\[
+	|f(x) - f(\alpha)| < \varepsilon \quad (x \in J \cap [a, \, b]).
+\]
+Mivel $\alpha \in \text{int} \, J$, ezért van olyan $\delta > 0$, hogy $x \in J \, \, (x \in [a, \, b], \, |x - \alpha| < \delta)$. Így
+\[
+	|f(x) - f(\alpha)| < \varepsilon \quad (x \in [a, \, b], \, |x - \alpha| < \delta),
+\]
+azaz $f \in C\{\alpha\}$.
+
+A lokális oszcilláció és a pontbeli folytonosság kapcsolatáról most belátott ekvivalencia alapján
+\[
+	\mathcal{A}_f = \{ x \in [a, \, b] : \Delta_x f > 0\} = \bigcup_{k = 1}^\infty \left\{ x \in [a, \, b] : \Delta_x f > 1/k\right\} =: \bigcup_{k=1}^\infty A_k.
+\]
+Az $\mathcal{A}_f$ halmaz nullamértékűségéhez elegendő azt megmutatni, hogy az
+\[
+	A_\delta := \{ x \in [a, \, b] : \Delta_x f > \delta\} \quad (\delta > 0)
+\]
+halmazok nullamértékűek. Legyen $\sigma > 0$, amikor is a Riemann-integrálhatóságnak az oszcillációs összegekkel való jellemzése folytán az $[a, \, b]$ intervallum egy alkalmas $\tau$ felosztásával
+\[
+	\omega(f, \, \tau) = \sum_{J \in \mathcal{\tau}} o_J(f) \cdot |J| < \sigma,
+\]
+$\mathcal{F}(\tau)$ jelöli a $\tau$ felosztás által meghatározott osztásintervallumok halmazát. Ekkor tetszőleges $\delta > 0$ mellett
+\[
+	\sigma > \omega(f, \, \tau) = \sum_{J \in \mathcal{F}(\tau)} o_J(f) \cdot |J| \geq \sum_{J \in \mathcal{F}(\tau), \, A_\delta \cap \text{int} \, J \neq \emptyset} o_J(f) \cdot |J|.
+\]
+Világos, hogy minden $J \in \mathcal{F}(\tau), \, A_\delta \cap \text{int} \, J \neq \emptyset$ osztásintervallum esetén $o_J(f) \geq \delta$, ezért
+\[
+	\sigma > \delta \cdot \sum_{J \in \mathcal{F}(\tau), \, A_\delta \cap \text{int} \, J \neq \emptyset} |J|.
+\]
+Más szóval
+\[
+\sum_{J \in \mathcal{F}(\tau), \, A_\delta \cap \text{int} \, J \neq \emptyset} |J| < \frac{\sigma}{\delta}.
+\]
+Legyen itt valamilyen $\varepsilon > 0$ mellett a $\sigma > 0$ olyan, hogy $\sigma / \delta < \varepsilon / 2$. Nyilván
+\[
+	A_\delta \subset \left( \bigcup_{J \in \mathcal{F}(\tau), \, A_\delta \cap \text{int} \, J \neq \emptyset} J \right) \bigcup \left( \bigcup_{J \in \mathcal{F}(\tau)} (J \, \backslash \, \text{int} \, J) \right),
+\]
+ahol minden $J \, \backslash \, \text{int} \, J \, \, (J \in \mathcal{F}(\tau))$ nullamértékű halmaz, és így az 
+\[
+	\bigcup_{J \in \mathcal{F}(\tau)} (J \, \backslash \, \text{int} \, J)
+\]
+halmaz is nullamértékű. Ezért alkalmas $K_j \subset \R \, \, (j \in \N)$ intervallumsorozattal
+\[
+	\bigcup_{J \in \mathcal{F}(\tau)} (J \, \backslash \, \text{int} \, J) \subset \bigcup_{j=0}^\infty K_j,
+\]
+és
+\[
+	\sum_{j=0}^\infty |K_j| < \frac{\varepsilon}{2}.
+\]
+Mindezeket egybevetve
+\[
+	A_\delta \subset \left( \bigcup_{J \in \mathcal{F}(\tau), \, A_\delta \cap \text{int} \, J \neq \emptyset} J \right) \bigcup \left(\bigcup_{j=0}^\infty K_j\right),
+\]
+és
+\[
+	\sum_{J \in \mathcal{F}(\tau), \, A_\delta \cap \text{int} \, J \neq \emptyset} |J| + \sum_{j=0}^\infty |K_j| < \varepsilon.
+\]
+Ez pontosan azt jelenti, hogy az $A_\delta$ halmaz nullamértékű.
+
+Most tegyük fel azt, hogy az $\mathcal{A}_f$ halmaz nullamértékű. Legyen adott az $\varepsilon > 0$ szám, ekkor egy alkalmas, kompakt intervallumokból álló $L_k \subset \R \, \, (k \in \N)$ intervallumsorozattal
+\[
+	\mathcal{A}_f \subset \bigcup_{k=0}^\infty \text{int} \, L_k, \, \sum_{k=0}^\infty |L_k| <\frac{\varepsilon}{4C},
+\]
+ahol $C >0$, és $|f(x)| \leq C \, \, (x \in [a, \, b])$. Ha $x \in [a, \, b] \, \backslash \, \mathcal{A}_f$, azaz $f \in C\{x\}$, akkor van olyan $I_x \subset \R$ intervallum, amelyre $x \in \text{int} \, I_x$, és
+\[
+	O_{I_x}f = \sup\{ |f(t) - f(y)| \in \R : t, \, y \in I_x \cap [a, \, b]\} < \frac{\varepsilon}{2(b-a)}.
+\]
+Világos, hogy
+\[
+	[a, \, b] \subset \left(\bigcup_{k=0}^\infty \text{int} \, L_k\right) \bigcup \left(\bigcup_{x \in [a, \, b] \, \backslash \, \mathcal{A}_f} \text{int} \, I_x\right).
+\]
+Az $[a, \, b]$ kompaktsága miatt az előbbi nyílt lefedést figyelembe véve kapunk olyan véges $A \subset \N, \, B \subset [a, \, b] \, \backslash \, \mathcal{A}_f$ halmazokat, amelyekkel
+\[
+	[a, \, b] \subset \left(\bigcup_{k \in A}^\infty \text{int} \, L_k\right) \bigcup \left(\bigcup_{x \in B} \text{int} \, I_x\right)
+\]
+Legyen $\tau \subset [a, \, b]$ az a felosztás, amit az $a, \, b$ és az $L_k \, \, (k \in A), \, I_x \, \, (x \in B)$ intervallumok $[a, \, b]$-be eső végpontjai alkotnak. Világos, hogy bármelyik $J \in \mathcal{F}(\tau)$ osztásintervallumra egy-egy alkalmas $k \in A$, vagy $x \in B$ mellett $J \subset L_k$, vagy $J \subset I_x$ (esetleg mindkét tartalmazás igaz). Ha $k \in A$ és $J \subset L_k$, akkor $o_J(f) \leq 2C$. Ha pedig $x \in B$ és $J \subset I_x$, akkor $o_J(f) \leq \varepsilon / (2(b-a))$. Ezért a $\tau$-hoz tartozó $\omega(f, \, \tau)$ oszcillációs összegről az alábbiakat mondhatjuk:
+\[
+	\omega(f, \, \tau) = \sum_{J \in \mathcal{F}(\tau) } o_J(f) \cdot |J| \leq
+\]
+\[
+	\sum_{J \in \mathcal{F}(\tau), \, \exists k \in A : J \subset L_k} o_J(f) \cdot |J| + \sum_{J \in \mathcal{F}(\tau), \, \exists x \in B : J \subset I_x} o_J(f) \cdot |J| \leq
+\]
+\[
+	2C \cdot \sum_{J \in \mathcal{F}(\tau), \, \exists k \in A : J \subset L_k} |J| + \frac{\varepsilon}{2(b-a)} \cdot \sum_{J \in \mathcal{F}(\tau), \, \exists x \in B : J \subset I_x} |J| \leq
+\]
+\[
+	2C \cdot \sum_{k=0}^\infty |L_k| + \frac{\varepsilon}{2(b-a)} \cdot \sum_{J \in \mathcal{F}(\tau)} |J| \leq 2C \cdot \frac{\varepsilon}{4C} + \frac{\varepsilon}{2(b-a)} \cdot (b-a) = \varepsilon.
+\]
+Tehát $f \in R[a, \, b]$. $\blacksquare$
