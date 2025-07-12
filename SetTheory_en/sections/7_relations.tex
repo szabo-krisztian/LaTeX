@@ -43,3 +43,35 @@ If we have a set $X = \{ a, \, b, \, c\}$, then
 		R_3 = \{ (a, \, a), \, (b, \, b), \, (c, \, c), \, (a, \, b), \, (b, \, a), \, (b, \, c), \, (c, \, b)\}.
 	\]
 \end{itemize}
+
+A relation in a set is an \textit{equivalence relation} if it is reflexive, symmetric, and transitive. The smallest equivalence relation in a set $X$ is the relation of equality in $X$; the largest equivalence relation in $X$ is $X \times X$.
+
+There is an intimate connection between equivalence relations in a set $X$ and certain collections (called partitions) of subsets of $X$. A \textit{partition} of $X$ is a disjoint collection $\mathcal{C}$ of non-empty subsets of $X$ whose union is $X$. If $R$ is an equivalence relation in $X$, and if $x$ is in $X$, the \textit{equivalence class} of $x$ with respect to $R$ is the set of all those elements $y$ in $X$ for which $xRy$. (The weight of tradition makes the use of the word "class" at this point unavoidable.) Examples: if $R$ is equality in $X$, then each equivalence class is a singleton; if $R = X \times X$, then the set $X$ itself is the only equivalence class. There is no standard notation for the equivalence class of $x$ with respect to $R$; we shall usually denote it by $x / R$, and we shall write $X / R$ for the set of all equivalence classes. (Pronounce $X / R$ as "$X \text{ modulo } R$", or, in abbreviated form, "$X \text{ mod } R$".)
+
+\begin{quote}
+	\textbf{Exercise.} Show that $X / R$ is indeed a set by exhibiting a condition that specifies exactly the subset $X / R$ of the power set $\mathcal{P}(X)$.
+\end{quote}
+
+\textbf{Editor's proof.} The condition $S_1$ guarantees that if $A \in \mathcal{P}(X)$, then all the elements of $A$ are in relation:
+\[
+	S_1(x) = \text{for every } x \, (x \in A \text{ and } (\text{for every } y \, (y \in A \text{ and } xRy))).
+\]
+The condition $S_2$ guarantees that if $x \in X$ and $xRy$ for some $y \in A$ then $x \in A$:
+\[
+	S_2(x) = \text{for every } x \, (x \in X \text{ and } (\text{if for some }  y \, (y \in A \text{ and } xRy) \text{ then } x \in A).
+\]
+\[
+	X / R = \{C \in \mathcal{P}(X) : C \neq \emptyset \text{ and for every } x \, (x \in C \text{ and } (S_1(x) \text{ and } S_2(x)))\}.
+\]
+
+Now forget $R$ for a moment and begin anew with partition $\mathcal{C}$ of $X$. A relation, which we shall call $X / \mathcal{C}$, is defined in $X$ by writing
+\[
+	x X / \mathcal{C} y
+\]
+just in case $x$ and $y$ belong to the same set of the collection $\mathcal{C}$. We shall call $X / \mathcal{C}$ the relation \textit{induced} by the partition $\mathcal{C}$.
+
+In the preceding paragraph we saw how to associate a set of subsets of $X$ with every equivalence relation in $X$ and how to associate a relation in $X$ with every partition of $X$. The connection between equivalence relations and partitions can be described by saying that the passage from $\mathcal{C}$ to $X / \mathcal{C}$ is exactly the reverse of the passage from $R$ to $X / R$. More explicitly: if $R$ is an equivalence relation in $X$, then the set of equivalence classes is a partition of $X$ that induces the relation $R$, and if $\mathcal{C}$ is a partition of $X$, then the induced relation is an equivalence relation whose set of equivalence classes is exactly $\mathcal{C}$.
+
+For the proof, let us start with an equivalence relation $R$. Since each $x$ belongs to some equivalence class (for instance $x \in x / R$), it is clear that the union of the equivalence classes is all $X$. If $z \in x / R \cap y / R$, then $x R z$ and $z R y$, and therefore $x R y$. This implies that if two equivalence classes have an element in common, then they are identical, or, in other words, that two distinct equivalence classes are always disjoint. The set of equivalence classes is therefore a partition. To say that two elements belongs to the same set (equivalence class) of this this partition means, by definition, that stand in the relation $R$ to one another. This proves the first half of our assertion.
+
+The second half is easier. Start partition $\mathcal{C}$ and consider the induced relation. Since every element of $X$ belongs to some set of $\mathcal{C}$, reflexivity just says that $x$ and $x$ are in the same set of $\mathcal{C}$. Symmetry says that if $x$ and $y$ are in the same set of $\mathcal{C}$, then $y$ and $x$ are in the same set of $\mathcal{C}$, and this is obviously true. Transitivity says that if $x$ and $y$ are in the same set of $\mathcal{C}$ and if $y$ and $z$ are in the same set of $\mathcal{C}$, then $x$ and $z$ are in the same set of $\mathcal{C}$, and this too is obvious. The equivalence class of each $x$ in $X$ is just the set of $\mathcal{C}$ which $x$ belongs. This completes the proof of everything that was promised.
