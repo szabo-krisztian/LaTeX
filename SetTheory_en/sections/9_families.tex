@@ -1,0 +1,164 @@
+\section{Families}
+
+There are occasions when the range of a function is deemed to be more important than the function itself. When that is the case, both the terminology and the notation undergo radical alternations. Suppose, for instance, that $x$ is a function from a set $I$ to a set $X$:
+\[
+	x : I \to X.
+\]
+(The very choice of letters indicates that something strange is afoot.) An element of the domain $I$ is called an \textit{index}, $I$ is called the \textit{index set}, the range of the function is called an \textit{indexed set}, the function itself is called a \textit{family}, and the value of the function $x$ at an index $i$, called a \textit{term} of the family, is denoted by $x_i$. (This terminology is not absolutely established, but it is one of the standard choices among related slight variants; in the sequel it and it alone will be used.) An unacceptable but generally accepted way of communicating the notation and indicating the emphasis is to speak of a family $\{x_i\}$ in $X$, or of a family $\{x_i\}$ of whatever the elements of $X$ may be; when necessary, the index set $I$ is indicated by some such parenthetical expression as $(i \in I)$. Thus, for instance, the phrase "a family $\{A_i\}$ of subsets of $X$" is usually understood to refer to a function $A$, from some set $I$ of indices, into $\mathcal{P}(X)$.
+
+If $\{A_i\}$ is a family of subsets of $X$, the union of the range of the family is called the union of the family $\{A_i\}$, or the union of the sets $A_i$; the standard notation for it is
+\[
+	\bigcup_{i \in I} A_i \quad \text{or} \quad \bigcup_i A_i,
+\]
+according as it is or is not important to emphasize the index set $I$. It follows immediately from the definition of unions that
+\[
+	x \in \bigcup_i A_i
+\]
+if and only if $x$ belongs to $A_i$ for at least one $i$. If $I = 2$, so that the range of the family $\{A_i\}$ is the unordered pair $\{A_0, \, A_1\}$,then
+\[
+	\bigcup_i A_i = A_0 \cup A_1.
+\]
+Observe that there is no loss of generality in considering families of sets instead of arbitrary collections of sets; every collection of sets is the range of some family. If, indeed, $\mathcal{C}$ is a collection of sets, let $\mathcal{C}$ itself play the role of the index set, and consider the identity mapping on $\mathcal{C}$ in the role of the family.
+
+The algebraic laws satisfied by the operation of union for pairs can be generalized to arbitrary unions. Suppose, for instance, that \[\{I_j\}\] is a family of sets with domain $J$, say; write $K = \bigcup_j I_j$, and let $\{A_k\}$ be a family of sets with domain $K$. It is then not difficult to prove that
+\[
+	\bigcup_{k \in K} A_k = \bigcup_{j \in J} \left( \bigcup_{i \in I_j} A_i\right);
+\]
+this is the generalized version of the associative law for unions.
+
+\begin{quote}
+	\textbf{Exercise.} Formulate and prove a generalized version of the commutative law.
+\end{quote}
+
+\textbf{Editor's proof.} Let $\{A_i\}$ be a family of sets with domain $I$ and suppose that $\nu : I \to I$ is onto (and also one-to-one) mapping. The commutative law says
+\[
+	\bigcup_{i \in I} A_i = \bigcup_{i \in I} A_{v_i}.
+\]
+If $x \in \bigcup_i A_i$ then there exists $i \in I$ such that $x \in A_i$. However since $\nu$ is onto, there exists a $j \in I$ such that $\nu_j = i$. Therefore $x \in A_i = A_{\nu_i} \subset \bigcup_i A_{\nu_i}$.
+
+If $x \in \bigcup_i A_{\nu_i}$ then there exists a $i \in I$ such that $x \in A_{\nu_i}$. Since, of  course, $\nu_i \in I$, $x$ also belongs to the left side.
+
+An empty union makes sense (and is empty), but an empty intersection does not make sense. Except for this triviality, the terminology and notation for intersections parallels that for unions in every respect. Thus, for instance, if $\{A_i\}$ is a non-empty family of sets, the intersection of the range of the family is called the intersection of the family $\{A_i\}$, of the intersection of the sets $A_i$; the standard notation for it is
+\[
+	\bigcap_{i \in I} A_i \quad \text{or} \quad \bigcap_i A_i,
+\]
+according as it is or not important to emphasize the index set $I$. (By a "non-empty family" we mean a family whose domain $I$ is not empty.) It follows immediately from the definition of intersections that if $I \neq \emptyset$, then a necessary and sufficient condition that $x$ belongs to $\bigcap_i A_i$ is that $x$ belong to $A_i$ for all $i$.
+
+The generalized commutative and associative laws for intersections can be formulated and proved the same way as for unions, or, alternatively, De Morgan's laws can be used to derive them from the facts for unions. This is almost obvious, and, therefore it is not of much interest. The interesting algebraic identities are the ones that involve both unions and intersections. Thus, for instance, if $\{A_i\}$ is a family of subsets of $X$ and $B \subset X$, then
+\[
+	B \cap \bigcup_i A_i = \bigcup_i (B \cap A_i)
+\]
+and
+\[
+	B \cup \bigcap_i A_i = \bigcap_i (B \cup A_i);
+\]
+these equations are a mild generalization of the distributive laws.
+
+\begin{quote}
+	\textbf{Exercise.} If both $\{A_i\}$ and $\{B_j\}$ are families of sets, then
+	\[
+		\left( \bigcup_i A_i \right) \cap \left( \bigcup_j B_j \right) = \bigcup_{i, \, j} (A_i \cap B_j)
+	\]
+	and
+	\[
+	\left( \bigcap_i A_i \right) \cup \left( \bigcap_j B_j \right) = \bigcap_{i, \, j} (A_i \cup B_j).
+	\]
+	Explanation of notation: a symbol $\bigcup_{i, \, j}$ is an abbreviation for $\bigcup_{(i, \, j) \in I \times J}$.
+\end{quote}
+
+\textbf{Editor's proof.} If
+\[
+	x \in \bigcup_i A_i,
+\]
+then for some $i \in I$, $x \in A_i$. The same is true for $\bigcup_j B_j$, therefore, for some $j \in J$, $x \in B_j$. If $x$ belongs to the intersection of these two sets (unions), then $x \in A_i$ and $x \in B_j$, therefore $x \in A_i \cap B_j$. In reverse, if $x \in \bigcup_{i, \, j} (A_i \cap B_j)$, then for some $(i, \, j) \in I \times J$, $x \in A_i$ and $x \in B_j$. The first proof is complete.
+
+Suppose that
+\[
+	x \in \bigcap_i A_i,
+\]
+then for all $i \in I$, $x \in A_i$. The same is true for all $j \in J$, $x \in B_j$, if $x \in \bigcap_j B_j$. Either the first one or the second one is true, we get that, for all $(i, \, j) \in I \times J$
+\[
+	x \in A_i \cup B_j.
+\]
+In the reverse direction suppose that 
+\[
+	x \in \bigcap_{i, \, j} (A_i \cup B_j),
+\]
+then for all $(i, \, j) \in I \times J$
+\[
+	x \in A_i \cup B_j.
+\]
+Assume, for the sake of contradiction, that $x$ does not belong to the left side of the equations, that is, to the set
+\[
+	\left( \bigcap_i A_i \right) \cup \left( \bigcap_j B_j \right).
+\]
+That means, $x \not \in \bigcap_i A_i$ and $x \not \in \bigcap B_j$. Therefore for some $i \in I$ and $j \in J$, $x \not \in A_i$ and $x \not \in B_j$. But $(i, \, j) \in I \times J$, therefore $x \in A_i \cup B_j$; which contradicts our assumption.
+
+The notation of families is the one normally used in generalizing the concept of Cartesian product. The Cartesian product of two sets $X$ and $Y$ was defined as the set of all ordered pairs $(x, \, y)$ with $x$ in $X$ and $y$ in $Y$. There is a natural one-to-one correspondence between this set and a certain set of families. Consider, indeed, ay particular unordered pair $\{a, \, b\}$, with $a \neq b$, and consider the set $Z$ of all families $z$, indexed by $\{a,\, b\}$, such that $z_a \in X$ and $z_b \in Y$. If the function $f$ is defined as
+\[
+	f : Z \to X \times Y, \quad f(z) = (z_a, \, z_b) \quad (\text{for all } z \in Z),
+\]
+then $f$ is the promised one-to-one correspondence. The difference between $Z$ and $X \times Y$ is merely a matter of notation. The generalization of Cartesian products generalizes $Z$ rather than $X \times Y$ itself. (As a consequence there is a little terminological friction in the passage from the special case to the general. There is no help for it; that is how mathematical language is in fact used nowadays.) The generalization is now straightforward. If $\{X_i\}$ is a family of set $(i \in I)$, the \textit{Cartesian product} of the family is, by definition, the set of all families $\{x_i\}$ with $x_i \in X_i$ for each $i$ in $I$. There are several symbols for the Cartesian product in more or less current usage; in this book we shall denote it by
+\[
+	\bigtimes_{i \in I} X_i \quad \text{or} \quad \bigtimes_i X_i.
+\]
+It is clear that if every $X_i$ is equal to one and the same set $X$, then $\bigtimes_i X_i = X^I$. If $I$ is a pair $\{a, \, b\}$, with $a \neq b$, then it is customary to identify $\bigtimes_{i \in I} X_i$ with the Cartesian product $X_a \times X_b$ as defined earlier, and if $I$ is a singleton $\{a\}$, then, similarly, we identify $\bigtimes_{i \in I} X_i$ with $X_a$ itself. \textit{Ordered triples, ordered quadruples}, etc., may be defined as families whose index sets are unordered triples, quadruples, etc.
+
+Suppose that $\{X_i\}$ if a family of sets $(i \in I)$ and let $X$ be its Cartesian product. If $J$ is a subset of $I$, then to each element of $X$ there corresponds in a natural way an element of the partial Cartesian product $\bigtimes_{i \in J} X_i$. To define the correspondence, recall that each element $x$ of $X$ is itself a family $\{x_i\}$, that is, in the last analysis, a function on $I$; the corresponding element, say $y$ of $\bigtimes_{i \in J} X_i$ is obtained by simply restricting that function to $J$. Explicitly, we write $y_i = x_i$ whenever $i \in J$. The correspondence $x \to y$ is called the projection from $X$ onto $\bigtimes_{i \in J} X_i$; we shall temporarily denote it by $f_J$. If, in particular, $J$ is a singleton, say $J = \{j\}$, then we shall write $f_j$ (instead of $f_{\{j\}}$) for $f_J$. The word "projection" has a multiple use; if $x \in X$, the value of $f_j$ at $x$, that is $x_j$, is also called to projection of $x$ onto $X_j$, or, alternatively, the $j$\textit{-coordinate} of $x$. A function on a Cartesian product such as $X$ is called a function of \textit{several variables}, and, in particular, a function on a Cartesian product $X_a \times X_b$ is called a function of two variables.
+
+\begin{quote}
+	\textbf{Exercise.} Prove that
+	\[
+		\left( \bigcup_i A_i \right) \times \left( \bigcup_j B_j\right) = \bigcup_{i, \,j} (A_i \times B_j),
+	\]
+	and that the same equation holds for intersections (provided that the domains of the families involved are not empty). Prove also (with appropriate provisos about empty families) that 
+	\[
+		\bigcap_i X_i \subset X_j \subset \bigcup_i X_i
+	\]
+	for each index $j$ and that intersection and union can in fact be characterized as the extreme solutions of these inclusions. This means that if $X_j \subset Y$ for each index $j$, then $\bigcup_i X_i \subset Y$, and that $\bigcup_i X_i$ is the only set satisfying this minimality condition; the formulation for intersections is similar.
+\end{quote}
+
+\textbf{Editor's proof.} Let us first prove that
+\[
+,
+\]
+suppose $x = (a, \, b)$ is an element of the left side of the equation. That means, $a$ belongs to the set $\bigcup_i A_i$ and the element $b$ belongs to $\bigcup_j B_j$. Regarding the definition of unions of families, this means, for some $i \in I$ and for some $j \in J$
+\[
+	a \in A_i, \quad b \in B_j.
+\]
+Therefore $x = (a, \, b) \in A_i \times B_j$, so the right side involves the element $x$. In reverse, suppose that $x$ is an element of the right side of the equation; that is, for some $(i, \, j) \in I \times J$, $x = (a, \, b) \in A_i \times B_j$. This implies that $a \in A_i$ and $b \in B_j$. Since $A_i \subset \bigcup_i A_i$ and $B_j \subset \bigcup_j B_j$, these sets (unions) also include the element $a, \, b$ respectively. Therefore the Cartesian products of these sets involve the ordered pair $(a, \, b) = x$.
+
+Now, let us prove that this holds for intersections (with criteria $I, \, J \neq \emptyset$) also, meaning
+\[
+\left( \bigcap_i A_i \right) \times \left( \bigcap_j B_j\right) = \bigcap_{i, \,j} (A_i \times B_j).
+\]
+If $x = (a, \, b)$ is involved in the left side, that means $x \in A_i$ for all $i \in I$ and $b \in B_j$ for all $j \in J$. This means $(a, \, b) \in A_i \times B_j$ for all indices. Therefore $x = (a, \, b) \in \bigcap_{i, \, j} (A_i \times B_j)$. In reverse, let us assume that $x = (a, \, b)$ is involved in the right side, meaning for all $(i, \, j) \in I \times J$, $(a, \, b) \in A_i \times B_j$; that is, $a \in A_i$ and $b \in B_j$. We got that $a \in \bigcap_i A_i$ and $b \in \bigcap_j B_j$, therefore $x = (a, \, b)$ is involved in the left side.
+
+For the second half of the exercise, first prove the inclusions (with criteria $I \neq \emptyset$)
+\[
+	\bigcap_i X_i \subset X_j \subset \bigcup_i X_i.
+\]
+If $x \in \bigcap_i X_i$, then for all $i \in I$, $x \in X_i$; therefore $x \in X_j$. If $x \in X_j$ for some $j \in I$, then of course, $x \in \bigcup_i X_i$, since $j \in I$. Now, let us assume that there exits a set $Y$ such that
+\[
+	X_j \subset Y \quad (\text{for all } j \in I).
+\]
+If $x \in \bigcup_i X_i$, then for some $i \in I$, $x \in X_i \subset Y$, therefore $x \in Y$.
+
+For the sake of contradiction, let us assume that there is set $W \neq \bigcup_i X_i$ that shares these properties: $X_j \subset W$ for every $j \in I$ and
+\[
+	\text{for every set } Y \text{ for which the following is true: } X_j \subset Y \quad (\text{for all } j \in I),
+\]
+\[
+	\text{we have } W \subset Y.
+\]
+
+For example, there is an element $w \in W$ such that $w \not \in \bigcup_i X_i$. $\bigcup_i X_i$ can be the set $Y$, therefore $W \subset \bigcup_i X_i$; which is false. If we have $x \in \bigcup_i X_i$ and $x \not \in W$, then let the set $W$ be the set $Y$. Therefore $W = \bigcup_i X_i$.
+
+For the intersection half, we have to prove that $\bigcap_i X_i$ is the only set that satisfies the following property ($I \neq \emptyset$):
+\[
+	\text{for every set } Y \text{ for which the following is true: } Y \subset X_j \quad (\text{for all } j \in I),
+\]
+\[
+	\text{we have } Y \subset \bigcap_i X_i.
+\]
+Assume, there is another set $W \neq \bigcap_i X_i$. For example there exits an element $w \in W$ such that $w \not \in \bigcap_i X_i$. Since $W \subset X_j$ for all $j \in I$, $w \in X_j$; which cannot be. Now assume the reverse: there exists an element $x \in \bigcap_i X_i$ such that $x \not \in W$. Since $\bigcap_i X_i$ can be the set $Y$, then its false, because $\bigcap_i X_i \not \subset W$.
